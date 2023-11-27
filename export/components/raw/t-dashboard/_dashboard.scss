@@ -1,0 +1,77 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.it-dashboard {
+	margin-bottom: 3rem;
+	@include media-queries.fs-mq($from: tablet) {
+		margin-bottom: 6rem;
+	}
+	&__document {
+		display: grid;
+		width: 100%;
+		grid-template-columns: 1fr;
+		grid-gap: 1.5rem;
+		margin-bottom: 3rem;
+		grid-template-rows: auto;
+		grid-template-areas:
+    		"sidebar" 
+			"breadcrumbs" 
+			"title"
+			"main";
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 2fr 5fr;
+			grid-template-rows: auto;
+			grid-gap: 12.5%;
+			row-gap: 0;
+			margin-bottom: 6rem;
+			grid-template-areas:
+				"breadcrumbs breadcrumbs"
+				"sidebar title"
+				"sidebar  main";
+		}
+	}
+	&__sidebar {
+		grid-area: sidebar;
+		.bc-details {
+			margin-left: -6vw;
+			margin-right: -6vw;
+			margin-bottom: 0;
+			.bc-heading--small-subtitle {
+				color: colors.fs-color(black);
+				font-weight: 400;
+			}
+			span {
+				font-weight: 300;
+			}
+			.bc-icon {
+				font-size: 1.3rem;
+			}
+		}
+		.bc-details__body {
+			padding: 0;
+			.bc-prose {
+				margin-bottom: 0;
+			}
+		}
+		.bc-avatar {
+			width: 40px;
+			height: 40px;
+			min-height: 40px;
+			min-width: 40px;
+		}
+	}
+	.bc-breadcrumbs {
+		grid-area: breadcrumbs;
+		margin-bottom: 0;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-bottom: 3rem;
+		}
+	}
+	.bc-heading--jumbotron {
+		grid-area: title;
+	}
+	main[class^="ip-"] {
+		grid-area: main;
+	}
+}

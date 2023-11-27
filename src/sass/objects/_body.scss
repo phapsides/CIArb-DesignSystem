@@ -1,0 +1,18 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/spacing";
+@use "helpers/typography";
+
+.bc-body,
+.bc-body-l,
+.bc-body-s {
+	@include spacing.fs-responsive-margin(0, $direction: block-start);
+	@include spacing.fs-responsive-margin(3, $direction: block-end);
+}
+
+.bc-body {
+	@include typography.fs-font-size(body);
+}
+
+.bc-body-s {
+	@include typography.fs-font-size(body-mobile);
+}

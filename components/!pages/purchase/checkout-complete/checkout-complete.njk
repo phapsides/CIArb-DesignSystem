@@ -1,0 +1,42 @@
+{% extends '@t-centered' %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "button/macro.njk" import bcButton %}
+	
+
+	<div class="ip-checkout-complete">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'Thank you for your order.'
+		}) }}
+        <section class="ip-checkout-complete__order-details">
+            {% call bcProse() %}
+                <p>
+                    <strong>Order number is #48273.</strong>
+                </p>
+                <p>
+                    We’ve sent your order and tracking details to user email.
+                </p>
+                {{ bcButton({
+					appearance: 'primary',
+					text: 'Go to homepage'
+				}) }}
+            {% endcall %}
+        </section>
+
+        <section class="ip-checkout-complete__disclaimer">
+            {% call bcProse() %}
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Need help?'
+                }) }}
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+                </p>
+            {% endcall %}
+        </section>
+	</div>
+
+{% endblock %}

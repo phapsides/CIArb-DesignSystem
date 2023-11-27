@@ -1,0 +1,304 @@
+{% extends '@t-event-details' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Events', href: '/' },
+			{ text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from "event-card/macro.njk" import bcEventCard %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "image/macro.njk" import bcImage %}
+    {% from "tab/macro.njk" import bcTab, bcTabPanel %}
+    {% from "grid/macro.njk" import bcGrid %}
+    {% from "icon/macro.njk" import bcIcon %}
+    {% from "details/macro.njk" import bcDetails %}
+    {% from "details-group/macro.njk" import bcDetailsGroup %}
+
+    {% call bcEventCard({
+        full_width: true,
+        hero: true,
+        heading: {
+            text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+            hierarchy: 2
+        },
+        back_button: {
+            appearance: 'link',
+            href: '#',
+            text: 'Back to events'
+        },
+        button: {
+            appearance: 'primary',
+            href: '#',
+            text: 'Book now'
+        },
+        calendar: true,
+        date: '18 November 2021',
+        time: '10:00',
+        location: 'London, UK',
+        image: {
+            src: '/images/temp/event-temp-background.png',
+            alt: 'Event image'
+        }
+    }) %}
+        {% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+        {% endcall %}
+    {% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    <div class="ip-event-details">
+        <div class="ip-event-details__section fs-!-margin-bottom-7">
+            {{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'About this event'
+			}) }}
+            {% call bcProse() %}
+            <p>
+                We will be holding a meet the funder Q&A webinar each week that the application window is open. Open to any organisation
+                considering making an application, we will be talking through the application form and taking questions on how to make a
+                great application.
+            </p>
+            {% endcall %}
+        </div>
+        <div class="ip-event-details__section fs-!-margin-bottom-4">
+            {{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'Tickets'
+			}) }}
+        </div>
+        {% call bcTab({
+	heading: 'Contents',
+    tablist: [
+    	{ for: 'Panel1', text: 'Member' },
+    	{ for: 'Panel2', text: 'Non-member' }
+    ]
+}) %}
+        {% call bcTabPanel({
+		id: 'Panel1'
+	}) %}
+        <div class="ip-event-details__section fs-!-margin-bottom-8">
+            <div class="ip-event-details__ticket-prices bc-quick-pick">
+                <div class="bc-quick-pick__item">
+                    <p class="bc-quick-pick__label">Early bird</p>
+                    <p class="bc-quick-pick__data">£15</p>
+                </div>
+                <div class="bc-quick-pick__item">
+                    <p class="bc-quick-pick__label">Online price</p>
+                    <p class="bc-quick-pick__data">£30</p>
+                </div>
+                <div class="bc-quick-pick__item">
+                    <p class="bc-quick-pick__label">On the day</p>
+                    <p class="bc-quick-pick__data">£35</p>
+                </div>
+            </div>
+        </div>
+        {% endcall %}
+        {% call bcTabPanel({
+		id: 'Panel2'
+	}) %}
+        <div class="ip-event-details__section fs-!-margin-bottom-8">
+            <div class="ip-event-details__ticket-prices bc-quick-pick">
+                <div class="bc-quick-pick__item">
+                    <p class="bc-quick-pick__label">Early bird</p>
+                    <p class="bc-quick-pick__data">£20</p>
+                </div>
+                <div class="bc-quick-pick__item">
+                    <p class="bc-quick-pick__label">Online price</p>
+                    <p class="bc-quick-pick__data">£35</p>
+                </div>
+                <div class="bc-quick-pick__item">
+                    <p class="bc-quick-pick__label">On the day</p>
+                    <p class="bc-quick-pick__data">£40</p>
+                </div>
+            </div>
+        </div>
+        {% endcall %}
+        {% endcall %}
+        <div class="ip-event-details__section">
+            {{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'Agenda'
+			}) }}
+            {% call bcProse({
+				classes: 'fs-!-margin-bottom-5'
+			}) %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+            {% endcall %}
+            <div class="ip-event-details__subsection fs-!-margin-bottom-5">
+                {{ bcHeading({
+					classes: 'fs-!-margin-bottom-1',
+					hierarchy: 3,
+					text: 'AM 10:00 — 12:30'
+				}) }}
+                {% call bcProse({
+					classes: 'fs-!-margin-bottom-0'
+        		}) %}
+                <ul>
+                    <li>Eu labore elit laboris</li>
+                    <li>Eu labore elit laboris</li>
+                    <li>Eu labore elit laboris</li>
+                </ul>
+                {% endcall %}
+            </div>
+            <div class="ip-event-details__subsection fs-!-margin-bottom-5">
+                {{ bcHeading({
+					classes: 'fs-!-margin-bottom-1',
+					hierarchy: 3,
+					text: 'Lunch break 12:30 — 13:30'
+				}) }}
+                {% call bcProse({
+					classes: 'fs-!-margin-bottom-0'
+        		}) %}
+                <ul>
+                    <li>Eu labore elit laboris</li>
+                    <li>Eu labore elit laboris</li>
+                    <li>Eu labore elit laboris</li>
+                </ul>
+                {% endcall %}
+            </div>
+            <div class="ip-event-details__subsection">
+                {{ bcHeading({
+					classes: 'fs-!-margin-bottom-1',
+					hierarchy: 3,
+					text: 'PM 13:30 — 16:00'
+				}) }}
+                {% call bcProse({
+					classes: 'fs-!-margin-bottom-0'
+        		}) %}
+                <ul>
+                    <li>Eu labore elit laboris</li>
+                    <li>Eu labore elit laboris</li>
+                    <li>Eu labore elit laboris</li>
+                </ul>
+                {% endcall %}
+                {{ bcHeading({
+				classes: 'fs-!-margin-bottom-2 fs-!-margin-top-7',
+				hierarchy: 2,
+				text: 'Speakers'
+			}) }}
+                {% call bcProse({
+				classes: 'fs-!-margin-bottom-5'
+			}) %}
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                </p>
+                {% endcall %}
+                {% call bcDetailsGroup() %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    },
+					heading: {
+						text: 'First and last name',
+						hierarchy: 3
+					},
+					job_description: 'Job description'
+				}) %}
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere
+                    suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?</p>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    },
+					heading: {
+						text: 'First and last name',
+						hierarchy: 3
+					},
+					job_description: 'Job description'
+				}) %}
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere
+                    suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?</p>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    },
+					heading: {
+						text: 'First and last name',
+						hierarchy: 3
+					},
+					job_description: 'Job description'
+				}) %}
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere
+                    suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?</p>
+                {% endcall %}
+                {% endcall %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block afterTemplate %}
+        <div class="ip-event-details--afterTemplate">
+            <div class="bc-container">
+            {{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 2,
+			text: 'Location'
+		}) }}
+            {% call bcProse() %}
+            <address>
+                Westminster Office - 8th Floor, Kings Buildings, 16 Smith Square, London, SW1P 3HQ
+            </address>
+            {% endcall %}
+            <div id="bc-map"></div>
+            </div>
+        </div>
+    {% endblock %}
+    {% block scripts %}
+        <script>
+            function initMap() {
+                const myMapCenter = {
+                    lat: 40.785091,
+                    lng: -73.968285
+                };
+                // Create a map object and specify the DOM element for display.
+                const map = new google.maps.Map(document.getElementById('bc-map'), {
+                    center: myMapCenter,
+                    zoom: 14
+                });
+                function markStore(storeInfo) { // Create a marker and set its position.
+                    const marker = new google.maps.Marker({map: map, position: storeInfo.location});
+                }
+                const stores = [{
+                        location: {
+                            lat: 40.785091,
+                            lng: -73.968285
+                        }
+                    }];
+                stores.forEach(function (store) {
+                    markStore(store);
+                });
+            }
+        </script>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZd0br-aQ1AVU5MMIjDErpBjuW7Piy5c&callback=initMap"
+            async
+            defer></script>
+    {% endblock %}

@@ -1,0 +1,58 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-article {
+	&__date {
+		font-size: 16px;
+		line-height: 32px;
+		color: #656265;
+		margin-bottom: 0.5rem;
+	}
+	.bc-heading--jumbotron {
+		@extend .bc-heading--title;
+		margin-bottom: 0.67rem !important;
+	}
+	.bc-heading--title {
+		margin-bottom: 0.83rem !important;
+	}
+	.bc-heading--subtitle {
+		margin-bottom: 1rem !important;
+	}
+	.bc-heading--small-subtitle {
+		margin-bottom: 1.33rem !important;
+	}
+	.bc-prose {
+		margin-bottom: 0;
+		> * {
+			margin-top: 0;
+			margin-bottom: 1.5rem;
+			display: block;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-bottom: 3rem;
+			}
+		}
+		> * + * {
+			margin-top: 0;
+			margin-bottom: 1.5rem;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-bottom: 3rem;
+			}
+		}
+		:last-child {
+			margin-bottom: 0;
+		}
+   	}
+	&__after-template {
+		margin-bottom: 3rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-bottom: 6rem;
+		}
+		.bc-news__grid {
+			grid-template-columns: 1fr;
+			@include media-queries.fs-mq($from: tablet) {
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+	}
+}

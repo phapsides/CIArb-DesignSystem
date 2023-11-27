@@ -1,0 +1,236 @@
+{% extends '@t-event-details' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Network & communities', href: '#' },
+			{ text: 'Groups', href: '#' },
+			{ text: 'Our branches', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from "hero-banner/macro.njk" import bcHeroBanner %}
+    {% from "details/macro.njk" import bcDetails %}
+    {% from "details-group/macro.njk" import bcDetailsGroup %}
+
+   	{% call bcHeroBanner({
+		secondary_color: true,
+		heading: {
+			text: 'Our branches',
+			hierarchy: 1
+		},
+		image: {
+			src: ('/images/temp/event-hero-temp-background.png' | path),
+			alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+		}
+	}) %}
+		{% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+		{% endcall %}
+	{% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+
+    <div class="ip-branch-listing">
+        <div class="ip-branch-listing__section">
+            {% call bcDetailsGroup() %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/gb.svg' | path),
+                        alt: 'Great Britain'
+                    },
+                    heading: {
+                        text: 'Great Britain',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/europe.svg' | path),
+                        alt: 'Europe (exc. Great Britain)'
+                    },
+                    heading: {
+                        text: 'Europe (exc. Great Britain)',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/africa.svg' | path),
+                        alt: 'Africa'
+                    },
+                    heading: {
+                        text: 'Africa',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">Kenya</a>    
+                        </li>
+                        <li>
+                            <a href="#">Mauritius</a>    
+                        </li>
+                        <li>
+                            <a href="#">Nigeria</a>    
+                        </li>
+                        <li>
+                            <a href="#">South Africa</a>    
+                        </li>
+                        <li>
+                            <a href="#">Zambia</a>    
+                        </li>
+                        <li>
+                            <a href="#">Zimbabwe</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/middle-east.svg' | path),
+                        alt: 'Asia'
+                    },
+                    heading: {
+                        text: 'Middle East / Indian Subcontinent',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/asia.svg' | path),
+                        alt: 'Asia'
+                    },
+                    heading: {
+                        text: 'Asia',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/australasia.svg' | path),
+                        alt: 'Australasia'
+                    },
+                    heading: {
+                        text: 'Australasia',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+                {% call bcDetails({
+                    classes: 'bc-details--with-avatar',
+                    avatar: {
+                        src: ('/images/americas.svg' | path),
+                        alt: 'Americas'
+                    },
+                    heading: {
+                        text: 'Americas',
+                        hierarchy: 3
+                    }
+                }) %}
+                    <ul class="bc-details__list">
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                        <li>
+                            <a href="#">List item</a>    
+                        </li>
+                    </ul>
+                {% endcall %}
+            {% endcall %}
+        </div>
+    </div>
+{% endblock %}

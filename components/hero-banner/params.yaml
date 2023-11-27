@@ -1,0 +1,9 @@
+params:
+  - name: attributes
+    type: object
+    required: false
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the component.

@@ -1,0 +1,70 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "prose/prose";
+@use "heading/heading";
+@use "helpers/media-queries";
+@use "helpers/typography";
+
+.bc-membership-card {
+	background-color: settings.$fs-body-background-color;
+	border-radius: settings.$fs-border-radius;
+	display: grid;
+	grid-template-columns: auto 1fr;
+	padding: 2rem;
+	grid-gap: 2rem;
+	&__body {
+		display: flex;
+	}
+	&__premium {
+		margin-left: auto;
+		margin-right: 1rem;
+		span {
+			display: block;
+		}
+	}
+	&__price {
+		@extend .bc-heading--subtitle;
+		margin-bottom: 0;
+	}
+	&__period {
+		@include typography.fs-font-size(body-mobile);
+	}
+	&__description {
+		@extend .bc-prose;
+		padding-bottom: 0.5rem;
+		width: 90%;
+		@include media-queries.fs-mq($from: tablet) {
+			width: 100%;
+		}
+	}
+	&__buttons {
+		> * {
+			display: block;
+			@include media-queries.fs-mq($from: tablet) {
+				display: inline-block;
+			}
+		}
+		button {
+			margin-right: 1rem;
+			margin-bottom: 0.5rem;
+		}
+	}
+	.bc-button {
+		margin-bottom: 0.5rem;
+		height: auto;
+		width: 100%;
+		@include media-queries.fs-mq($from: tablet) {
+			width: auto;
+		}
+	}
+	.bc-card__media {
+		display: flex;
+		justify-content: flex-end;
+		flex-direction: column;
+		.bc-image__image {
+			min-width: 296px;
+			margin-right: -2rem;
+			margin-bottom: -2rem;
+		}
+	}
+}

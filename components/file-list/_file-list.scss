@@ -1,0 +1,32 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.bc-file-list {
+	margin: 0;
+	&__item {
+		display: flex;
+		margin-bottom: 1.875rem;
+		padding: 1.875rem;
+		box-shadow: 0 3px 16px #00000029;
+	}
+	&__filename {
+		padding-right: 1.875rem;
+		flex: 0 0 90%;
+	}
+	&__action {
+		margin: 0;
+		flex: 0 0 10%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+	.bc-icon {
+		color: colors.fs-color(brand-primary);
+		font-size: 1.875rem;
+	}
+	.bc-heading {
+		margin-bottom: 0.5rem;
+	}
+}

@@ -1,0 +1,58 @@
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: name
+    type: string
+    required: true
+    description: The name of the input. This is used as an identifying key when sending the form to the server and should be unique.
+  - name: value
+    type: string
+    required: true
+    description: The backend-facing value of the Switch.
+  - name: id
+    type: string
+    description: A unique ID to use for this Switch.
+  - name: describedBy
+    type: string
+    description: A space-separated list of element IDs that the input is associated with. This association is used by assistive technologies to ensure that users get the full context of what an input is asking for.
+  - name: checked
+    type: boolean
+    description: If `true`, the switch will be in the on position when the page is loaded.
+  - name: required
+    type: boolean
+    description: If `true`, makes it a requirement to set the switch to on.
+  - name: disabled
+    type: boolean
+    description: If `true`, a user will be unable to modify the switch and the value of the switch cannot be modified.
+  - name: label
+    type: object
+    required: true
+    description: The input's label, describing what input is being requested.
+    params:
+      - name: html
+        type: string
+        required: true
+        description: HTML to display for this item. Not required if `text` is set. If `html` is provided, the `text` parameter is ignored.
+      - name: text
+        type: string
+        required: true
+        description: Text to display for this item. Not required if `html` is set. If `html` is provided, the `text` parameter is ignored.
+  - name: formRow
+    type: object
+    required: false
+    description: Configuration object for the wrapping Form Row. *The `error` paramter is set automatically and cannot be overridden.*
+    seeAlso: [form-row]
+  - name: hint
+    type: object
+    required: false
+    description: Hint copy, providing further information on what information is being requested and what format it may need to be provided in. *The `id` parameter is set automatically and cannot be overridden.*
+    seeAlso: [form-hint]
+  - name: error
+    type: object
+    required: false
+    description: Error copy, describing why the provided input isn't adequate for our needs. Setting this object also adds additional attributes to the input, indicating the error state to assistive technologies. *The `id` parameter is set automatically and cannot be overridden.*
+    seeAlso: [form-error]

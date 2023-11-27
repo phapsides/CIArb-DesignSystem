@@ -1,0 +1,77 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+
+.bc-testimonial {
+	$self: &;
+	position: relative;
+	background-color: colors.fs-color(brand-primary);
+	background: linear-gradient(
+		0deg,
+		colors.fs-color(brand-secondary) 0%,
+		colors.fs-color(brand-primary) 100%
+	);
+	justify-content: center;
+	padding: 2rem 0 0;
+	color: colors.fs-color(white);
+	@media only screen and (min-width: 1025px) {
+		background: linear-gradient(
+			270deg,
+			colors.fs-color(brand-secondary) 0%,
+			colors.fs-color(brand-primary) 100%
+		);
+		padding: 4rem 0 0;
+	}
+	&__container {
+		max-width: 1440px;
+		display: flex;
+		flex-direction: column-reverse;
+		margin-inline: 6vw;
+		@media only screen and (min-width: 1025px) {
+			flex-direction: row;
+		}
+		@media only screen and (min-width: 1656px) {
+			margin-inline: auto;
+		}
+	}
+	&__body {
+		margin-bottom: 2rem;
+		@media only screen and (min-width: 1025px) {
+			margin-bottom: 4rem;
+		}
+		.bc-heading {
+			margin-bottom: 2rem;
+			color: colors.fs-color(white);
+		}
+		.bc-prose {
+			line-height: 1.875rem;
+			font-size: 1.25rem;
+			margin-bottom: 1rem;
+			@media only screen and (min-width: 1025px) {
+				font-size: 1.75rem;
+				line-height: 2.375rem;
+			}
+		}
+	}
+	&__details {
+		font-weight: 600;
+	}
+
+	&--with-image {
+		.bc-testimonial__media {
+			display: flex;
+			justify-content: center;
+			@media only screen and (min-width: 1025px) {
+				align-items: flex-end;
+				padding-right: 4rem;
+			}
+			.bc-image__image {
+				min-width: 14rem;
+				max-height: 16rem;
+				@media only screen and (min-width: 1025px) {
+					min-width: 20rem;
+				}
+			}
+		}
+	}
+}

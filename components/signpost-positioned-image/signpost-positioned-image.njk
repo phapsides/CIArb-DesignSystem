@@ -1,0 +1,13 @@
+{% from "signpost-positioned-image/macro.njk" import bcSignpostPositionedImage %}
+
+{% call bcSignpostPositionedImage({
+    text: 'Our Special Interest Groups',
+    href: '#',
+    ctaText: 'Learn more about SIGs',
+    image: {
+        src: '/images/temp/homepage-group-card-icon-1.svg',
+        alt: 'Ciarb Groups Icon'
+    }
+}) %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+{% endcall %}

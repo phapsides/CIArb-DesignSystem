@@ -1,0 +1,8 @@
+{% from "breadcrumbs/macro.njk" import bcBreadcrumbs %}
+
+{{ bcBreadcrumbs({
+	items: [
+		{ text: 'Home', href: '#' },
+		{ text: 'Page', href: '#', current: true }
+	]
+}) }}

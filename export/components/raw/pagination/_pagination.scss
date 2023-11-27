@@ -1,0 +1,74 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/typography";
+@use "objects/forms";
+@use "helpers/colors";
+@use "button/button";
+@use "objects/lists";
+@use "sass:math";
+
+.bc-pagination {
+	text-align: center;
+	&__list {
+		@extend .fs-list;
+		margin-bottom: 0;
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		list-style: none;
+		align-items: center;
+		justify-content: center;
+		> * + * {
+			margin-left: 0.25rem;
+		}
+		li + li {
+			margin-top: 0;
+		}
+	}
+	&__link {
+		@include typography.fs-font-size(body-mobile);
+		color: colors.fs-color(black);
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: 2rem;
+		height: 2rem;
+		color: #181817 !important;
+		font-weight: normal !important;
+		border: settings.$fs-border-width-form-element solid transparent;
+		border-radius: 50%;
+		text-decoration: none;
+		transition: background-color 0.3s;
+		&:hover {
+			border-color: colors.fs-color(brand-secondary);
+		}
+		&[aria-current] {
+			color: colors.fs-color(white) !important;
+			background-color: colors.fs-color(brand-secondary);
+		}
+	}
+	&__previous,
+	&__next {
+		@include typography.fs-font-size(body-mobile);
+		color: colors.fs-color(brand-secondary);
+		display: inline-block;
+		padding-left: 0.85rem;
+		padding-right: 0.85rem;
+		margin-left: 0.25rem;
+		transition: all 0.1s;
+	}
+	&__previous--hidden,
+	&__next--hidden {
+		visibility: hidden;
+	}
+	&__previous {
+		margin-right: 0.5rem;
+	}
+	&__next {
+		margin-left: 0.5rem;
+	}
+	&__jump {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

@@ -1,0 +1,27 @@
+{% from "button/macro.njk" import bcButton %}
+
+{{ bcButton({
+    appearance: 'primary',
+    text: 'Primary'
+}) }}
+
+{{ bcButton({
+    appearance: 'secondary',
+    text: 'Secondary button'
+}) }}
+
+{{ bcButton({
+    disabled: true,
+    text: 'Disabled button'
+}) }}
+
+{{ bcButton({
+    appearance: 'link',
+    text: 'Button with link styles'
+}) }}
+
+{{ bcButton({
+    appearance: 'primary',
+    href: '#',
+    text: 'Anchor with button styles'
+}) }}

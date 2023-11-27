@@ -1,0 +1,21 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "objects/lists";
+@use "helpers/media-queries";
+
+.ip-branch-listing {
+    margin: 0;
+    @include media-queries.fs-mq($from: tablet) {
+        margin-top: 3rem;
+    }
+	.bc-details__list {
+        @extend .fs-list;
+        padding-left: 1.5rem;
+        margin-left: 60px;
+        @include media-queries.fs-mq($from: tablet) {
+            margin-left: 100px;
+        }
+        > li {
+			padding: 0 0 1rem;
+        }
+    }
+}

@@ -1,0 +1,298 @@
+{% extends '@t-event-listing' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Events', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeInner %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "heading/macro.njk" import bcHeading %}
+
+	{{ bcHeading({
+		classes: 'fs-!-margin-bottom-2',
+		hierarchy: 1,
+		text: 'Events'
+	}) }}
+
+	{% call bcEventCard({
+		classes: 'bc-event-hero',
+		hero: true,
+		href: '#',
+		heading: {
+			text: 'Annual CIArb London Branch Mediation Seminar: How to Prepare for an Effective Mediation',
+			hierarchy: 2
+		},
+		image: {
+			src: ('/images/temp/event-hero-temp-background.png' | path),
+			alt: ''
+		},
+		button: {
+			classes:'fs-!-margin-top-5',
+			appearance: 'primary',
+			text: 'Book event',
+			href: '#'
+		},
+		date: 'Thu, 30 June 2021',
+		time: '10:00',
+		location: 'London, UK'
+	}) %}
+	{% call bcProse() %}
+		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+	{% endcall %}
+	{% endcall %}
+
+{% endblock %}
+
+{% block body %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "pagination/macro.njk" import bcPagination %}
+	{% from "form/macro.njk" import bcForm %}
+	{% from "select/macro.njk" import bcSelect %}
+
+	<div class="ip-event-listing">
+
+		{% call bcForm({
+			classes: 'fs-!-margin-bottom-4',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+			<p class="ip-event-listing__filter-results">Showing results 1–10 of 840</p>
+			{{ bcSelect({
+				name: "ExampleSelect",
+				options: [
+					{ value: "", text: "Sort by" }
+				]
+			}) }}
+		{% endcall %}
+								
+		{% call bcGrid({size: '1/1'}) %}
+			
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: ''
+				},
+				date: 'Thu, 30 June 2021',
+				time: '10:00',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+			{% call bcProse() %}
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			{% endcall %}
+			{% endcall %}
+								
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Lahore Arbitration Declaration ratified at CIArb Pakistan Branch launch',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: ''
+				},
+				date: 'Thu, 30 June 2021',
+				time: '10:00',
+				location: 'London, UK',
+				price: 'XXX'
+			}) %}
+			{% call bcProse() %}
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			{% endcall %}
+			{% endcall %}
+								
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: ''
+				},
+				date: 'Thu, 30 June 2021',
+				time: '10:00',
+				location: 'London, UK',
+				price: 'XXX'
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				{% endcall %}
+			{% endcall %}
+			
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'CIArb holds first official event in Pakistan',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: ''
+				},
+				date: 'Thu, 30 June 2021',
+				time: '10:00',
+				location: 'London, UK',
+				price: 'XXX'
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				{% endcall %}
+			{% endcall %}
+								
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: ''
+				},
+				date: 'Thu, 30 June 2021',
+				time: '10:00',
+				location: 'London, UK',
+				price: 'XXX'
+			}) %}
+			{% call bcProse() %}
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			{% endcall %}
+			{% endcall %}
+			
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Lahore Arbitration Declaration ratified at CIArb Pakistan Branch launch',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: ''
+				},
+				date: 'Thu, 30 June 2021',
+				time: '10:00',
+				location: 'London, UK',
+				price: 'XXX'
+			}) %}
+			{% call bcProse() %}
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+			{% endcall %}
+			{% endcall %}
+
+		{% endcall %}
+		
+		{{ bcPagination({
+			currentPage: 1,
+			totalPages: 2
+		}) }}
+
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+
+	{% from "form/macro.njk" import bcForm %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "input/macro.njk" import bcInput %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "icon/macro.njk" import bcIcon %}
+	
+	<div
+    data-module="bc-filters"
+    id="filters"
+    class="bc-filters"
+	>
+    {% call bcForm({
+        action: '',
+        method: '',
+        disableUnloadPrompt: true
+    }) %}
+        <h3 id="filters-title" class="bc-heading bc-heading--subtitle" >
+            Filter events
+            {{ bcIcon({
+                variant: 'chevron-down'
+            }) }}
+        </h3>
+        <div class="bc-filters__body">
+            {{ bcCheckbox({
+                name: 'ExampleCheckboxGroup',
+                legend: {
+                    text: 'Event type'
+                },
+                options: [
+                    {
+                        text: 'Event type',
+                        value: '1'
+                    },
+                    {
+                        text: 'Event type',
+                        value: '2'
+                    },
+                    {
+                        text: 'Event type',
+                        value: '3'
+                    }
+                ]
+            }) }}
+            {{ bcSelect({
+                name: "ExampleSelect",
+                label: { 
+                    text: "Event location" 
+                },
+                options: [
+                    { value: "", text: "All" },
+                    { value: "", text: "Lorem ipsum" },
+                    { value: "",  text: "Lorem ipsum" }
+                ]
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInputDate',
+                type: 'date',
+                label: { text: 'From' }
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInputDate',
+                type: 'date',
+                label: { text: 'To' }
+            }) }}
+            <div class="bc-filters__actions">
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Apply filters',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'link',
+                    text: 'Clear filters'
+                }) }}
+            </div>
+        </div>
+    {% endcall %}
+
+	</div>
+
+{% endblock %}

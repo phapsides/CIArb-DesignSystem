@@ -1,0 +1,155 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership', href: '#' },
+			{ text: 'Fellow membership', href: '#' },
+			{ text: 'Fellow membership application', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from 'icon/macro.njk' import bcIcon %}
+    <div class="bc-step-indicator-container">
+        <div data-module="bc-step-indicator" class="bc-step-indicator">
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 1</strong>
+                    </p>
+                    <p>Before you Start</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 2</strong>
+                    </p>
+                    <p>Personal details</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 3</strong>
+                    </p>
+                    <p>Membership routes</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 4</strong>
+                    </p>
+                    <p>Qualifications</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step" aria-current="step">
+                <div class="bc-step-indicator__step-number">5</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 5</strong>
+                    </p>
+                    <p>Declaration</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">6</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 6</strong>
+                    </p>
+                    <p>payment option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="ip-fellow-membership-application ip-fellow-membership-application__step-5">
+        {% from "heading/macro.njk" import bcHeading %}
+        {% from "form/macro.njk" import bcForm %}
+        {% from "checkbox/macro.njk" import bcCheckbox %}
+        {% from "button/macro.njk" import bcButton %}
+
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Fellow member application'
+		}) }}
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Declaration'
+		}) }}
+
+        {% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+            {{ bcCheckbox({
+                name: 'ExampleCheckboxSingle',
+                options: [
+                    {
+                        text: 'I declare that to the best of my knowledge, I have equivalent practical knowledge of what is listed in the syllabus of the CIArb Module 1 _Mediation Training & Assessment. The information given on this form is correct. I understand and agree that if I make any false statements or submit false information in this application, I will be subject to discipline pursuant to the constitutional documents and codes of ethics, which are subject to amendment from time to time.',
+                        value: '1',
+                        required: true
+                    }
+                ]
+            }) }}
+            <div class="bc-button-group">
+                {{ bcButton({
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Add to basket',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+                {{ bcButton({
+                    appearance: 'secondary',
+                    type: 'submit',
+                    text: 'Previous',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+                {{ bcButton({
+                    appearance: 'link',
+                    type: 'button',
+                    text: 'Cancel'
+                }) }}
+            </div>
+        {% endcall %}
+    </div>
+{% endblock %}

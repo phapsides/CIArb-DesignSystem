@@ -1,0 +1,469 @@
+{% from "logo/macro.njk" import bcLogo %}
+{% from "button/macro.njk" import bcButton %}
+{% from 'icon/macro.njk' import bcIcon %}
+{% from "form/macro.njk" import bcForm %}
+{% from "input/macro.njk" import bcInput %}
+{% set logged_in = params.logged_in if params.logged_in else false %}
+
+
+<header id="master-header" data-module="bc-header" class="bc-header {%- if params.classes %} {{ params.classes }}{% endif %}" 
+   {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}>
+   <div class="bc-header__non-search">
+      <a class="bc-header__logo-container-tablet" href="#" title="">
+         {{ bcLogo({
+            src: '/images/ciarb_logo.svg',
+            alt: 'CIArb Logo Hero'
+         }) }}
+      </a>
+      <button type="button" class="bc-header__nav-toggle" id="burger">
+         Menu
+         <span class="bc-header__nav-toggle-icon">
+            {{ bcIcon({
+               variant: 'bars'
+            }) }}
+         </span>
+      </button>
+      <a class="bc-header__logo-container_mobile" href="#" title="">
+         {{ bcLogo({
+            src: '/images/ciarb_logo.svg',
+            alt: 'CIArb Logo Hero'
+         }) }}
+      </a>
+      <div class="bc-header__main-menu-container" id="navbar">
+         <ul class="bc-header__main-menu">
+            <li class="bc-header__menu-item bc-header__menu-item-has-children">   
+               <div>
+                  <a href="#" title="">
+                     <span class="bc-header__menu-item-text">
+                        About us
+                     </span>
+                  </a>
+                  <span class="bc-header__menu-item-toggle" data-toggle="bc-header__menu-item-sub-menu">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </div>
+
+               <ul class="bc-header__menu-item-sub-menu">
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="bc-header__menu-item bc-header__menu-item-has-children">   
+               <div>
+                  <a href="#" title="">
+                     <span class="bc-header__menu-item-text">
+                        Join ciarb
+                     </span>
+                  </a>
+                  <span class="bc-header__menu-item-toggle" data-toggle="bc-header__menu-item-sub-menu">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </div>
+
+               <ul class="bc-header__menu-item-sub-menu">
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="bc-header__menu-item bc-header__menu-item-has-children">   
+               <div>
+                  <a href="#" title="">
+                     <span class="bc-header__menu-item-text">
+                        Training
+                     </span>
+                  </a>
+                  <span class="bc-header__menu-item-toggle" data-toggle="bc-header__menu-item-sub-menu">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </div>
+
+               <ul class="bc-header__menu-item-sub-menu">
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+                  <li class="bc-header__menu-item">
+                     <a href="#" title="">Nav link</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="bc-header__menu-item bc-header__menu-item-has-children">   
+               <div>
+                  <a href="#" title="">
+                     <span class="bc-header__menu-item-text">
+                        Network & communities
+                     </span>
+                  </a>
+               </div>
+            </li>
+            
+            {%- if logged_in %}
+               <li class="bc-header__menu-item">
+                  <a href="#" title="">
+                     <span class="bc-header__menu-item-text bc-header__menu-item-bold">
+                        <span>
+                           {{ bcIcon({
+                              classes:'fs-!-margin-right-1',
+                              variant: 'user'
+                           }) }}
+                        </span>
+                        My account
+                     </span>
+                  </a>
+               </li>
+               <li class="bc-header__menu-item">
+                  {% call bcForm({
+                     action: '',
+                     method: '',
+                     disableUnloadPrompt: true
+                  }) %}
+                     <button class="bc-button bc-header__menu-item-text bc-header__menu-item-bold bc-header__menu-item-no-icon">
+                        {{ bcIcon({
+                           classes:'fs-!-margin-right-1',
+                           variant: 'arrow-right-from-bracket'
+                        }) }} 
+                        Log out
+                     </button>
+                  {% endcall %}
+               </li>
+            {%- else %}
+               <li class="bc-header__menu-item">
+                  {% call bcForm({
+                     action: '',
+                     method: '',
+                     disableUnloadPrompt: true
+                  }) %}
+                     <button class="bc-button bc-header__menu-item-text bc-header__menu-item-bold">
+                        {{ bcIcon({
+                           classes:'fs-!-margin-right-1',
+                           variant: 'user'
+                        }) }} 
+                        Login
+                     </button>
+                  {% endcall %}
+               </li>
+            {%- endif %}
+         </ul>
+
+         <div class="bc-button-row">
+            <a class="bc-header__contact-link" href="#" title="">Contact us</a>
+            {{ bcButton({
+					appearance: 'primary',
+					text: 'Join CIArb',
+               href: '#'
+				}) }}
+            {{ bcButton({
+					appearance: 'secondary',
+					text: 'Member directory',
+               href: '#'
+				}) }}
+         </div>
+
+      </div>
+      
+      <a class="bc-header__contact-link hide-on-mobile" href="#" title="">Contact us</a>
+      {{ bcButton({
+         classes: 'bc-header__navbar-members',
+         appearance: 'primary',
+         text: 'Join us',
+         href: '#'
+      }) }}
+      {{ bcButton({
+         classes: 'bc-header__navbar-members',
+         appearance: 'secondary',
+         text: 'Member directory',
+         href: '#'
+      }) }}
+
+      {%- if logged_in %}
+         <button class="bc-header__navbar-user">
+            {{ bcIcon({
+               classes: 'fs-!-margin-right-1',
+               variant: 'user'
+            }) }} My account
+         </button>
+         {% call bcForm({
+            action: '',
+            method: '',
+            disableUnloadPrompt: true
+         }) %}
+            <button class="bc-header__navbar-user">
+               {{ bcIcon({
+                  classes: 'fs-!-margin-right-1',
+                  variant: 'arrow-right-from-bracket'
+               }) }} 
+               Log out
+            </button>
+         {% endcall %}
+      {% else %}
+         {% call bcForm({
+            action: '',
+            method: '',
+            disableUnloadPrompt: true
+         }) %}
+            <button class="bc-header__navbar-user">
+               {{ bcIcon({
+                  classes: 'fs-!-margin-right-1',
+                  variant: 'arrow-right-to-bracket'
+               }) }}
+               Login / Register
+            </button>
+         {% endcall %}
+      {% endif %}
+
+      <button class="bc-header__navbar-cart">
+         {{ bcIcon({
+            variant: 'basket-shopping'
+         }) }}
+         <span class="sr-only">Basket</span>
+      </button>
+      <button class="bc-header__navbar-search" data-toggle-search>
+         {{ bcIcon({
+            variant: 'magnifying-glass'
+         }) }}
+         <span class="sr-only">Search</span>
+      </button>
+      <div class="bc-header__search bc-header__search-desktop">
+         {% call bcForm({
+            action: '',
+            method: '',
+            disableUnloadPrompt: true
+         }) %}
+            {{ bcInput({
+               classes: 'bc-header__search_input',
+               name: 'search',
+               required: true,
+               placeholder: 'Type to search'
+            }) }}
+            {{ bcButton({
+               appearance: 'primary',
+               type: 'submit',
+               text: 'Search'
+            }) }}
+         {% endcall %}
+
+         <button class="bc-header__search-close" data-toggle-search>
+            {{ bcIcon({
+                  variant: 'times'
+               }) }}
+            <span class="sr-only">Close search</span>
+         </button>
+      </div>
+      <div class="bc-header__quick-nav">
+         <a class="bc-header__logo-container" href="#" title="">
+            {{ bcLogo({
+               src: '/images/ciarb_logo.svg',
+               alt: 'CIArb Logo Hero'
+            }) }}
+         </a>
+         <ul class="bc-header__quick-nav-menu">
+            <li class="bc-header__quick-nav-menu-item bc-header__quick-nav-menu-item-has-children">
+               <a href="#" title="">
+                  About us
+                  <span class="bc-header__menu-item-toggle">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </a>
+               <ul class="bc-header__quick-nav-menu-item-sub-menu">
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 1</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 2</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 3</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 4</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 5</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 6</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 7</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 8</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 9</a>
+                  </li>
+               </ul>
+            </li>
+            <li class="bc-header__quick-nav-menu-item bc-header__quick-nav-menu-item-has-children">
+               <a href="#" title="">
+                  Join ciarb
+                  <span class="bc-header__menu-item-toggle">
+                     {{ bcIcon({
+                           variant: 'chevron-down'
+                        }) }}
+                  </span>
+               </a>
+
+               <ul class="bc-header__quick-nav-menu-item-sub-menu">
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 1</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 2</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 3</a>
+                  </li>
+               </ul>
+            </li>
+            <li class="bc-header__quick-nav-menu-item bc-header__quick-nav-menu-item-has-children">
+               <a href="#" title="">
+                  Training
+                  <span class="bc-header__menu-item-toggle">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </a>
+
+               <ul class="bc-header__quick-nav-menu-item-sub-menu">
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 1</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 2</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 3</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="bc-header__quick-nav-menu-item bc-header__quick-nav-menu-item-has-children">
+               <a href="#" aria-current="page">
+                  Network & communities
+                  <span class="bc-header__menu-item-toggle">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </a>
+
+               <ul class="bc-header__quick-nav-menu-item-sub-menu">
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 1</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 2</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 3</a>
+                  </li>
+               </ul>
+            </li>
+
+            <li class="bc-header__quick-nav-menu-item bc-header__quick-nav-menu-item-has-children">
+               <a href="#" title="">
+                  Resolve disputes
+                  <span class="bc-header__menu-item-toggle">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </a>
+
+               <ul class="bc-header__quick-nav-menu-item-sub-menu">
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 1</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 2</a>
+                  </li>
+                  <li class="bc-header__quick-nav-sub-menu-item">
+                     <a href="#" title="">Nav link 3</a>
+                  </li>
+               </ul>
+
+            </li>
+
+            <li class="bc-header__quick-nav-menu-item bc-header__quick-nav-menu-item-has-children">
+               
+               <a href="#" title="">
+                  News & insights
+                   <span class="bc-header__menu-item-toggle">
+                     {{ bcIcon({
+                        variant: 'chevron-down'
+                     }) }}
+                  </span>
+               </a>
+
+            </li>
+
+         </ul>
+      </div>
+   </div>
+
+   <div class="bc-header__search bc-header__search-mobile">
+      {% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+         {{ bcInput({
+            classes: 'bc-header__search_input',
+            name: 'search',
+            required: true,
+            placeholder: 'Type to search'
+         }) }}
+         {{ bcButton({
+            appearance: 'primary',
+            type: 'submit',
+            text: 'Search'
+         }) }}
+      {% endcall %}
+
+      <button class="bc-header__search-close" data-toggle-search>
+         {{ bcIcon({
+            variant: 'times'
+         }) }}
+         <span class="sr-only">Close search</span>
+      </button>
+
+   </div>
+</header>

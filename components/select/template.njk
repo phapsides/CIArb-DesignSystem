@@ -1,0 +1,47 @@
+{% from "icon/macro.njk" import bcIcon %}
+
+{%- set describedBy = params.describedBy if params.describedBy else '' -%}
+{%- set id = params.id if params.id else params.name %}
+
+<div class="bc-form-row {%- if params.error %} bc-form-row--error{% endif %}">
+    <label class="bc-label" for="{{ id }}">
+        {{ params.label.html | safe if params.label.html else params.label.text }}
+        {%- if not params.required %}
+        <span class="bc-label__optional">(optional)</span>
+    {%- endif %}
+    </label>
+    {%- if params.hint %}
+        {% set hintId = id + '-Hint' %}
+        {% set describedBy = describedBy + ' ' + hintId %}
+        <div class="bc-hint" id="{{ hintId }}">
+            {{ params.hint.html | safe if params.hint.html else params.hint.text }}
+        </div>
+    {%- endif %}
+    {%- if params.error %}
+        {% set errorId = id + '-Error' %}
+        {% set describedBy = describedBy + ' ' + errorId %}
+        <div class="bc-error" id="{{ errorId }}">
+            {{ params.error.html | safe if params.error.html else params.error.text }}
+        </div>
+    {%- endif %}
+    <div class="bc-select">
+        <select
+            data-module="bc-select"
+            class="bc-select__input {%- if params.classes %} {{ params.classes }}{% endif %}"
+            id="{{ id }}"
+            name="{{ params.name }}"
+            {%- if params.disabled %} disabled{% endif %}
+            {%- if params.required %} required{% endif %}
+            {%- if params.error %} aria-invalid="true"{% endif %}
+            {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+            {%- for item in params.options %}
+                <option value="{{ item.value }}"  {%- if item.selected %} selected{% endif %}>{{ item.text }}</option>
+            {%- endfor %}
+        </select>
+        <span class="bc-select__arrow">
+            {{ bcIcon({
+                variant: 'chevron-down'
+            }) }}
+        </span>
+    </div>
+</div>

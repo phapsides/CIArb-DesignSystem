@@ -1,0 +1,86 @@
+{% extends '@t-centered' %}
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Courses', href: '#' },
+            { text: 'Student: Introduction to ADR Online Course & Assessment', href: '#' },
+			{ text: 'Booking a course', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "radios/macro.njk" import bcRadios %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+
+    <div class="ip-course-booking">
+        
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Booking a course'
+		}) }}
+
+        {% call bcProse({
+			classes: 'ip-course-booking__delegate'
+        }) %}
+
+        {{ bcHeading({
+                hierarchy: 3,
+                text: 'Booking for someone else?'
+            }) }}
+            <p>
+                If you’re not attending this event and are making a booking on behalf of someone else,
+                <a href="#" title="">skip this step</a>.
+            </p>
+        {% endcall %}
+
+        {% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+
+            <div class="ip-course-booking__consent">
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Sharing your contact details'
+                }) }}
+                {{ bcCheckbox({
+                    name: 'ExampleCheckboxSingle',
+                    options: [
+                        {
+                            text: 'I consent for my contact details (name, job title, institution and email address) to be shared with third party organisations who are supporting this event, in line with our Privacy Policy',
+                            value: '1',
+                            required: true
+                        }
+                    ]
+                }) }}
+            </div>
+
+            <div class="bc-button-group">
+                {{ bcButton({
+                    appearance: 'secondary',
+                    type: 'button',
+                    html: 'Add an extra person <i class="fa-solid fa-plus-large"></i>'
+                }) }}
+                {{ bcButton({
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Add to basket'
+                }) }}
+                {{ bcButton({
+                    appearance: 'link',
+                    type: 'button',
+                    text: 'Cancel'
+                }) }}
+            </div>
+
+        {% endcall %}
+    </div>
+
+{% endblock %}

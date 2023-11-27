@@ -1,0 +1,31 @@
+{% extends '@chrome' %}
+
+
+{% block main %}
+    <div class="it-right-sidebar">
+        <div class="it-right-sidebar__inner">
+            <div class="bc-container">
+                <div class="bc-container__inner">
+                    
+                    {% block beforeTemplate %}
+                    {% endblock %}
+
+                    {% block inner %}
+                        <article class="it-right-sidebar__document">
+                            <main class="it-right-sidebar__body">
+                                {% block body %}
+                                    {# [body] #}
+                                {% endblock %}
+                            </main>
+                            <aside class="it-right-sidebar__sidebar">
+                                {% block sidebar %}
+                                    {# [sidebar] #}
+                                {% endblock %}
+                            </aside>
+                        </article>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

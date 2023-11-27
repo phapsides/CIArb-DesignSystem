@@ -1,0 +1,28 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "heading/heading";
+@use "helpers/colors";
+
+.bc-blockquote {
+	display: flex;
+	&::before {
+		color: colors.fs-color(brand-secondary);
+		content: '"';
+		margin-right: 1.25rem;
+		font-size: 56px;
+		line-height: 64px;
+		font-style: italic;
+	}
+	&__quotation {
+		@extend .bc-heading--subtitle;
+		font-weight: 300;
+		margin-bottom: 1rem;
+		&::after {
+			@extend .bc-heading--subtitle;
+			content: '"';
+			display: inline-block;
+		}
+	}
+	&__cite-name {
+		font-weight: 600;
+	}
+}

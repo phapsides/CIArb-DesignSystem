@@ -1,0 +1,69 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-category {
+	.bc-heading--title {
+		margin-top: 1rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: 3rem;
+		}
+	}
+	&__intro {
+		display: flex;
+		flex-direction: column;
+		max-width: 47rem;
+		margin: 2rem auto 0;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: 0;
+			.bc-prose:last-child {
+				margin-bottom: 0;
+			}
+		}
+	}
+	&__membership-type {
+		// TODO: Why we using negative margin here?
+		margin-top: -1rem;
+		margin-bottom: 2rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-bottom: 4rem;
+		}
+		.bc-grid {
+			margin-inline: -6vw;
+			@include media-queries.fs-mq($from: tablet) {
+				margin: 0;
+			}
+		}
+	}
+	// TODO: Can we simplify the below? Looks like the __membership-type is repeated
+	.ip-category__membership-type {
+		.bc-grid {
+			margin-top: 2rem;
+		}
+		.bc-card--with-image {
+			box-shadow: none;
+			padding: 0;
+			.bc-card__header {
+				padding: 0.5rem 0 0;
+				.bc-heading--subtitle {
+					margin-top: 1rem;
+					margin-bottom: 0.5rem;
+				}
+			}
+			.bc-card__body {
+				padding: 0;
+			}
+		}
+	}
+	.bc-testimonial {
+		margin-top: 1rem;
+		margin-bottom: 4rem;
+	}
+	// Where is this class coming from?
+	.centered-column {
+		max-width: 40rem;
+		margin: auto;
+	}
+}

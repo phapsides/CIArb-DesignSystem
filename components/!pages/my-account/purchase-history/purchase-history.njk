@@ -1,0 +1,107 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My dashboard', href: '#' },
+			{ text: 'Purchase history', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "purchase-card/macro.njk" import bcPurchaseCard %}
+	{% from "pagination/macro.njk" import bcPagination %}
+
+	<div class="ip-purchase-history">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'Purchase history'
+		}) }}
+
+		{% call bcGrid() %}
+			{% call bcPurchaseCard({
+				text: 'INV-00001020',
+				price: '32.99',
+				description: 'Online Introduction to ADR Assessment; Monthly membership; The Journey to Greener Arbitrations - What practical steps can we take to get there?',
+				date: '26 May 2022',
+				time: '09:33:45',
+				status: 'Paid'
+			}) %}
+				
+			{% endcall %}
+			{% call bcPurchaseCard({
+				text: 'INV-00001020',
+				price: '32.99',
+				description: 'Online Introduction to ADR Assessment; Monthly membership; The Journey to Greener Arbitrations - What practical steps can we take to get there?',
+				date: '26 May 2022',
+				time: '09:33:45',
+				status: 'Paid'
+			}) %}
+				
+			{% endcall %}
+			{% call bcPurchaseCard({
+				text: 'INV-00001020',
+				price: '32.99',
+				description: 'Online Introduction to ADR Assessment; Monthly membership; The Journey to Greener Arbitrations - What practical steps can we take to get there?',
+				date: '26 May 2022',
+				time: '09:33:45',
+				status: 'Paid'
+			}) %}
+				
+			{% endcall %}
+			{% call bcPurchaseCard({
+				text: 'INV-00001020',
+				price: '32.99',
+				description: 'Online Introduction to ADR Assessment; Monthly membership; The Journey to Greener Arbitrations - What practical steps can we take to get there?',
+				date: '26 May 2022',
+				time: '09:33:45',
+				status: 'Paid'
+			}) %}
+				
+			{% endcall %}
+			{% call bcPurchaseCard({
+				text: 'INV-00001020',
+				price: '32.99',
+				description: 'Online Introduction to ADR Assessment; Monthly membership; The Journey to Greener Arbitrations - What practical steps can we take to get there?',
+				date: '26 May 2022',
+				time: '09:33:45',
+				status: 'Paid'
+			}) %}
+				
+			{% endcall %}
+
+
+		{% endcall %}
+		
+		{{ bcPagination({
+			currentPage: 1,
+			totalPages: 4
+		}) }}
+
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My dashboard' },
+			{ href: '#', text: 'Account details' },
+			{ href: '#', text: 'Professional details' },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Purchase history', current: true },
+			{ href: '#', text: 'My booked events' },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'My resource library' },
+			{ href: '#', text: 'Communication preferences' },
+			{ href: '#', text: 'Visit the LMS' }
+
+		]
+	}) }}
+
+{% endblock %}

@@ -1,0 +1,200 @@
+{% extends '@t-full-width' %}
+
+{% from "prose/macro.njk" import bcProse %}
+{% from "heading/macro.njk" import bcHeading %}
+{% from "grid/macro.njk" import bcGrid %}
+{% from "button/macro.njk" import bcButton %}
+{% from "image/macro.njk" import bcImage %}
+{% from "card/macro.njk" import bcCard %}
+{% from "testimonial/macro.njk" import bcTestimonial %}
+{% from "hero-banner/macro.njk" import bcHeroBanner %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Category page', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+
+	{% call bcHeroBanner({
+		secondary_color: true,
+		heading: {
+			text: 'Ciarb membership',
+			hierarchy: 1
+		},
+		back_button: {
+            appearance: 'link',
+            href: '#',
+            text: 'Membership'
+        },
+		button: {
+			appearance: 'primary',
+			href: '#',
+			text: 'Primary CTA'
+		},
+		image: {
+			src: ('/images/temp/content-temp-background.png' | path),
+			alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+		}
+	}) %}
+		{% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua.
+			</p>
+		{% endcall %}
+	{% endcall %}
+
+{% endblock %}
+
+{% block body %}
+
+	<div class="ip-category">
+
+		<div class="ip-category__intro">
+			{{ bcHeading({
+				hierarchy: 2,
+				text: 'Intro headline'
+			}) }}
+			{% call bcProse({
+				}) %}
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+			{% endcall %}
+		</div>
+
+		{{ bcHeading({
+			hierarchy: 2,
+			text: 'Explore membership'
+		}) }}
+
+		<div class="ip-category__membership-type">
+			
+			{% call bcGrid({
+				size: '1/2'
+			}) %}
+
+				{% call bcCard({
+					category: true,
+					href: '#',
+					heading: {
+						text: 'Member types',
+						hierarchy: 3
+					},
+					image: {
+						src: ('/images/temp/event-hero-temp-background.png' | path),
+						alt: 'Anim magna.'
+					}
+				}) %}
+					{% call bcProse() %}
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						</p>
+					{% endcall %}
+					{{ bcButton({
+						href: '#',
+						appearance: 'link',
+						html: 'Find out more <i class="fa-solid fa-arrow-right"></i>'
+					}) }}
+				{% endcall %}
+
+				{% call bcCard({
+					category: true,
+					href: '#',
+					heading: {
+						text: 'Member benefits',
+						hierarchy: 3
+					},
+					image: {
+						src: ('/images/temp/event-hero-temp-background.png' | path),
+						alt: 'Anim magna.'
+					}
+				}) %}
+					{% call bcProse() %}
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						</p>
+					{% endcall %}
+					{{ bcButton({
+						appearance: 'link',
+						html: 'Find out more <i class="fa-solid fa-arrow-right"></i>'
+					}) }}
+				{% endcall %}
+
+				{% call bcCard({
+					category: true,
+					href: '#',
+					heading: {
+						text: 'How to join ciarb',
+						hierarchy: 3
+					},
+					image: {
+						src: ('/images/temp/event-hero-temp-background.png' | path),
+						alt: 'Anim magna.'
+					}
+				}) %}
+					{% call bcProse() %}
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						</p>
+					{% endcall %}
+					{{ bcButton({
+						appearance: 'link',
+						html: 'Find out more <i class="fa-solid fa-arrow-right"></i>'
+					}) }}
+				{% endcall %}
+
+				{% call bcCard({
+					category: true,
+					href: '#',
+					heading: {
+						text: 'Lorem ipsum dolor sit amet',
+						hierarchy: 3
+					},
+					image: {
+						src: ('/images/temp/event-hero-temp-background.png' | path),
+						alt: 'Anim magna.'
+					}
+				}) %}
+					{% call bcProse() %}
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+						</p>
+					{% endcall %}
+					{{ bcButton({
+						appearance: 'link',
+						html: 'Find out more <i class="fa-solid fa-arrow-right"></i>'
+					}) }}
+				{% endcall %}
+			
+			{% endcall %}
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block afterTemplate %}
+	{% call bcTestimonial({
+		heading: {
+			text: 'Join 1000\'s of members',
+			hierarchy: 2
+		},
+		name: 'Name',
+		job: 'Job title',
+		image: {
+			src: ('/images/temp/testimonial-temp.png' | path),
+			alt: 'Profile image'
+		}
+	}) %}
+		{% call bcProse() %}
+			<p>
+				“Lorem ipsum dolor sit amet, consectetur adipisLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.“
+			</p>
+		{% endcall %}
+	{% endcall %}
+{% endblock %}

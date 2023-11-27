@@ -1,0 +1,12 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.ip-my-resource-library {
+	.bc-heading--jumbotron {
+		margin-bottom: 1.875rem;
+	}
+	.bc-pagination {
+		margin-top: 3rem;
+	}
+}

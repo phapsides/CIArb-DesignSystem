@@ -1,0 +1,14 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.ip-register-complete {
+	.bc-heading--jumbotron {
+		margin-bottom: 1.25rem;
+	}
+	.bc-button {
+		margin-top: 3rem;
+	}
+	p {
+		margin: 0;
+	}
+}

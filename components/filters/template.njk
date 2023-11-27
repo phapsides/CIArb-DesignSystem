@@ -1,0 +1,87 @@
+
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'button/macro.njk' import bcButton %}
+{% from "checkbox/macro.njk" import bcCheckbox %}
+{% from "select/macro.njk" import bcSelect %}
+{% from "input/macro.njk" import bcInput %}
+{% from "form/macro.njk" import bcForm %}
+
+<div
+    data-module="bc-filters"
+    id="filters"
+    class="bc-filters {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {% call bcForm({
+        action: '',
+        method: '',
+        disableUnloadPrompt: true
+    }) %}
+        <h3 id="filters-title" class="bc-heading bc-heading--subtitle" >
+            Filter events
+            {{ bcIcon({
+                variant: 'chevron-down'
+            }) }}
+        </h3>
+        <div class="bc-filters__body">
+            {{ bcCheckbox({
+                name: 'ExampleCheckboxGroup',
+                legend: {
+                    text: 'Event type'
+                },
+                options: [
+                    {
+                        text: 'Event type',
+                        value: '1'
+                    },
+                    {
+                        text: 'Event type',
+                        value: '2'
+                    },
+                    {
+                        text: 'Event type',
+                        value: '3'
+                    }
+                ]
+            }) }}
+            {{ bcSelect({
+                name: "ExampleSelect",
+                label: { 
+                    text: "Event location" 
+                },
+                options: [
+                    { value: "", text: "All" },
+                    { value: "", text: "Lorem ipsum" },
+                    { value: "",  text: "Lorem ipsum" }
+                ]
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInputDate',
+                type: 'date',
+                label: { text: 'From' }
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInputDate',
+                type: 'date',
+                label: { text: 'To' }
+            }) }}
+            <div class="bc-filters__actions">
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Apply filters',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'link',
+                    text: 'Clear filters'
+                }) }}
+            </div>
+        </div>
+    {% endcall %}
+</div>

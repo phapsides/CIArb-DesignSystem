@@ -1,0 +1,249 @@
+{% extends '@t-left-sidebar' %}
+
+{% from "prose/macro.njk" import bcProse %}
+{% from "heading/macro.njk" import bcHeading %}
+{% from "grid/macro.njk" import bcGrid %}
+{% from "hero-banner/macro.njk" import bcHeroBanner %}
+{% from "banner/macro.njk" import bcBanner %}
+{% from "news/macro.njk" import bcNews %}
+{% from "event-card/macro.njk" import bcEventCard %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Category page', href: '#' },
+			{ text: 'Sub-Category page', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+                
+	{% call bcHeroBanner({
+		heading: {
+			text: 'London',
+			hierarchy: 1
+		},
+		image: {
+			src: ('/images/temp/membership-types.jpg' | path),
+			alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+		}
+	}) %}
+		{% call bcProse() %}
+			<dl class="bc-description-list">
+                <div class="bc-description-list__item">
+                    <dt class="bc-description-list__key">
+                        <span class="sr-only">Address</span>
+                        <i class="bc-icon fa-regular fa-building"></i>
+                    </dt>
+                    <dd class="bc-description-list__value">
+                        <address>
+                            <span>The Chartered Institute of Arbitrators London Branch</span>
+                            <span>28 Crawford Street</span>
+                            <span>London</span>
+                            <span>W1H 1LN</span>
+                        </address>
+                    </dd>
+                </div>
+                <div class="bc-description-list__item">
+                    <dt class="bc-description-list__key">
+                        <span class="sr-only">Email</span>
+                        <i class="bc-icon fa-regular fa-envelope"></i>
+                    </dt>
+                    <dd class="bc-description-list__value">
+                        <p>email@email.com</p>
+                    </dd>
+                </div>
+                <div class="bc-description-list__item">
+                    <dt class="bc-description-list__key">
+                        <span class="sr-only">Telephone</span>
+                        <i class="bc-icon fa-regular fa-phone"></i>
+                    </dt>
+                    <dd class="bc-description-list__value">
+                        <p>01234 567 890</p>
+                    </dd>
+                </div>
+            </dl>
+		{% endcall %}
+	{% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="ip-branch-details">
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'About the London branch'
+		}) }}
+
+		{% call bcProse({
+		}) %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		{% endcall %}
+
+        {{ bcNews({
+            heading: {
+                    text: 'What’s new?',
+                    hierarchy: 2
+            },
+            items: [
+                {
+                    featured: true,
+                    href: '#',
+                    image: {
+                        src: '/images/temp/membership-types.jpg',
+                        alt: 'Branch focus: UAE'
+                    },
+                    category: 'Category tag',
+                    heading: {
+                        text: 'Branch focus: UAE',
+                        hierarchy: 3
+                    },
+                    date: '25th  July 2022',
+                    text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                },
+                {
+                    href: '#',
+                    image: {
+                        src: '/images/temp/membership-types.jpg',
+                        alt: 'ciarb\'s diversity in ADR strategy'
+                    },
+                    category: 'Category tag',
+                    heading: {
+                        text: 'ciarb\'s diversity in ADR strategy',
+                        hierarchy: 3
+                    },
+                    date: '25th  July 2022'
+                },
+                {    
+                    href: '#',
+                    image: {
+                        src: '/images/temp/membership-types.jpg',
+                        alt: 'Arbitration week 2022 - review'
+                    },
+                    category: 'Category tag',
+                    heading: {
+                        text: 'Arbitration week 2022 - review',
+                        hierarchy: 3
+                    },
+                    date: '25th  July 2022'
+                },
+                {    
+                    href: '#',
+                    image: {
+                        src: '/images/temp/membership-types.jpg',
+                        alt: 'Arbitration week 2022 - review'
+                    },
+                    category: 'Category tag',
+                    heading: {
+                        text: 'ciarb mentoring programme',
+                        hierarchy: 3
+                    },
+                    date: '25th  July 2022'
+                }
+            ],
+            cta: {
+                href: '#',
+                text: 'All news'
+            }
+        }) }}
+        <div class="ip-branch-details__section">
+             {{ bcHeading({
+                hierarchy: 2,
+                text: 'Upcoming events'
+            }) }}
+            {% call bcGrid({
+                size: '1/1'
+            }) %}
+                {% call bcEventCard({
+                    href: '#',
+                    heading: {
+                        text: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+                        hierarchy: 3
+                    },
+                    image: {
+                        src: ('/images/temp/event-temp-background.png' | path),
+                        alt: ''
+                    },
+                    date: 'Thu, 30 June 2021',
+                    time: '10:00',
+                    location: 'London, UK',
+                    price: 'XXX'
+                }) %}
+                    {% call bcProse() %}
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    {% endcall %}
+                {% endcall %}
+                {% call bcEventCard({
+                    href: '#',
+                    heading: {
+                        text: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+                        hierarchy: 3
+                    },
+                    image: {
+                        src: ('/images/temp/event-temp-background.png' | path),
+                        alt: ''
+                    },
+                    date: 'Thu, 30 June 2021',
+                    time: '10:00',
+                    location: 'London, UK',
+                    price: 'XXX'
+                }) %}
+                    {% call bcProse() %}
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    {% endcall %}
+                {% endcall %}
+                {% call bcEventCard({
+                    href: '#',
+                    heading: {
+                        text: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+                        hierarchy: 3
+                    },
+                    image: {
+                        src: ('/images/temp/event-temp-background.png' | path),
+                        alt: ''
+                    },
+                    date: 'Thu, 30 June 2021',
+                    time: '10:00',
+                    location: 'London, UK',
+                    price: 'XXX'
+                }) %}
+                    {% call bcProse() %}
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                        </p>
+                    {% endcall %}
+                {% endcall %}
+            {% endcall %}
+            <a class="ip-branch-details__section-link" href="#">
+                Find an event
+                <i class="bc-icon fa-regular fa-arrow-right bc-news__link-icon"></i>
+            </a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% from "sub-nav/macro.njk" import bcSubnav %}
+    {{ bcSubnav({
+        classes: 'bc-sub-nav--content-page',
+		items: [
+			{ href: '#', text: 'Page' },
+			{ href: '#', text: 'Page', current: true, items: [
+                { href: '#', text: 'Page' },
+                { href: '#', text: 'Page' },
+                { href: '#', text: 'Page' }
+            ] },
+			{ href: '#', text: 'Page' },
+			{ href: '#', text: 'Page' }
+		]
+	}) }}
+{% endblock %}

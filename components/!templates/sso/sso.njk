@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    {{ '/css/sso.css' | inlineStylesheet() | safe }}
+</head>
+<body>
+    <div class="it-sso">
+
+        <div class="it-sso__inner">
+            <div class="it-sso__primary">
+                <div class="it-sso__body">
+                    <div id="api">
+                        {% block body %}
+                        
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="it-sso__backdrop">
+            <img data-tenant-branding-background="true" class="it-sso__background" src="{{ '/images/temp/temp-background.jpg' | path }}" alt="">
+        </div>
+
+    </div>
+
+    {{ '/js/sso.js' | inlineScript() | safe }}
+    
+</body>
+</html>

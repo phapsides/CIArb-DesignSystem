@@ -1,0 +1,24 @@
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: hierarchy
+    type: number
+    default: 1
+    description: The level of heading in the heading hierarchy, as a number between 1 and 6, with 1 being the highest and 6 being the lowest.
+  - name: element
+    type: string
+    required: false
+    default: h1 to h5, depending on the level specified by hierarchy.
+    description: The HTML element to wrap around the heading text/HTML, if not the default.
+  - name: html
+    type: string
+    required: true
+    description: HTML to display for this item. Not required if `text` is set. If `html` is provided, the `text` parameter is ignored.
+  - name: text
+    type: string
+    required: true
+    description: Text to display for this item. Not required if `html` is set. If `html` is provided, the `text` parameter is ignored.

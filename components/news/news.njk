@@ -1,0 +1,68 @@
+{% from "news/macro.njk" import bcNews %}
+
+{{ bcNews({
+    heading: {
+            text: 'What’s new?',
+            hierarchy: 2
+    },
+    items: [
+        {
+            featured: true,
+            href: '#',
+            image: {
+                src: '/images/temp/membership-types.jpg',
+                alt: 'Branch focus: UAE'
+            },
+            category: 'Category tag',
+            heading: {
+                text: 'Branch focus: UAE',
+                hierarchy: 3
+            },
+            date: '25th  July 2022',
+            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+        },
+        {
+            href: '#',
+            image: {
+                src: '/images/temp/membership-types.jpg',
+                alt: 'ciarb\'s diversity in ADR strategy'
+            },
+            category: 'Category tag',
+            heading: {
+                text: 'ciarb\'s diversity in ADR strategy',
+                hierarchy: 3
+            },
+            date: '25th  July 2022'
+        },
+        {    
+            href: '#',
+            image: {
+                src: '/images/temp/membership-types.jpg',
+                alt: 'Arbitration week 2022 - review'
+            },
+            category: 'Category tag',
+            heading: {
+                text: 'Arbitration week 2022 - review',
+                hierarchy: 3
+            },
+            date: '25th  July 2022'
+        },
+        {    
+            href: '#',
+            image: {
+                src: '/images/temp/membership-types.jpg',
+                alt: 'Arbitration week 2022 - review'
+            },
+            category: 'Category tag',
+            heading: {
+                text: 'ciarb mentoring programme',
+                hierarchy: 3
+            },
+            date: '25th  July 2022'
+        }
+    ],
+    cta: {
+        href: '#',
+        text: 'All news'
+    }
+}) }}

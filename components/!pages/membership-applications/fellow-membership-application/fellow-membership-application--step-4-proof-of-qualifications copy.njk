@@ -1,0 +1,330 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership', href: '#' },
+			{ text: 'Fellow membership', href: '#' },
+			{ text: 'Fellow membership application', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from 'icon/macro.njk' import bcIcon %}
+    <div class="bc-step-indicator-container">
+        <div data-module="bc-step-indicator" class="bc-step-indicator">
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 1</strong>
+                    </p>
+                    <p>Before you Start</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 2</strong>
+                    </p>
+                    <p>Personal details</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 3</strong>
+                    </p>
+                    <p>Membership routes</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step" aria-current="step">
+                <div class="bc-step-indicator__step-number">4</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 4</strong>
+                    </p>
+                    <p>Qualifications</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">5</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 5</strong>
+                    </p>
+                    <p>Declaration</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">6</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 6</strong>
+                    </p>
+                    <p>payment option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="ip-fellow-membership-application ip-fellow-membership-application__step-4">
+        {% from "heading/macro.njk" import bcHeading %}
+        {% from "form/macro.njk" import bcForm %}
+        {% from "input/macro.njk" import bcInput %}
+        {% from "button/macro.njk" import bcButton %}
+        {% from "grid/macro.njk" import bcGrid %}
+        {% from "select/macro.njk" import bcSelect %}
+        {% from "date-input/macro.njk" import bcDateInput %}
+        {% from "suggestobox/macro.njk" import bcSuggestobox %}
+        {% from "alert/macro.njk" import bcAlert %}
+
+        {% call bcAlert({
+			classes: 'fs-!-margin-top-4 fs-!-margin-bottom-6',
+            variant: 'exclamation'
+        }) %}
+       		<strong>There are errors on the form below</strong>
+            <p>If your Course provider or Course or Start/End date are not eligible you won't be able to proceed with your online application. Please contact directly ciarb on email@ciarb.com or +44 XXXXXXXX</p>
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Fellow member application'
+		}) }}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Proof of qualifications'
+		}) }}
+
+        <div class="ip-fellow-membership-application__step-4--qualifications">
+            {% call bcForm({
+                action: '',
+                method: '',
+                disableUnloadPrompt: true
+            }) %}
+
+                <fieldset id="qualification-fieldset" name="qualification-0" class="ip-fellow-membership-application__step-4--qualification">
+
+                    <div class="ip-fellow-membership-application__step-4--sub-heading">
+                        {{ bcHeading({
+                            hierarchy: 3,
+                            text: 'Recognised Course Provider'
+                        }) }}
+                    </div>
+
+                    {{ bcSelect({
+                        name: 'Qualifications[0].Provider',
+                        classes: 'qualifications-provider',
+                        label: { 
+                            text: 'Select course provider'
+                        },
+                        required: true
+                    }) }}
+
+                    <div class="ip-fellow-membership-application__step-4--select-course">
+                        {{ bcSelect({
+                            name: 'Qualifications[0].Course',
+                            label: { 
+                                text: 'Select course'
+                            },
+                            required: true
+                        }) }}
+                    </div>
+
+                    {% call bcGrid({
+                        size: '1/2'
+                    }) %}
+                        {{ bcDateInput({
+                            idPrefix: 'CourseStartDate',
+                            day: {
+                                name: 'Qualifications[0].CourseStartDateDay',
+                                value: 28
+                            },
+                            month: {
+                                name: 'Qualifications[0].CourseStartDateMonth',
+                                value: 11
+                            },
+                            year: {
+                                name: 'Qualifications[0].CourseStartDateYear',
+                                value: 2020
+                            },
+                            legend: {
+                                text: 'Course start date'
+                            },
+                            hint: { 
+                                text: 'e.g. DD/MM/YYYY'
+                            },
+                            error: {
+                                text: 'The specified date is not eligible'
+                            }
+                        }) }}
+
+                        {{ bcDateInput({
+                            idPrefix: 'CourseEndDate',
+                            day: {
+                                name: 'Qualifications[0].CourseEndDateDay',
+                                value: 28
+                            },
+                            month: {
+                                name: 'Qualifications[0].CourseEndDateMonth',
+                                value: 11
+                            },
+                            year: {
+                                name: 'Qualifications[0].CourseEndDateYear',
+                                value: 2020
+                            },
+                            legend: {
+                                text: 'Course end date'
+                            },
+                            hint: { 
+                                text: 'e.g. DD/MM/YYYY'
+                            }
+                        }) }}
+                    {% endcall %}
+
+                </fieldset>
+
+                <div class="ip-fellow-membership-application__step-4--transcripts">
+                    {{ bcInput({
+                        name: 'UploadTranscripts',
+                        required: true,
+                        label: { 
+                            text: 'Upload transcripts' 
+                        },
+                        attributes: {
+                            type: 'file'
+                        }
+                    }) }}
+                </div>
+
+                <div class="bc-button-group">
+                    {{ bcButton({
+                        appearance: 'primary',
+                        disabled: true,
+                        type: 'submit',
+                        text: 'Continue'
+                    }) }}
+                    {{ bcButton({
+                        appearance: 'secondary',
+                        type: 'button',
+                        text: 'Previous'
+                    }) }}
+                    {{ bcButton({
+                        appearance: 'link',
+                        type: 'button',
+                        text: 'Cancel'
+                    }) }}
+                </div>
+
+            {% endcall %}
+        </div>
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    const data = [
+        {
+            "Id": "1",
+            "Name": "Provider 1",
+            "Chidren": [
+                {
+                    "Id": "1",
+                    "Name": "Provider 1 - Course 1"
+                },
+                {
+                    "Id": "2",
+                    "Name": "Provider 1 - Course 2"
+                },
+                {
+                    "Id": "3",
+                    "Name": "Provider 1 - Course 3"
+                }
+            ]
+        },
+        {
+            "Id": "2",
+            "Name": "Provider 2",
+            "Chidren": [
+                {
+                    "Id": "1",
+                    "Name": "Provider 2 - Course 1"
+                },
+                {
+                    "Id": "2",
+                    "Name": "Provider 2 - Course 2"
+                },
+                {
+                    "Id": "3",
+                    "Name": "Provider 2 - Course 3"
+                }
+            ]
+        },
+        {
+            "Id": "3",
+            "Name": "Provider 3",
+            "Chidren": [
+                {
+                    "Id": "1",
+                    "Name": "Provider 3 - Course 1"
+                },
+                {
+                    "Id": "2",
+                    "Name": "Provider 3 - Course 2"
+                },
+                {
+                    "Id": "3",
+                    "Name": "Provider 3 - Course 3"
+                }
+            ]
+        }
+    ];
+
+    populateSelect(document.getElementById('Qualifications[0].Provider'), document.getElementById('Qualifications[0].Course'));
+
+    function populateSelect(parent_select, child_select) {
+        parent_select.innerHTML = '';
+        for (let i = 0; i < data.length; i++) {
+            parent_select.innerHTML = parent_select.innerHTML +
+                '<option value="' + data[i]['Id'] + '">' + data[i]['Name'] + '</option>';
+        }
+        parent_select.addEventListener('change', function () {
+            child_select.innerHTML = '';
+            for (let i = 0; i < data.length; i++) {
+                if (data[i]['Id'] == this.value) {
+                    for (let j = 0; j < data[i]['Chidren'].length; j++) {
+                        child_select.innerHTML = child_select.innerHTML +
+                            '<option value="' + data[i]['Chidren'][j]['Id'] + '">' + data[i]['Chidren'][j]['Name'] + '</option>';
+                    }
+                }
+            }
+        });
+        parent_select.dispatchEvent(new Event("change"));
+    }
+</script>
+{% endblock %}

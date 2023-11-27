@@ -1,0 +1,47 @@
+{% from "banner/macro.njk" import bcBanner %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "grid/macro.njk" import bcGrid %}
+
+{% call bcGrid({
+	size: '1/1'
+}) %}
+
+	{% call bcBanner({
+		heading: {
+			text: 'Just interested in ADR?',
+			hierarchy: 2
+		},
+		background_image: '/images/temp/homepage-banner-shapes.png',
+		button: {
+			appearance: 'primary',
+			href: '#',
+			text: 'Primary CTA'
+		}
+	}) %}
+		{% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+		{% endcall %}
+	{% endcall %}		
+
+	{% call bcBanner({
+		secondary_color: true,
+		heading: {
+			text: 'Just interested in ADR?',
+			hierarchy: 2
+		},
+		button: {
+			appearance: 'primary',
+			href: '#',
+			text: 'Primary CTA'
+		}
+	}) %}
+		{% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipisLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+		{% endcall %}
+	{% endcall %}
+
+{% endcall %}	

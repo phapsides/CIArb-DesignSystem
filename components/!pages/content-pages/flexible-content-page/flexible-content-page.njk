@@ -1,0 +1,263 @@
+{% extends '@t-left-sidebar' %}
+
+{% from "prose/macro.njk" import bcProse %}
+{% from "heading/macro.njk" import bcHeading %}
+{% from "card/macro.njk" import bcCard %}
+{% from "list/macro.njk" import bcList %}
+{% from "hero-banner/macro.njk" import bcHeroBanner %}
+{% from "details/macro.njk" import bcDetails %}
+{% from "membership-card/macro.njk" import bcMembershipCard %}
+{% from "image/macro.njk" import bcImage %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Category page', href: '#' },
+			{ text: 'Flexible content page', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+                
+    {% call bcHeroBanner({
+        wrapper_classes: 'hide-on-desktop',
+        heading: {
+            text: 'Student membership',
+            hierarchy: 1
+        },
+        button: {
+            text: 'Apply now',
+            appearance: 'primary',
+            href: '#'
+        },
+        image: {
+            src: ('/images/temp/student-membership.png' | path),
+            alt: 'Anim magna.'
+        }
+    }) %}
+        {% call bcProse() %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+            </p>
+        {% endcall %}
+    {% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    <div class="ip-flexible-content-page">
+
+        {% call bcMembershipCard({
+            classes: 'hide-on-mobile',
+            heading: {
+                text: 'Student membership',
+                hierarchy: 1
+            },
+            image: {
+                src: ('/images/temp/student-membership.png' | path),
+                alt: ''
+            },
+            buttons: [
+				{
+                    text: 'Apply now',
+                    appearance: 'primary',
+                    href: '#'
+                }
+			]
+		}) %}
+            {% call bcProse() %}
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.
+                </p>
+            {% endcall %}
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Benefits of student membership'
+		}) }}
+
+        <ul>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+        </ul>
+
+        {% call bcImage({
+            src: ('/images/temp/event-hero-temp-background.png' | path),
+            alt: 'Caption image',
+            imgCaption: 'Caption image'
+        }) %}
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Requirements'
+		}) }}
+
+        {% call bcProse() %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'How to apply'
+		}) }}
+
+        <ol>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+            <li>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor consectetur adipiscing elit.
+            </li>
+        </ol>
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Costs'
+		}) }}
+
+        {% call bcProse() %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 3,
+			text: 'Reduced fees'
+		}) }}
+
+        {% call bcProse() %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <a href="#" class="fs-base">
+                More information about our reduced fees
+            </a>
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Apply now'
+		}) }}
+        
+        {% call bcCard({
+            classes: 'bc-card--above-button-content',
+            button: {
+                appearance: 'primary',
+                text: 'Apply now',
+                href: '#'
+            },
+            above_button_content: {
+                html: '<p>£182 a year</p><p>(£124 a year reduced fee)</p>'
+            }
+        }) %}
+            {% call bcProse() %}
+                {{ bcHeading({
+                    text: 'Student membership 2022',
+                    hierarchy: 3
+                }) }}
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            {% endcall %}
+        {% endcall %}
+        
+    </div>
+    
+{% endblock %}
+
+        {% block sidebar %}
+    {% from "sub-nav/macro.njk" import bcSubnav %}
+    {{ bcSubnav({
+        classes: 'bc-sub-nav--content-page',
+		items: [
+			{ href: '#', text: 'Membership overview' },
+			{ href: '#', text: 'Membership types', active: true, items: [
+                { href: '#', text: 'Student', current: true },
+                { href: '#', text: 'Professional' },
+                { href: '#', text: 'Chartered Arbitrator' }
+            ] },
+			{ href: '#', text: 'Membership benefits' },
+			{ href: '#', text: 'How to join CAIrb' }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block afterTemplate %}
+    <div class="ip-flexible-content-page__faqs">
+        <div class="bc-container">
+			<div class="bc-container__inner">
+                
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Membership FAQs'
+                }) }}
+                {% call bcDetails({
+                    heading: {
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                        hierarchy: 3
+                    }
+                }) %}
+                    {% call bcProse() %}
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi accusamus voluptatem consequuntur sit deleniti dolorem voluptates fuga perspiciatis mollitia excepturi. Deserunt magni assumenda tenetur, nam natus. Nam, tempora facere cum?
+                        </p>
+                    {% endcall %}
+                {% endcall %}
+                
+                {% call bcDetails({
+                    heading: {
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                        hierarchy: 3
+                    }
+                }) %}
+                    {% call bcProse() %}
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi accusamus voluptatem consequuntur sit deleniti dolorem voluptates fuga perspiciatis mollitia excepturi. Deserunt magni assumenda tenetur, nam natus. Nam, tempora facere cum?
+                        </p>
+                    {% endcall %}
+                {% endcall %}
+
+                {% call bcDetails({
+                    heading: {
+                        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt',
+                        hierarchy: 3
+                    }
+                }) %}
+                    {% call bcProse() %}
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi accusamus voluptatem consequuntur sit deleniti dolorem voluptates fuga perspiciatis mollitia excepturi. Deserunt magni assumenda tenetur, nam natus. Nam, tempora facere cum?
+                        </p>
+                    {% endcall %}
+                {% endcall %}
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block styles %}
+    <style>
+        .it-left-sidebar {
+            margin-bottom: 0;
+        }
+    </style>
+{% endblock %}

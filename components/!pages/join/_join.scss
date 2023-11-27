@@ -1,0 +1,23 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.ip-join__step-indicator {
+	max-width: 920px;
+	margin: auto;
+	margin-bottom: 2rem;
+	@include media-queries.fs-mq($from: tablet) {
+		margin-bottom: 6rem;
+	}
+}
+.ip-join {
+	.bc-button-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+	.bc-select-third-width {
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 30%;
+		}
+	}
+}

@@ -1,0 +1,46 @@
+{% from "notification-bar/macro.njk" import bcNotificationBar %}
+
+
+{{ bcNotificationBar({
+    variant: 'info',
+    message: {
+        html: 'This is a info message'
+    },
+    link: {
+        href: '#',
+        text: 'Lorem ipsum'
+    }
+}) }}
+
+{{ bcNotificationBar({
+    variant: 'success',
+    message: {
+        html: 'This is a success message'
+    },
+    link: {
+        href: '#',
+        text: 'Lorem ipsum'
+    }
+}) }}
+
+{{ bcNotificationBar({
+    variant: 'warning',
+    message: {
+        html: 'This is a warning message'
+    },
+    link: {
+        href: '#',
+        text: 'Lorem ipsum'
+    }
+}) }}
+
+{{ bcNotificationBar({
+    variant: 'danger',
+     message: {
+        html: 'This is a danger message'
+    },
+    link: {
+        href: '#',
+        text: 'Lorem ipsum'
+    }
+}) }}

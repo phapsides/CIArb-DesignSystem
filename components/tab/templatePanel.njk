@@ -1,0 +1,6 @@
+<div
+    class="bc-tab__panel {%- if params.classes %} {{ params.classes }}{% endif %}"
+    id="{{ params.id }}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{ caller() if caller }}
+</div>

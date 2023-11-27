@@ -1,0 +1,43 @@
+{% from "testimonial/macro.njk" import bcTestimonial %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "grid/macro.njk" import bcGrid %}
+
+{% call bcGrid({
+    size: '1/1'
+}) %}
+
+	{% call bcTestimonial({
+		heading: {
+			text: 'Join 1000\'s of members',
+			hierarchy: 2
+		},
+		name: 'Name',
+		job: 'Job title',
+		image: {
+			src: ('/images/temp/testimonial-temp.png' | path),
+			alt: 'Profile image'
+		}
+		}) %}
+		{% call bcProse() %}
+			<p>
+				“Lorem ipsum dolor sit amet, consectetur adipisLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.“
+			</p>
+		{% endcall %}
+	{% endcall %}
+
+	{% call bcTestimonial({
+		heading: {
+			text: 'Join 1000\'s of members',
+			hierarchy: 2
+		},
+		name: 'Name',
+		job: 'Job title'
+		}) %}
+		{% call bcProse() %}
+			<p>
+				“Lorem ipsum dolor sit amet, consectetur adipisLorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.“
+			</p>
+		{% endcall %}
+	{% endcall %}
+
+{% endcall %}

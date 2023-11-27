@@ -1,0 +1,64 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/reset";
+@use "helpers/typography";
+
+.bc-breadcrumbs {
+	&__list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	&__item {
+		display: inline-block;
+		margin-block: 1rem;
+
+		&::before,
+		&::after {
+			margin-right: 0.25rem;
+			margin-left: 0.25rem;
+		}
+
+		&:nth-last-child(n + 2)::after {
+			@include typography.fs-font-size(breadcrumbs);
+			font-weight: 300 !important;
+			content: ">";
+			color: #9b9b9b;
+		}
+		// TODO: What is the reason we using this specific width and not the usual media query?
+		@media only screen and (max-width: 600px) {
+			&:nth-last-child(n + 3),
+			&:last-child {
+				display: none;
+			}
+			&:nth-last-child(n + 2)::before {
+				content: "<";
+				color: #9b9b9b;
+				margin-left: 0;
+			}
+		}
+		// TODO: What is the reason we using this specific width and not the usual media query?
+		@media only screen and (max-width: 600px) {
+			&:nth-last-child(n + 2)::after {
+				content: "";
+			}
+		}
+	}
+
+	&__link {
+		@include typography.fs-font-size(breadcrumbs);
+		color: colors.fs-color(link);
+		font-weight: 300 !important;
+		font-size: 0.875rem !important;
+
+		&:hover {
+			color: colors.fs-color(brand-purple);
+		}
+
+		&[aria-current="page"],
+		&[aria-current="true"] {
+			color: colors.fs-color(black);
+		}
+	}
+}

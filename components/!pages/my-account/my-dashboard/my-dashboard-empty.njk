@@ -1,0 +1,129 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My profile', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "card/macro.njk" import bcCard %}
+	{% from "avatar/macro.njk" import bcAvatar %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "button/macro.njk" import bcButton %}
+
+	<div class="ip-my-dashboard empty-state">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'My profile'
+		}) }}
+
+		{% call bcGrid({
+			classes: 'ip-my-dashboard__section',
+			size: '1/1'
+		}) %}
+			{% call bcCard({
+				classes: 'avatar-wrapper'
+			}) %}
+			{% call bcProse({
+				classes: 'bc-card--profile-prose'
+			}) %}
+				{{ bcAvatar({
+					classes: 'bc-avatar--medium',
+					src: ('/images/avatar.svg' | path),
+					alt: 'Avatar'
+				}) }}
+				<div class="bc-card--profile-welcome">
+					{{ bcHeading({
+						hierarchy: 2,
+						text: 'Welcome Michelle'
+					}) }}
+					<p>Manage your personal details and communication preferences.</p>
+				</div>
+			{% endcall %}
+			{% endcall %}
+			{# Section 2 - End #}
+
+			{% call bcCard({
+				heading: {
+					text: 'My branches',
+					hierarchy: 2
+				},
+				button: {
+					appearance: 'primary',
+					text: 'Find a branch',
+					href: '#'
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>You have no branch. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				{% endcall %}
+			{% endcall %}
+		{% endcall %}
+
+		{% call bcGrid({
+			classes: 'ip-my-dashboard__section fs-!-margin-top-4',
+			size: '1/2'
+		}) %}
+			{% call bcCard({
+				size: '1/2',
+				heading: {
+					text: 'My events',
+					hierarchy: 2
+				},
+				button: {
+					appearance: 'primary',
+					text: 'Find a event',
+					href: '#'
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>No booked events. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				{% endcall %}
+			{% endcall %}
+			{% call bcCard({
+				size: '1/2',
+				heading: {
+					text: 'My courses',
+					hierarchy: 2
+				},
+				button: {
+					appearance: 'primary',
+					text: 'Find a course',
+					href: '#'
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>No booked events. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+				{% endcall %}
+			{% endcall %}
+		{% endcall %}
+
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+	items: [
+		{ href: '#', text: 'My dashboard', current: true },
+		{ href: '#', text: 'Account Details'},
+		{ href: '#', text: 'Professional profile' },
+		{ href: '#', text: 'Membership & billing' },
+		{ href: '#', text: 'Purchase history' },
+		{ href: '#', text: 'My booked events' },
+		{ href: '#', text: 'My courses' },
+		{ href: '#', text: 'My resource library' },
+		{ href: '#', text: 'Communication preferences' },
+		{ href: '#', text: 'Visit the LMS' }
+	]
+}) }}
+
+{% endblock %}

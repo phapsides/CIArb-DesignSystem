@@ -1,0 +1,27 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.ip-my-courses {
+	.bc-heading--jumbotron {
+		margin-bottom: 1.25rem;
+	}
+
+	.bc-grid {
+		margin-bottom: 5rem;
+	}
+
+	&__past-courses {
+		.bc-heading {
+			margin-bottom: settings.$fs-gutter-half;
+		}
+
+		.bc-prose {
+			margin-bottom: 2.5rem;
+		}
+
+		p {
+			margin: 0;
+		}
+	}
+}

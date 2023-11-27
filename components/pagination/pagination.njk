@@ -1,0 +1,34 @@
+{% from "pagination/macro.njk" import bcPagination %}
+
+<!-- On first page -->
+
+{{ bcPagination({
+    currentPage: 1,
+    totalPages: 3
+}) }}
+
+{{ bcPagination({
+    currentPage: 3,
+    totalPages: 20
+}) }}
+
+<!-- Near front of list -->
+
+{{ bcPagination({
+    currentPage: 3,
+    totalPages: 34
+}) }}
+
+<!-- Near back of list -->
+
+{{ bcPagination({
+    currentPage: 32,
+    totalPages: 34
+}) }}
+
+<!-- In middle of list -->
+
+{{ bcPagination({
+    currentPage: 12,
+    totalPages: 34
+}) }}

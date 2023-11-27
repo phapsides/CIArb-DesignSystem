@@ -1,0 +1,24 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/layout";
+
+@use "sass:map";
+
+// .af-grid-row {
+//   @include layout.af-grid-row;
+// }
+//
+// @each $width in map.keys(settings.$fs-grid) {
+//   .af-grid-column-#{$width} {
+//     @include layout.af-grid-column($width);
+//   }
+// }
+//
+// @each $breakpoint in map.keys(settings.$fs-breakpoints) {
+//   @if $breakpoint != medium {
+//     @each $width in map.keys(settings.$fs-grid) {
+//       .#{$breakpoint}\:af-grid-column-#{$width} {
+//         @include layout.af-grid-column($width, $at: $breakpoint);
+//       }
+//     }
+//   }
+// }

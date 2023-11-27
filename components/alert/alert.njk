@@ -1,0 +1,28 @@
+{% from "alert/macro.njk" import bcAlert %}
+
+{% call bcAlert({
+	heading: {
+		text: 'Alert title'
+	}
+}) %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus dignissimos perferendis nulla doloribus. Nisi adipisci nostrum libero magni voluptas voluptate minima, ut. Non dicta deserunt odit incidunt quisquam atque omnis.</p>
+{% endcall %}
+
+{% call bcAlert({
+    variant: 'success'
+}) %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex fuga eaque quas architecto tenetur dolores reprehenderit totam officia similique, accusantium, id placeat facere debitis quia voluptates velit maxime porro corporis.</p>
+{% endcall %}
+
+{% call bcAlert({
+    variant: 'warning'
+}) %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum odio voluptatibus mollitia dolor ducimus vitae, tenetur dolorum maxime deleniti magni cum inventore laudantium eveniet excepturi id fugiat, tempora iusto sunt!</p>
+{% endcall %}
+
+
+{% call bcAlert({
+    variant: 'danger'
+}) %}
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatum odio voluptatibus mollitia dolor ducimus vitae, tenetur dolorum maxime deleniti magni cum inventore laudantium eveniet excepturi id fugiat, tempora iusto sunt!</p>
+{% endcall %}

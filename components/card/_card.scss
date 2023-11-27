@@ -1,0 +1,218 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+@use "heading/heading";
+@use "sass:math";
+
+.bc-card {
+	$self: &;
+	$card-padding: 2rem;
+	position: relative;
+	padding: $card-padding;
+	background-color: settings.$fs-body-background-color;
+	a {
+		text-decoration: none;
+	}
+	// TODO: Check if the below could be moved to bc-prose
+	.bc-prose {
+		@include typography.fs-font-size(body-mobile);
+		li + li {
+			margin-top: 1rem;
+		}
+	}
+	&__inner {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-auto-rows: 4fr 1fr;
+		grid-gap: 2.5rem;
+		margin-top: 0.5rem;
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 2fr 1fr;
+			grid-auto-rows: 1fr;
+		}
+	}
+	&__body {
+		margin-top: 0;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: auto;
+		}
+		.bc-prose {
+			margin: 0;
+		}
+	}
+	&__action {
+		margin-top: auto;
+		margin-left: 0;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-left: auto;
+		}
+		.bc-button {
+			width: 100%;
+			@include media-queries.fs-mq($from: tablet) {
+				width: auto;
+			}
+		}
+	}
+	&--pledge {
+		.bc-card__body {
+			display: flex;
+		}
+		#{$self}__inner {
+			display: block;
+			margin-top: 0;
+		}
+		#{$self}__amount {
+			margin-right: 0;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-right: 6.25rem;
+			}
+		}
+		#{$self}__date {
+			margin-left: 0;
+		}
+		#{$self}__label,
+		#{$self}__data {
+			@include typography.fs-font-stack(sans, $weight: 600);
+			margin: 0;
+		}
+		#{$self}__label {
+			@include typography.fs-font-size(body-mobile);
+		}
+		#{$self}__data {
+			@extend .bc-heading--subtitle;
+		}
+	}
+	&--with-image {
+		padding: 0;
+		padding-bottom: $card-padding;
+		background-color: colors.fs-color(white);
+		box-shadow: 0 3px 10px #0000001a;
+		#{$self}__media {
+			overflow: hidden;
+			&:first-child {
+				padding-top: 0;
+			}
+		}
+		#{$self}__header {
+			grid-area: header;
+			padding: $card-padding $card-padding 0;
+			color: colors.fs-color(brand-primary);
+		}
+		#{$self}__inner {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0;
+		}
+		#{$self}__body {
+			padding: $card-padding $card-padding 0;
+			.bc-prose {
+				margin: 0;
+			}
+		}
+		#{$self}__button {
+			padding: $card-padding $card-padding 0;
+			margin-top: auto;
+		}
+		// &[data-layout="extended"] {
+		// 	grid-row: span 1;
+		// 	@include media-queries.fs-mq($from: tablet) {
+		// 		grid-row: span 2;
+		// 	}
+		// }
+	}
+	&--category {
+		margin-bottom: 2rem;
+		.bc-card__header h3,
+		.bc-card__inner {
+			padding-inline: 1.5rem;
+		}
+		.bc-button {
+			padding-top: 2rem !important;
+			.bc-button__label {
+				font-size: 1rem;
+			}
+		}
+	}
+	&--above-button-content {
+		.bc-card__body {
+			margin-top: 0;
+		}
+		.bc-card__action {
+			p:first-child {
+				font-weight: 400;
+				font-size: 1.75rem;
+			}
+			p:nth-child(2) {
+				font-size: 0.75rem;
+			}
+			.bc-button {
+				margin-top: 1.5rem;
+				height: auto;
+			}
+		}
+	}
+	&--testimonial {
+		background-color: colors.fs-color(brand-primary);
+		display: flex;
+		padding: 2rem 2rem 0;
+		@media only screen and (min-width: 1025px) {
+			padding: 2rem 4rem 0;
+		}
+		color: colors.fs-color(white);
+		.bc-card__media {
+			display: flex;
+			justify-content: flex-end;
+			flex-direction: column;
+		}
+		.bc-card__body {
+			margin-top: 0;
+			padding: 0 2rem 2rem;
+			@media only screen and (min-width: 1025px) {
+				padding: 2rem 4rem;
+			}
+			.bc-prose {
+				line-height: normal;
+				@media only screen and (min-width: 1025px) {
+					font-size: 1.75rem;
+					line-height: 2.25rem;
+				}
+				.testimonial-name {
+					font-weight: bold;
+					@media only screen and (min-width: 1025px) {
+						font-size: 1.25rem;
+					}
+				}
+			}
+		}
+	}
+}
+
+.bc-card {
+	&[data-size="1/2"] {
+		.bc-card__inner {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-auto-rows: 4fr 1fr;
+			grid-gap: 1rem;
+			margin-top: 0.5rem;
+		}
+		.bc-card__body {
+			margin-top: 0;
+		}
+		.bc-card__action {
+			margin-top: auto;
+			margin-left: 0;
+			.bc-button {
+				width: 100%;
+			}
+		}
+		.bc-card__amount,
+		.bc-card__date {
+			margin: 1rem 0;
+		}
+		.bc-card__date {
+			margin-bottom: 0;
+		}
+	}
+}

@@ -1,0 +1,334 @@
+{% extends '@t-event-details' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Courses', href: '/' },
+			{ text: 'Student: Introduction to ADR Online Course & Assessment', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from "event-card/macro.njk" import bcEventCard %}
+    {% from "button/macro.njk" import bcButton %}
+    
+	{% call bcEventCard({
+		classes:'ip-course-details--bc-event-card',
+        full_width: true,
+        hero: true,
+        heading: {
+            text: 'Student: Introduction to ADR Online Course & Assessment',
+            hierarchy: 2
+        },
+        back_button: {
+            appearance: 'link',
+            href: '#',
+            text: 'Back to courses'
+        },
+        button: {
+            appearance: 'primary',
+            href: '#',
+            text: 'Book now'
+        },
+        calendar: true,
+		date: '18 November 2021',
+		time: '10:00',
+		location: 'London, UK',
+		price: 'xxxx',
+		type: 'Hybrid'
+    }) %}
+		{% call bcProse() %}
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+			aliqua.
+		</p>
+		{% endcall %}
+    {% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "details-group/macro.njk" import bcDetailsGroup %}
+    {% from "details/macro.njk" import bcDetails %}
+	{% from "button/macro.njk" import bcButton %}
+
+    <div class="ip-course-details">
+
+        <div class="fs-!-margin-bottom-5">
+            {{ bcHeading({
+				hierarchy: 2,
+				text: 'Learning outcome'
+			}) }}
+            {% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+					aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+				</p>
+				<p>
+					Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+					occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+				</p>
+            {% endcall %}
+        </div>
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Course delivery'
+		}) }}
+
+        {% call bcDetails({
+			read_more: true,
+			heading: { 
+				html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+			}
+		}) %}
+			{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere
+					suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum
+					dolor sit amet consectetur adipisicing elit.
+				</p>
+				<p>
+					Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam abrecusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+			{% endcall %}
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Prequisities'
+		}) }}
+
+        {% call bcDetails({
+			read_more: true,
+			heading: { 
+				html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+			}
+		}) %}
+			{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+				</p>
+				<p>
+					Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam abrecusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+			{% endcall %}
+        {% endcall %}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Lorem ipsum dolor sit amet'
+		}) }}
+
+        {% call bcProse({
+			classes: 'fs-!-margin-bottom-3'
+		}) %}
+        	<p>
+            	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+        	</p>
+        {% endcall %}
+        
+		{% call bcDetailsGroup() %}
+
+			{% call bcDetails({
+				classes: 'bc-details--no-border',
+				heading: { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+					error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+				{% endcall %}
+        	{% endcall %}
+
+			{% call bcDetails({
+				classes: 'bc-details--no-border',
+				heading: { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+					error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+				{% endcall %}
+        	{% endcall %}
+
+			{% call bcDetails({
+				classes: 'bc-details--no-border',
+				heading: { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+					error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+				{% endcall %}
+        	{% endcall %}
+        
+        {% endcall %}
+
+        {{ bcHeading({
+			classes: 'fs-!-margin-top-8',
+			hierarchy: 2,
+			text: 'Speakers'
+		}) }}
+
+        {% call bcProse({
+			classes: 'fs-!-margin-bottom-5'
+		}) %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+				aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+			</p>
+        {% endcall %}
+
+        {% call bcDetailsGroup() %}
+        
+			{% call bcDetails({
+				classes: 'bc-details--with-avatar',
+				avatar: {
+					classes: 'bc-avatar--medium',
+					src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+					alt: 'Jane Smith'
+				},
+				heading: {
+					text: 'First and last name',
+					hierarchy: 3
+				},
+				job_description: 'Job description'
+			}) %}
+				{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+					error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+				{% endcall %}
+			{% endcall %}
+
+			{% call bcDetails({
+				classes: 'bc-details--with-avatar',
+				avatar: {
+					classes: 'bc-avatar--medium',
+					src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+					alt: 'Jane Smith'
+				},
+				heading: {
+					text: 'First and last name',
+					hierarchy: 3
+				},
+				job_description: 'Job description'
+			}) %}
+				{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+					error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+				{% endcall %}
+			{% endcall %}
+
+			{% call bcDetails({
+				classes: 'bc-details--with-avatar',
+				avatar: {
+					classes: 'bc-avatar--medium',
+					src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+					alt: 'Jane Smith'
+				},
+				heading: {
+					text: 'First and last name',
+					hierarchy: 3
+				},
+				job_description: 'Job description'
+			}) %}
+				{% call bcProse() %}
+				<p>
+					Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+					error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+				</p>
+				{% endcall %}
+			{% endcall %}
+
+        {% endcall %}
+
+			{{ bcButton({
+				classes: 'fs-!-margin-top-5 fs-!-margin-bottom-6',
+				appearance: 'secondary',
+				text: 'Print course details',
+				attributes: {
+					id: 'print-btn'
+				}
+			}) }}
+
+    </div>
+
+{% endblock %}
+
+{% block afterTemplate %}
+    <div class="ip-course-details--afterTemplate">
+        <div class="bc-container">
+            {{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'Location'
+			}) }}
+            {% call bcProse() %}
+            <address>
+                Westminster Office - 8th Floor, Kings Buildings, 16 Smith Square, London, SW1P 3HQ
+            </address>
+            {% endcall %}
+            <div id="bc-map"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        function initMap() {
+            const myMapCenter = {
+                lat: 40.785091,
+                lng: -73.968285
+            };
+            // Create a map object and specify the DOM element for display.
+            const map = new google.maps.Map(document.getElementById('bc-map'), {
+                center: myMapCenter,
+                zoom: 14
+            });
+            function markStore(storeInfo) { // Create a marker and set its position.
+                const marker = new google.maps.Marker({map: map, position: storeInfo.location});
+            }
+            const stores = [{
+                    location: {
+                        lat: 40.785091,
+                        lng: -73.968285
+                    }
+                }];
+            stores.forEach(function (store) {
+                markStore(store);
+            });
+        }
+
+		document.getElementById('print-btn').addEventListener("click", printDocument);
+		function printDocument() {
+			$allModules = document.querySelectorAll(".bc-details");
+			$allModules.forEach(($module) => {
+				$module.setAttribute("open", true);
+			});
+			window.print();
+		}
+    </script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZd0br-aQ1AVU5MMIjDErpBjuW7Piy5c&callback=initMap"
+        async
+        defer></script>
+{% endblock %}

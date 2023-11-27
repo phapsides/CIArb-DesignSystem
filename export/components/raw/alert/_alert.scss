@@ -1,0 +1,62 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+
+// TODO: Review the below styles
+.bc-alert {
+	$self: &;
+	padding: 1.25rem 1.5rem;
+	position: relative;
+	background-color: settings.$fs-canvas-background-color;
+
+	&__icon {
+		position: absolute;
+		top: 1.5rem;
+		left: 1.5rem;
+		height: 1.75rem;
+		width: 1.75rem;
+		border-radius: 100%;
+		color: colors.fs-color(white);
+		background-color: colors.fs-color(brand-secondary);
+		// TODO: Review the below
+		&.bc-alert--info {
+			// background-color: colors.fs-color(warning);
+		}
+
+		&.bc-alert--success {
+			// background-color: colors.fs-color(success);
+		}
+
+		&.bc-alert--danger {
+			// background-color: colors.fs-color(danger);
+		}
+
+		&.bc-alert--warning {
+			// background-color: colors.fs-color(warning);
+		}
+
+		i {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			font-size: initial;
+			font-weight: 600;
+		}
+	}
+
+	&__heading {
+		padding-left: 2.5rem;
+		font-weight: 600;
+
+		// @include typography.fs-font-size(h5);
+	}
+
+	&__body {
+		padding-left: 2.5rem;
+
+		&.bc-prose {
+			margin-bottom: 0;
+		}
+	}
+}

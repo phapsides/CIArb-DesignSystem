@@ -1,0 +1,19 @@
+{% from "icon/macro.njk" import bcIcon %}
+{% set icon = "info" %}
+{%- if params.type == "success" %}
+	{% set icon = "check-circle" %}
+{%- elif params.type == "warning" %}
+	{% set icon = "warning" %}
+{%- elif params.type == "error" or params.type == "danger" %}
+	{% set icon = "error" %}
+{%- endif %}
+
+<div
+	class="bc-feedback-message {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- if params.large %} data-size="large"{% endif %}
+	{%- if params.type %} data-type="{{ params.type }}"{% endif %}
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+	<span class="bc-feedback-message__label">
+		{{- params.html | safe if params.html else params.text -}}
+	</span>
+</div>

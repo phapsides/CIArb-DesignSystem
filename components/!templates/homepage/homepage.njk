@@ -1,0 +1,446 @@
+{% extends '@chrome' %}
+
+{% from "heading/macro.njk" import bcHeading %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "button/macro.njk" import bcButton %}
+{% from "carousel/macro.njk" import bcCarousel %}
+{% from "banner/macro.njk" import bcBanner %}
+{% from "grid/macro.njk" import bcGrid %}
+{% from "hero-banner/macro.njk" import bcHeroBanner %}
+{% from "signpost-positioned-image/macro.njk" import bcSignpostPositionedImage %}
+{% from "news/macro.njk" import bcNews %}
+{% from "big-card/macro.njk" import bcBigCard %}
+
+{% block main %}
+    <div class="it-homepage">
+        <div class="it-homepage__inner">
+            {% block inner %}
+                <article class="it-homepage__document">
+                    <main class="it-homepage__body">
+                        {% block body %}
+                            {% call bcCarousel({
+                                hero: true,
+                                items: [
+                                    { 
+                                        href: '#',
+                                        ctaText: 'Primary CTA',
+                                        heading: {
+                                            hierarchy: '1',
+                                            text: 'Brand value prop'
+                                        },
+                                        image: {
+                                            src: '/images/temp/homepage-hero.png',
+                                            alt: 'Put some alternative text here.'
+                                        }
+                                    },
+                                    { 
+                                        href: '#',
+                                        ctaText: 'Primary CTA',
+                                        heading: {
+                                            hierarchy: '1',
+                                            text: 'Brand value prop'
+                                        },
+                                        image: {
+                                            src: '/images/temp/homepage-hero.png',
+                                            alt: 'Put some alternative text here.'
+                                        }
+                                    },
+                                    { 
+                                        href: '#',
+                                        ctaText: 'Primary CTA',
+                                        heading: {
+                                            hierarchy: '1',
+                                            text: 'Brand value prop'
+                                        },
+                                        image: {
+                                            src: '/images/temp/homepage-hero.png',
+                                            alt: 'Put some alternative text here.'
+                                        }
+                                    }
+                                ]
+                            }) %}
+                                {% call bcProse() %}
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                    </p>
+                                {% endcall %}
+                            {% endcall %}
+
+                            {% call bcBanner({
+                                secondary_color: true,
+                                background_image: '/images/temp/homepage-banner-shapes.png'
+                            }) %}
+                                {% call bcProse() %}
+                                    <p>
+                                        Quote style/intro text ciarb is the independent membership organisation supporting alternative dispute resolution across arbitration, mediation and adjudication around the world.
+                                    </p>
+                                {% endcall %}
+                            {% endcall %}
+
+                            <div class="bc-container">
+                                <div class="bc-container__inner it-homepage__big-cards">
+                                    {% call bcBigCard({
+                                        section_heading: {
+                                            text: 'Membership',
+                                            hierarchy: 4
+                                        },
+                                        heading: {
+                                            text: 'Become a member',
+                                            hierarchy: 2
+                                        },
+                                        image: {
+                                            src: '/images/temp/membership-types.jpg',
+                                            alt: ''
+                                        },
+                                        cta: {
+                                            href: '#',
+                                            text: 'Benefits of membership'
+                                        },
+                                        button: {
+                                            appearance: 'primary',
+                                            href: '#',
+                                            text: 'Join us'
+                                        }
+                                        }) %}
+                                        {% call bcProse() %}
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                                            </p>
+                                        {% endcall %}
+                                    {% endcall %}
+
+                                    {% call bcBigCard({
+                                        image_alignment: 'right',
+                                        section_heading: {
+                                            text: 'Training',
+                                            hierarchy: 4
+                                        },
+                                        heading: {
+                                            text: 'Learn and grow with us',
+                                            hierarchy: 2
+                                        },
+                                        image: {
+                                            src: '/images/temp/grow-with-us.jpg',
+                                            alt: ''
+                                        },
+                                        cta: {
+                                            href: '#',
+                                            text: 'Our training options'
+                                        },
+                                        button: {
+                                            appearance: 'primary',
+                                            href: '#',
+                                            text: 'Find a course'
+                                        }
+                                        }) %}
+                                        {% call bcProse() %}
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+                                            </p>
+                                        {% endcall %}
+                                    {% endcall %}
+                                </div>
+                            </div>
+
+                            <div class="it-homepage__networking">   
+
+                                <div class="it-homepage__networking-heading">
+                                    <div class="bc-container__inner">
+                                        {{ bcHeading({
+                                            hierarchy: '2',
+                                            text: 'Networking'
+                                        }) }}
+                                        {% call bcProse() %}
+                                            <p>
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                            </p>
+                                        {% endcall %}
+                                    </div>
+                                </div>
+
+                                <div class="it-homepage__networking-carousel">
+                                    {{ bcCarousel({
+                                        heading: {
+                                            hierarchy: '3',
+                                            text: 'Upcoming events'
+                                        },
+                                        cta: {
+                                            text: 'Find an event',
+                                            url: '#'
+                                        },
+                                        items: [
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Sint occaecat incididunt minim veniam mollit occaecat ullamco non quis. ',
+                                                image: {
+                                                    src: '/images/temp/skyline.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Accusamus maxime odit voluptatibus vero doloribus, ab modi veritatis, quia',
+                                                image: {
+                                                    src: '/images/temp/bridge.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Earum provident iure itaque doloribus minima repellat necessitatibus quia?',
+                                                image: {
+                                                    src: '/images/temp/docks.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Error eius sunt minima maxime incidunt saepe commodi',
+                                                image: {
+                                                    src: '/images/temp/skyline.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Autem perspiciatis suscipit ea distinctio odio, omnis vel quae, doloribus, nobis deleniti aut',
+                                                image: {
+                                                    src: '/images/temp/bridge.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Voluptas facilis explicabo, aut sit voluptate velit?',
+                                                image: {
+                                                    src: '/images/temp/docks.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Fugiat numquam dolorum culpa title goes here',
+                                                image: {
+                                                    src: '/images/temp/skyline.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Accusamus maxime odit voluptatibus vero doloribus, ab modi veritatis, quia',
+                                                image: {
+                                                    src: '/images/temp/bridge.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            },
+                                            { 
+                                                href: '#',
+                                                ctaText: 'Read more',
+                                                text: 'Earum provident iure itaque doloribus minima repellat necessitatibus quia?',
+                                                image: {
+                                                    src: '/images/temp/docks.png',
+                                                    alt: 'Put some alternative text here.'
+                                                },
+                                                date: 'Thu, 30 June 2021',
+                                                location: 'London, UK'
+                                            }
+                                        ]
+                                    }) }}
+                                </div>
+
+                                <div class="bc-container it-homepage__groups">
+                                    <div class="bc-container__inner">
+                                        {{ bcHeading({
+                                            hierarchy: '3',
+                                            text: 'Groups'
+                                        }) }}
+
+                                        <div class="it-homepage__groups-grid">
+                                            {% call bcGrid({
+                                                size: '1/2'
+                                            }) %}
+
+                                                {% call bcSignpostPositionedImage({
+                                                    text: 'Our Special Interest Groups',
+                                                    href: '#',
+                                                    ctaText: 'Learn more about SIGs',
+                                                    image: {
+                                                        src: '/images/temp/homepage-group-card-icon-1.svg',
+                                                        alt: 'Ciarb Groups Icon'
+                                                    }
+                                                }) %}
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                    </p>
+                                                {% endcall %}
+
+                                                {% call bcSignpostPositionedImage({
+                                                    text: 'Our global branch network',
+                                                    href: '#',
+                                                    ctaText: 'Find a local branch',
+                                                    image: {
+                                                        src: '/images/temp/homepage-group-card-icon-2.svg',
+                                                        alt: 'Ciarb Groups Icon'
+                                                    }
+                                                }) %}
+                                                    <p>
+                                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                                                    </p>
+                                                {% endcall %}
+
+                                            {% endcall %}
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            {% call bcHeroBanner({
+                                secondary_color: true,
+                                heading: {
+                                    text: 'Alternative Dispute Resolution headline: support/advocate',
+                                    hierarchy: 2
+                                },
+                                button: {
+                                    appearance: 'primary',
+                                    href: '#',
+                                    text: 'Learn more about ADR'
+                                },
+                                image: {
+                                    src: ('/images/temp/dispute-resolution.png' | path),
+                                    alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+                                }
+                            }) %}
+                                {% call bcProse() %}
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                {% endcall %}
+                            {% endcall %}
+
+                            <div class="bc-container it-homepage__news">
+                                <div class="bc-container__inner">
+                                    {{ bcNews({
+                                        heading: {
+                                            text: 'What’s new?',
+                                            hierarchy: 2
+                                        },
+                                        items: [
+                                            {
+                                                featured: true,
+                                                href: '#',
+                                                image: {
+                                                    src: '/images/temp/membership-types.jpg',
+                                                    alt: 'Branch focus: UAE'
+                                                },
+                                                category: 'Category tag',
+                                                heading: {
+                                                    text: 'Branch focus: UAE',
+                                                    hierarchy: 3
+                                                },
+                                                date: '25th  July 2022',
+                                                text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+                                            },
+                                            {
+                                                href: '#',
+                                                image: {
+                                                    src: '/images/temp/membership-types.jpg',
+                                                    alt: 'ciarb\'s diversity in ADR strategy'
+                                                },
+                                                category: 'Category tag',
+                                                heading: {
+                                                    text: 'ciarb\'s diversity in ADR strategy',
+                                                    hierarchy: 3
+                                                },
+                                                date: '25th  July 2022'
+                                            },
+                                            {    
+                                                href: '#',
+                                                image: {
+                                                    src: '/images/temp/membership-types.jpg',
+                                                    alt: 'Arbitration week 2022 - review'
+                                                },
+                                                category: 'Category tag',
+                                                heading: {
+                                                    text: 'Arbitration week 2022 - review',
+                                                    hierarchy: 3
+                                                },
+                                                date: '25th  July 2022'
+                                            },
+                                            {    
+                                                href: '#',
+                                                image: {
+                                                    src: '/images/temp/membership-types.jpg',
+                                                    alt: 'Arbitration week 2022 - review'
+                                                },
+                                                category: 'Category tag',
+                                                heading: {
+                                                    text: 'ciarb mentoring programme',
+                                                    hierarchy: 3
+                                                },
+                                                date: '25th  July 2022'
+                                            }
+                                        ],
+                                        cta: {
+                                            href: '#',
+                                            text: 'All news'
+                                        }
+                                    }) }}
+                                </div>
+                            </div>
+
+                            {% call bcHeroBanner({
+                                secondary_color: true,
+                                heading: {
+                                    text: 'Room hire headline',
+                                    hierarchy: 2
+                                },
+                                button: {
+                                    appearance: 'primary',
+                                    href: '#',
+                                    text: 'Book a room'
+                                },
+                                image: {
+                                    src: ('/images/temp/room-hire.png' | path),
+                                    alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+                                }
+                            }) %}
+                                {% call bcProse() %}
+                                    <p>
+                                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                    </p>
+                                {% endcall %}
+                            {% endcall %}
+                         
+                        {% endblock %}
+                    </main>
+                </article>
+            {% endblock %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,88 @@
+{% from "checkbox/macro.njk" import bcCheckbox %}
+
+{{ bcCheckbox({
+    name: 'ExampleCheckboxSingle',
+    options: [
+        {
+            text: 'A single checkbox',
+            value: '1',
+            required: true
+        }
+    ]
+}) }}
+
+{{ bcCheckbox({
+    name: 'ExampleCheckboxGroup',
+    legend: {
+        text: 'Overall question for which these checkboxes are prospective answers'
+    },
+    hint: {
+        text: 'A hint relating to the question as a whole.'
+    },
+    options: [
+        {
+            text: 'Default checkbox',
+            value: '1',
+            required: true
+        },
+        {
+            text: 'Pre-checked checkbox',
+            value: '2',
+            checked: true
+        },
+        {
+            text: 'Checkbox with hint',
+            value: '3',
+            hint: {
+                text: 'A hint relating to this specific option.'
+            }
+        },
+        {
+            text: 'Disabled checkbox',
+            value: '4',
+            disabled: true
+        },
+        {
+            text: 'Disabled and pre-checked checkbox',
+            value: '5',
+            disabled: true,
+            checked: true
+        }
+    ]
+}) }}
+
+
+{{ bcCheckbox({
+    name: 'ExampleCheckboxGroupHorizontal',
+    layout: 'horizontal',
+    legend: {
+        text: 'Overall question for which these checkboxes are prospective answers'
+    },
+    hint: {
+        text: 'A hint relating to the question as a whole.'
+    },
+    options: [
+        {
+            text: 'Default checkbox',
+            value: '1',
+            required: true
+        },
+        {
+            text: 'Pre-checked checkbox',
+            value: '2',
+            checked: true
+        },
+        {
+            text: 'Checkbox with hint',
+            value: '3',
+            hint: {
+                text: 'A hint relating to this specific option.'
+            }
+        },
+        {
+            text: 'Disabled checkbox',
+            value: '4',
+            disabled: true
+        }
+    ]
+}) }}

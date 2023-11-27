@@ -1,0 +1,57 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+
+.bc-filters {
+	.bc-button {
+		display: block;
+	}
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		[data-appearance="primary"] {
+			width: 100%;
+			align-items: center;
+			display: flex;
+		}
+	}
+	&__body {
+		height: 0;
+		overflow: hidden;
+		transition: height 0.5s ease-in-out;
+		padding: 0 3.5px;
+	}
+	.bc-label__optional {
+		display: none;
+	}
+	.bc-label,
+	.bc-heading {
+		color: colors.fs-color(brand-secondary);
+	}
+	.bc-heading {
+		display: flex;
+		align-items: center;
+		// TODO: Any reason we need this media query here?
+		@include media-queries.fs-mq($to: tablet) {
+			cursor: pointer;
+		}
+		.bc-icon {
+			margin-left: auto;
+			transition: all 0.3s linear;
+			@include media-queries.fs-mq($from: tablet) {
+				display: none;
+			}
+		}
+	}
+	&.active {
+		.bc-filters__body {
+			height: auto;
+		}
+		.bc-heading {
+			.bc-icon {
+				transform: rotate(-180deg);
+			}
+		}
+	}
+}

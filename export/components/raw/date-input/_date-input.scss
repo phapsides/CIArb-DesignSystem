@@ -1,0 +1,23 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "input/input";
+@use "objects/forms";
+
+.bc-date-input {
+	@extend .bc-form-row;
+	flex-direction: row;
+	margin: 0;
+	&__field {
+		margin-right: settings.$fs-gutter-half;
+		max-width: 5.5rem;
+		label {
+			display: none;
+		}
+	}
+	&__input {
+		@extend .bc-input;
+		text-align: center;
+		&::placeholder {
+			color: transparent;
+		}
+	}
+}

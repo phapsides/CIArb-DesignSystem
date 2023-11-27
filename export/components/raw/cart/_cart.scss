@@ -1,0 +1,119 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "objects/lists";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+@use "heading/heading";
+
+.bc-cart {
+	background-color: transparent;
+
+	&__list {
+		@extend .fs-list;
+		margin: 0;
+
+		li + li {
+			margin: 0;
+		}
+	}
+
+	&__item {
+		padding-bottom: 1.5rem;
+		padding-top: 1.5rem;
+		border-bottom: settings.$fs-border-width-form-element solid
+			colors.fs-color(brand-primary);
+		display: flex;
+
+		&:first-of-type {
+			border-top: settings.$fs-border-width-form-element solid
+				colors.fs-color(brand-primary);
+		}
+	}
+	&__invoiced-item {
+		background: settings.$fs-canvas-background-color;
+		padding-inline: 1.5rem;
+	}
+	&__item-inner {
+		width: 100%;
+	}
+
+	&__item-name {
+		@extend .bc-heading--subtitle;
+		max-width: 80%;
+	}
+
+	&__item-total {
+		margin-left: 0;
+		text-align: left;
+		display: flex;
+		flex-direction: column;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin-left: auto;
+			text-align: right;
+		}
+
+		p {
+			margin: 0 0 0.5rem;
+		}
+	}
+
+	&__item-details {
+		margin-bottom: 0;
+		font-weight: 500;
+	}
+
+	&__item-remove {
+		margin-top: auto;
+	}
+
+	&__item-price {
+		@extend .bc-heading--subtitle;
+	}
+	.bc-alert {
+		padding-inline: 0;
+		&__icon {
+			left: 0;
+			height: 1.25rem;
+    		width: 1.25rem;
+			i {
+				font-size: 0.75rem;
+			}
+		}
+		&__body {
+			padding-left: 2rem;
+			width: 90%;
+		}
+	}
+	.bc-button {
+		justify-content: flex-start;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: auto;
+		}
+	}
+
+	&[data-position="sidebar"] {
+		.bc-cart__item-remove {
+			display: none;
+		}
+
+		.bc-cart__item-price {
+			@include typography.fs-font-size(body);
+		}
+
+		.bc-cart__item {
+			&:first-of-type {
+				border-top: none;
+				padding-top: 0;
+			}
+		}
+		.bc-alert {
+			display: none;
+		}
+	}
+
+	// TODO: Add styles for the extended version
+	&--extended {
+	}
+}

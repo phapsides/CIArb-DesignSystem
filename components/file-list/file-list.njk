@@ -1,0 +1,20 @@
+{% from "file-list/macro.njk" import bcFileList %}
+
+{{ bcFileList({
+	items: [
+		{ 
+			heading: {
+				hierarchy: '3',
+				text: 'File name'
+			},
+			description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		},
+		{ 
+			heading: {
+				hierarchy: '3',
+				text: 'File name'
+			},
+			description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+		}
+	]    
+}) }}

@@ -1,0 +1,54 @@
+{% from "card/macro.njk" import bcCard %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "grid/macro.njk" import bcGrid %}
+
+<!-- Header, body and cta -->
+{% call bcCard({
+    heading: {
+        text: 'Your current membership',
+        hierarchy: 2
+    },
+    button: {
+        appearance: 'primary',
+        text: 'View membership details',
+        href: '#'
+    }
+}) %}
+    {% call bcProse() %}
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+    {% endcall %}
+{% endcall %}
+
+<!-- Grid with smaller cards (including donations) -->
+{% call bcGrid({
+    classes: 'fs-!-margin-top-5',
+    size: '1/2'
+}) %}
+    {% call bcCard({
+        size: '1/2',
+        heading: {
+            text: 'My donations',
+            hierarchy: 2
+        },
+        button: {
+            appearance: 'primary',
+            text: 'Make a donation',
+            href: '#'
+        }
+    }) %}
+        {% call bcProse() %}
+            <p>Please help us support young people through youth work and together we’ll make it clear that we #BelieveInYouth.</p>
+        {% endcall %}
+    {% endcall %}
+    {% call bcCard({
+        size: '1/2',
+        heading: {
+            text: 'My pledges',
+            hierarchy: 2
+        }
+    }) %}
+        {% call bcProse() %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        {% endcall %}
+    {% endcall %}
+{% endcall %}

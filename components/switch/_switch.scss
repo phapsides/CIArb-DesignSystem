@@ -1,0 +1,78 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/a11y";
+@use "helpers/colors";
+@use "helpers/forms";
+
+.bc-switch {
+	$self: &;
+	$leftPadding: 2.5rem;
+	$trackHeight: 1rem;
+	$trackWidth: $trackHeight * 2;
+	$indicatorSize: $trackHeight * 1.25;
+	display: flex;
+	align-items: center;
+	&__control {
+		position: relative;
+		margin-right: 0.5rem;
+	}
+	&__input {
+		cursor: pointer;
+		width: 100%;
+		height: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 1;
+		opacity: 0;
+		&:checked ~ #{$self}__track {
+			border-color: colors.fs-color(brand-secondary);
+			background-color: colors.fs-color(brand-secondary);
+			#{$self}__indicator {
+				left: $trackWidth - (($trackHeight / 2) + ($indicatorSize / 2));
+				border-color: colors.fs-color(brand-secondary);
+			}
+		}
+		&:focus ~ #{$self}__track {
+			@include a11y.fs-focus-ring;
+		}
+		&:disabled ~ #{$self}__track {
+			&,
+			#{$self}__indicator {
+				// @include _bc-input-disabled;
+			}
+		}
+		&[aria-invalid="true"] ~ #{$self}__track {
+			#{$self}__indicator {
+				border-color: colors.fs-color(danger);
+			}
+		}
+	}
+	&__track {
+		border: 1px solid colors.fs-color(brand-secondary);
+		background-color: colors.fs-color(white);
+		color: colors.fs-color(brand-secondary);
+		box-shadow: none;
+		font-family: inherit;
+		font-size: inherit;
+		font-style: inherit;
+		line-height: 1.5;
+		box-sizing: content-box;
+		display: block;
+		width: $trackWidth;
+		height: $trackHeight;
+		position: relative;
+		border-radius: $trackHeight;
+	}
+	&__indicator {
+		display: block;
+		width: $indicatorSize;
+		height: $indicatorSize;
+		border: 1px solid colors.fs-color(brand-primary);
+		border-radius: 50%;
+		position: absolute;
+		top: ($trackHeight / 2) - ($indicatorSize / 2);
+		left: ($trackHeight / 2) - ($indicatorSize / 2);
+		background-color: colors.fs-color(white);
+		transition: left 0.25s ease;
+	}
+}

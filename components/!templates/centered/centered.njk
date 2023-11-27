@@ -1,0 +1,26 @@
+{% extends '@chrome' %}
+{% block main %}
+    {# TODO: SHould the below be renamed #}
+    {% block afterBreadcrumbs %}{% endblock %}
+    <div class="it-centered">
+        <div class="it-centered__inner">
+            <div class="bc-container">
+                {% block beforeTemplate %}{% endblock %}
+                <div class="bc-container__inner">
+                    {% block inner %}
+                        <article class="it-centered__document">
+                            <main class="it-centered__body">
+                                {% block body %}
+                                    {# [body] #}
+                                {% endblock %}
+                            </main>
+                        </article>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block afterTemplate %}
+    
+    {% endblock %}
+{% endblock %}

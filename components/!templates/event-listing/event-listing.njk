@@ -1,0 +1,38 @@
+{% extends '@chrome' %}
+
+
+{% block main %}
+    {% block beforeTemplate %}
+        
+    {% endblock %}
+    <div class="bc-container">
+         <div class="bc-container__inner">
+            <div class="it-event-listing">
+                <div class="it-event-listing__inner">
+           
+                    {% block beforeInner %}
+            
+                    {% endblock %}
+
+                    {% block inner %}
+                        <article class="it-event-listing__document">
+                            <aside class="it-event-listing__sidebar">
+                                {% block sidebar %}
+                                    {# [sidebar] #}
+                                {% endblock %}
+                            </aside>
+                            <main class="it-event-listing__body">
+                                {% block body %}
+                                    {# [body] #}
+                                {% endblock %}
+                            </main>
+                        </article>
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+    {% block afterTemplate %}
+        
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,65 @@
+{% from "icon/macro.njk" import bcIcon %}
+{% from "button/macro.njk" import bcButton %}
+{% from "feedback-message/macro.njk" import bcFeedbackMessage %}
+
+{%- set describedBy = params.describedBy if params.describedBy else '' -%}
+{%- set id = params.id if params.id else params.name %}
+
+
+<div class="bc-form-row {%- if params.error %} bc-form-row--error{% endif %}">
+    <label class="bc-label" for="{{ id }}">
+        {{ params.label.html | safe if params.label.html else params.label.text }}
+    </label>
+	<div
+		data-module="bc-file-upload"
+		class="bc-file-upload">
+		<dl class="bc-file-upload__list">
+			{%- for item in params.files %}
+				<div class="bc-file-upload__list-item">
+					<dt class="bc-heading-h5 bc-file-upload__filename">{{ item.name }}</dt>
+					<dd class="bc-file-upload__size">{{ item.size }}</dd>
+					{%- if item.feedback %}
+						<dd class="bc-file-upload__feedback">
+							{{ bcFeedbackMessage(item.feedback | merge({ classes: "fs-!-margin-bottom-0" })) }}
+						</dd>
+					{%- endif %}
+				</div>
+			{%- endfor %}
+		</dl>
+		{%- if not params.hideFileInput %}
+			<div class="bc-file-upload__control">
+				<div class="bc-file-upload__messaging">
+					{{ bcIcon({
+						classes: "bc-file-upload__icon",
+						variant: 'arrow-up-from-bracket'
+					}) }}
+
+					{%- if params.hint %}
+						{% set hintId = id + '-Hint' %}
+						{% set describedBy = describedBy + ' ' + hintId %}
+						<div class="bc-hint bc-file-upload__hint" id="{{ hintId }}">
+							{{ params.hint.html | safe if params.hint.html else params.hint.text }}
+						</div>
+					{%- endif %}
+					{{ bcButton({
+						appearance: 'secondary',
+						text: 'Select file',
+						classes: 'buttonid',
+						href: '#'
+					}) }}
+				</div>
+				<input
+					class="bc-file-upload__input {%- if params.classes %} {{ params.classes }}{% endif %}"
+					type="file"
+					id="{{ id }}"
+					name="{{ params.name }}"
+					{%- if params.multiple %} multiple{% endif %}
+					{%- if params.disabled %} disabled{% endif %}
+					{%- if params.required %} required{% endif %}
+					{%- if params.error %} aria-invalid="true"{% endif %}
+					{%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+					{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+			</div>
+		{%- endif %}
+	</div>
+</div>

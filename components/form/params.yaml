@@ -1,0 +1,23 @@
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: action
+    type: string
+    required: true
+    description: The URL that the form should be submitted to.
+  - name: method
+    type: string
+    default: "get"
+    description: "The means by which the form should be submitted. Acceptable values: `get`, `post`."
+  - name: disableValidation
+    type: boolean
+    default: false
+    description: If `true`, client-side validation will **not** be initialised and this form's contents will not be validated before the form is submitted.
+  - name: disableUnloadPrompt
+    type: boolean
+    default: false
+    description: If `true`, the user will **not** be prompted about unsaved changes to the form when closing, refreshing, or navigating away from the page.

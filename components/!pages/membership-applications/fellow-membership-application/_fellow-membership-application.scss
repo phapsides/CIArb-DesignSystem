@@ -1,0 +1,188 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+
+.ip-fellow-membership-application {
+	.bc-heading {
+		&--title {
+			margin-top: 2rem;
+			margin-bottom: 1.5rem;
+		}
+	}
+
+	.bc-form {
+		margin-top: 0;
+	}
+
+	&__step-1,
+	&__annual-declaration {
+		.bc-heading {
+			&--subtitle {
+				margin-top: 3rem;
+				margin-bottom: 1.5rem;
+			}
+		}
+	}
+
+	&__step-2 {
+		.bc-heading {
+			&--subtitle {
+				margin-top: 4rem;
+			}
+		}
+	}
+
+	&__step-3 {
+		.bc-heading {
+			&--title {
+				margin-bottom: 0.5rem;
+			}
+		}
+	}
+
+	&__step-4 {
+		&--qualification {
+			margin-bottom: 2rem;
+			border: none;
+		}
+
+		&--sub-heading {
+			margin-top: 2rem;
+			margin-bottom: 1rem;
+		}
+
+		&--select-course {
+			margin-top: 1rem;
+		}
+
+		&--transcripts {
+			margin-top: 3rem;
+		}
+
+		.bc-form-row {
+			margin-top: 1rem;
+
+			&--revealed {
+				margin-top: 2rem;
+
+				.bc-input {
+					margin-bottom: 0;
+				}
+			}
+		}
+
+		.bc-input {
+			margin-bottom: 4rem;
+		}
+
+		.bc-radios {
+			margin-top: 0;
+		}
+
+		.bc-card {
+			padding-top: 0;
+			margin-bottom: 2.5rem;
+
+			.bc-form-row {
+				margin-top: 2rem;
+			}
+
+			.bc-input {
+				margin-bottom: 0;
+			}
+
+			&:last-of-type {
+				margin-bottom: 4rem;
+			}
+		}
+
+		.ip-schedules {
+			.bc-prose {
+				margin-bottom: 0;
+			}
+		}
+
+		.bc-button-group {
+			margin-top: 0 !important;
+		}
+	}
+
+	&__step-5 {
+		.bc-checkbox {
+			margin-bottom: 2rem;
+		}
+	}
+
+	.bc-button-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+
+		.bc-button[data-appearance="primary"] {
+			margin-top: 2rem;
+		}
+
+		.bc-button {
+			margin-top: 1.5rem;
+		}
+	}
+
+	.bc-select-third-width {
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 30%;
+		}
+	}
+
+	.bc-checkbox__body {
+		width: 90%;
+	}
+
+	.bc-select {
+		&__arrow {
+			top: 0.875rem;
+		}
+
+		&__input {
+			margin-bottom: 2rem;
+		}
+	}
+
+	.bc-form-row {
+
+		&.bc-form-row--revealed {
+			display: block;
+		}
+	}
+
+	.bc-button-group {
+		margin-top: 2.5rem;
+	}
+
+	.bc-error {
+		margin-top: 0.5rem;
+	}
+
+	&__declaration {
+		margin-top: 4rem;
+	}
+
+	#group1,
+	#group2,
+	#group3,
+	#group4 {
+		display: none;
+	}
+
+	&__step-6 {
+
+		.bc-heading--title {
+			margin: 1.875rem 0 0
+		}
+
+		.bc-form-row {
+			margin-top: 1rem
+		}
+	}
+}

@@ -1,0 +1,12 @@
+{% from "purchase-card/macro.njk" import bcPurchaseCard %}
+
+{% call bcPurchaseCard({
+    text: 'INV-00001020',
+    price: '32.99',
+    description: 'Online Introduction to ADR Assessment; Monthly membership; The Journey to Greener Arbitrations - What practical steps can we take to get there?',
+    date: '26 May 2022',
+    time: '09:33:45',
+    status: 'View my resources'
+}) %}
+    
+{% endcall %}

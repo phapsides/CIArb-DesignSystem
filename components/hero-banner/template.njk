@@ -1,0 +1,36 @@
+{% from 'image/macro.njk' import bcImage %}
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'prose/macro.njk' import bcProse %}
+{% from 'button/macro.njk' import bcButton %}
+
+<div class="bc-hero-banner__wrapper {%- if params.wrapper_classes %} {{ params.wrapper_classes }}{% endif %}">
+    <section
+        data-module="bc-hero-banner"
+        class="bc-hero-banner {%- if params.secondary_color %} bc-hero-banner--secondary-color{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}"
+        {%- if params.theme %} data-theme="{{ params.theme }}"{% endif %}
+        {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+        <div class="flex-container">
+            <div class="bc-hero-banner__body">
+                <div class="bc-hero-banner__content">
+                    {%- if params.back_button %}
+                        <div class="bc-hero-banner__back-btn">
+                            {{ bcButton(params.back_button) }}
+                        </div>
+                    {%- endif %}
+                    {{ bcHeading(params.heading) }} 
+                    {%- if caller %}
+                        {{ caller() }}
+                    {%- endif %}
+                    {%- if params.button %}
+                        <div class="bc-hero-banner__cta">
+                            {{ bcButton(params.button) }}
+                        </div>
+                    {%- endif %}
+                </div>
+            </div>
+        </div>
+        <div class="bc-hero-banner__media">
+            {{ bcImage(params.image) }}
+        </div>
+    </section>
+</div>

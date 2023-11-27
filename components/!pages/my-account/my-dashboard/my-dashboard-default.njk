@@ -1,0 +1,153 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My profile', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "card/macro.njk" import bcCard %}
+	{% from "button/macro.njk" import bcButton %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "avatar/macro.njk" import bcAvatar %}
+
+	<div class="ip-my-dashboard">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'My profile'
+		}) }}
+
+		{% call bcGrid({
+			classes: 'ip-my-dashboard__section',
+			size: '1/1'
+		}) %}
+			{% call bcCard({
+				profile: true,
+				button: {
+					appearance: 'primary',
+					text: 'Go to account details',
+					href: '#'
+				}
+			}) %}
+				{% call bcProse({
+					classes: 'bc-card--profile-prose'
+				}) %}
+					{{ bcAvatar({
+						src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+						alt: 'Michelle Smith'
+					}) }}
+					<div class="bc-card--profile-welcome">
+						<h2>Welcome Michelle</h2>
+						<p>Manage your personal details and communication preferences.</p>
+					</div>
+				{% endcall %}
+			{% endcall %}
+
+			<div class="ip-my-dashboard__event-section">
+
+				{{ bcHeading({
+					classes: 'fs-!-margin-bottom-2',
+					hierarchy: 2,
+					text: 'Upcoming events'
+				}) }}
+				
+				{% call bcEventCard({
+					href: '#',
+					heading: {
+						text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+						hierarchy: 3
+					},
+					image: {
+						src: ('/images/temp/event-temp-background.png' | path),
+						alt: ''
+					},
+					date: 'Thu, 30 June 2021',
+					time: '10:00',
+					location: 'London, UK',
+					price: 'XXX'
+				}) %}
+					{% call bcProse() %}
+						<p>
+							Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+						</p>
+					{% endcall %}
+				{% endcall %}
+			</div>
+
+		{% endcall %}
+				
+		{% call bcGrid({
+			classes: 'ip-my-dashboard__section fs-!-margin-top-5',
+			size: '1/2'
+		}) %}
+			<div>
+				{{ bcHeading({
+					classes: 'fs-!-margin-bottom-2',
+					hierarchy: 2,
+					text: 'Booked courses'
+				}) }}
+
+				<div class="ip-my-dashboard--courses">
+					{% call bcEventCard({
+						size: '1/1',
+						heading: {
+							text: 'Online Introduction to ADR Assessment',
+							hierarchy: 3
+						},
+						date: 'Thu, 30 June 2021',
+						time: '10:00',
+						location: 'London, UK',
+						price: 'XXX'
+					}) %}
+						{% call bcProse() %}
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+						{% endcall %}
+					{% endcall %}
+				</div>
+			</div>
+
+			{% call bcCard({
+				size: '1/2',
+				heading: {
+					text: 'Your current membership',
+					hierarchy: 2
+				},
+				button: {
+					appearance: 'primary',
+					text: 'View membership & billing',
+					href: '#'
+				}
+			}) %}
+				{% call bcProse() %}
+					<p><dt>Membership type: </dt><dd>Annual Subscription</dd></p>
+					<p><dt>Your next billing date is:</dt><dd>1 October 2021</dd></p>
+				{% endcall %}
+			{% endcall %}
+			
+		{% endcall %}
+	
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile', current: true },
+			{ href: '#', text: 'My events'},
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}

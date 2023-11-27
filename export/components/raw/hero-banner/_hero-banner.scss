@@ -1,0 +1,131 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+
+.bc-hero-banner {
+	position: relative;
+	overflow: hidden;
+	background-color: settings.$fs-canvas-background-color;
+	@media only screen and (min-width: 1025px) {
+		min-height: 34rem;
+	}
+	&__wrapper {
+		.flex-container {
+			max-width: 1440px;
+			display: flex;
+			flex-flow: row wrap;
+			margin-inline: 6vw;
+			@media only screen and (min-width: 1656px) {
+				margin-inline: auto;
+			}
+		}
+	}
+	&__back-btn {
+		.bc-button__label {
+			@include typography.fs-font-size(body);
+		}
+		.bc-button:focus {
+			outline: none !important;
+		}
+	}
+	&__media {
+		position: relative;
+		width: 100%;
+		height: 100%;
+		right: 0;
+		bottom: 0;
+		object-fit: cover;
+		@media only screen and (min-width: 1025px) {
+			position: absolute;
+			width: 45%;
+		}
+		.bc-image {
+			height: 100%;
+		}
+		.bc-image__image {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&__body {
+		width: 100%;
+		flex: 0 0 auto;
+		@media only screen and (min-width: 1025px) {
+			width: 48%;
+		}
+	}
+	&__content {
+		position: relative;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 100%;
+		z-index: 10;
+		padding: 4vh 0;
+		@media only screen and (min-width: 1025px) {
+			min-height: 28.125rem;
+			padding: 6vh 0;
+		}
+	}
+	&__cta {
+		margin-top: 4vh;
+		@media only screen and (min-width: 1025px) {
+			margin-top: 6vh;
+		}
+	}
+	.bc-heading {
+		line-height: 1.4;
+		margin-bottom: 1rem;
+		@media only screen and (min-width: 1025px) {
+			margin-bottom: 1.5rem;
+		}
+	}
+	&--secondary-color {
+		background-color: colors.fs-color(brand-secondary);
+		.bc-button[data-appearance="link"],
+		.bc-button[data-appearance="link"]:hover,
+		.bc-heading,
+		.bc-hero-banner__content {
+			color: colors.fs-color(white);
+		}
+		.bc-button[data-appearance="primary"] {
+			background-color: colors.fs-color(brand-primary-light);
+			border-color: colors.fs-color(brand-primary-light);
+			&:hover {
+				background-color: colors.fs-color(brand-primary);
+				border-color: colors.fs-color(brand-primary);
+			}
+		}
+	}
+	.bc-description-list {
+		margin: 0;
+
+		&__item {
+			display: flex;
+			margin-bottom: 1.5rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&__value {
+			@include typography.fs-font-size(body-mobile);
+			margin-left: 0.5rem;
+			margin-top: 0;
+		}
+
+		&__key {
+			color: colors.fs-color(brand-secondary);
+			width: 1.5rem;
+			display: flex;
+			justify-content: flex-start;
+		}
+		.bc-icon {
+			font-size: 16px;
+			line-height: 25px;
+		}
+	}
+}

@@ -1,0 +1,42 @@
+caller: |
+  `bcDescriptionList` accepts caller data for the internal content. Typically this will be one or more `bcDescriptionListItem` macros.
+  <br><br>
+  The `bcDescriptionListItem` macro accepts caller data for the value of the list item.
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: variants
+    type: array
+    description: |
+      **`bcDescriptionList` only.** An array of strings, describing stylistic variants of the component.
+      Accepted values:
+      * `striped` — Adds zebra stripes and extra padding to the list items.
+      * `wide` — Displays key/value labels inline with one another, rather than stacked on top of each other.
+  - name: key
+    type: object
+    required: true
+    description: |
+      **`bcDescriptionListItem` only.** The key for the list item.
+    params:
+      - name: html
+        type: string
+        required: true
+        description: HTML to display for the item key. Not required if `text` is set. If `html` is provided, the `text` parameter is ignored.
+      - name: text
+        type: string
+        required: true
+        description: Text to display for the item key. Not required if `html` is set. If `html` is provided, the `text` parameter is ignored.
+  - name: html
+    type: string
+    required: true
+    description: |
+      **`bcDescriptionListItem` only.** HTML to display for the item value. Not required if `text` or call data is set. If call data is set, this parameter is ignored.
+  - name: text
+    type: string
+    required: true
+    description: |
+      **`bcDescriptionListItem` only.** Text to display for the item value. Not required if `html` or call data is set. If call data is set, this parameter is ignored.

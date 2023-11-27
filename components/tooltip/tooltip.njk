@@ -1,0 +1,52 @@
+{% from "tooltip/macro.njk" import bcTooltip, bcTooltipContextMenu, bcTooltipCTA %}
+
+<!-- Demo div, as tooltips should always appear to the right of other content. -->
+<div style="float:right;padding:2rem;">
+
+	{{ bcTooltip({
+		id: 'ShortTooltip',
+		type: 'help',
+		text: 'Get help.'
+	}) }}
+	
+</div>
+<div style="float:right;padding:2rem;">
+
+	{{ bcTooltip({
+		id: 'ShortTooltip',
+		type: 'help',
+		closeButton: true,
+		text: 'This is the content of a rather long tooltip. Adipisicing excepteur dolor officia eiusmod eiusmod sint non ad laborum quis ut. Aute voluptate ad in minim officia amet deserunt qui eiusmod. Occaecat cupidatat ex esse aliqua. Enim esse non enim aute dolor in nisi consectetur. Adipisicing nulla cupidatat aliqua anim occaecat consequat fugiat consectetur ipsum occaecat magna ut et.'
+	}) }}
+
+</div>
+<div style="float:right;padding:2rem;">
+
+	{% call bcTooltip({
+		id: 'TooltipContextMenu',
+		type: 'menu'
+	}) %}
+		{{ bcTooltipContextMenu({
+			items: [
+				{ href: '#', text: 'Follow' },
+				{ href: '#', text: 'Already visited' },
+				{ href: '#', text: 'Not for me' },
+				{ text: "This one's a button" }
+			]
+		}) }}
+	{% endcall %}
+
+</div>
+<div style="float:right;padding:2rem;">
+	
+	{% call bcTooltip({
+		id: 'TooltipCTA',
+		type: 'star'
+	}) %}
+		<div>Ut laboris ea adipisicing dolor elit esse duis officia laborum.</div>
+		{{ bcTooltipCTA({
+			text: 'Undo'
+		}) }}
+	{% endcall %}
+	
+</div>

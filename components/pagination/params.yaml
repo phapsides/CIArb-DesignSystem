@@ -1,0 +1,30 @@
+params:
+  - name: attributes
+    type: object
+    required: false
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    required: false
+    description: Classes to add to the component.
+  - name: items
+    type: array
+    required: true
+    description: An array of objects describing the links in the pagination.
+    params:
+      - name: html
+        type: string
+        required: true
+        description: HTML to display for this item. Not required if `text` is set. If `html` is provided, the `text` parameter is ignored.
+      - name: text
+        type: string
+        required: true
+        description: Text to display for this item. Not required if `html` is set. If `html` is provided, the `text` parameter is ignored.
+      - name: href
+        type: string
+        required: true
+        description: The URL the pagination links to.
+      - name: current
+        type: boolean
+        default: false
+        description: If `true`, marks the current link as the current page. This will almost always be the last item in the array.

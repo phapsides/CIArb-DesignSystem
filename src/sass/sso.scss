@@ -1,0 +1,250 @@
+@use "brand";
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/reset";
+@use "helpers/typography";
+@use "helpers/measurements";
+// @use "helpers/media-queries";
+@use "objects/forms";
+@use "core/webfonts";
+@use "button/button";
+@use "checkbox/checkbox";
+@use "form/form";
+@use "heading/heading";
+@use "input/input";
+@use "objects/lists";
+
+body {
+	@include typography.fs-typography-common;
+	@include typography.fs-font-stack(sans);
+	@include typography.fs-font-size(body);
+	margin: 0;
+	color: settings.$fs-text-color;
+	// background-color: settings.$fs-body-background-color;
+}
+
+.it-sso {
+	position: relative;
+	&__backdrop {
+		width: 100%;
+		height: auto;
+		position: relative;
+		top: 0;
+		left: 0;
+		@media only screen and (min-width: 1025px) {
+			height: 100%;
+			position: fixed;
+			width: 100%;
+			left: 0;
+		}
+	}
+	&__background {
+		width: 100%;
+		height: 100%;
+		position: relative;
+		top: 0;
+		left: 0;
+		object-fit: cover;
+		@media only screen and (min-width: 1025px) {
+			position: absolute;
+		}
+	}
+	&__inner {
+		width: 100%;
+		position: relative;
+		z-index: 1;
+		max-width: none;
+		min-height: 0;
+		@media only screen and (min-width: 1025px) {
+			max-width: 50%;
+			min-height: 100vh;
+		}
+	}
+	&__primary {
+		padding: 4vh 4vw;
+		@media only screen and (min-width: 1025px) {
+			padding: 8vh 12vw;
+		}
+	}
+	&__body {
+		max-width: 20rem;
+		ul {
+			@extend .fs-list;
+		}
+		dl {
+			@extend .fs-list;
+			&.bc-list--dashed {
+				> dd {
+					margin-left: 0;
+					&:before {
+						content: "-";
+						display: inline-block;
+						margin: 0 0 0 - (settings.$fs-gutter-half);
+						margin-right: 0.5rem;
+					}
+				}
+			}
+		}
+		.helpLink,
+		.rememberMe,
+		.divider {
+			display: none !important;
+		}
+		.TextBox,
+		.Password,
+		.entry-item,
+		.password,
+		#forgotPassword {
+			@extend .bc-form-row;
+		}
+	}
+	label {
+		@extend .bc-label;
+		margin-top: 1.5rem;
+	}
+	input[type="text"],
+	input[type="email"],
+	input[type="password"] {
+		@extend .bc-input;
+		height: auto;
+		width: auto;
+		&::placeholder {
+			color: transparent;
+		}
+	}
+	button {
+		@extend .bc-button;
+		margin-top: 2rem;
+		cursor: pointer;
+		// Primary Button styles
+		&#continue,
+		&#next {
+			color: colors.fs-color(white);
+			border-color: colors.fs-color(brand-primary);
+			background-color: colors.fs-color(brand-primary);
+			cursor: pointer;
+			&:hover,
+			&:focus {
+				border-color: colors.fs-color(brand-secondary);
+				background-color: colors.fs-color(brand-secondary);
+			}
+		}
+		// Secondary Button styles
+		&.sendButton {
+			color: colors.fs-color(brand-primary);
+			border-color: colors.fs-color(brand-primary);
+			&:hover,
+			&:focus {
+				box-shadow: 0 0 0 colors.fs-color(brand-primary);
+			}
+		}
+	}
+	#cancel {
+		background-color: transparent;
+		text-decoration: none;
+	}
+
+	#cancel,
+	#forgotPassword {
+		color: colors.fs-color(brand-primary);
+		margin: 0;
+		font-weight: 600;
+		border: none;
+		padding: 0.25rem 1rem;
+		&:hover {
+			color: colors.fs-color(brand-secondary);
+		}
+	}
+	// Hide the original instance
+	.password-label {
+		#forgotPassword {
+			display: none;
+		}
+	}
+	.error {
+		p {
+			@extend .bc-error;
+			margin: 0 0 0.5rem;
+		}
+	}
+	.verificationInfoText {
+		@extend .bc-error;
+		margin-bottom: 2rem;
+	}
+	#forgotPassword {
+		padding: 0.25rem 0;
+		margin-top: settings.$fs-gutter-half;
+		text-decoration: none;
+	}
+	.intro {
+		margin-bottom: settings.$fs-gutter;
+		p,
+		h2 {
+			@extend .bc-heading--jumbotron;
+		}
+	}
+	.entry {
+		margin-bottom: settings.$fs-gutter-half;
+		@media only screen and (min-width: 1025px) {
+			margin-bottom: settings.$fs-gutter;
+		}
+	}
+	.create {
+		padding: 2rem 0 0;
+		width: 100%;
+		margin-top: 3.5rem;
+	}
+	.create,
+	.have {
+		p {
+			@extend .bc-heading--title;
+			margin: 0;
+		}
+		#createAccount {
+			font-size: measurements.fs-px-to-rem(18px);
+			font-weight: 600;
+			display: block;
+			color: colors.fs-color(brand-primary);
+			margin: 1.5rem 0 0;
+			text-decoration: none;
+			&:hover {
+				color: colors.fs-color(brand-secondary);
+			}
+		}
+	}
+	.have {
+		margin-top: 3.5rem;
+		#haveAccount {
+			color: colors.fs-color(brand-primary);
+			display: block;
+			margin: 0;
+			font-size: measurements.fs-px-to-rem(18px);
+			font-weight: 600;
+			border: none;
+			text-decoration: none;
+			padding: 0;
+			margin-top: 1.5rem;
+			&:hover {
+				color: colors.fs-color(brand-secondary);
+			}
+		}
+	}
+	#attributeVerification {
+		.buttons {
+			padding-top: 1.5rem;
+		}
+	}
+}
+
+// Hide error messages
+#attributeList {
+	ul li .attrEntry .itemLevel {
+		display: none;
+	}
+	ul li .attrEntry.validate .itemLevel[aria-hidden="false"] {
+		display: block;
+	}
+	ul li .attrEntry .itemLevel.show[aria-hidden="false"] {
+		display: block;
+	}
+}

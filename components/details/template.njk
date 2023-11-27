@@ -1,0 +1,38 @@
+{% from "heading/macro.njk" import bcHeading %}
+{% from "icon/macro.njk" import bcIcon %}
+{% from "avatar/macro.njk" import bcAvatar %}
+
+<details
+	data-module="bc-details"
+	class="bc-details {%- if params.classes %} {{ params.classes }}{% endif %} {%- if params.read_more %} bc-details--read-more{% endif %}"
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+	<summary>
+		<div class="bc-details__summary">
+			{%- if params.avatar %}
+				{{ bcAvatar({ alt: params.name } | merge(params.avatar)) }}
+			{% endif %}
+			<div class="bc-details__heading">
+				<div class="bc-details__heading-inner">
+					{{ (params.heading.html | safe) if params.heading.html else bcHeading(params.heading) }}
+					{%- if params.job_description %}
+						<span>{{params.job_description}}</span>
+					{% endif %}
+					{%- if params.read_more %} 
+						{# TODO: Please remove helper classes from component #}
+						<p class="fs-!-margin-top-1 bc-button" data-appearance="link">
+							Read more 
+							<i class="fa-regular fa-plus bc-details__icon fs-!-margin-left-1"></i>
+						</p>
+					{% endif %}
+				</div>
+			</div>
+			{{ bcIcon({
+				classes: "bc-details__icon",
+				variant: "chevron-down"
+			}) }}
+		</div>
+	</summary>
+	<div class="bc-details__body">
+		{{ caller() if caller }}
+	</div>
+</details>

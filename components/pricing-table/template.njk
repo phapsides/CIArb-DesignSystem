@@ -1,0 +1,54 @@
+<table
+    data-module="bc-pricing-table"
+    class="bc-pricing-table {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <thead>
+        <tr>
+            <th>Day 1</th>
+            <th>Day 2</th>
+            <th>Day 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£50</div>
+                    <small class="bc-pricing-table__label">Session 1</small>
+                </div>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£50</div>
+                    <small class="bc-pricing-table__label">Session 2</small>
+                </div>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£15</div>
+                    <small class="bc-pricing-table__label">Dinner</small>
+                </div>
+            </td>
+            <td>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£50</div>
+                    <small class="bc-pricing-table__label">Full day</small>
+                </div>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£20.50</div>
+                    <small class="bc-pricing-table__label">Add-on</small>
+                </div>
+            </td>
+            <td>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£80</div>
+                    <small class="bc-pricing-table__label">Full day</small>
+                </div>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£20.50</div>
+                    <small class="bc-pricing-table__label">Add-on</small>
+                </div>
+                <div class="bc-pricing-table__item">
+                    <div class="bc-pricing-table__item-price">£10</div>
+                    <small class="bc-pricing-table__label">Add-on</small>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>

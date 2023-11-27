@@ -1,0 +1,28 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.ip-news-listing {
+    margin-top: 0;
+
+	@include media-queries.fs-mq($from: tablet) {
+		margin-top: 6rem;
+	}
+
+	&__filter-results {
+		margin-top: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin: 0;
+		}
+	}
+    .bc-form {
+        margin-bottom: 2rem;
+    }
+    .bc-news__grid {
+        grid-template-columns: 1fr;
+    }
+    .bc-pagination {
+		margin-top: 3rem;
+	}
+}

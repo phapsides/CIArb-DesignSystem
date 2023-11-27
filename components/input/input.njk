@@ -1,0 +1,56 @@
+{% from "input/macro.njk" import bcInput %}
+
+{{ bcInput({
+    name: 'ExampleInput',
+    label: { text: 'Input' }
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInput',
+    label: { text: 'Input' },
+    value: 'Example'
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputMask',
+    label: { text: 'Input with prefix and suffix' },
+    inputPrefix: "£",
+    inputSuffix: "per unit"
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputLength',
+    label: { text: 'Input with maximum size' },
+    length: 4
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputHint',
+    label: { text: 'Input with hint' },
+    hint: { text: 'This is a short line of hint copy.' }
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputError',
+    label: { text: 'Input with error' },
+    error: { text: 'This is a short line of error copy.' }
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputError',
+    label: { text: 'Input with error' },
+    hint: { text: 'This is a short line of hint copy.' },
+    error: { text: 'This is a short line of error copy.' }
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputDisabled',
+    label: { text: 'Disabled input' },
+    disabled: true
+}) }}
+
+{{ bcInput({
+    name: 'ExampleInputTextarea',
+    type: 'textarea',
+    label: { text: 'Textarea' }
+}) }}

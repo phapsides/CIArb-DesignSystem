@@ -1,0 +1,29 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.bc-grid {
+	display: grid;
+	grid-gap: settings.$fs-gutter-half;
+	// grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+
+	@include media-queries.fs-mq($from: tablet) {
+		// grid-template-columns: repeat(auto-fill, minmax(369px, 1fr));
+		grid-gap: settings.$fs-gutter;
+
+		&[data-size="1/1"] {
+			grid-template-columns: 1fr;
+		}
+
+		&[data-size="1/2"] {
+			grid-template-columns: 1fr 1fr;
+		}
+
+		&[data-size="1/3"] {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		&[data-size="1/4"] {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+}

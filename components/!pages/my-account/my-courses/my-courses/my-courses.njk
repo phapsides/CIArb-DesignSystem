@@ -1,0 +1,116 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My courses', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "button/macro.njk" import bcButton %}
+
+	<div class="ip-my-courses">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'Courses'
+		}) }}
+
+		{% call bcGrid({
+			size: '1/1'
+		}) %}
+
+			{{ bcHeading({
+				hierarchy: 2,
+				text: 'You have booked 2 courses'
+			}) }}
+			
+			{% call bcEventCard({
+				classes: 'bc-event-card--single-column',
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2022',
+				time: '10:00 GMT',
+				location: 'London, UK',
+				price: 'XXX',
+				button: {
+					classes: 'fs-!-margin-top-4 fs-!-margin-right-3',
+					appearance: 'primary',
+					href: '#',
+					text: 'View details'
+				}
+			}) %}
+			{% call bcProse() %}
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+			{% endcall %}
+			{% endcall %}
+
+			{% call bcEventCard({
+				classes: 'bc-event-card--single-column',
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2022',
+				time: '10:00 GMT',
+				location: 'London, UK',
+				price: 'XXX',
+				button: {
+					classes: 'fs-!-margin-top-4 fs-!-margin-right-3',
+					appearance: 'primary',
+					href: '#',
+					text: 'View details'
+				}
+			}) %}
+			{% call bcProse() %}
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+			{% endcall %}
+			{% endcall %}
+
+		{% endcall %}
+
+		<div class="ip-my-courses__past-courses">
+			{{ bcHeading({
+				hierarchy: 2,
+				text: 'Past courses'
+			}) }}
+
+			{% call bcProse() %}
+				<p>Looks like you haven’t attended any!</p>
+				<p>Get started on finding an exciting event near you.</p>
+			{% endcall %}
+
+			{{ bcButton({
+                appearance: 'primary',
+                text: 'Find an event'
+            }) }}
+		</div>
+	</div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My courses', current: true },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}

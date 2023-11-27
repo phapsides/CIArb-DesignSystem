@@ -1,0 +1,6 @@
+<img
+    data-module="bc-logo"
+    class="bc-logo {%- if params.classes %} {{ params.classes }}{% endif %}"
+    alt="{{ params.alt }}"
+	src="{{ params.src }}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>

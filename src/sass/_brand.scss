@@ -1,0 +1,222 @@
+// Colours
+$color-white: #fff;
+$color-black: #000;
+
+$ciarb-color-red: #be0000;
+$ciarb-color-yellow: #fe9c25;
+$ciarb-color-light-red: #de2d25;
+$ciarb-color-dark-red: #77000c;
+$ciarb-color-light-grey: #e8e8e8;
+$ciarb-color-grey: #696969;
+$ciarb-color-mid-grey: #b7b7b7;
+$ciarb-color-page-background: #ffffff;
+$ciarb-color-component-background: #f7f3f0;
+// $ciarb-color-border: #ddd;
+$ciarb-color-context-danger: #da1e27;
+// $ciarb-color-context-success: #bb0e7b;
+$ciarb-color-context-warning: #be0000;
+$ciarb-color-context-info: #be0000;
+
+// Brand fonts
+$ciarb-font-sans: (
+	"Poppins",
+	ui-sans-serif,
+	system-ui,
+	"Apple Color Emoji",
+	"Segoe UI Emoji",
+	"Segoe UI Symbol"
+);
+
+// Font scale
+$ciarb-font-scale: (
+	h1: (
+		null: (
+			font-size: 56px,
+			line-height: 66px,
+			font-weight: 300,
+		),
+	),
+	h1-mobile: (
+		null: (
+			font-size: 40px,
+			line-height: 52px,
+			font-weight: 300,
+		),
+	),
+	h2: (
+		null: (
+			font-size: 34px,
+			line-height: 42px,
+			font-weight: 300,
+		),
+	),
+	h2-mobile: (
+		null: (
+			font-size: 30px,
+			line-height: 40px,
+			font-weight: 600,
+		),
+	),
+	h3: (
+		null: (
+			font-size: 22px,
+			line-height: 32px,
+			font-weight: 600,
+		),
+	),
+	h3-mobile: (
+		null: (
+			font-size: 18px,
+			line-height: 24px,
+			font-weight: 600,
+		),
+	),
+	h4: (
+		null: (
+			font-size: 18px,
+			line-height: 27px,
+			font-weight: 600,
+		),
+	),
+	h4-mobile: (
+		null: (
+			font-size: 16px,
+			line-height: 24px,
+			font-weight: 600,
+		),
+	),
+	body: (
+		null: (
+			font-size: 18px,
+			line-height: 30px,
+			font-weight: 300,
+		),
+	),
+	body-mobile: (
+		null: (
+			font-size: 16px,
+			line-height: 24px,
+			font-weight: 300,
+		),
+	),
+	label: (
+		null: (
+			font-size: 18px,
+			line-height: 27px,
+			font-weight: 600,
+		),
+	),
+	label-mobile: (
+		null: (
+			font-size: 16px,
+			line-height: 24px,
+			font-weight: 600,
+		),
+	),
+	nav-links: (
+		null: (
+			font-size: 16px,
+			line-height: 30px,
+			font-weight: 600,
+		),
+	),
+	breadcrumbs: (
+		null: (
+			font-size: 14px,
+			line-height: 21px,
+			font-weight: 300,
+		),
+	),
+	button: (
+		null: (
+			font-size: 16px,
+			line-height: 22px,
+			font-weight: 500,
+		),
+	),
+);
+
+// Spacing scale
+$ciarb-spacing: (
+	0: (
+		null: 0,
+	),
+	1: (
+		null: 8px,
+	),
+	2: (
+		null: 16px,
+	),
+	3: (
+		null: 24px,
+	),
+	4: (
+		null: 32px,
+	),
+	5: (
+		null: 40px,
+	),
+	6: (
+		null: 48px,
+	),
+	7: (
+		null: 56px,
+	),
+	8: (
+		null: 64px,
+	),
+	9: (
+		null: 72px,
+	),
+	10: (
+		null: 80px,
+	),
+);
+
+@use "@querkmachine/felafel/src/scss/settings"with (
+	$fs-enable-rounded-corners: true,
+	$fs-merge-config-maps: false,
+	$fs-merge-breakpoints: true,
+	$fs-canvas-background-color: $ciarb-color-component-background,
+	$fs-page-width: 1440px,
+	$fs-border-radius: 0,
+	$fs-color-palette: (
+		white: $color-white,
+		black: $color-black,
+		text: $color-black,
+		disabled: $ciarb-color-light-grey,
+		btn-disabled: $ciarb-color-mid-grey,
+		// border: $ciarb-color-border,
+		outline: $ciarb-color-yellow,
+		brand-primary: $ciarb-color-red,
+		brand-primary-light: $ciarb-color-light-red,
+		brand-secondary: $ciarb-color-dark-red,
+		link: $ciarb-color-red,
+		link-hover: $ciarb-color-dark-red,
+		furniture: $ciarb-color-page-background,
+		hint: $ciarb-color-grey,
+		danger: $ciarb-color-context-danger,
+		// success: $ciarb-color-context-success,
+		warning: $ciarb-color-context-warning,
+		info: $ciarb-color-context-info
+	),
+	$fs-text-color: $color-black,
+	$fs-text-color-heading: $ciarb-color-dark-red,
+	$fs-font-sizes: $ciarb-font-scale,
+	$fs-font-stacks: (
+		sans: (
+			stack: $ciarb-font-sans,
+			light: 300,
+			regular: 400,
+			bold: 600
+		),
+	),
+	$fs-spacing: $ciarb-spacing,
+	$fs-border-width-form-element: 2px,
+	$fs-form-element-border-color: $ciarb-color-dark-red,
+	$fs-form-element-text-color: $color-black,
+	$fs-form-element-background-color: $ciarb-color-page-background,
+	$fs-form-element-vertical-padding: 1,
+	$fs-form-element-horizontal-padding: 2,
+	$fs-font-sizes-root: 16px
+);

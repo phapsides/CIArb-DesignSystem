@@ -1,0 +1,7 @@
+<div
+    data-module="bc-grid"
+    class="bc-grid {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- if params.size %} data-size="{{ params.size }}"{% endif %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{ caller() if caller }}
+</div>

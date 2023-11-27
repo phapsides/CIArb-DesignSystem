@@ -1,0 +1,155 @@
+{% from "agenda/macro.njk" import bcAgenda %}
+
+{{ bcAgenda({
+    bands: [
+        {
+            datetimeStart: '09:00',
+            title: 'Registration, tea and coffee'
+        },
+        {
+            datetimeStart: '09:30',
+            title: 'Welcome and introduction'
+        },
+        {
+            datetimeStart: '09:30',
+            datetimeEnd: '13:45',
+            title: 'This is a title',
+            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.',
+            sessions: [
+                {
+                    datetime: '09:40',
+                    title: 'This is a session title',
+                    description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                },
+                {
+                    datetime: '10:20',
+                    title: 'This is a session title',
+                    description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                },
+                {
+                    datetime: '11:00',
+                    title: 'Tea and coffee break'
+                },
+                {
+                    datetime: '11:00',
+                    title: 'This is a session title',
+                    description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                },
+                {
+                    datetime: '12:10',
+                    title: 'This is a session title',
+                    description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                },
+                {
+                    datetime: '12:50',
+                    title: 'Panel discussion'
+                },
+                {
+                    datetime: '13:05',
+                    title: 'Lunch'
+                }
+            ]
+        },
+        {
+            datetimeStart: '13:55',
+            datetimeEnd: '17:45',
+            title: 'This is a title',
+            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.',
+            sessions: [
+                {
+                    datetime: '09:40',
+                    title: 'Rotation 1',
+                    workshops: [
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        }
+                    ]
+                },
+                {
+                    datetime: '14:55',
+                    title: 'Rotation 2',
+                    workshops: [
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        }
+                    ]
+                },
+                {
+                    datetime: '14:55',
+                    title: 'Rotation 2',
+                    workshops: [
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        }
+                    ]
+                },
+                {
+                    datetime: '15:55',
+                    title: 'Tea and coffee break'
+                },
+                {
+                    datetime: '16:25',
+                    title: 'Rotation 3',
+                    workshops: [
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        },
+                        {
+                            title: 'This is a workshop title',
+                            description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+                        }
+                    ]
+                },
+                {
+                    datetime: '17:25',
+                    title: 'Panel discussion'
+                },
+                {
+                    datetime: '17:35',
+                    title: 'Concluding remarks and close of meeting'
+                }
+            ]
+        },
+        {
+            datetimeStart: '17:45',
+            title: 'Drinks reception - all attendees welcome'
+        },
+        {
+            datetimeStart: '19:00',
+            description: 'Future of UKY',
+            title: 'Annual section dinner'
+        }
+    ]
+}) }}

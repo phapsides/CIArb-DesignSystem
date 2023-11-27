@@ -1,0 +1,60 @@
+{% from "hero-banner/macro.njk" import bcHeroBanner %}
+{% from "prose/macro.njk" import bcProse %}
+
+{% call bcHeroBanner({
+    heading: {
+        text: 'Membership types',
+        hierarchy: 1
+    },
+    image: {
+        src: '/images/temp/membership-types.jpg',
+        alt: ''
+    },
+    back_button: {
+        appearance: 'link',
+        href: '#',
+        text: 'Membership'
+    },
+    button: {
+        appearance: 'primary',
+        href: '#',
+        text: 'Primary CTA'
+    }
+    }) %}
+    {% call bcProse() %}
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua.
+        </p>
+    {% endcall %}
+{% endcall %}
+
+
+{% call bcHeroBanner({
+    secondary_color: true,
+    heading: {
+        text: 'Membership types',
+        hierarchy: 1
+    },
+    image: {
+        src: '/images/temp/membership-types.jpg',
+        alt: ''
+    },
+    back_button: {
+        appearance: 'link',
+        href: '#',
+        text: 'Membership'
+    },
+    button: {
+        appearance: 'primary',
+        href: '#',
+        text: 'Primary CTA'
+    }
+    }) %}
+    {% call bcProse() %}
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+            aliqua.
+        </p>
+    {% endcall %}
+{% endcall %}

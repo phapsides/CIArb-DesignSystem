@@ -1,0 +1,66 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/forms";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+@use "sass:math";
+
+.bc-checkbox {
+	$self: &;
+	$input-size: 1rem;
+	$input-line-height: 2rem;
+	$target-size: 44px;
+
+	&__item {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+
+	&__body {
+		margin-top: 0.25rem;
+	}
+
+	&__input {
+		@include forms.bc-checkbox(
+			$visual-size: $input-size,
+			$target-size: $target-size
+		);
+
+		&::before {
+			border-radius: 0;
+		}
+
+		&:after {
+			border-color: colors.fs-color(brand-secondary);
+		}
+
+		&:checked:not(:disabled) {
+			&:before {
+				background-color: colors.fs-color(white);
+			}
+		}
+	}
+
+	&__label {
+		@include typography.fs-font-size(label);
+		display: inline-block;
+		padding-block-start: calc((#{$target-size} - #{$input-line-height}) / 3);
+		color: colors.fs-color(black);
+	}
+
+	&[data-layout="horizontal"] {
+		display: flex;
+		flex-direction: column;
+
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+			flex-wrap: wrap;
+		}
+
+		> * {
+			margin-right: 3rem;
+		}
+	}
+}

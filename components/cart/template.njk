@@ -1,0 +1,61 @@
+{% from "button/macro.njk" import bcButton %}
+{% from "image/macro.njk" import bcImage %}
+{% from "stepper/macro.njk" import bcStepper %}
+{% from "alert/macro.njk" import bcAlert %}
+
+<div 
+    data-module="bc-cart" 
+    class="bc-cart {%- if params.extended %} bc-cart--extended{% endif %}{%- if params.classes %} {{ params.classes }}{% endif %}" 
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}
+    {%- if params.position %} data-position="{{ params.position }}"{% endif %}
+    {%- if params.image %} {% endif %}
+>
+    <ul class="bc-cart__list">
+        {%- for item in params.items %}
+            <li class="bc-cart__item{%- if item.invoiced %} bc-cart__invoiced-item{% endif %}">
+                {%- if item.image %}
+                    {{ bcImage(item.image) }}
+                {% endif %}
+                {%- if item.name %}
+                    <div class="bc-cart__item-inner">
+                        <p class="bc-cart__item-name">{{ item.name }}</p>
+                        {%- if not params.position %}
+                            {%- if item.invoiced %}
+                               {% call bcAlert({
+                                    variant: 'warning'
+                                }) %}
+                                    <p>This product is eligible to be paid by invoice by your company.</p>
+                                {% endcall %}
+                            {% endif %}
+                            {%- if item.details and not item.invoiced %}
+                                 <p class="bc-cart__item-details">{{ item.details }}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                {% endif %}
+                {%- if not item.position and item.stepper %}
+                    <div class="bc-cart__item-quantity">
+                        {{ bcStepper(item.stepper) }}
+                    </div>
+                {% endif %}
+                {%- if item.price %}
+                    <div class="bc-cart__item-total">
+                        <p class="bc-cart__item-price">{{ item.price }}</p> 
+                        {% if not item.position and item.originalPrice %}
+                            <p class="bc-cart__item-original-price">
+                                {{ item.originalPrice }}
+                            </p>
+                        {% endif %}
+                        {%- if not item.position %}
+                            {{ bcButton({
+                                classes: 'bc-cart__item-remove',
+                                appearance: 'link',
+                                text: 'Remove'
+                            }) }}
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </li>
+        {%- endfor %}
+    </ul>
+</div>

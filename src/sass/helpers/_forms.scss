@@ -1,0 +1,474 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/a11y";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "objects/forms";
+
+@use "sass:color";
+@use "sass:math";
+
+@forward "@querkmachine/felafel/src/scss/helpers/forms";
+
+/**
+ * COMMON TO ALL INPUT TYPES 
+ */
+
+@mixin _bc-input-common(
+	$border-width: settings.$fs-border-width-form-element,
+	$border-color: settings.$fs-form-element-border-color,
+	$border-radius: settings.$fs-form-element-border-radius,
+	$text-color: settings.$fs-form-element-text-color,
+	$background-color: settings.$fs-form-element-background-color
+) {
+	@include spacing.fs-responsive-margin(0, $direction: all);
+	border: $border-width solid $border-color;
+	border-radius: $border-radius;
+	color: $text-color;
+	background-color: $background-color;
+	box-shadow: none;
+	font-family: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: 300;
+	line-height: inherit;
+	height: 54px;
+}
+
+@mixin _bc-input-disabled {
+	background-color: colors.fs-color(furniture);
+}
+
+@mixin _bc-input-focus {
+	@include a11y.fs-focus-ring;
+}
+
+@mixin _bc-input-error {
+	outline: settings.$fs-border-width-form-element solid colors.fs-color(danger);
+}
+
+/**
+ * INPUT MASKS
+ */
+
+@mixin bc-input-mask {
+	@include _bc-input-common;
+	@include spacing.fs-responsive-padding(
+		settings.$fs-form-element-horizontal-padding,
+		$direction: inline
+	);
+	padding-block: 0.125rem;
+	white-space: nowrap;
+}
+
+/**
+ * TEXT-LIKE INPUTS
+ */
+
+@mixin bc-input-text {
+	@include _bc-input-common;
+	@include spacing.fs-responsive-padding(
+		settings.$fs-form-element-horizontal-padding,
+		$direction: inline
+	);
+	inline-size: 100%;
+	padding-block: 0.5rem;
+	appearance: textfield;
+
+	&[type="number"] {
+		&::-webkit-inner-spin-button,
+		&::-webkit-outer-spin-button {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+			margin: 0;
+		}
+	}
+
+	&[type="search"] {
+		appearance: none;
+
+		&::-webkit-search-cancel-button,
+		&::-webkit-search-decoration {
+			-webkit-appearance: none;
+			-moz-appearance: none;
+			appearance: none;
+		}
+	}
+
+	&::placeholder {
+		color: colors.fs-color(black);
+	}
+
+	&[aria-invalid="true"] {
+		@include _bc-input-error;
+	}
+
+	&:focus {
+		@include _bc-input-focus;
+	}
+
+	&:disabled {
+		@include _bc-input-disabled;
+	}
+}
+
+/**
+ * SELECT INPUT
+ */
+
+@mixin bc-select {
+	@include _bc-input-common;
+	@include spacing.fs-responsive-padding(
+		settings.$fs-form-element-vertical-padding,
+		$direction: block
+	);
+	padding-inline: 1.25rem;
+	inline-size: 100%;
+	appearance: none;
+
+	&[aria-invalid="true"] {
+		@include _bc-input-error;
+	}
+
+	&:focus {
+		@include _bc-input-focus;
+	}
+
+	&:disabled {
+		@include _bc-input-disabled;
+	}
+}
+
+/**
+ * CHECKBOXES AND RADIOS
+ */
+
+@mixin _bc-check-radio-input(
+	$visual-size,
+	$target-size,
+	$border-radius,
+	$accent-color
+) {
+	$input-offset: calc((#{$target-size} - #{$visual-size}) * 0.5);
+	block-size: $target-size;
+	inline-size: $target-size;
+	margin: 0;
+	border-radius: $border-radius;
+	position: relative;
+	margin-block-start: 0;
+	margin-inline-start: calc(0px - #{$input-offset});
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+
+	&::before,
+	&::after {
+		content: "";
+		position: absolute;
+	}
+
+	&::before {
+		@include _bc-input-common($border-radius: $border-radius);
+		block-size: $visual-size;
+		inline-size: $visual-size;
+		position: absolute;
+		inset: $input-offset;
+	}
+
+	&::after {
+		opacity: 0;
+	}
+
+	&:checked {
+		&:not(:disabled)::before {
+			background-color: $accent-color;
+		}
+
+		&::after {
+			opacity: 1;
+		}
+	}
+
+	&:hover,
+	&:focus {
+		&:not(:disabled) {
+			background-color: color.change($accent-color, $alpha: 0.15);
+		}
+	}
+
+	&:focus {
+		outline: 0;
+
+		&::before {
+			@include _bc-input-focus;
+		}
+	}
+
+	&:disabled::before {
+		@include _bc-input-disabled;
+	}
+}
+
+@mixin _bc-checkbox-check(
+	$stroke-color,
+	$stroke-width,
+	$stroke-length,
+	$offset-top,
+	$offset-left
+) {
+	block-size: $stroke-length;
+	inline-size: $stroke-length;
+	// border-width: 0;
+	// border-left-width: $stroke-width; // Does not change for RTL
+	// border-bottom-width: $stroke-width; // Does not change for RTL
+	// border-style: solid;
+	// border-color: $stroke-color;
+	position: absolute;
+	top: $offset-top; // Does not change for RTL
+	left: $offset-left; // Does not change for RTL
+	background-color: settings.$fs-form-element-border-color;
+	transform: translate(-50%, -50%);
+	transform-origin: 0 0;
+}
+
+@mixin bc-checkbox(
+	$visual-size: settings.$fs-check-radio-size,
+	$target-size: 44px,
+	$border-radius: 0,
+	// settings.$fs-form-element-border-radius
+	$check-color: white,
+	$check-background-color: white,
+	$check-stroke-ratio: 0.6,
+	$check-stroke-width: false,
+	$check-offset-top: 50%,
+	$check-offset-left: 50%
+) {
+	accent-color: $check-background-color;
+
+	@supports (appearance: none) {
+		@include _bc-check-radio-input(
+			$visual-size: $visual-size,
+			$target-size: $target-size,
+			$border-radius: $border-radius,
+			$accent-color: $check-background-color
+		);
+
+		&::after {
+			$check-long: $visual-size * $check-stroke-ratio;
+			$check-short: $check-long * 0.75;
+			$check-stroke: if(
+				$check-stroke-width,
+				$check-stroke-width,
+				$check-short * 0.5
+			);
+			@include _bc-checkbox-check(
+				$stroke-color: $check-color,
+				$stroke-width: $check-stroke,
+				$stroke-length: $check-short,
+				$offset-top: $check-offset-top,
+				$offset-left: $check-offset-left
+			);
+		}
+	}
+}
+
+@mixin _bc-radio-dot($dot-color, $dot-size, $dot-border-radius) {
+	block-size: $dot-size;
+	inline-size: $dot-size;
+	border-radius: $dot-border-radius;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	background-color: $dot-color;
+	transform: translate(-50%, -50%);
+}
+
+@mixin bc-radio(
+	$visual-size: settings.$fs-check-radio-size,
+	$target-size: 44px,
+	$border-radius: 50%,
+	$check-color: white,
+	$check-background-color: black,
+	$check-stroke-ratio: 0.6
+) {
+	accent-color: $check-background-color;
+
+	@supports (appearance: none) {
+		@include _bc-check-radio-input(
+			$visual-size: $visual-size,
+			$target-size: $target-size,
+			$border-radius: $border-radius,
+			$accent-color: $check-background-color
+		);
+
+		&::after {
+			$check-size: $visual-size * $check-stroke-ratio;
+			@include _bc-radio-dot(
+				$dot-color: $check-color,
+				$dot-size: $check-size,
+				$dot-border-radius: $border-radius
+			);
+		}
+	}
+}
+
+// @mixin af-radio(
+//   $size: settings.$fs-check-radio-size,
+//   $touch-target-size: 2.75rem,
+//   $check-ratio: 0.6,
+//   $check-color: red
+// ) {
+//   @include _af-checkradio-input(
+//     $size: $size,
+//     $touch-target-size: $touch-target-size,
+//     $border-radius: $size,
+//     $hover-color: color.change($check-color, $alpha: 0.15)
+//   );
+//   &::after {
+//     $check-size: $size * $check-ratio;
+//     $offset: math.div($touch-target-size - $size, 2);
+//     $check-offset: $offset + math.div($size - $check-size, 2);
+//     width: $check-size;
+//     height: $check-size;
+//     border-radius: $check-size;
+//     top: $check-offset;
+//     left: $check-offset;
+//     background-color: $check-color;
+//   }
+// }
+//
+// /**
+//  * TOGGLES
+//  */
+//
+// @mixin af-toggle(
+//   $height: settings.$fs-check-radio-size,
+//   $width: settings.$fs-check-radio-size * 2,
+//   $knob-inset: settings.$fs-border-width-form-element,
+//   $knob-color: settings.$fs-form-element-border-color,
+//   $background-color: settings.$fs-form-element-background-color,
+//   $background-color-checked: settings.$fs-form-element-background-color,
+//   $border-radius: 0
+// ) {
+//   $knob-size: calc(#{$height} - #{$knob-inset} * 2);
+//   box-sizing: content-box;
+//   display: inline-block;
+//   width: $width;
+//   height: $height;
+//   margin: 0;
+//   border-radius: $border-radius;
+//   position: absolute;
+//   top: 0;
+//   left: 0;
+//   background-color: $background-color;
+//   appearance: none;
+//   &,
+//   &::after {
+//     transition-property: background-color, left;
+//     transition-duration: 0.333s;
+//     transition-timing-function: ease-in-out;
+//   }
+//   &::after {
+//     content: "";
+//     display: block;
+//     width: $knob-size;
+//     height: $knob-size;
+//     border-radius: $border-radius;
+//     position: absolute;
+//     top: calc(50% - #{$knob-size} / 2);
+//     left: $knob-inset;
+//     background-color: $knob-color;
+//   }
+//   &:checked {
+//     background-color: $background-color-checked;
+//     &::after {
+//       left: calc(#{$width} - #{$knob-size} - #{$knob-inset});
+//     }
+//   }
+//   &[aria-invalid="true"] {
+//     @include _af-input-error;
+//   }
+//   &:focus {
+//     @include _af-input-focus;
+//   }
+//   &:disabled {
+//     @include _af-input-disabled;
+//   }
+// }
+//
+// /**
+//  * SELECT
+//  */
+//
+// @mixin af-select {
+//   $horiz-padding: spacing.fs-spacing(
+//     settings.$fs-form-element-horizontal-padding
+//   );
+//   $arrow-size: 14px;
+//   @include _af-input-common;
+//   @include spacing.fs-responsive-padding(
+//     settings.$fs-form-element-vertical-padding,
+//     $direction: top
+//   );
+//   @include spacing.fs-responsive-padding(
+//     settings.$fs-form-element-vertical-padding,
+//     $direction: bottom
+//   );
+//   @include spacing.fs-responsive-padding(
+//     settings.$fs-form-element-horizontal-padding,
+//     $direction: left
+//   );
+//   width: 100%;
+//   height: 3rem;
+//   padding-right: calc(#{$arrow-size} + #{$horiz-padding * 2});
+//   background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAA4AAAAICAYAAADJEc7MAAAAAXNSR0IArs4c6QAAADhlWElmTU0AKgAAAAgAAYdpAAQAAAABAAAAGgAAAAAAAqACAAQAAAABAAAADqADAAQAAAABAAAACAAAAAAReO5gAAAAzElEQVQYGaWQwQ2CUBBE+SZwlVLowM8BCDc60BIoQSrQErACz8ABStAOLEHOhOAbEwzEgwcnmezssrO7H6eu6wC2wHd+oKqqkt6D2gyiI+7gE4ZxHN+IK2joMAxXihb24zgGG9d1s2ma7hS0sZ0not8gDzC1JBb2immaPgziDZ1hjNkrIR6jKCqaprEM1SZfwz3Ps2EY6jLnY1RCY07DSRp00EKH2gVTPptUWxlVYHPGxhK5VY6pSJLkKL3El1Ef9S4MOv3MzyqXhr/1C9F3XAL+7D/dAAAAAElFTkSuQmCC");
+//   background-repeat: no-repeat;
+//   background-position: top 50% right $horiz-padding;
+//   background-size: 14px 8px;
+//   appearance: none;
+//   &::-ms-expand {
+//     display: none;
+//   }
+//   &[aria-invalid="true"] {
+//     @include _af-input-error;
+//   }
+//   &:focus {
+//     @include _af-input-focus;
+//   }
+//   &:disabled {
+//     @include _af-input-disabled;
+//   }
+// }
+//
+// /**
+//  * FILE INPUT
+//  * Unlike the above, this is expected to be applied to a wrapping element rather than the file input itself.
+//  * The input is hidden within the customised input area.
+//  */
+//
+// @mixin af-file-input {
+//   @include _af-input-common;
+//   width: 100%;
+//   height: 3rem;
+//   position: relative;
+//   &--error {
+//     @include _af-input-error;
+//   }
+//   &--focus {
+//     @include _af-input-focus;
+//   }
+//   &--disabled {
+//     @include _af-input-disabled;
+//   }
+// }
+
+// //
+// Server side and forms framework validation
+// //
+.input-validaiton-error {
+	@include _bc-input-error;
+}
+
+.field-validation-error {
+	@extend .bc-error;
+}

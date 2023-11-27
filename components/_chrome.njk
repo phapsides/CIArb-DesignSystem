@@ -1,0 +1,37 @@
+{% from "header/macro.njk" import bcHeader %}
+{% from "notification-bar/macro.njk" import bcNotificationBar %}
+{% from 'footer/macro.njk' import bcFooter %}
+{% from 'prose/macro.njk' import bcProse %}
+{% from 'breadcrumbs/macro.njk' import bcBreadcrumbs %}
+
+<div class="wrapper">
+    <div class="site"> 
+    
+        {% block notificationBar %}{% endblock %}
+    
+        {{ bcHeader({
+            
+        }) }}
+
+        <main id="content">
+            <div class="bc-container"> 
+                <div class="bc-container__inner"> 
+                    {% block breadcrumbs %}{% endblock %}
+                </div>
+            </div>
+            
+            {% block main %}{% endblock %}
+        </main>
+        
+        {{ bcFooter({
+        
+        }) }}
+
+    </div>
+</div>
+
+{% block scripts %}
+{% endblock %}
+
+{% block styles %}
+{% endblock %}

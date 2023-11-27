@@ -1,0 +1,23 @@
+{% set lazyload = true if (params.image.lazyload == true) else false %}
+
+<div
+	data-module="bc-image"
+	class="bc-image {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+>
+	<img
+		class="bc-image__image {%- if params.classes %} {{ params.classes }}{% endif %}"
+		alt="{{ params.alt }}"
+		src="{{ params.src }}"
+		{%- if params.srcset %} srcset="{{ params.srcset }}"{% endif %}
+		{%- if params.width %} width="{{ params.width }}"{% endif %}
+		{%- if params.height %} height="{{ params.height }}"{% endif %}
+		{%- if lazyload %} loading="lazy"{% endif %}
+		{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+	>
+	{%- if params.imgCaption %}
+		<div class="bc-image__caption">
+			<p>{{ params.imgCaption }}</p>
+		</div>
+	{% endif %}
+</div>

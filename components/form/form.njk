@@ -1,0 +1,159 @@
+{% from "form/macro.njk" import bcForm %}
+
+{# For demo purposes only #}
+{% from "input/macro.njk" import bcInput %}
+{% from "button/macro.njk" import bcButton %}
+{% from "checkbox/macro.njk" import bcCheckbox %}
+{% from "radios/macro.njk" import bcRadios %}
+{% from "select/macro.njk" import bcSelect %}
+
+{% call bcForm({
+    action: 'https://google.com/search',
+    method: 'get',
+    disableUnloadPrompt: true
+}) %}
+
+    {{ bcInput({
+        id: 'GenericInput',
+        name: 'GenericInput',
+        label: { text: 'Generic input' },
+        hint: { text: 'Accepts any input.' },
+        value: 'Bananarama'
+    }) }}
+
+    {{ bcInput({
+        id: 'Pattern',
+        name: 'Pattern',
+        label: { text: 'patternMismatch' },
+        hint: { text: 'Accepts one or more letters A, B or C and numbers 1 to 9.' },
+        attributes: { pattern: '^[A|B|C|1-9]+$' },
+        value: 'ABC0123'
+    }) }}
+
+    {{ bcInput({
+        id: 'MaxAttribute',
+        name: 'MaxAttribute',
+        label: { text: 'rangeOverflow' },
+        hint: { text: 'Accepts any number up to (and including) 10.' },
+        type: 'number',
+        attributes: { max: 10 },
+        value: 11
+    }) }}
+
+    {{ bcInput({
+        id: 'MinAttribute',
+        name: 'MinAttribute',
+        label: { text: 'rangeUnderflow' },
+        hint: { text: 'Accepts any number over (and including) 10.' },
+        type: 'number',
+        attributes: { min: 10 },
+        value: 9
+    }) }}
+
+    {{ bcInput({
+        id: 'StepMismatch',
+        name: 'StepMismatch',
+        label: { text: 'stepMismatch' },
+        hint: { text: 'Accepts any number that is a multiple of 5.' },
+        type: 'number',
+        attributes: { min: 0, max: 50, step: 5 },
+        value: 7
+    }) }}
+
+    {{ bcInput({
+        id: 'TooLong',
+        name: 'TooLong',
+        label: { text: 'tooLong' },
+        hint: { text: 'Accepts up to (and including) 12 characters.' },
+        attributes: { maxlength: 12 },
+        value: 'pneumonoultramicroscopicsilicovolcanoconiosis'
+    }) }}
+
+    {{ bcInput({
+        id: 'TooShort',
+        name: 'TooShort',
+        label: { text: 'tooShort' },
+        hint: { text: 'Accepts over (and including) 5 characters.' },
+        attributes: { minlength: 5 },
+        value: 'jazz'
+    }) }}
+
+    {{ bcInput({
+        id: 'TypeMismatch',
+        name: 'TypeMismatch',
+        label: { text: 'typeMismatch' },
+        hint: { text: 'Accepts email addresses' },
+        type: 'email',
+        value: '0123 456 7890'
+    }) }}
+
+    {{ bcInput({
+        id: 'Required',
+        name: 'Required',
+        label: { text: 'valueMissing' },
+        hint: { text: 'Accepts any non-empty input.' },
+        required: true,
+        value: ''
+    }) }}
+
+    {{ bcCheckbox({
+        name: 'RequiredCheckboxes',
+        fieldset: {
+            legend: {
+                text: 'Required checkboxes'
+            }
+        },
+        options: [
+            {
+                value: 1,
+                text: 'Required checkbox',
+                required: true,
+                hint: { text: 'This option must be checked.' }
+            },
+            {
+                value: 2,
+                text: 'Optional checkbox',
+                hint: { text: 'This one doesn\'t.' }
+            }
+        ]
+    }) }}
+
+    {{ bcRadios({
+        name: 'RequiredRadios',
+        required: true,
+        fieldset: {
+            legend: {
+                text: 'Required radio buttons'
+            }
+        },
+        hint: {
+            text: 'One radio button must be selected.'
+        },
+        options: [
+            { value: 1, text: 'Option 1' },
+            { value: 2, text: 'Option 2' },
+            { value: 3, text: 'Option 3' },
+            { value: 4, text: 'Option 4' }
+        ]
+    }) }}
+
+    {{ bcSelect({
+        id: 'RequiredSelect',
+        name: 'RequiredSelect',
+        required: true,
+        label: { text: 'Required select' },
+        options: [
+            { value: '', text: 'This option has no value' },
+            { value: '1', text: 'This option does' }
+        ]
+    }) }}
+
+   {{ bcButton({
+        appearance: 'primary',
+        type: 'submit',
+        text: 'Submit',
+        attributes: { 'name': 'testName', 'value': 'testValue' }
+    }) }}
+
+
+{% endcall %}

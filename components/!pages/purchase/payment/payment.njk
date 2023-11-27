@@ -1,0 +1,194 @@
+{% extends '@t-right-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Basket', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+    
+   
+
+       
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "form/macro.njk" import bcForm %}
+	{% from "button/macro.njk" import bcButton %}
+    {% from "input/macro.njk" import bcInput %}
+     {% from 'icon/macro.njk' import bcIcon %}
+
+
+	<div class="ip-payment">
+
+        <div data-module="bc-step-indicator" class="bc-step-indicator">
+        <div class="bc-step-indicator__step complete">
+            <div class="bc-step-indicator__step-number">
+                {{ bcIcon({
+                    variant: 'check'
+                }) }}
+            </div>
+            <div class="bc-step-indicator__body">
+                <p><strong>Step 1</strong></p>
+                <p>Basket</p>
+            </div> 
+        </div>
+        <div class="bc-step-indicator__line complete"></div>
+        <div class="bc-step-indicator__step complete">
+            <div class="bc-step-indicator__step-number">
+                {{ bcIcon({
+                    variant: 'check'
+                }) }}
+            </div>
+            <div class="bc-step-indicator__body">
+                <p><strong>Step 2</strong></p>
+                <p>Billing</p>
+            </div> 
+        </div>
+        <div class="bc-step-indicator__line complete"></div>
+        <div class="bc-step-indicator__step" aria-current="step">
+            <div class="bc-step-indicator__step-number">3</div>
+            <div class="bc-step-indicator__body">
+                <p><strong>Step 3</strong></p>
+                <p>Payment</p>
+            </div> 
+        </div>
+    </div>      
+
+       {{ bcHeading({
+			hierarchy: 1,
+			text: 'Payment'
+		}) }}	
+        <section class="ip-payment__shipping-details">
+            <div class="ip-payment__shipping-details-table">
+                <div class="ip-payment__shipping-details-table-row">
+                    <p class="ip-payment__shipping-details-table-column">Contact</p>
+                    <p class="ip-payment__shipping-details-table-column">michelle@baker.com</p>
+                </div>
+                <div class="ip-payment__shipping-details-table-row">
+                    <p class="ip-payment__shipping-details-table-column">Ship to</p>
+                    <p class="ip-payment__shipping-details-table-column">
+                        5 Station Road, Cirencester, GL7 6GN, United Kingdom
+                        <a href="#" title="" class="ip-payment__shipping-details-table-link">
+                            Change
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+		{% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+            {% call bcProse() %}
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Payment details'
+                }) }}
+                <p>
+                    All transactions are secure and encrypted.
+                </p>
+            {% endcall %}
+            
+            {{ bcInput({
+                name: 'ExampleInput',
+                label: { 
+                    text: 'Name on the card' 
+                },
+                required: true
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInput',
+                classes: 'ip-payment__card-number-field',
+                label: { 
+                    text: 'Card number' 
+                },
+                type: 'number',
+                required: true
+            }) }}
+            <div class="bc-form-field-group">
+                {{ bcInput({
+                    name: 'ExampleInput',
+                    classes: 'ip-payment__expiration-date-field',
+                    label: { 
+                        text: 'Expiration date' 
+                    },
+                    placeholder: 'MM - YY',
+                    required: true
+                }) }}
+                {{ bcInput({
+                    classes: 'ip-payment__security-code-field',
+                    name: 'ExampleInput',
+                    label: { 
+                        text: 'Security code' 
+                    },
+                    type: 'number',
+                    required: true
+                }) }}
+            </div>
+            <div class="bc-button-row">
+                {{ bcButton({
+                    appearance: 'link',
+                    text: 'Return to billing'
+                    
+                }) }}
+            
+                {{ bcButton({
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Pay now'
+                }) }}
+            </div>
+		{% endcall %}
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% from "cart/macro.njk" import bcCart %}
+    {% from "alert/macro.njk" import bcAlert %}
+
+	<div class="ip-payment__cart">
+        <div class="ip-payment__cart-items">
+           {{ bcCart({
+                position: 'sidebar',
+                items: [
+                    { 
+                        name: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+                        price: '£30'
+                    },
+                    { 
+                        name: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+                        price: '£5'
+                    },
+                    { 
+                        name: 'Student CIArb Membership',
+                        price: '£XX'
+                    }
+                ]
+            }) }}
+        </div>
+        <div class="ip-payment__cart-summary">
+            <div class="ip-payment__cart-summary-inner">
+                <p>Total</p>
+                <p class="ip-payment__amount">£35</p>
+            </div>
+        </div>
+	</div>
+    <div class="ip-payment__cart-notification">
+        {% call bcAlert({
+            variant: 'circle-exclamation'
+        }) %}
+            <p>Your basket contains a mix of one-off purchases and recurring payments. Payment details for these will be entered separately.</p>
+        {% endcall %}
+    </div>
+
+{% endblock %}

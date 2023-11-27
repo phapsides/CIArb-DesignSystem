@@ -1,0 +1,11 @@
+.ip-membership-billing-annual-declaration {
+	.bc-form-row {
+		&[data-reveal] {
+			display: none;
+		}
+		// TODO: Could we remove .bc-form-row below
+		&.bc-form-row--revealed {
+			display: block;
+		}
+	}
+}

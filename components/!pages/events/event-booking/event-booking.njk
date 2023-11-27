@@ -1,0 +1,165 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Events', href: '#' },
+            { text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences', href: '#' },
+			{ text: 'Booking event', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "radios/macro.njk" import bcRadios %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+
+    <div class="ip-event-booking">
+        {{ bcHeading({
+			classes: 'fs-!-margin-bottom-3',
+			hierarchy: 1,
+			text: 'Booking event'
+		}) }}
+
+        {% call bcProse({
+			classes: 'ip-event-booking__delegate fs-!-padding-block-3 fs-!-padding-inline-4 fs-!-margin-bottom-0'
+        }) %}
+        {{ bcHeading({
+                hierarchy: 3,
+                text: 'Booking for someone else?'
+            }) }}
+        <p class="fs-!-margin-top-1">
+            If you’re not attending this event and are making a booking on behalf of someone else,
+            <a href="#" title="">skip this step</a>.
+        </p>
+        {% endcall %}
+
+        {% call bcForm({
+			classes: 'fs-!-margin-top-5',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+
+        <div class="ip-event-booking__section">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Select price and dates'
+                }) }}
+            {{ bcRadios({
+                    name: 'EventRate',
+                    legend: {
+                        text: 'Specific from available rates'
+                    },
+                    options: [
+                        {
+                            text: 'Early bird £15',
+                            value: '1',
+                            checked: true
+                        },
+                        {
+                            text: 'Online price',
+                            value: '2'
+                        }
+                    ]
+                }) }}
+            {{ bcRadios({
+                    name: 'Date',
+                    legend: {
+                        text: 'Select your days'
+                    },
+                    options: [
+                        {
+                            text: 'Thu, 10 Mar 2022',
+                            value: '1',
+                            checked: true
+                        }
+                    ]
+                }) }}
+        </div>
+
+        <div class="ip-event-booking__section">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Events preferences'
+                }) }}
+            {{ bcSelect({
+                    name: "DietaryRequirements",
+                    label: { 
+                        text: "Dietary requirements" 
+                    },
+                    required: true,
+                    options: [
+                        { value: "", text: "Please select" },
+                        { value: "All", text: "All", selected: true }
+                    ]
+                }) }}
+            {{ bcCheckbox({
+                    name: 'OutdoorLearningPreferences',
+					legend: {
+						text: 'Specific accessibility requirements (optional)'
+					},
+                    options: [
+                        {
+                            value: 1,
+                            text: 'Wheelchair acces'
+                        },
+                        {
+                            value: 2,
+                            text: 'Hearing loop'
+                        }
+                    ]
+                }) }}
+        </div>
+        <div class="ip-event-booking__section ip-event-booking__consent">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Sharing your contact details'
+                }) }}
+            {{ bcCheckbox({
+                    name: 'ExampleCheckboxSingle',
+                    options: [
+                        {
+                            text: 'I consent for my contact details (name, job title, institution and email address) to be shared with third party organisations who are supporting this event, in line with our Privacy Policy',
+                            value: '1',
+                            required: true
+                        }
+                    ]
+                }) }}
+        </div>
+        <div class="bc-button-group">
+            {# {{ bcButton({
+                    classes: 'fs-!-margin-top-7',
+                    appearance: 'secondary',
+                    type: 'submit',
+                    text: 'Add an extra person',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }} #}
+            <button data-module="bc-button" class="bc-button fs-!-margin-top-8" data-appearance="secondary" name="testName" value="testValue" type="submit">
+                <span class="bc-button__label">Add an extra person
+                    <i class="fa-solid fa-plus-large fs-!-margin-left-1"></i>
+                </span>
+            </button>
+            {{ bcButton({
+                    classes: 'fs-!-margin-top-3',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Add to basket'
+                }) }}
+            <a class="fs-!-margin-top-5" href="#" title="">Cancel</a>
+        </div>
+        {% endcall %}
+    </div>
+
+{% endblock %}

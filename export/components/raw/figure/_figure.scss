@@ -1,0 +1,11 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+
+.bc-figure {
+	margin: auto;
+	figcaption {
+		@include typography.fs-font-size(nav-links);
+		margin-top: 0.5rem;
+	}   
+}

@@ -1,0 +1,44 @@
+{% from "description-list/macro.njk" import bcDescriptionList, bcDescriptionListItem %}
+{% from "prose/macro.njk" import bcProse %}
+
+{% call bcProse() %}<h2>Regular</h2>{% endcall %}
+
+{% call bcDescriptionList() %}
+    {{ bcDescriptionListItem({
+        key: { text: 'Full name' },
+        text: 'John Doe'
+    }) }}
+    {{ bcDescriptionListItem({
+        key: { text: 'Email' },
+        text: 'john.doe@felinesoft.com'
+    }) }}
+    {% call bcDescriptionListItem({
+        key: { text: 'About' }
+    }) %}
+        {% call bcProse() %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eos, nostrum fugit porro iste. Eum, illum ullam aspernatur. Quae reiciendis praesentium fuga similique minima sequi non illo sint officia nisi?</p>
+        {% endcall %}
+    {% endcall %}
+{% endcall %}
+
+{% call bcProse() %}<h2>Wide</h2>{% endcall %}
+
+{% call bcDescriptionList({
+    variants: ['wide']
+}) %}
+    {{ bcDescriptionListItem({
+        key: { text: 'Full name' },
+        text: 'John Doe'
+    }) }}
+    {{ bcDescriptionListItem({
+        key: { text: 'Email' },
+        text: 'john.doe@felinesoft.com'
+    }) }}
+    {% call bcDescriptionListItem({
+        key: { text: 'About' }
+    }) %}
+        {% call bcProse() %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. A eos, nostrum fugit porro iste. Eum, illum ullam aspernatur. Quae reiciendis praesentium fuga similique minima sequi non illo sint officia nisi?</p>
+        {% endcall %}
+    {% endcall %}
+{% endcall %}

@@ -1,0 +1,11 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+
+.ip-membership-directory-profile {
+	max-width: 62rem;
+	// TODO: What is the reason for this width? We are not using it anywhere else
+	@media only screen and (min-width: 1130px) {
+		// TODO: What is the reason of such a big negative margin? Is there no other way to achieve what is needed?
+		margin: 0 -11rem;
+	}
+}

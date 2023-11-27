@@ -1,0 +1,67 @@
+{% extends '@t-sso' %}
+
+{% block body %}
+
+<div id="api" data-name="Unified">
+
+
+  <div class="localAccount" aria-label="Sign in with your existing account" role="form">
+    <div class="intro">
+      <h2>
+        Sign in with your existing account
+      </h2>
+    </div>
+    <div class="error pageLevel" aria-hidden="true" style="display: none;">
+      <p role="alert"></p>
+    </div>
+    <div class="entry">
+      <div class="entry-item">
+        <label for="signInName">
+          Email Address
+        </label>
+        <div class="error itemLevel" aria-hidden="false" style="display: block;">
+          <p role="alert">Please enter your email</p>
+        </div>
+        <input type="email" id="signInName" name="Sign in name"
+          pattern="^[a-zA-Z0-9.!#$%&amp;’'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+          placeholder="Email Address" value="" tabindex="1">
+      </div>
+      <div class="entry-item">
+        <div class="password-label">
+          <label for="password">Password</label>
+          <a id="forgotPassword" tabindex="2"
+            href="/kcazureb2clive.onmicrosoft.com/B2C_1A_signup_signin/api/CombinedSigninAndSignup/forgotPassword?csrf_token=THpvNXIxTmFBV1dYeHhPYStaS0FVMlFCQkJBRDNIVkE3U05aWTAyUllqZittTnNNa0tQVU5ZQ1o2MFBBNDNUU0R0UllIbythSDU4SzBVVnBvYVRvaWc9PTsyMDIwLTAxLTA3VDE4OjE5OjQxLjM4MDE0NTVaO090NXdhc2M3SGdMMEJuVXovUzBFRUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI3ODNiMmU1My0wZjQ1LTQwYmUtOWMxMC03NmM4YjY1YjIyN2IifQ&amp;p=B2C_1A_signup_signin">Forgot
+            your password?</a>
+        </div>
+        <div class="error itemLevel" aria-hidden="true" style="display: none;">
+          <p role="alert"></p>
+        </div>
+        <input type="password" id="password" name="Password" placeholder="Password" tabindex="1">
+        <!-- a id="forgotPassword" tabindex="2"
+            href="/kcazureb2clive.onmicrosoft.com/B2C_1A_signup_signin/api/CombinedSigninAndSignup/forgotPassword?csrf_token=THpvNXIxTmFBV1dYeHhPYStaS0FVMlFCQkJBRDNIVkE3U05aWTAyUllqZittTnNNa0tQVU5ZQ1o2MFBBNDNUU0R0UllIbythSDU4SzBVVnBvYVRvaWc9PTsyMDIwLTAxLTA3VDE4OjE5OjQxLjM4MDE0NTVaO090NXdhc2M3SGdMMEJuVXovUzBFRUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI3ODNiMmU1My0wZjQ1LTQwYmUtOWMxMC03NmM4YjY1YjIyN2IifQ&amp;p=B2C_1A_signup_signin">Forgot
+            your password?</a -->
+      </div>
+      <div class="working"></div>
+      <div class="rememberMe">
+        <input id="rememberMe" type="checkbox" name="rememberMe" tabindex="1">
+        <label for="rememberMe">Keep me signed in</label>
+      </div>
+      <div class="buttons">
+        <button id="next" tabindex="1">Sign in</button>
+      </div>
+    </div>
+
+    <div class="divider">
+      <h2>OR</h2>
+    </div>
+    <div class="create">
+      <p>
+        Don't have an account?<a id="createAccount" tabindex="1"
+          href="/kcazureb2clive.onmicrosoft.com/B2C_1A_signup_signin/api/CombinedSigninAndSignup/unified?local=signup&amp;csrf_token=THpvNXIxTmFBV1dYeHhPYStaS0FVMlFCQkJBRDNIVkE3U05aWTAyUllqZittTnNNa0tQVU5ZQ1o2MFBBNDNUU0R0UllIbythSDU4SzBVVnBvYVRvaWc9PTsyMDIwLTAxLTA3VDE4OjE5OjQxLjM4MDE0NTVaO090NXdhc2M3SGdMMEJuVXovUzBFRUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI3ODNiMmU1My0wZjQ1LTQwYmUtOWMxMC03NmM4YjY1YjIyN2IifQ&amp;p=B2C_1A_signup_signin">Sign
+          up now</a>
+      </p>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

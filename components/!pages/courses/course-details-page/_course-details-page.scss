@@ -1,0 +1,91 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+
+.ip-course-details--bc-event-card {
+	max-width: 47rem;
+	margin: auto;
+
+	@media only screen and (min-width: 1025px) {
+		grid-template-columns: 1fr !important;
+	}
+}
+
+.bc-event-card--full-width {
+	.ip-course-details--bc-event-card {
+		.bc-event-card__back-btn {
+			margin-bottom: 2rem;
+		}
+	}
+}
+
+.ip-course-details {
+	ul {
+		list-style: disc;
+		margin-left: 1.5rem;
+	}
+
+	.bc-quick-pick {
+		padding: 2rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		&__label,
+		&__data {
+			@include typography.fs-font-stack(sans, $weight: 600);
+			margin: 0;
+			color: colors.fs-color(brand-primary);
+		}
+
+		&__data {
+			@extend .bc-heading--title;
+		}
+	}
+
+	.bc-tab__list {
+		list-style: none;
+		margin-left: 0;
+	}
+
+	.bc-map-container {
+		background-color: colors.fs-color(brand-secondary);
+		padding: 3rem 0 6rem;
+	}
+}
+
+.ip-course-details--afterTemplate {
+	background-color: colors.fs-color(brand-secondary);
+	color: colors.fs-color(white);
+	padding-left: 6vw;
+	padding-right: 6vw;
+
+	address {
+		max-width: 75%;
+	}
+
+	.bc-container {
+		display: flex;
+		flex-direction: column;
+		max-width: 47rem;
+		margin: auto;
+		padding-top: 3rem;
+		padding-bottom: 6rem;
+	}
+
+	.bc-heading--title {
+		color: colors.fs-color(white);
+	}
+
+	#bc-map {
+		// Height should be specified
+		max-width: 100%;
+		height: 372px;
+	}
+}

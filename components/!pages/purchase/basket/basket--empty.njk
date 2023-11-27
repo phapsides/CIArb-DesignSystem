@@ -1,0 +1,34 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+        items: [
+            { text: 'Home', href: '/' },
+            { text: 'Basket', href: '#', current: true }
+        ]
+    }) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "icon/macro.njk" import bcIcon %}
+
+    <div class="ip-basket ip-basket--empty">
+
+        {{ bcIcon({
+            variant: 'basket-shopping'
+        }) }}
+
+        {{ bcHeading({
+            classes: 'fs-!-margin-bottom-2',
+            hierarchy: 1,
+            text: 'Your basket is empty'
+        }) }}
+        {% call bcProse() %}
+            <p>	
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        {% endcall %}
+	</div>
+
+{% endblock %}

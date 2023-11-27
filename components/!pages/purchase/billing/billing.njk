@@ -1,0 +1,318 @@
+{% extends '@t-right-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Basket', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "radios/macro.njk" import bcRadios %}
+	{% from "form/macro.njk" import bcForm %}
+	{% from "button/macro.njk" import bcButton %}
+    {% from "image/macro.njk" import bcImage %}
+    {% from "input/macro.njk" import bcInput %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from 'icon/macro.njk' import bcIcon %}
+
+
+	<div class="ip-billing">
+         <div data-module="bc-step-indicator" class="bc-step-indicator">
+        <div class="bc-step-indicator__step complete">
+            <div class="bc-step-indicator__step-number">
+                {{ bcIcon({
+                    variant: 'check'
+                }) }}
+            </div>
+            <div class="bc-step-indicator__body">
+                <p><strong>Step 1</strong></p>
+                <p>Basket</p>
+            </div> 
+        </div>
+        <div class="bc-step-indicator__line complete"></div>
+        <div class="bc-step-indicator__step" aria-current="step">
+            <div class="bc-step-indicator__step-number">2</div>
+            <div class="bc-step-indicator__body">
+                <p><strong>Step 2</strong></p>
+                <p>Billing</p>
+            </div> 
+        </div>
+        <div class="bc-step-indicator__line"></div>
+        <div class="bc-step-indicator__step">
+            <div class="bc-step-indicator__step-number">3</div>
+            <div class="bc-step-indicator__body">
+                <p><strong>Step 3</strong></p>
+                <p>Payment</p>
+            </div> 
+        </div>
+    </div>         
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Billing'
+		}) }}	
+
+		{% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+            
+            {{ bcHeading({
+                hierarchy: 2,
+                text: 'Contact information'
+            }) }}	
+            {{ bcInput({
+                name: 'ExampleInput',
+                required: true,
+                label: { 
+                    text: 'First name' 
+                },
+                value: 'Michelle'
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInput',
+                required: true,
+                label: { 
+                    text: 'Last name' 
+                },
+                value: 'Lorem'
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInput',
+                required: true,
+                label: { 
+                    text: 'Email' 
+                },
+                value: 'Email@email.com'
+            }) }}
+
+            <div class="ip-billing__address-block fs-!-margin-top-8">
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Contact information'
+                }) }}	
+                {{ bcRadios({
+                    name: 'BillingAddressSelection',
+                    options: [
+                        {
+                            text: 'Use default shipping address',
+                            value: 'UseProfile',
+                            checked: true,
+                            hint: {
+                                text: '5 Station Rd, Cirencester, GL7 6GN, United Kingdom'
+                            },
+                            additionalLink: 'Go to my account to edit',
+                            additionalLinkUrl: '#'
+                        },
+                        {
+                            text: 'Use new address',
+                            value: 'UseShipping'
+                        }
+                    ]
+                }) }}
+                <div id="ip-contact-information__new-address-billing">
+                    {{ bcInput({
+						name: 'ExampleInput',
+						label: { 
+							text: 'Address line 1' 
+						},
+						value: '5 Station Rd',
+						required: true
+					}) }}
+					{{ bcInput({
+						name: 'ExampleInput',
+						label: { 
+							text: 'Address line 2' 
+						},
+                        value: '',
+						required: true
+					}) }}
+					<div class="bc-form-field-group">
+						{{ bcInput({
+							name: 'ExampleInput',
+							label: { 
+								text: 'City'    
+							},
+							value: '',
+							required: true
+						}) }}
+						{{ bcInput({
+							name: 'ExampleInput',
+							label: { 
+								text: 'Zip/postal code' 
+							},
+							value: '',
+							required: true
+						}) }}
+					</div>
+					{{ bcSelect({
+						classes: 'fs-!-margin-bottom-0',
+						name: "ExampleSelect",
+						label: { 
+							text: "Country" 
+						},
+						required: true,
+						options: [
+							{ value: "", text: "Please select" },
+							{ value: "UK", text: "United Kingdom", selected: true },
+							{ value: "Other", text: "Other" }
+						]
+					}) }}
+                </div>  
+            </div>
+
+            <div class="bc-button-row fs-!-margin-top-8">
+                {{ bcButton({
+                    appearance: 'link',
+                    text: 'Return to basket'
+                    
+                }) }}
+            
+                {{ bcButton({
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Continue to payment',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+            </div>
+		{% endcall %}
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% from "cart/macro.njk" import bcCart %}
+    {% from "alert/macro.njk" import bcAlert %}
+
+	<div class="ip-billing__cart">
+        <div class="ip-billing__cart-items">
+           {{ bcCart({
+                position: 'sidebar',
+                items: [
+                    { 
+                        name: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+                        details: 'Event',
+                        price: '£30'
+                    },
+                    { 
+                        name: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+                        price: '£5'
+                    },
+                    { 
+                        name: 'Student CIArb Membership',
+                        price: '£XX'
+                    }
+                ]
+            }) }}
+        </div>
+        <div class="ip-billing__cart-summary">
+            <div class="ip-billing__cart-summary-inner__tax">
+                <p>Tax</p>
+                <p class="ip-billing__amount">£5</p>
+            </div>
+              <div class="ip-billing__cart-summary-inner">
+                <p>Total</p>
+                <p class="ip-billing__amount">£35</p>
+            </div>
+        </div>
+	</div>
+    <div class="ip-billing__cart-notification">
+        {% call bcAlert({
+            variant: 'circle-exclamation'
+        }) %}
+            <p>Your basket contains a mix of one-off purchases and recurring payments. Payment details for these will be entered separately.</p>
+        {% endcall %}
+    </div>
+
+{% endblock %}
+
+{% block scripts %}
+    <script>
+
+        function newAddress() {
+        
+            var $radiosShipping = document.querySelectorAll('input[type=radio][name="ShippingAddressSelection"]');
+            var $containerNewShipAddress = document.getElementById('ip-contact-information__new-address');
+
+            var $radiosBilling = document.querySelectorAll('input[type=radio][name="BillingAddressSelection"]');
+            var $containerNewBillAddress = document.getElementById('ip-contact-information__new-address-billing');
+
+            var containerTypeShipping = 'shipping';
+            var containerTypeBilling = 'billing';
+
+            // caching variables for required elements
+            var $childrenElementsShipping;
+            var $childrenElementsBilling;
+
+            // runs on page-load only to setup the correct state.
+            toggleChildren($containerNewShipAddress, '', containerTypeShipping);
+            toggleChildren($containerNewBillAddress, '', containerTypeBilling);
+
+            // Set up change listeners
+            $radiosShipping.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    toggleContainer($containerNewShipAddress, radio.value);
+                    toggleChildren($containerNewShipAddress, radio.value, containerTypeShipping);
+                });
+            });
+
+            $radiosBilling.forEach(radio => {
+                radio.addEventListener('change', function() {
+                    toggleContainer($containerNewBillAddress, radio.value);
+                    toggleChildren($containerNewBillAddress, radio.value, containerTypeBilling);
+                });
+            });
+
+            // show/hide relevant new address container
+            function toggleContainer(container, radioValue) {
+                radioValue !== 'UseProfile'
+                    ? container.style.display = 'block'
+                    : container.style.display = 'none';
+            }
+            
+            // toggle required attributes on elements that have them
+            function toggleChildren(container, radioValue, containerType) {
+                if (container) {
+
+                    if (!$childrenElementsShipping && containerType === containerTypeShipping) {
+                        $childrenElementsShipping = container.querySelectorAll('input[required], select[required]');
+                    }
+
+                    if (!$childrenElementsBilling && containerType === containerTypeBilling) {
+                        $childrenElementsBilling = container.querySelectorAll('input[required], select[required]');
+                    }
+
+                    if (containerType === containerTypeShipping) {
+                        $childrenElementsShipping.forEach(child => {
+                            radioValue !== 'UseProfile'
+                                ? child.setAttribute("required", "")
+                                : child.removeAttribute("required");
+                        });
+                    }
+                    
+                    if (containerType === containerTypeBilling) {
+                        $childrenElementsBilling.forEach(child => {
+                            radioValue !== 'UseProfile'
+                                ? child.setAttribute("required", "")
+                                : child.removeAttribute("required");
+                        });
+                    }
+                }
+            }
+        }
+        
+        window.addEventListener("DOMContentLoaded", () => {
+            newAddress();
+        })
+
+    </script>
+{% endblock %}

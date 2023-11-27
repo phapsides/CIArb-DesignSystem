@@ -1,0 +1,53 @@
+{% from "choice-selector-card/macro.njk" import bcChoiceSelectorCard %}
+{% from 'heading/macro.njk' import bcHeading %}
+
+{{ bcChoiceSelectorCard({
+	name: 'membershipRoutes',
+	items: [
+		{ 
+			label: 'Experience', 
+			hint: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			value: 'experience',
+			checked: true
+		},
+		{ 
+			label: 'Qualification', 
+			hint: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+			value: 'qualification'
+		}
+	]
+}) }}
+
+
+{{ bcChoiceSelectorCard({
+	name: 'membershipRoutes',
+	legend: {
+		text: 'This is a legend'
+	},
+	items: [
+		{ 
+			label: 'Annual Reoccurring', 
+			hint: 'Membership to be set as auto renew',
+			duration: '/year',
+			premium: {
+				text: '£xxx',
+				hierarchy: 3
+			}
+		},
+		{ 
+			label: 'Monthly Reoccurring',  
+			hint: 'Membership to be set as auto renew',
+			premium: {
+				text: '£xxx',
+				hierarchy: 3
+			},
+			duration: '/monthly'
+		},
+		{ 
+			label: 'Annual One Off',  
+			hint: 'Membership to be set as auto renew',
+			checked: true,
+			premium: 'xxx'
+		}
+	]
+}) }}

@@ -1,0 +1,82 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/reset";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "helpers/media-queries";
+
+.bc-fieldset {
+	@include reset.fs-reset-fieldset;
+
+	> :last-child {
+		@include spacing.fs-responsive-margin(0, $direction: block-start);
+	}
+
+	&__legend {
+		@include spacing.fs-responsive-margin(1, $direction: block-start);
+	}
+}
+
+.bc-form-row {
+	@include spacing.fs-responsive-margin(5, $direction: block-start);
+	display: flex;
+	flex-direction: column;
+
+	legend {
+		padding: 0;
+	}
+}
+
+.bc-label {
+	@include typography.fs-font-stack(sans, $weight: 600);
+	@include typography.fs-font-size(label);
+	color: settings.$fs-text-color-heading;
+	display: block;
+
+	&__required {
+	}
+	// TODO: let's use mobile first approach here
+	// TODO: It maybe worths adding label-mobile styles into brands.scss
+	@include media-queries.fs-mq($to: tablet) {
+		font-size: 1rem;
+	}
+}
+
+.bc-hint,
+.bc-error {
+	// @include spacing.fs-responsive-margin(1, $direction: block-end);
+}
+
+.bc-hint {
+	@include typography.fs-font-stack(sans, $weight: 300);
+	@include typography.fs-font-size(body-mobile);
+	color: colors.fs-color(black);
+	margin-bottom: 0.5rem;
+}
+
+.bc-error {
+	@include typography.fs-font-size(body-mobile);
+	margin-top: 0.25rem;
+	color: colors.fs-color(danger);
+	display: flex;
+	align-items: center;
+
+	&__icon {
+		position: relative;
+		display: inline-block;
+		height: 1rem;
+		width: 1rem;
+		border-radius: 100%;
+		color: colors.fs-color(white);
+		background-color: colors.fs-color(danger);
+		margin-right: 0.5rem;
+	}
+
+	i {
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+		font-size: 0.75rem;
+	}
+}

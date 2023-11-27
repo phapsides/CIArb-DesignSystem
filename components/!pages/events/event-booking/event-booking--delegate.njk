@@ -1,0 +1,165 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Events', href: '#' },
+            { text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences', href: '#' },
+			{ text: 'Booking event', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "input/macro.njk" import bcInput %}
+
+    <div class="ip-event-booking">
+        {{ bcHeading({
+			classes: 'fs-!-margin-bottom-3',
+			hierarchy: 1,
+			text: 'Booking event'
+		}) }}
+
+        {% call bcForm({
+			classes: 'fs-!-margin-block-5',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+
+        <div class="ip-event-booking__section">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Validate delegate email'
+                }) }}
+            <div class="ip-event-booking__email-validation">
+                {{ bcInput({
+                        name: 'ExampleInput',
+                        label: { 
+                            text: 'Email address' 
+                        },
+                        type: 'email',
+                        value: 'email@email.com',
+                        required: true
+                    }) }}
+                {{ bcButton({
+                        appearance: 'primary',
+                        text: 'Validate'
+                    }) }}
+            </div>
+        </div>
+
+        <div class="ip-event-booking__section">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Delegate personal details'
+                }) }}
+            {{ bcInput({
+                    name: 'ExampleInput',
+                    label: { 
+                        text: 'First name' 
+                    },
+                    value: 'Michelle',
+                    required: true
+                }) }}
+            {{ bcInput({
+                    name: 'ExampleInput',
+                    label: { 
+                        text: 'Last name' 
+                    },
+                    value: 'Baker',
+                    required: true
+                }) }}
+        </div>
+
+        <div class="ip-event-booking__section">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Events preference'
+                }) }}
+            {{ bcSelect({
+                    name: "DietaryRequirements",
+                    label: { 
+                        text: "Dietary requirements"
+                    },
+                    required: true,
+                    options: [
+                        { value: "", text: "Please select" },
+                        { value: "All", text: "All", selected: true }
+                    ]
+                }) }}
+            {{ bcCheckbox({
+                    name: 'OutdoorLearningPreferences',
+					legend: {
+						text: 'Specific accessibility requirements (optional)'
+					},
+                    options: [
+                        {
+                            value: 1,
+                            text: 'Wheelchair acces'
+                        },
+                        {
+                            value: 2,
+                            text: 'Hearing loop'
+                        }
+                    ]
+                }) }}
+        </div>
+        <div class="ip-event-booking__section ip-event-booking__consent">
+            {{ bcHeading({
+                    classes: 'fs-!-margin-top-5',
+                    hierarchy: 2,
+                    text: 'Sharing your contact details'
+                }) }}
+            {{ bcCheckbox({
+                    name: 'ExampleCheckboxSingle',
+                    options: [
+                        {
+                            text: 'I consent for my contact details (name, job title, institution and email address) to be shared with third party organisations who are supporting this event, in line with our Privacy Policy',
+                            value: '1',
+                            required: true
+                        }
+                    ]
+                }) }}
+        </div>
+        <div class="bc-button-group">
+            {# {{ bcButton({
+                    classes: 'fs-!-margin-top-7',
+                    appearance: 'secondary',
+                    type: 'submit',
+                    text: 'Add an extra person',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }} #}
+            <button data-module="bc-button" class="bc-button fs-!-margin-top-7" data-appearance="secondary" name="testName" value="testValue" type="submit">
+                <span class="bc-button__label">Add an extra person
+                    <i class="fa-solid fa-plus-large fs-!-margin-left-1"></i>
+                </span>
+            </button>
+            {{ bcButton({
+                    classes: 'fs-!-margin-top-3',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Add to cart',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+            <a class="fs-!-margin-top-5" href="#" title="">Cancel</a>
+        </div>
+        {% endcall %}
+    </div>
+
+{% endblock %}

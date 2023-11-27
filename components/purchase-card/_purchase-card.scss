@@ -1,0 +1,53 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+
+.bc-purchase-card {
+	$self: &;
+	$padding: 1.875rem;
+	padding: $padding;
+	box-shadow: 0 3px 10px #00000029;
+
+	&__header {
+		display: flex;
+		margin-bottom: 0.625rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-bottom: 0.3125rem;
+		}
+	}
+	&__price {
+		@extend .bc-heading--subtitle;
+		margin-left: auto;
+		color: colors.fs-color(brand-primary);
+		font-weight: 300;
+	}
+	&__body {
+		margin-bottom: 0.75rem;
+		width: 100%;
+		@include media-queries.fs-mq($from: tablet) {
+			width: 90%;
+		}
+	}
+	&__details {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		@include media-queries.fs-mq($from: tablet) {
+			display: flex;
+		}
+	}
+	&__footer {
+		margin-top: 0.5rem;
+	}
+	&__link,
+	.bc-description-list__key,
+	.bc-description-list__value {
+		font-size: 16px;
+		line-height: 25px;
+	}
+	.bc-icon {
+		margin-right: 0.5rem;
+	}
+}

@@ -1,0 +1,46 @@
+{%- set describedBy = params.describedBy if params.describedBy else '' -%}
+{%- set id = params.id if params.id else params.name %}
+{%- set minValue = params.min if params.min else '0' %}
+
+<div class="bc-form-row {%- if params.error %} bc-form-row--error{% endif %}">
+    <label class="bc-label" for="{{ id }}">
+        {{ params.label.html | safe if params.label.html else params.label.text }}
+        {%- if not params.required %}
+            <span class="bc-label__optional">(optional)</span>
+        {%- endif %}
+    </label>
+    {%- if params.hint %}
+        {% set hintId = id + '-Hint' %}
+        {% set describedBy = describedBy + ' ' + hintId %}
+        <div class="bc-hint" id="{{ hintId }}">
+            {{ params.hint.html | safe if params.hint.html else params.hint.text }}
+        </div>
+    {%- endif %}
+    {%- if params.error %}
+        {% set errorId = id + '-Error' %}
+        {% set describedBy = describedBy + ' ' + errorId %}
+        <div class="bc-error" id="{{ errorId }}">
+            {{ params.error.html | safe if params.error.html else params.error.text }}
+        </div>
+    {%- endif %}
+    <div
+        data-module="bc-stepper"
+        class="bc-stepper {%- if params.classes %} {{ params.classes }}{% endif %}"
+        {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+        <input 
+            class="bc-stepper__input"
+            type="number"
+            id="{{ id }}"
+            name="{{ params.name }}"
+            value="{{ params.value if params.value else minValue }}"
+            min="{{ minValue }}"
+            step="1"
+            required
+            {%- if params.max %} max="{{ params.max }}"{% endif %}
+            {%- if params.placeholder %} placeholder="{{ params.placeholder }}"{% endif %}
+            {%- if params.disabled %} disabled{% endif %}
+            {%- if params.error %} aria-invalid="true"{% endif %}
+            {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+            {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    </div>
+</div>

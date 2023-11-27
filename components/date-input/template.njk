@@ -1,0 +1,108 @@
+{% from 'icon/macro.njk' import bcIcon %}
+
+{%- set describedBy = params.describedBy if params.describedBy else '' -%}
+{%- set idPrefix = params.idPrefix if params.idPrefix else 'Date' -%}
+
+{%- if params.hint %}
+    {% set hintId = idPrefix + '-Hint' %}
+    {% set describedBy = describedBy + ' ' + hintId %}
+{%- endif %}
+
+{%- if params.error %}
+    {% set errorId = idPrefix + '-Error' %}
+    {% set describedBy = describedBy + ' ' + errorId %}
+{%- endif %}
+
+
+<div class="bc-form-row">
+    <fieldset class="bc-fieldset">
+        {% if params.legend %}
+            <legend class="bc-fieldset__legend">
+                <span class="bc-label">
+                    {{- params.legend.html | safe if params.legend.html else params.legend.text -}}
+                </span>
+            </legend>
+        {% endif %}
+        {%- if params.hint %}
+            {% set hintId = id + '-Hint' %}
+            {% set describedBy = describedBy + ' ' + hintId %}
+            <div class="bc-hint" id="{{ hintId }}">
+                {{ params.hint.html | safe if params.hint.html else params.hint.text }}
+            </div>
+        {%- endif %}
+        <div
+            data-module="bc-date-input"
+            class="bc-date-input {%- if params.classes %} {{ params.classes }}{% endif %}"
+            {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+            {%- if params.day %}
+                <div class="bc-date-input__field">
+                    {% set id = idPrefix + '-Day' %}
+                    <label for="{{ id }}">Day</label>
+                    <input
+                        class="bc-date-input__input iu-mw-char2"
+                        type="number"
+                        min="1"
+                        max="31"
+                        id="{{ id }}"
+                        name="{{ params.day.name }}"
+                        placeholder="DD"
+                        {%- if params.day.autocomplete %}autocomplete="{{ params.day.autocomplete }}"{% endif %}
+                        {%- if params.required %} required{% endif %}
+                        {%- if params.day.value %} value="{{ params.day.value }}"{% endif %}
+                        {%- for attribute, value in params.day.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+                    >
+                </div>
+            {%- endif %}
+            {%- if params.month %}
+                <div class="bc-date-input__field">
+                    {% set id = idPrefix + '-Month' %}
+                    <label for="{{ id }}">Month</label>
+                    <input
+                        class="bc-date-input__input iu-mw-char2"
+                        type="number"
+                        min="1"
+                        max="12"
+                        id="{{ id }}"
+                        name="{{ params.month.name }}"
+                        placeholder="MM"
+                        {%- if params.month.autocomplete %}autocomplete="{{ params.month.autocomplete }}"{% endif %}
+                        {%- if params.required %} required{% endif %}
+                        {%- if params.month.value %} value="{{ params.month.value }}"{% endif %}
+                        {%- for attribute, value in params.month.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+                    >
+                </div>
+            {%- endif %}
+            {%- if params.year %}
+                <div class="bc-date-input__field">
+                    {% set id = idPrefix + '-Year' %}
+                    <label for="{{ id }}">Year</label>
+                    <input
+                        class="bc-date-input__input iu-mw-char4"
+                        type="number"
+                        min="1000"
+                        max="3000"
+                        id="{{ id }}"
+                        name="{{ params.year.name }}"
+                        placeholder="YYYY"
+                        {%- if params.year.autocomplete %}autocomplete="{{ params.year.autocomplete }}"{% endif %}
+                        {%- if params.required %} required{% endif %}
+                        {%- if params.year.value %} value="{{ params.year.value }}"{% endif %}
+                        {%- for attribute, value in params.year.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+                    >
+                </div>
+            {%- endif %}
+        </div>
+    </fieldset>
+    {%- if params.error %}
+        {% set errorId = id + '-Error' %}
+        {% set describedBy = describedBy + ' ' + errorId %}
+        <div class="bc-error" id="{{ errorId }}">
+            <span class="bc-error__icon">
+                {{ bcIcon({
+                    variant: 'exclamation'
+                }) }}
+            </span>
+            {{ params.error.html | safe if params.error.html else params.error.text }}
+        </div>
+    {%- endif %}
+</div>

@@ -1,0 +1,52 @@
+{%- set describedBy = params.describedBy if params.describedBy else '' -%}
+{%- set id = params.id if params.id else params.name %}
+
+{%- if params.hint %}
+    {% set hintId = id + '-Hint' %}
+    {% set describedBy = describedBy + ' ' + hintId %}
+{%- endif %}
+
+{%- if params.error %}
+    {% set errorId = id + '-Error' %}
+    {% set describedBy = describedBy + ' ' + errorId %}
+{%- endif %}
+
+{% set formRowAttributes = params.formRow | merge({ error: true if params.error else false }) %}
+<dv class="bc-form-row">
+    <div
+        class="bc-switch {%- if params.classes %} {{ params.classes }}{% endif %}">
+        <div class="bc-switch__control">
+            <input
+                data-module="bc-switch"
+                class="bc-switch__input"
+                type="checkbox"
+                id="{{ id }}"
+                name="{{ params.name }}"
+                value="{{ params.value }}"
+                {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+                {%- if params.required %} required{% endif %}
+                {%- if params.checked %} checked{% endif %}
+                {%- if params.disabled %} disabled{% endif %}
+                {%- if params.error %} aria-invalid="true"{% endif %}
+                {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+            <span class="bc-switch__track" aria-hidden="true">
+                <span class="bc-switch__indicator"></span>
+            </span>
+        </div>
+        <label
+            class="bc-switch__label"
+            for="{{ id }}">
+            {{- (params.label.html | safe) if params.label.html else params.label.text -}}
+        </label>
+        {%- if hasHint %}
+            <div class="bc-hint" id="{{ itemHintId }}">
+                {{ item.hint.html | safe if item.hint.html else item.hint.text }}
+            </div>
+        {%- endif %}
+        {% if params.error %}
+            <div class="bc-error" id="{{ errorId }}">
+                {{ params.error.html | safe if params.error.html else params.error.text }}
+            </div>
+        {% endif %}
+    </div>
+</div>

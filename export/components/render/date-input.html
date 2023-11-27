@@ -1,0 +1,81 @@
+
+
+
+
+
+    
+    
+    
+    
+
+
+<div class="bc-form-row">
+    <fieldset class="bc-fieldset">
+        
+            <legend class="bc-fieldset__legend">
+                <span class="bc-label">Date of birth</span>
+            </legend>
+        
+            
+            
+            <div class="bc-hint" id="undefined-Hint">
+                e.g. 31/01/1978
+            </div>
+        <div
+            data-module="bc-date-input"
+            class="bc-date-input">
+                <div class="bc-date-input__field">
+                    
+                    <label for="DOB-Day">Day</label>
+                    <input
+                        class="bc-date-input__input iu-mw-char2"
+                        type="number"
+                        min="1"
+                        max="31"
+                        id="DOB-Day"
+                        name="Day"
+                        placeholder="DD"autocomplete="bday-day"
+                    >
+                </div>
+                <div class="bc-date-input__field">
+                    
+                    <label for="DOB-Month">Month</label>
+                    <input
+                        class="bc-date-input__input iu-mw-char2"
+                        type="number"
+                        min="1"
+                        max="12"
+                        id="DOB-Month"
+                        name="Month"
+                        placeholder="MM"autocomplete="bday-month"
+                    >
+                </div>
+                <div class="bc-date-input__field">
+                    
+                    <label for="DOB-Year">Year</label>
+                    <input
+                        class="bc-date-input__input iu-mw-char4"
+                        type="number"
+                        min="1000"
+                        max="3000"
+                        id="DOB-Year"
+                        name="Year"
+                        placeholder="YYYY"autocomplete="bday-year"
+                    >
+                </div>
+        </div>
+    </fieldset>
+        
+        
+        <div class="bc-error" id="DOB-Year-Error">
+            <span class="bc-error__icon">
+                
+
+<i 
+    class="bc-icon fa-regular fa-exclamation"
+>
+</i>
+            </span>
+            The specified date is not eligible
+        </div>
+</div>

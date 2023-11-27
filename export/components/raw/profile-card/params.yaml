@@ -1,0 +1,23 @@
+caller: The body of the Card, displayed after the Image and Heading and above the Toolbar.
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: image
+    type: object
+    description: Parameters for an Image component, displayed above the Heading (if configured).
+    seeAlso: [image]
+  - name: heading
+    type: object
+    required: true
+    description: Parameters for a Heading component, displayed below the Image (if configured) and above the call data.
+  - name: href
+    type: string
+    description: The URL the card should link to. If configured, the link is applied to the Heading only.
+  - name: toolbar
+    type: object
+    description: Parameters for a Toolbar component, displayed at the bottom of the card. Useful for displaying controls on a card which has to serve other functions other than acting as a link.
+    seeAlso: [toolbar]

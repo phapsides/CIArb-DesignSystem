@@ -1,0 +1,65 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "helpers/media-queries";
+
+.bc-notification-bar {
+	$self: &;
+	padding: 1rem 0;
+	position: relative;
+	margin-bottom: 1rem;
+	&.bc-notification-bar--info {
+		background-color: colors.fs-color(warning);
+	}
+	&.bc-notification-bar--success {
+		background-color: colors.fs-color(success);
+	}
+	&.bc-notification-bar--danger {
+		background-color: colors.fs-color(danger);
+	}
+	&.bc-notification-bar--warning {
+		background-color: #fe9c25;
+	}
+	.bc-container__inner {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		align-items: center;
+		text-align: center;
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+		}
+		.bc-button {
+			height: auto;
+			margin-top: 1rem;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-top: 0;
+			}
+		}
+	}
+	&__heading {
+		padding-right: 1rem;
+	}
+	&__body {
+		padding-left: 3rem;
+		&.bc-prose {
+			margin-bottom: 0;
+		}
+	}
+	&--content {
+		padding: 2rem;
+		.bc-container {
+			margin: 0;
+		}
+		.bc-container__inner {
+			flex-direction: column;
+			.bc-notification-bar__heading {
+				text-align: left;
+			}
+			.bc-button {
+				width: inherit;
+				margin-top: 2rem;
+			}
+		}
+	}
+}

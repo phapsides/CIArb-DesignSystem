@@ -1,0 +1,41 @@
+{% from "radios/macro.njk" import bcRadios %}
+
+{{ bcRadios({
+    name: 'ExampleRadioGroup',
+    legend: {
+        text: 'Overall question for which these radios are prospective answers'
+    },
+    hint: {
+        text: 'A hint relating to the question as a whole.'
+    },
+    options: [
+        {
+            text: 'Default radio',
+            value: '1',
+            required: true
+        },
+        {
+            text: 'Pre-checked radio',
+            value: '2',
+            checked: true
+        },
+        {
+            text: 'Radio with hint',
+            value: '3',
+            hint: {
+                text: 'A hint relating to this specific option.'
+            }
+        },
+        {
+            text: 'Disabled radio',
+            value: '4',
+            disabled: true
+        },
+        {
+            text: 'Disabled and pre-checked radio',
+            value: '5',
+            disabled: true,
+            checked: true
+        }
+    ]
+}) }}

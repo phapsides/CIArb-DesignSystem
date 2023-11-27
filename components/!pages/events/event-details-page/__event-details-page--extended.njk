@@ -1,0 +1,579 @@
+{% extends '@t-event-details' %}
+
+
+{% block beforeTemplate %}
+
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "button/macro.njk" import bcButton %}
+
+    <div class="ip-event-details__hero-banner">
+		
+		<div class="bc-container__inner">
+			{{ bcButton({
+				classes: 'fs-!-margin-bottom-8',
+    			href: '#',
+    			text: 'Back to events'
+			}) }} 
+			{% call bcEventCard({
+				hero: true,
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 1
+				},
+				image: {
+					src: ('https://picsum.photos/648/438' | path),
+					alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+				},
+				button: {
+					appearance: 'primary',
+    				href: '#',
+					text: 'Book now'
+				},
+				calendar: true,
+				date: '18 November 2021',
+				time: '10:00',
+				location: 'London, UK'
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+				{% endcall %}
+			{% endcall %}
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "tab/macro.njk" import bcTab, bcTabPanel %}
+	{% from "details-group/macro.njk" import bcDetailsGroup %}
+	{% from "details/macro.njk" import bcDetails %}
+	{% from "agenda/macro.njk" import bcAgenda %}
+
+	<div class="ip-event-details">
+		<div class="ip-event-details__section fs-!-margin-bottom-5">
+			{{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'About this event'
+			}) }}
+
+			{% call bcProse() %}
+				<p>	
+					We will be holding a meet the funder Q&A webinar each week that the application window is open. Open to any organisation considering making an application, we will be talking through the application form and taking questions on how to make a great application.
+				</p>
+			{% endcall %}
+		</div>
+		<div class="ip-event-details__section fs-!-margin-bottom-10">
+			{{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'Tickets'
+			}) }}
+			
+			{% call bcTab({
+				heading: 'Contents',
+				tablist: [
+					{ for: 'Panel1', text: 'Member' },
+					{ for: 'Panel2', text: 'Non - Member' }
+				]
+			}) %}
+				{% call bcTabPanel({
+					id: 'Panel1'
+				}) %}
+					{% call bcDetailsGroup() %}
+						{% call bcDetails({
+							heading: { 
+								text: 'Day 1' 
+							}
+						}) %}
+							<table data-module="bc-pricing-table" class="bc-pricing-table">
+								<thead>
+									<tr>
+										<th>Day 1</th>
+										<th>Day 2</th>
+										<th>Day 3</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£50</div>
+												<small class="bc-pricing-table__label">Session 1</small>
+											</div>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£50</div>
+												<small class="bc-pricing-table__label">Session 2</small>
+											</div>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£15</div>
+												<small class="bc-pricing-table__label">Dinner</small>
+											</div>
+										</td>
+										<td>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£50</div>
+												<small class="bc-pricing-table__label">Full day</small>
+											</div>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£20.50</div>
+												<small class="bc-pricing-table__label">Add-on</small>
+											</div>
+										</td>
+										<td>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£80</div>
+												<small class="bc-pricing-table__label">Full day</small>
+											</div>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£20.50</div>
+												<small class="bc-pricing-table__label">Add-on</small>
+											</div>
+											<div class="bc-pricing-table__item">
+												<div class="bc-pricing-table__item-price">£10</div>
+												<small class="bc-pricing-table__label">Add-on</small>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						{% endcall %}
+						{% call bcDetails({
+							heading: { 
+								text: 'Day 2' 
+							}
+						}) %}
+							<div class="ip-event-details__ticket-prices bc-quick-pick">
+								<div class="bc-quick-pick__item">
+									<p class="bc-quick-pick__label">Early bird</p>
+									<p class="bc-quick-pick__data">£15</p>
+								</div>
+								<div class="bc-quick-pick__item">
+									<p class="bc-quick-pick__label">Online price</p>
+									<p class="bc-quick-pick__data">£30</p>
+								</div>
+								<div class="bc-quick-pick__item">
+									<p class="bc-quick-pick__label">On the day</p>
+									<p class="bc-quick-pick__data">£35</p>
+								</div>
+							</div>
+						{% endcall %}
+					{% endcall %}
+				{% endcall %}
+				{% call bcTabPanel({
+					id: 'Panel2'
+				}) %}
+					<div class="ip-event-details__ticket-prices bc-quick-pick">
+						<div class="bc-quick-pick__item">
+							<p class="bc-quick-pick__label">Early bird</p>
+							<p class="bc-quick-pick__data">£15</p>
+						</div>
+						<div class="bc-quick-pick__item">
+							<p class="bc-quick-pick__label">Online price</p>
+							<p class="bc-quick-pick__data">£30</p>
+						</div>
+						<div class="bc-quick-pick__item">
+							<p class="bc-quick-pick__label">On the day</p>
+							<p class="bc-quick-pick__data">£35</p>
+						</div>
+					</div>
+				{% endcall %}
+			{% endcall %}
+		</div>
+		<div class="ip-event-details__section">
+			{{ bcHeading({
+				classes: 'fs-!-margin-bottom-2',
+				hierarchy: 2,
+				text: 'Agenda'
+			}) }}
+			{% call bcProse({
+				classes: 'fs-!-margin-bottom-5'
+			}) %}
+				<p>	
+					Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+				</p>
+			{% endcall %}
+			{% call bcDetailsGroup() %}
+				{% call bcDetails({
+					heading: { 
+						text: 'Day 1' 
+					}
+				}) %}
+					{{ bcAgenda({
+						bands: [
+							{
+								datetimeStart: '09:00',
+								title: 'Registration, tea and coffee'
+							},
+							{
+								datetimeStart: '09:30',
+								title: 'Welcome and introduction'
+							},
+							{
+								datetimeStart: '09:30',
+								datetimeEnd: '13:45',
+								title: 'This is a title',
+								description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.',
+								sessions: [
+									{
+										datetime: '09:40',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '10:20',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '11:00',
+										title: 'Tea and coffee break'
+									},
+									{
+										datetime: '11:00',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '12:10',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '12:50',
+										title: 'Panel discussion'
+									},
+									{
+										datetime: '13:05',
+										title: 'Lunch'
+									}
+								]
+							},
+							{
+								datetimeStart: '13:55',
+								datetimeEnd: '17:45',
+								title: 'This is a title',
+								description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.',
+								sessions: [
+									{
+										datetime: '09:40',
+										title: 'Rotation 1',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '14:55',
+										title: 'Rotation 2',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '14:55',
+										title: 'Rotation 2',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '15:55',
+										title: 'Tea and coffee break'
+									},
+									{
+										datetime: '16:25',
+										title: 'Rotation 3',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '17:25',
+										title: 'Panel discussion'
+									},
+									{
+										datetime: '17:35',
+										title: 'Concluding remarks and close of meeting'
+									}
+								]
+							},
+							{
+								datetimeStart: '17:45',
+								title: 'Drinks reception - all attendees welcome'
+							},
+							{
+								datetimeStart: '19:00',
+								description: 'Future of UKY',
+								title: 'Annual section dinner'
+							}
+						]
+					}) }}
+				{% endcall %}
+				{% call bcDetails({
+					heading: { 
+						text: 'Day 2' 
+					}
+				}) %}
+					{{ bcAgenda({
+						bands: [
+							{
+								datetimeStart: '09:00',
+								title: 'Registration, tea and coffee'
+							},
+							{
+								datetimeStart: '09:30',
+								title: 'Welcome and introduction'
+							},
+							{
+								datetimeStart: '09:30',
+								datetimeEnd: '13:45',
+								title: 'This is a title',
+								description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.',
+								sessions: [
+									{
+										datetime: '09:40',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '10:20',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '11:00',
+										title: 'Tea and coffee break'
+									},
+									{
+										datetime: '11:00',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '12:10',
+										title: 'This is a session title',
+										description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+									},
+									{
+										datetime: '12:50',
+										title: 'Panel discussion'
+									},
+									{
+										datetime: '13:05',
+										title: 'Lunch'
+									}
+								]
+							},
+							{
+								datetimeStart: '13:55',
+								datetimeEnd: '17:45',
+								title: 'This is a title',
+								description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.',
+								sessions: [
+									{
+										datetime: '09:40',
+										title: 'Rotation 1',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '14:55',
+										title: 'Rotation 2',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '14:55',
+										title: 'Rotation 2',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '15:55',
+										title: 'Tea and coffee break'
+									},
+									{
+										datetime: '16:25',
+										title: 'Rotation 3',
+										workshops: [
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											},
+											{
+												title: 'This is a workshop title',
+												description: 'Ad pariatur in occaecat culpa labore reprehenderit consequat labore Lorem.'
+											}
+										]
+									},
+									{
+										datetime: '17:25',
+										title: 'Panel discussion'
+									},
+									{
+										datetime: '17:35',
+										title: 'Concluding remarks and close of meeting'
+									}
+								]
+							},
+							{
+								datetimeStart: '17:45',
+								title: 'Drinks reception - all attendees welcome'
+							},
+							{
+								datetimeStart: '19:00',
+								description: 'Future of UKY',
+								title: 'Annual section dinner'
+							}
+						]
+					}) }}
+				{% endcall %}
+			{% endcall %}
+		</div>
+	</div>
+{% endblock %}
+
+
+{% block afterTemplate %}
+		
+	<div class="ip-event-details--afterTemplate bc-container">
+		{{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 2,
+			text: 'Location'
+		}) }}
+		{% call bcProse() %}
+			<address>
+				Westminster Office - 8th Floor, Kings Buildings, 16 Smith Square, London, SW1P 3HQ
+			</address>
+		{% endcall %}
+		<div id="bc-map"></div>
+	</div>
+
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		function initMap() {
+			const myMapCenter = {
+				lat: 40.785091, 
+				lng: -73.968285
+			};
+
+			// Create a map object and specify the DOM element for display.
+			const map = new google.maps.Map(document.getElementById('bc-map'), {
+				center: myMapCenter,
+				zoom: 14
+			});
+
+
+			function markStore(storeInfo){
+
+				// Create a marker and set its position.
+				const marker = new google.maps.Marker({
+					map: map,
+					position: storeInfo.location
+				});
+			}
+
+			const stores = [{
+				location: {
+					lat: 40.785091, 
+					lng: -73.968285
+				}
+			}];
+
+			stores.forEach(function(store){
+				markStore(store);
+			});
+
+		}
+	</script>
+	<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCBZd0br-aQ1AVU5MMIjDErpBjuW7Piy5c&callback=initMap" async defer></script>
+{% endblock %}

@@ -1,0 +1,468 @@
+{% extends '@t-dashboard' %}
+
+{% block innerBreadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My dashboard', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "avatar/macro.njk" import bcAvatar %}
+	{% from "card/macro.njk" import bcCard %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "button/macro.njk" import bcButton %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+
+	{{ bcHeading({
+		hierarchy: 1,
+		text: 'My dashboard'
+	}) }}
+	<main class="ip-my-dashboard ip-my-dashboard--personalised">
+	
+		<!-- Header, body and cta -->
+		{% call bcCard({
+			classes: 'profile'
+		}) %}
+			
+			{{ bcAvatar({
+				src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+				alt: 'Jane Doe',
+				editable: false
+			}) }}
+			<div class="profile-info">
+				{{ bcHeading({
+					hierarchy: 2,
+					text: 'Welcome Michelle'
+				}) }}
+				<p class="member-id">Member ID: 
+					<span class="member-id-data">120301</span>
+				</p>
+				<p class="membership-grade">Membership Grade:
+					<span class="membership-grade-data">Associate</span>
+				</p>
+				<p class="membership-status">Membership Status:
+					<span class="membership-status-data">12/12/2023</span>
+				</p>
+			</div>
+			<div class="membership-btn-container">
+				{{ bcButton({
+					appearance: 'primary',
+					href: '#',
+					text: 'View membership & billing'
+				}) }}
+
+				{{ bcButton({
+					appearance: 'secondary',
+					href: '#',
+					text: 'Upgrade membership'
+				}) }}
+			</div>
+		{% endcall %}
+
+		{# Section 2 - start #}
+		<div class="acc-opt-container">
+			{% call bcGrid({
+				size: '1/2'
+			}) %}
+				{% call bcEventCard({
+					href: '#',
+					heading: {
+						text: 'Account settings',
+						hierarchy: 3
+					}
+				}) %}
+				{% endcall %}
+				{% call bcEventCard({
+					href: '#',
+					heading: {
+						text: 'Professional Profile',
+						hierarchy: 3
+					}
+				}) %}
+				{% endcall %}
+			{% endcall %}
+		</div>
+
+		{# Section 3 - start #}
+		<div class="my-branch-wrapper">
+			{% call bcCard({
+				heading: {
+					text: 'My branches',
+					hierarchy: 2
+				}
+			}) %}
+				<div class="branch-container">
+					{{ bcAvatar({
+						classes: 'branch-img',
+						src: ('https://images.unsplash.com/photo-1526958977630-bc61b30a2009?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8 auto=format&fit=crop&w=1470&q=80' | path),
+						alt: 'Australia',
+						editable: false
+					}) }}
+					<div class="branch-location">
+						{{ bcHeading({
+							hierarchy: 5,
+							text: 'Primary'
+						}) }}
+						{{ bcHeading({
+							hierarchy: 4,
+							text: 'Australia'
+						}) }}
+					</div>
+				</div>
+				<div class="branch-container">
+					{{ bcAvatar({
+						classes: 'branch-img',
+						src: ('https://drewbuckleyphotography.com/wp-content/uploads/2020/08/Newport-Parrog-Boats.jpg' | path),
+						alt: 'Australia',
+						editable: false
+					}) }}
+					<div class="branch-location">
+						{{ bcHeading({
+							hierarchy: 5,
+							text: 'Secondary'
+						}) }}
+						{{ bcHeading({
+							hierarchy: 4,
+							text: 'Wales'
+						}) }}
+					</div>
+				</div>
+			{% endcall %}	
+		</div>
+
+		<div class="events-courses-wrapper">
+			<div class="my-event-container">
+				{{ bcHeading({
+					hierarchy: 2,
+					text: 'My events'
+				}) }}
+				{% call bcEventCard({
+					heading: {
+						text: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+						hierarchy: 3
+					},
+					image: {
+						src: ('/images/temp/event-temp-background.png' | path),
+						alt: ''
+					},
+					date: 'Thu, 30 June 2021',
+					location: 'London, UK',
+					button: {
+						appearance: 'secondary',
+						href: '#',
+						text: 'View details'
+					},
+					buttonSecondary: {
+						appearance: 'link',
+						text: 'Cancel booking'
+					}
+				}) %}	
+				{% endcall %}
+				<a class="bc-link__more" href="#">
+					View all
+					<i class="bc-icon fa-regular fa-arrow-right"></i>
+				</a>
+			</div>
+
+			<div class="my-courses-container">
+				{{ bcHeading({
+					hierarchy: 2,
+					text: 'My courses'
+				}) }}
+				{% call bcEventCard({
+					classes: 'bc-event-card--single-column',
+					heading: {
+						text: 'Online Introduction to ADR Assessment',
+						hierarchy: 3
+					},
+					location: 'Online',
+					type: 'Hybrid',
+					button: {
+						appearance: 'secondary',
+						href: '#',
+						text: 'View details'
+					},
+					buttonSecondary: {
+						appearance: 'link',
+						text: 'Cancel booking'
+					}
+				}) %}
+				{% endcall %}
+				<a class="bc-link__more" href="#">
+					View all
+					<i class="bc-icon fa-regular fa-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+		{# Main - end #}
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% from "sub-nav/macro.njk" import bcSubnav %}
+    {% from "details/macro.njk" import bcDetails %}
+    <div class="hide-on-desktop">        {% call bcDetails({
+            classes: 'bc-details--with-avatar ',
+            avatar: {
+                classes: 'bc-avatar--medium',
+                src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                alt: 'Jane Smith'
+            },
+            heading: {
+                text: 'My ciard',
+                hierarchy: 4
+            },
+            job_description: 'Michelle, you are logged in'
+        }) %}
+            {% call bcProse() %}
+                {{ bcSubnav({
+                    items: [
+                        { href: '#', text: 'My dashboard', current: true },
+                        { href: '#', text: 'Account details'},
+                        { href: '#', text: 'Professional profile'},
+                        { href: '#', text: 'Membership & billing' },
+                        { href: '#', text: 'Purchase history' },
+                        { href: '#', text: 'My booked events' },
+                        { href: '#', text: 'My courses' },
+                        { href: '#', text: 'My resource library' },
+                        { href: '#', text: 'Communication preferences' },
+                        { href: '#', text: 'Visit the LMS' }
+                    ]
+                }) }}
+            {% endcall %}
+        {% endcall %}
+    </div>    
+	<div class="hide-on-mobile">
+		{{ bcSubnav({
+            items: [
+                { href: '#', text: 'My dashboard', current: true },
+                { href: '#', text: 'Account details'},
+                { href: '#', text: 'Professional profile'},
+                { href: '#', text: 'Membership & billing' },
+                { href: '#', text: 'Purchase history' },
+                { href: '#', text: 'My booked events' },
+                { href: '#', text: 'My courses' },
+                { href: '#', text: 'My resource library' },
+                { href: '#', text: 'Communication preferences' },
+                { href: '#', text: 'Visit the LMS' }
+            ]
+        }) }}
+    </div>
+{% endblock %}
+
+{% block afterTemplate %}
+{% from "news/macro.njk" import bcNews %}
+{% from "grid/macro.njk" import bcGrid %}
+{% from "event-card/macro.njk" import bcEventCard %}
+
+<div class="ip-my-dashboard__recommends">
+	<div class="bc-container">
+		<div class="bc-container__inner">
+			<div class="ip-my-dashboard__recommends-intro">
+				{{ bcHeading({
+					hierarchy: 2,
+					text: 'ciarb recommends'
+				}) }}
+				{% call bcProse() %}
+					<p>Specially curated content tailored to your discipline and professional profile</p>
+				{% endcall %}
+				<a class="bc-link__more" href="#">
+					Manage my profile
+					<i class="bc-icon fa-regular fa-arrow-right"></i>
+				</a>
+			</div>
+			<div class="ip-my-dashboard__events">
+				{{ bcHeading({
+					hierarchy: 3,
+					text: 'Upcoming events'
+				}) }}
+				{% call bcGrid({
+					size: '1/3',
+					classes: 'ip-my-dashboard__events'
+				}) %}
+					{% call bcEventCard({
+						href: '#',
+						heading: {
+							text: 'Navigating sanctions: what are the ethical responsibilities of dispute resolvers?',
+							hierarchy: 3
+						},
+						image: {
+							src: ('/images/temp/event-temp-background.png' | path),
+							alt: ''
+						},
+						date: 'Thu, 30 June 2022',
+						location: 'London, UK'
+					}) %}
+						{#  #}
+					{% endcall %}
+					{% call bcEventCard({
+						href: '#',
+						heading: {
+							text: 'Western Counties Branch half day ADR conference',
+							hierarchy: 3
+						},
+						image: {
+							src: ('/images/temp/event-temp-background.png' | path),
+							alt: ''
+						},
+						date: 'Thu, 30 June 2022',
+						location: 'London, UK'
+					}) %}
+						{#  #}
+					{% endcall %}
+					{% call bcEventCard({
+						href: '#',
+						heading: {
+							text: 'Loss of productivity claims in construction',
+							hierarchy: 3
+						},
+						image: {
+							src: ('/images/temp/event-temp-background.png' | path),
+							alt: ''
+						},
+						date: 'Thu, 30 June 2022',
+						location: 'London, UK'
+						}) %}
+						{#  #}
+					{% endcall %}
+				{% endcall %}
+			</div>
+			<a class="bc-link__more" href="#">
+				Find an event
+				<i class="bc-icon fa-regular fa-arrow-right"></i>
+			</a>
+		</div>
+
+		<div class="ip-my-dashboard__courses">
+			{{ bcHeading({
+				hierarchy: 3,
+				text: 'Courses for you'
+			}) }}
+			{% call bcGrid({
+				size: '1/3'
+			}) %}
+				{% call bcEventCard({
+					href: '#',
+					classes: 'bc-event-card--single-column',
+					heading: {
+						text: 'Online Introduction to ADR Assessment',
+						hierarchy: 3
+					},
+					location: 'Online',
+					type: 'Hybrid'
+				}) %}
+				{#  #}
+				{% endcall %}
+				{% call bcEventCard({
+					href: '#',
+					classes: 'bc-event-card--single-column',
+					heading: {
+						text: 'Online Introduction to ADR Assessment',
+						hierarchy: 3
+					},
+					location: 'Online',
+					type: 'Hybrid'
+				}) %}
+				{#  #}
+				{% endcall %}
+				{% call bcEventCard({
+					href: '#',
+					classes: 'bc-event-card--single-column',
+					heading: {
+						text: 'Online Introduction to ADR Assessment',
+						hierarchy: 3
+					},
+					location: 'Online',
+					type: 'Hybrid'
+				}) %}
+				{#  #}
+				{% endcall %}
+				{% endcall %}
+				{# TODO: Componetise the below #}
+				<a class="bc-link__more" href="#">
+					Find a course
+					<i class="bc-icon fa-regular fa-arrow-right"></i>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="bc-container ip-my-dashboard__news">
+	<div class="bc-container__inner">
+		{{ bcNews({
+			heading: {
+				text: 'News & insights',
+				hierarchy: 3
+			},
+			items: [
+				{
+					featured: true,
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Branch focus: UAE'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Branch focus: UAE',
+						hierarchy: 3
+					},
+					date: '25th  July 2022',
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'ciarb\'s diversity in ADR strategy'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'ciarb\'s diversity in ADR strategy',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'ciarb mentoring programme',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				}
+			],
+			cta: {
+				href: '#',
+				text: 'All news'
+			}
+		}) }}
+	</div>
+</div>
+{% endblock %}

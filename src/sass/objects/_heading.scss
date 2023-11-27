@@ -1,0 +1,42 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
+
+.bc-heading-h1,
+.bc-heading-h2,
+.bc-heading-h3,
+.bc-heading-h4,
+.bc-heading-h5 {
+	@include spacing.fs-responsive-margin(0, $direction: block-start);
+	@include spacing.fs-responsive-margin(3, $direction: block-end);
+	color: settings.$fs-text-color-heading;
+}
+
+.bc-heading-h1,
+.bc-heading-h2,
+.bc-heading-h3,
+.bc-heading-h4,
+.bc-heading-h5 {
+	@include typography.fs-font-stack(sans, $weight: 600);
+}
+
+.bc-heading-h1 {
+	@include typography.fs-font-size(h1);
+}
+
+.bc-heading-h2 {
+	@include typography.fs-font-size(h2);
+}
+
+.bc-heading-h3 {
+	@include typography.fs-font-size(h3);
+}
+
+.bc-heading-h4 {
+	@include typography.fs-font-size(h4);
+}
+
+.bc-heading-h5 {
+	@include typography.fs-font-size(h5);
+}

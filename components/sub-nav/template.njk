@@ -1,0 +1,50 @@
+{% from "heading/macro.njk" import bcHeading %}
+{% from "icon/macro.njk" import bcIcon %}
+
+<nav data-module="bc-sub-nav" aria-label="Account navigation" class="bc-sub-nav {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}>
+    {%- if params.heading %}
+        <header class="bc-sub-nav__header">
+            {{ bcHeading(params.heading) }}
+        </header>
+    {%- endif %}
+    <ul class="bc-sub-nav__list">
+        {%- for item in params.items %}
+            <li class="bc-sub-nav__item" {%- if item.current %} aria-current="true" {% endif %} {%- if item.active %} aria-active="true" {% endif %}>
+                <div class="bc-sub-nav__control">
+                    <a class="bc-sub-nav__link" href="{{ item.href }}" {%- if item.current %} aria-current="true" {% endif %}>
+                        <span>
+                            {{ (item.html | safe) if item.html else item.text }}
+                        </span>
+                    </a>
+                    {%- if item.items | length > 0 %}
+                        {{ bcIcon({ 
+                            classes: "fa-minus sub-nav-trigger"
+                        }) }}
+                        {{ bcIcon({ 
+                            classes: "fa-plus sub-nav-trigger"
+                        }) }}
+                    {%- else %}
+                        <a href="{{ item.href }}" {%- if item.current and item.items | length == 0 %} aria-current="true" {% endif %}>
+                            {{ bcIcon({ 
+                                classes: "fa-arrow-right"
+                            }) }}
+                        </a>
+                    {%- endif %}
+                </div>
+                {%- if item.items %}
+                    <ul class="bc-sub-nav__sub-list" {%- if item.current %} aria-current="true" {% endif %}>
+                        {%- for sub_item in item.items %}
+                            <li class="bc-sub-nav__sub-item">
+                                <a class="bc-sub-nav__sub-link" href="{{ sub_item.href }}" {%- if sub_item.current %} aria-current="true" {% endif %}>
+                                    <span>
+                                        {{ (sub_item.html | safe) if sub_item.html else sub_item.text }}
+                                    </span>
+                                </a>
+                            </li>
+                        {%- endfor %}
+                    </ul>
+                {%- endif %}
+            </li>
+        {%- endfor %}
+    </ul>
+</nav>

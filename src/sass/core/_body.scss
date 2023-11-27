@@ -1,0 +1,22 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "../helpers/typography";
+@use "helpers/media-queries";
+
+html {
+	text-size-adjust: 100%;
+
+	@if settings.$fs-font-sizes-root !=16px {
+		font-size: settings.$fs-font-sizes-root;
+	}
+}
+
+body {
+	@include typography.fs-typography-common;
+	@include typography.fs-font-stack(sans, $weight: 300);
+	@include typography.fs-font-size(body-mobile);
+	margin: 0;
+	color: settings.$fs-text-color;
+	@include media-queries.fs-mq($from: tablet) {
+		@include typography.fs-font-size(body);
+	}
+}

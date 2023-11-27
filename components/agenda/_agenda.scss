@@ -1,0 +1,66 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/typography";
+@use "helpers/media-queries";
+@use "heading/heading";
+@use "helpers/colors";
+
+.bc-agenda {
+	&__time {
+		font-style: italic;
+	}
+	&__description {
+		@include typography.fs-font-size(body-mobile);
+		margin-top: 0.25rem;
+		> :first-child {
+			margin-top: 0;
+		}
+		> :last-child {
+			margin-bottom: 0;
+		}
+	}
+	// Session bands
+	&__band {
+		& + & {
+			border-top: settings.$fs-border-width-form-element solid
+				colors.fs-color(white);
+		}
+	}
+	&__band-header {
+		padding: 1rem 1.5rem;
+	}
+	&__band-title {
+		@extend .bc-heading--subtitle;
+	}
+	// Sessions
+	&__session {
+		margin: 1rem;
+	}
+	&__session-header {
+	}
+	&__session-title {
+	}
+	// Workshops
+	&__workshops {
+		margin-top: 1rem;
+		@include media-queries.fs-mq($from: tablet) {
+			display: flex;
+		}
+	}
+	&__workshops-item {
+		flex: 1 1 1px;
+		margin-bottom: 1rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-right: 1rem;
+			margin-bottom: 0;
+			& + & {
+				border-left: 2.5px solid;
+				padding-left: 1rem;
+			}
+		}
+	}
+	&__workshops-title {
+		display: block;
+		margin-bottom: 0.25rem;
+		font-weight: 400;
+	}
+}

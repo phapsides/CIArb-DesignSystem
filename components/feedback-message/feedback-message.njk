@@ -1,0 +1,55 @@
+{% from "feedback-message/macro.njk" import bcFeedbackMessage %}
+
+{{ bcFeedbackMessage({
+	text: "Your application reference number is ABC012345."
+}) }}
+
+{{ bcFeedbackMessage({
+	large: true,
+	text: "Your application reference number is ABC012345."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "success",
+	text: "Document uploaded."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "success",
+	large: true,
+	text: "Document uploaded."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "warning",
+	text: "This page will self-destruct in 90 seconds."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "warning",
+	large: true,
+	text: "This page will self-destruct in 90 seconds."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "danger",
+	text: "Avoid uploading .doc files. Save as .docx if possible."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "danger",
+	large: true,
+	text: "Avoid uploading .doc files. Save as .docx if possible."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "error",
+	text: "Upload failed. The file you uploaded was too large."
+}) }}
+
+{{ bcFeedbackMessage({
+	type: "error",
+	large: true,
+	text: "Upload failed. The file you uploaded was too large."
+}) }}
+

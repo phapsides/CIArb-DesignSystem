@@ -1,0 +1,37 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/forms";
+@use "helpers/spacing";
+@use "helpers/colors";
+
+.bc-select {
+	$arrow-width: 0.5rem;
+	$arrow-height: $arrow-width * 0.75;
+	$input-padding: spacing.fs-spacing(
+		settings.$fs-form-element-horizontal-padding
+	);
+	@include spacing.fs-responsive-margin(1, $direction: block-start);
+	position: relative;
+	align-items: center;
+	display: flex;
+
+	&__input {
+		@include forms.bc-select;
+		color: colors.fs-color(brand-secondary);
+		padding-inline-end: $arrow-width + ($input-padding * 2);
+
+		&:focus {
+			outline: 3.5px solid colors.fs-color(outline);
+			outline-offset: 0;
+		}
+	}
+
+	&__arrow {
+		position: absolute;
+		inset-inline-end: $input-padding;
+		right: 1.25rem !important;
+
+		i {
+			color: colors.fs-color(brand-secondary);
+		}
+	}
+}

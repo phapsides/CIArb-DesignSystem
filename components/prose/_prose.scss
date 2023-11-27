@@ -1,0 +1,86 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "objects/lists";
+@use "heading/heading";
+
+.bc-prose {
+	margin-bottom: 1.5rem;
+	> * {
+		margin-top: 0;
+		margin-bottom: 0;
+		display: block;
+	}
+	> * + * {
+		margin-top: 1rem;
+	}
+	:first-child {
+		margin-top: 0;
+	}
+	:last-child {
+		margin-bottom: 0;
+	}
+	p {
+		&.small {
+			@include typography.fs-font-size(body-mobile);
+		}
+		a {
+			margin: 0;
+			display: inline-block;
+		}
+	}
+	a {
+		// TODO: Could we please use font size variable
+		font-size: 1.125rem;
+	}
+	ul.bc-list--dashed {
+		@extend .fs-list;
+
+		> li {
+			padding: 0 0 0 1rem;
+			&:before {
+				content: "-";
+				display: inline-block;
+				margin: 0 0 0 -1rem;
+				margin-right: 0.5rem;
+			}
+		}
+		
+		li + li {
+			margin: 0;
+		}
+	}
+	dl {
+		@extend .fs-list;
+		> * {
+			margin: 0;
+		}
+		dt {
+			@extend .bc-heading--subtitle;
+		}
+		dd {
+			margin-top: 1rem;
+		}
+		&.bc-list--dashed {
+			> dd {
+				margin-left: 1rem;
+				margin-top: 0;
+				&:before {
+					content: "-";
+					display: inline-block;
+					margin: 0 0 0 -1rem;
+					margin-right: 0.5rem;
+				}
+				&:first-of-type {
+					margin-top: 1rem;
+				}
+			}
+		}
+	}
+	address {
+		font-style: normal;
+	}
+	.bc-blockquote {
+		display: flex !important;
+	}
+}

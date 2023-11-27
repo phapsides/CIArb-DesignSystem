@@ -1,0 +1,55 @@
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'button/macro.njk' import bcButton %}
+{% from 'image/macro.njk' import bcImage %}
+
+<article
+	data-module="bc-card"
+	class="bc-card
+	{%- if params.image %} bc-card--with-image{% endif %}
+	{%- if params.event %} bc-card--event{% endif %}
+	{%- if params.category %} bc-card--category{% endif %}
+	{%- if params.testimonial %} bc-card--testimonial{% endif %}
+	{%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- if params.size %} data-size="{{ params.size }}"{% endif %}
+	{%- if params.theme %} data-theme="{{ params.theme }}"{% endif %}
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+	{%- if params.image %} data-layout="extended"{% endif %}
+>
+    {%- if params.product %} 
+        <a href="{{params.href}}" title="{{params.heading}}">
+    {% endif %}
+        {%- if params.image %}
+			<div class="bc-card__media">
+				{{ bcImage(params.image) }}
+			</div>
+		{%- endif %}
+        {%- if params.heading %}
+			{%- if not params.product and not params.button %} 
+				<a href="{{params.href}}">
+			{%- endif %}
+				<header class="bc-card__header">
+					{{ bcHeading(params.heading) }}
+				</header>
+			{%- if not params.product and not params.button %} 
+				</a>
+			{%- endif %}
+        {%- endif %}
+        <div class="bc-card__inner">
+            {%- if caller %}
+                <div class="bc-card__body">
+                    {{ caller() }}
+                </div>
+            {%- endif %}
+            {%- if params.button %}
+                <footer class="bc-card__action">
+					{%- if params.above_button_content %}
+						{{ params.above_button_content.html | safe }}
+					{%- endif %}
+                    {{ bcButton(params.button) }}
+                </footer>
+            {%- endif %}
+        </div>
+    {%- if params.product %} 
+        </a>
+    {% endif %}
+</article>

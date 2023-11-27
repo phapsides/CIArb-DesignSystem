@@ -1,0 +1,164 @@
+{% extends '@t-left-sidebar' %}
+
+{% block notificationBar %}
+	{% from "notification-bar/macro.njk" import bcNotificationBar %}
+    
+	{{ bcNotificationBar({
+		variant: 'warning',
+		message: {
+			html: 'You need to complete your Annual Declaration to renew your membership'
+		},
+		link: {
+			href: '#',
+			text: 'Complete declaration'
+		}
+	}) }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Communication preferences', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "form/macro.njk" import bcForm %}
+    
+	<div class="ip-communication-preferences">
+        {{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 1,
+			text: 'Communication preferences'
+		}) }}
+        {% call bcProse() %}
+			<p>
+				We promise to only use your info in accordance with our privacy policy. CIArb will contact you to deliver materials
+				related to membership.
+			</p>
+        {% endcall %}
+        {% call bcForm({
+			classes: 'fs-!-margin-top-6 ip-communication-preferences__form',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+		
+        	<div class="ip-communication-preferences__section">
+				{{ bcHeading({
+					classes: 'fs-!-margin-bottom-0',
+					hierarchy: 3,
+					text: 'Marketing'
+				}) }}
+				{% call bcProse() %}
+					<p>Please tell us how you would like to receive updates</p>
+        		{% endcall %}
+					
+				{{ bcCheckbox({
+					name: 'MarkettingPreferences',
+					layout: 'horizontal',
+					
+					options: [
+						{
+							text: 'Email',
+							value: '1',
+							attributes: { 
+								'data-checkall-group': 'preferences'
+							}
+						},
+						{
+							text: 'Phone',
+							value: '2',
+							attributes: { 
+								'data-checkall-group': 'preferences'
+							}
+						},
+						{
+							text: 'Post',
+							value: '3',
+							attributes: { 
+								'data-checkall-group': 'preferences'
+							}
+						},
+						{
+							text: 'SMS',
+							value: '4',
+							attributes: { 
+								'data-checkall-group': 'preferences'
+							}
+						}
+					]
+				}) }}
+        	</div>
+        	{{ bcCheckbox({
+				classes: 'ip-communication-preferences__unsubscribe',
+				name: 'ExampleRadioGroup',
+				options: [
+					{
+						text: 'I don’t want to receive any marketing communications',
+						value: '1',
+						attributes: { 
+							'data-checkall-trigger': 'preferences'
+						}
+					}
+				]
+			}) }}
+        	{{ bcButton({
+				classes: 'fs-!-margin-top-6',
+				appearance: 'primary',
+				text: 'Update preferences'
+			}) }}
+        {% endcall %}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% from "sub-nav/macro.njk" import bcSubnav %}
+    {{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+        // Get triggers
+        const checkAll = document.querySelectorAll('[data-checkall-trigger]');
+        let matchingCheckboxes = document.querySelectorAll('[data-checkall-group]');
+        // Check / Uncheck all matching checkboxes
+        function toggleCheckboxGroup(checked) {
+            matchingCheckboxes.forEach(function (el) {
+                if (checked !== el.checked) {
+                    el.checked = ! el.checked;
+                }
+            });
+        };
+        // Get all checkboxes
+        checkAll.forEach(function (el) {
+            el.addEventListener('change', function () {
+                let checked = el.checked
+                    ? false
+                    : true;
+                toggleCheckboxGroup(checked);
+            });
+        });
+        matchingCheckboxes.forEach(function (el) {
+            el.addEventListener('change', function (e) {
+                if (e.target.checked) {
+                    checkAll[0].checked = false;
+                }
+            });
+        });
+    </script>
+{% endblock %}

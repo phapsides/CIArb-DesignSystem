@@ -1,0 +1,78 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "objects/container";
+
+.bc-banner {
+	background-color: colors.fs-color(brand-primary);
+	background: linear-gradient(
+		0deg,
+		colors.fs-color(brand-secondary) 0%,
+		colors.fs-color(brand-primary) 100%
+	);
+	@media only screen and (min-width: 1025px) {
+		background: linear-gradient(
+			270deg,
+			colors.fs-color(brand-secondary) 0%,
+			colors.fs-color(brand-primary) 100%
+		);
+	}
+	&__inner {
+		padding-top: 3rem;
+		padding-bottom: 4rem;
+		background-size: 120%, cover;
+		background-position: center 10rem, center;
+		background-repeat:  no-repeat;
+		@include media-queries.fs-mq($from: tablet) {
+			background-size: 90%, cover;
+			background-position: center 2rem, center;
+		}
+		@media only screen and (min-width: 1025px) {
+			background-size: 45%, cover;
+			background-position: 90% center;
+		}
+		@media only screen and (min-width: 1440px) {
+			padding-block: 3rem;
+		}
+	}	
+	&__container {
+		display: flex;
+		flex-direction: column;
+		align-items: flex-start;
+		place-items: start;
+		justify-content: space-between;
+		@include media-queries.fs-mq($from: tablet) {
+			margin: auto;
+			flex-direction: row;
+			place-items: center;
+		}
+	}
+	&__body {
+		@media only screen and (min-width: 1440px) {
+			max-width: 65rem;
+		}
+	}
+	&__header {
+		margin-bottom: 0.25rem;
+	}
+	.bc-button {
+		flex-shrink: 0;
+	}
+
+	&--secondary-color {
+		background-color: colors.fs-color(brand-secondary);
+		.bc-banner__main,
+		.bc-heading {
+			color: colors.fs-color(white);
+			width: 90%;
+		}
+		.bc-button[data-appearance="primary"] {
+			background-color: colors.fs-color(brand-primary-light);
+			border-color: colors.fs-color(brand-primary-light);
+			&:hover {
+				background-color: colors.fs-color(brand-primary);
+				border-color: colors.fs-color(brand-primary);
+			}
+		}
+	}
+}

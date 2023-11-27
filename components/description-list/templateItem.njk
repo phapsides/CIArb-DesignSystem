@@ -1,0 +1,14 @@
+<div 
+	class="bc-description-list__item {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+	<dt class="bc-description-list__key {%- if params.key.classes %} {{ params.key.classes }}{% endif %}">
+		{{ (params.key.html | safe) if params.key.html else params.key.text }}
+	</dt>
+	<dd class="bc-description-list__value">
+		{%- if caller %}
+			{{ caller() }}
+		{%- else %}
+			{{ (params.html | safe) if params.html else params.text }}
+		{%- endif %}
+	</dd>
+</div>

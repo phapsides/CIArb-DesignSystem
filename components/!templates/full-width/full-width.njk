@@ -1,0 +1,22 @@
+{% extends '@chrome' %}
+{% block main %}
+    <div class="it-full-width">
+        <div class="it-full-width__inner">
+            {% block beforeTemplate %}{% endblock %}
+            <div class="bc-container">
+                <div class="bc-container__inner">
+                    {% block inner %}
+                        <article class="it-full-width__document">
+                            <main class="it-full-width__body">
+                                {% block body %}
+                                    {# [body] #}
+                                {% endblock %}
+                            </main>
+                        </article>
+                    {% endblock %}
+                </div>
+            </div>
+            {% block afterTemplate %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

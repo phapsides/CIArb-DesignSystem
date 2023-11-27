@@ -1,0 +1,334 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership', href: '#' },
+			{ text: 'Membership Directory', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+
+    {% from "event-card/macro.njk" import bcEventCard %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "icon/macro.njk" import bcIcon %}
+    {% from "details/macro.njk" import bcDetails %}
+
+    {% call bcEventCard({
+        classes: 'bc-event-card--membership-directory',
+        full_width: true,
+        hero: true,
+        heading: {
+            text: 'Member directory',
+            hierarchy: 1
+        }
+    }) %}
+    {% call bcProse() %}
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+    </p>
+    <div class="ip-membership-directory__how-to-join">
+        {% call bcDetails({
+            heading: { 
+                text: 'How to join the directory',
+                hierarchy: 4
+            }
+        }) %}
+        {% call bcProse() %}
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        {% endcall %}
+        {% endcall %}
+    </div>
+    {% endcall %}
+    {% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "grid/macro.njk" import bcGrid %}
+    {% from "pagination/macro.njk" import bcPagination %}
+    {% from "input/macro.njk" import bcInput %}
+    {% from "button/macro.njk" import bcButton %}
+
+    <div class="ip-membership-directory">
+
+        <div class="search-form-desktop">
+            {{ bcHeading({
+                classes: 'fs-!-margin-bottom-3',
+                hierarchy: 2,
+                text: 'Find a member'
+            }) }}
+            {% call bcForm({
+                classes: 'fs-!-margin-bottom-4 ip-membership-directory__search-form',
+                action: '',
+                method: '',
+                disableUnloadPrompt: true
+            }) %}
+                {{ bcInput({
+                    name: 'member_name',
+                    required: true,
+                    label: { 
+                        text: 'Type a member name (if known)' 
+                    }
+                }) }}
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Search by name'
+                }) }}
+            {% endcall %}
+        </div>
+
+        {% call bcForm({
+			classes: 'fs-!-margin-top-2 fs-!-margin-bottom-0 ip-membership-directory__form',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+            <p class="ip-membership-directory__filter-results">
+                Showing results 1–10 of 840
+            </p>
+            {{ bcSelect({
+                name: "ExampleSelect",
+                required: true,
+                options: [
+                    { value: "", text: "Sort by" }
+                ]
+            }) }}
+        {% endcall %}
+
+        {% call bcGrid({size: '1/1'}) %}
+            <div class="ip-membership-directory__results">
+                
+                {% call bcEventCard({
+                    href: '#',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    }
+                    }) %}
+                    {% call bcProse() %}
+                        <div class="bc-member-card__content">
+                            <div class="bc-member-card__details">
+                                {{ bcHeading({
+                                    hierarchy: 3,
+                                    text: 'First and last name'
+                                }) }}
+                                <p><strong>Job title</strong></p>
+                                <p><strong>Country</strong></p>
+                                <p><strong>Branches:</strong> Canada, India</p>
+                            </div>
+                        </div>
+                    {% endcall %}
+                {% endcall %}
+
+                {% call bcEventCard({
+                    href: '#',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    }
+                    }) %}
+                    {% call bcProse() %}
+                        <div class="bc-member-card__content">
+                            <div class="bc-member-card__details">
+                                {{ bcHeading({
+                                    hierarchy: 3,
+                                    text: 'First and last name'
+                                }) }}
+                                <p><strong>Job title</strong></p>
+                                <p><strong>Country</strong></p>
+                                <p><strong>Branches:</strong> Canada, India</p>
+                            </div>
+                        </div>
+                    {% endcall %}
+                {% endcall %}
+
+                {% call bcEventCard({
+                    href: '#',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    }
+                    }) %}
+                    {% call bcProse() %}
+                        <div class="bc-member-card__content">
+                            <div class="bc-member-card__details">
+                                {{ bcHeading({
+                                    hierarchy: 3,
+                                    text: 'First and last name'
+                                }) }}
+                                <p><strong>Job title</strong></p>
+                                <p><strong>Country</strong></p>
+                                <p><strong>Branches:</strong> Canada, India</p>
+                            </div>
+                        </div>
+                    {% endcall %}
+                {% endcall %}
+
+                {% call bcEventCard({
+                    href: '#',
+                    avatar: {
+                        classes: 'bc-avatar--medium',
+                        src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+                        alt: 'Jane Smith'
+                    }
+                    }) %}
+                    {% call bcProse() %}
+                        <div class="bc-member-card__content">
+                            <div class="bc-member-card__details">
+                                {{ bcHeading({
+                                    hierarchy: 3,
+                                    text: 'First and last name'
+                                }) }}
+                                <p><strong>Job title</strong></p>
+                                <p><strong>Country</strong></p>
+                                <p><strong>Branches:</strong> Canada, India</p>
+                            </div>
+                        </div>
+                    {% endcall %}
+                {% endcall %}
+
+            </div>
+        {% endcall %}
+     
+        {{ bcPagination({
+			currentPage: 1,
+			totalPages: 4
+		}) }}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "input/macro.njk" import bcInput %}
+    {% from "button/macro.njk" import bcButton %}
+
+    <div class="search-form-mobile">
+        {{ bcHeading({
+            hierarchy: 2,
+            text: 'Find a member'
+        }) }}
+        {% call bcForm({
+            classes: 'fs-!-margin-bottom-6 ip-membership-directory__search-form',
+            action: '',
+            method: '',
+            disableUnloadPrompt: true
+        }) %}
+        {{ bcInput({
+            name: 'member_name',
+            required: true,
+            label: { 
+                text: 'Type a member name (if known)' 
+            }
+        }) }}
+        {{ bcButton({
+            classes:'bc-form-row',
+            appearance: 'primary',
+            type: 'submit',
+            text: 'Search by name'
+        }) }}
+        {% endcall %}
+    </div>
+
+    <div
+    data-module="bc-filters"
+    id="filters"
+    class="bc-filters">
+    {% call bcForm({
+        action: '',
+        method: '',
+        disableUnloadPrompt: true
+    }) %}
+        {{ bcHeading({
+			classes: 'bc-heading bc-heading--subtitle',
+			hierarchy: 3,
+			html: 'Filters <i class="bc-icon fa-regular fa-chevron-down"></i>',
+            attributes: {
+                id: 'filters-title'
+            }
+		}) }}
+        <div class="bc-filters__body">
+            {{ bcCheckbox({
+                name: 'ExampleCheckboxGroup',
+                legend: {
+                    text: 'Disciplines'
+                },
+                options: [
+                    {
+                        text: 'All areas',
+                        value: '1'
+                    },
+                    {
+                        text: 'Adjudication',
+                        value: '2'
+                    },
+                    {
+                        text: 'Arbitration',
+                        value: '3'
+                    },
+                    {
+                        text: 'Mediation',
+                        value: '4'
+                    },
+                    {
+                        text: 'Dispute Resolution',
+                        value: '5'
+                    }
+                ]
+            }) }}
+            {{ bcSelect({
+                name: "ExampleSelect",
+                required: true,
+                label: { 
+                    text: "Country" 
+                },
+                options: [
+                    { value: "", text: "All countries" },
+                    { value: "", text: "Lorem ipsum" },
+                    { value: "",  text: "Lorem ipsum" }
+                ]
+            }) }}
+            {{ bcSelect({
+                name: "ExampleSelect",
+                required: true,
+                label: { 
+                    text: "Branch" 
+                },
+                options: [
+                    { value: "", text: "All branches" },
+                    { value: "", text: "Lorem ipsum" },
+                    { value: "",  text: "Lorem ipsum" }
+                ]
+            }) }}
+            <div class="bc-filters__actions">
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Apply filters',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'link',
+                    text: 'Clear filters'
+                }) }}
+            </div>
+        </div>
+    {% endcall %}
+
+{% endblock %}

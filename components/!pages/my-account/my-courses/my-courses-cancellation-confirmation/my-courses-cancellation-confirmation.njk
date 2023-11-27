@@ -1,0 +1,83 @@
+{% extends '@t-left-sidebar' %}
+
+{% block notificationBar %}
+	{% from "notification-bar/macro.njk" import bcNotificationBar %}
+    
+	{{ bcNotificationBar({
+		variant: 'warning',
+		message: {
+			html: 'You need to complete your Annual Declaration to renew your membership'
+		},
+		link: {
+			href: '#',
+			text: 'Complete declaration'
+		}
+	}) }}
+{% endblock %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My events', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "alert/macro.njk" import bcAlert %}
+    
+	<div class="ip-cancellation-confirmation">
+        
+		{{ bcButton({
+			appearance: 'link',
+			text: 'Back to My courses',
+			href: '#'
+		}) }}
+
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Course booking cancellation'
+		}) }}
+
+		<div class="ip-cancellation-confirmation__alert">
+			{% call bcAlert({
+				variant: 'success'
+			}) %}
+				<p>Your cancellation has been processed</p>
+			{% endcall %}
+		</div>
+
+        {% call bcProse() %}
+        	<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+        {% endcall %}
+
+		<div class="ip-cancellation-confirmation__main-back-btn">
+			{{ bcButton({
+				appearance: 'primary',
+				text: 'Go back to My Profile',
+				href: '#'
+			}) }}
+		</div>
+
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+	
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My courses', current: true },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+{% endblock %}

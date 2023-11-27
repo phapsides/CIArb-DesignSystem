@@ -1,0 +1,206 @@
+{% extends '@t-sso' %}
+
+{% block body %}
+
+<div id="api" data-name="SelfAsserted">
+  <div class="intro">
+    <p>Sign Up</p>
+  </div>
+  <div id="attributeVerification" role="form">
+    <div class="error pageLevel" id="passwordEntryMismatch" style="display: none;" aria-hidden="true">The password entry
+      fields do not match. Please enter the same password in both fields and try again.</div>
+    <div class="error pageLevel" id="requiredFieldMissing" style="display: none;" aria-hidden="true">A required field is
+      missing. Please fill out all required fields and try again.</div>
+    <div class="error pageLevel" id="fieldIncorrect" style="display: none;" aria-hidden="true">One or more fields are
+      filled out incorrectly. Please check your entries and try again.</div>
+    <div class="error pageLevel" id="claimVerificationServerError" style="display: none;" aria-hidden="true"></div>
+    <div class="attr" id="attributeList">
+      <ul>
+        <li class="TextBox">
+          <div class="attrEntry">
+            <div>
+              <div class="verificationInfoText" id="email_intro" style="display: inline;" aria-hidden="false"
+                role="alert" aria-live="polite">Verification is necessary. Please click send verification code button
+              </div>
+              <div class="verificationInfoText" id="email_info" style="display:none" aria-hidden="true">Verification
+                code has been sent to your inbox. Please copy it to the input box below.</div>
+              <div class="verificationSuccessText" id="email_success" style="display:none" aria-hidden="true">E-mail
+                address verified. You can now continue.</div>
+              <div class="verificationErrorText error" id="email_fail_retry" style="display:none" aria-hidden="true">
+                That code is incorrect. Please try again.</div>
+              <div class="verificationErrorText error" id="email_fail_no_retry" style="display:none" aria-hidden="true">
+                You've made too many incorrect attempts. Please try again later.</div>
+              <div class="verificationErrorText error" id="email_fail_throttled" style="display:none"
+                aria-hidden="true">There have been too many requests to verify this email address. Please wait a while,
+                then try again.</div>
+              <div class="verificationErrorText error" id="email_fail_code_expired" style="display:none"
+                aria-hidden="true">That code is expired. Please request a new code.</div>
+              <div class="verificationErrorText error" id="email_fail_server" style="display:none" aria-hidden="true">We
+                are having trouble verifying your email address. Please enter a valid email address and try again.</div>
+              <div class="verificationErrorText error" id="email_incorrect_format" style="display:none"
+                aria-hidden="true">Incorect format.</div>
+            </div>
+
+            <label for="email">Email</label>
+
+            <div class="error itemLevel" aria-hidden="true">
+              <p>Please enter a valid email address.</p>
+            </div>
+
+
+            <input id="email" class="textInput" type="text" placeholder=""
+              pattern="^[a-zA-Z0-9.+!#$%&amp;'^_`{}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"
+              title="Email address that can be used to contact you." required="" aria-required="true"
+              aria-label="Please enter a valid email address., Email" autocomplete="email">
+
+
+
+
+
+
+
+
+            <a href="javascript:void(0)" data-help="Email address that can be used to contact you."
+              class="helpLink tiny">What is this?</a>
+
+            <div class="buttons verify" claim_id="email">
+              <div id="email_success_screenreader_msg" aria-label="E-mail address verified. You can now continue.">
+              </div>
+              <div id="email_ver_wait" class="working" aria-hidden="true" style="display: none;"></div>
+              <label id="email_ver_input_label" for="email_ver_input" aria-hidden="true"
+                style="display: none;">Verification code</label>
+              <input id="email_ver_input" class="verifyInput" type="text" placeholder="" style="display:none"
+                autocomplete="one-time-code" aria-hidden="true">
+              <button id="email_ver_but_send" class="sendButton" type="button" style="display: inline;"
+                aria-label="Send verification code" aria-hidden="false">Send verification code</button>
+              <button id="email_ver_but_verify" class="verifyButton" type="button" style="display:none"
+                aria-label="Verify code" aria-hidden="true">Verify code</button>
+              <button id="email_ver_but_resend" class="sendButton" type="button" style="display:none"
+                aria-label="Send new code" aria-hidden="true">Send new code</button>
+
+              <button id="email_ver_but_edit" class="editButton" type="button" style="display:none"
+                aria-label="Change e-mail" aria-hidden="true">Change e-mail</button>
+
+              <button id="email_ver_but_default" class="defaultButton" type="button" style="display:none"
+                aria-label="Default">Default</button>
+            </div>
+          </div>
+        </li>
+
+        <!-- li class="Prose" id="PasswordCriteria">
+          <dl class="bc-list--dashed">
+            <dt>Passwords must meet these criteria:</dt>
+            <dd>Minimum 8 characters long </dd>
+            <dd>Include at least 1 uppercase letter</dd>
+            <dd>Include at least 1 number</dd>
+            <dd>Include at least 1 special character</dd>
+          </dl>
+        </li -->
+        <li class="Password">
+          <div class="attrEntry">
+
+            <label for="newPassword">New Password</label>
+
+            <div class="error itemLevel" aria-hidden="true">
+              <p>8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters,
+                digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? /
+                ` ~ " ( ) ; .</p>
+            </div>
+
+            <input id="newPassword" class="textInput" type="password" placeholder=""
+              pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
+              title="Enter new password" required="" aria-required="true"
+              aria-label="8-16 characters, containing 3 out of 4 of the following: Lowercase characters, uppercase characters, digits (0-9), and one or more of the following symbols: @ # $ % ^ &amp; * - _ + = [ ] { } | \ : ' , ? / ` ~ &quot; ( ) ; ., New Password"
+              aria-describedby="PasswordCriteria" autocomplete="new-password">
+
+            <a href="javascript:void(0)" data-help="Enter new password" class="helpLink tiny">What is this?</a>
+          </div>
+        </li>
+        <li class="Password">
+          <div class="attrEntry">
+
+            <label for="reenterPassword">Re-enter Password</label>
+
+            <div class="error itemLevel" aria-hidden="true">
+              <p> </p>
+            </div>
+
+
+
+
+
+
+
+
+
+            <input id="reenterPassword" class="textInput" type="password" placeholder=""
+              pattern="^((?=.*[a-z])(?=.*[A-Z])(?=.*\d)|(?=.*[a-z])(?=.*[A-Z])(?=.*[^A-Za-z0-9])|(?=.*[a-z])(?=.*\d)(?=.*[^A-Za-z0-9])|(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]))([A-Za-z\d@#$%^&amp;*\-_+=[\]{}|\\:',?/`~&quot;();!]|\.(?!@)){8,16}$"
+              title="Confirm new password" required="" aria-required="true" aria-label=" , Re-enter Password"
+              aria-describedby="PasswordCriteria" autocomplete="new-password">
+
+            <a href="javascript:void(0)" data-help="Confirm new password" class="helpLink tiny">What is this?</a>
+          </div>
+        </li>
+        <li class="TextBox">
+          <div class="attrEntry">
+
+            <label for="givenName">First Name</label>
+
+            <div class="error itemLevel" aria-hidden="true">
+              <p>This information is required.</p>
+            </div>
+
+
+            <input id="givenName" class="textInput" type="text" placeholder=""
+              title="Your given name (also known as first name)." required="" aria-required="true"
+              aria-label="This information is required., First Name" autocomplete="given-name">
+
+
+
+
+
+
+
+
+            <a href="javascript:void(0)" data-help="Your given name (also known as first name)."
+              class="helpLink tiny">What is this?</a>
+          </div>
+        </li>
+        <li class="TextBox">
+          <div class="attrEntry">
+
+            <label for="surname">Last Name</label>
+
+            <div class="error itemLevel" aria-hidden="true">
+              <p>This information is required.</p>
+            </div>
+
+            <input id="surname" class="textInput" type="text" placeholder=""
+              title="Your surname (also known as family name or last name)." required="" aria-required="true"
+              aria-label="This information is required., Last Name" autocomplete="family-name">
+            <a href="javascript:void(0)" data-help="Your surname (also known as family name or last name)."
+              class="helpLink tiny">What is this?</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="buttons">
+      <button id="continue" disabled="" aria-label="Create">Create</button>
+      <button id="cancel" aria-label="Cancel" formnovalidate="">Cancel</button>
+    </div>
+
+    <div class="verifying-modal">
+      <div id="verifying_blurb"></div>
+    </div>
+  </div>
+</div>
+<div class="have">
+  <p>
+    Already have an account?
+    <a id="haveAccount" tabindex="1" href="/kcazureb2clive.onmicrosoft.com/B2C_1A_signup_signin/api/CombinedSigninAndSignup/unified?local=signup&amp;csrf_token=THpvNXIxTmFBV1dYeHhPYStaS0FVMlFCQkJBRDNIVkE3U05aWTAyUllqZittTnNNa0tQVU5ZQ1o2MFBBNDNUU0R0UllIbythSDU4SzBVVnBvYVRvaWc9PTsyMDIwLTAxLTA3VDE4OjE5OjQxLjM4MDE0NTVaO090NXdhc2M3SGdMMEJuVXovUzBFRUE9PTt7Ik9yY2hlc3RyYXRpb25TdGVwIjoxfQ==&amp;tx=StateProperties=eyJUSUQiOiI3ODNiMmU1My0wZjQ1LTQwYmUtOWMxMC03NmM4YjY1YjIyN2IifQ&amp;p=B2C_1A_signup_signin">
+      Login
+    </a>
+  </p>
+</div>
+
+{% endblock %}

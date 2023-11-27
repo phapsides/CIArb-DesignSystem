@@ -1,0 +1,46 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "helpers/media-queries";
+
+.bc-review-list {
+	@include spacing.fs-responsive-margin(0, $direction: top);
+	@include spacing.fs-responsive-margin(3, $direction: bottom);
+	$card-padding: spacing.fs-spacing(4);
+	&__item {
+		@include spacing.fs-responsive-margin(2, $direction: bottom);
+		padding: $card-padding;
+		position: relative;
+		box-shadow: 0.125rem 0.125rem 1rem rgba(#000, 0.16);
+		@include media-queries.fs-mq($from: medium) {
+			display: flex;
+			flex-direction: row;
+			align-items: baseline;
+		}
+	}
+	&__key,
+	&__value {
+		@include spacing.fs-responsive-padding(3, $direction: right);
+		// @include typography.bc-break-words;
+		flex-grow: 1;
+		flex-shrink: 0;
+	}
+	&__key {
+		@include typography.fs-font-stack(body, $weight: medium);
+		flex-basis: 35%;
+		color: colors.fs-color(text-title);
+	}
+	&__value,
+	&__controls {
+		margin: 0;
+	}
+	&__value {
+		flex-basis: 65%;
+	}
+	&__controls {
+		position: absolute;
+		top: $card-padding;
+		right: $card-padding;
+	}
+}

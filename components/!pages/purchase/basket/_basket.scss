@@ -1,0 +1,105 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-basket {
+	.bc-heading--jumbotron {
+		margin-bottom: 3rem;
+	}
+
+	&__summary {
+		background-color: settings.$fs-canvas-background-color;
+		padding: 2rem;
+	}
+
+	&__promo-box {
+		display: grid;
+		grid-template-columns: 1fr;
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 3fr 1fr;
+		}
+
+		.bc-form-row {
+			margin-bottom: 0;
+			margin-top: 1rem;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-right: 0.5rem;
+			}
+		}
+
+		.bc-button {
+			margin-top: 0.5rem;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-top: auto;
+			}
+		}
+
+		.bc-input {
+			height: 52px;
+		}
+	}
+
+	&__tax {
+		display: flex;
+		justify-content: space-between;
+		margin-top: 2.25rem;
+		margin-bottom: 0.5rem;
+	}
+
+	&__totals {
+		display: grid;
+		grid-gap: 0.5rem;
+		margin-bottom: 1.25rem;
+
+		.bc-label {
+			@extend .bc-heading--subtitle;
+			margin-left: auto;
+			color: colors.fs-color(brand-secondary);
+		}
+		> div {
+			display: flex;
+		}
+	}
+
+	&__actions {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	&__summary {
+		.bc-alert {
+			padding: 1rem 0 0;
+		}
+
+		.bc-alert__icon {
+			left: 0;
+			top: inherit;
+		}
+	}
+
+	&--empty {
+		text-align: center;
+		margin: 3rem 0;
+
+		.fa-basket-shopping {
+			color: colors.fs-color(brand-primary);
+			font-size: 4rem;
+			margin: 0 auto 2.5rem;
+			@include media-queries.fs-mq($from: tablet) {
+				font-size: 6rem;
+			}
+		}
+
+		.bc-prose {
+			margin-bottom: 3.5rem;
+		}
+	}
+
+	&__cart-notification {
+		background-color: settings.$fs-canvas-background-color;
+		margin-top: 2rem;
+	}
+}

@@ -1,0 +1,42 @@
+{# Determine what element to use #}
+{% set element = 'button' %}
+{% if params.href %}
+  {% set element = 'a' %}
+{% endif %}
+
+{# Attributes common to both <a> and <button> #}
+{% set commonAttributes %}
+	data-module="bc-button"
+	class="bc-button {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- if params.appearance %} data-appearance="{{ params.appearance }}"{% endif %}
+	{%- if params.busy %} aria-busy="true"{% endif %}
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+{% endset %}
+
+{# Button content #}
+{% set buttonContent %}
+	{%- if params.html or params.text %}
+		<span class="bc-button__label">
+			{{- (params.html | safe) if params.html else params.text -}}
+		</span>
+	{%- endif %}
+{% endset %}
+
+{%- if element == 'a' %}
+	<a
+		{{- commonAttributes | safe }}
+		href="{{ params.href }}"
+	>
+		{{- buttonContent | safe -}}
+	</a>
+{%- elif element == 'button' %}
+	<button
+		{{- commonAttributes | safe }}
+		type="{{ params.type if params.type else 'submit' }}"
+		{%- if params.name %} name="{{ params.name }}"{% endif %}
+		{%- if params.value %} value="{{ params.value }}"{% endif %}
+		{%- if params.disabled %} disabled{% endif %}
+	>
+		{{- buttonContent | safe -}}
+	</button>
+{%- endif %}

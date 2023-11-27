@@ -1,0 +1,263 @@
+{% extends '@t-centered' %}
+
+{% block body %}
+
+{% from "heading/macro.njk" import bcHeading %}
+{% from "form/macro.njk" import bcForm %}
+{% from "select/macro.njk" import bcSelect %}
+{% from "input/macro.njk" import bcInput %}
+{% from "radios/macro.njk" import bcRadios %}
+{% from "checkbox/macro.njk" import bcCheckbox %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "button/macro.njk" import bcButton %}
+{% from "fetchify/macro.njk" import bcFetchify %}
+
+    <div class="ip-register">
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Register'
+		}) }}
+        {{ bcHeading({
+            classes: 'fs-!-margin-top-3',
+			hierarchy: 2,
+			text: 'Contact details'
+		}) }}
+        {% call bcForm({
+			classes: 'fs-!-margin-top-6',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+            {{ bcInput({
+                name: 'email',
+                required: true,
+                label: { 
+                    text: 'Email address' 
+                }
+            }) }}
+            {{ bcFetchify({
+
+            }) }}
+            {{ bcHeading({
+                classes: 'fs-!-margin-top-7',
+                hierarchy: 2,
+                text: 'Areas of expertise'
+            }) }}
+            {{ bcCheckbox({
+                name: 'expertise',
+                layout: 'horizontal',
+                required: true,
+                options: [
+                    { value: '1', text: 'Example' },
+                    { value: '2', text: 'Example' },
+                    { value: '3', text: 'Example' },
+                    { value: '4', text: 'Example' },
+                    { value: '5', text: 'Example' },
+                    { value: '6', text: 'Example' },
+                    { value: '7', text: 'Example' },
+                    { value: '8', text: 'Example' },
+                    { value: '9', text: 'Example' },
+                    { value: '10', text: 'Example' },
+                    { value: '11', text: 'Example' },
+                    { value: '12', text: 'Example' },
+                    { value: '13', text: 'Example' },
+                    { value: '14', text: 'Example' },
+                    { value: '15', text: 'Example' },
+                    { value: '16', text: 'Example' },
+                    { value: '17', text: 'Example' },
+                    { value: '18', text: 'Example' }
+                ]
+            }) }}
+            {{ bcRadios({
+                name: 'active_adr',
+                required: true,
+                legend: { 
+                    text: 'Have you been active in ADR in the last 12 months?' 
+                },
+                options: [
+                    { value: '1', text: 'Yes' },
+                    { value: '0', text: 'No' }
+                ]
+            }) }}
+            {{ bcHeading({
+                classes: 'fs-!-margin-top-7',
+                hierarchy: 2,
+                text: 'Marketing preferences'
+            }) }}
+            {% call bcProse() %}
+                <p>
+                    Please tell us how you would like to receive updates
+                </p>
+            {% endcall %}
+
+            <div class="ip-register__section">
+                {{ bcCheckbox({
+                    name: 'MarkettingPreferences',
+                    layout: 'horizontal',
+                    options: [
+                        {
+                            text: 'Email',
+                            value: '1',
+                            attributes: { 
+                                'data-checkall-group': 'preferences'
+                            }
+                        },
+                        {
+                            text: 'Phone',
+                            value: '2',
+                            attributes: { 
+                                'data-checkall-group': 'preferences'
+                            }
+                        },
+                        {
+                            text: 'Post',
+                            value: '3',
+                            attributes: { 
+                                'data-checkall-group': 'preferences'
+                            }
+                        },
+                        {
+                            text: 'SMS',
+                            value: '4',
+                            attributes: { 
+                                'data-checkall-group': 'preferences'
+                            }
+                        }
+                    ]
+                }) }}
+                {{ bcCheckbox({
+                    classes: 'ip-register__unsubscribe',
+                    name: 'ExampleRadioGroup',
+                    options: [
+                        {
+                            text: 'I don’t want to receive any marketing communications',
+                            value: '1',
+                            attributes: { 
+                                'data-checkall-trigger': 'preferences'
+                            }
+                        }
+                    ]
+                }) }}
+            </div>
+            
+            <div class="bc-button-group">
+                {{ bcButton({
+                    classes: 'fs-!-margin-top-5',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Register'
+                }) }}
+            </div>
+        {% endcall %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+
+    <script>
+        // Get triggers
+        const checkAll = document.querySelectorAll('[data-checkall-trigger]');
+        let matchingCheckboxes = document.querySelectorAll('[data-checkall-group]');
+        // Check / Uncheck all matching checkboxes
+        function toggleCheckboxGroup(checked) {
+            matchingCheckboxes.forEach(function (el) {
+                if (checked !== el.checked) {
+                    el.checked = ! el.checked;
+                }
+            });
+        };
+        // Get all checkboxes
+        checkAll.forEach(function (el) {
+            el.addEventListener('change', function () {
+                let checked = el.checked
+                    ? false
+                    : true;
+                toggleCheckboxGroup(checked);
+            });
+        });
+        matchingCheckboxes.forEach(function (el) {
+            el.addEventListener('change', function (e) {
+                if (e.target.checked) {
+                    checkAll[0].checked = false;
+                }
+            });
+        });
+
+        window.cc_c2a = new clickToAddress({
+			accessToken: '75ce1-19d76-1449f-0810c',
+			domMode: 'id',
+			dom: {
+				search:		'address_search',
+				town:		'city',
+				postcode:	'postcode',
+				county:		'state',
+				country:	'country',
+				line_1:		'addr_line_1',
+				line_2:		'addr_line_2'
+			},
+			onResultSelected: function(object, dom, result){
+				var hidden_elements = document.getElementsByClassName('hidden');
+				while(hidden_elements.length > 0){
+					hidden_elements[0].className = 'bc-fetchify__address-inner';
+				}
+			},
+            texts: {
+                // Placeholder to be displayed in the search box
+                default_placeholder: 'Start with post/zip code or street',
+                // Placeholder to be displayed when searching for a country in search box
+                country_placeholder: 'Type here to search for a country',
+                // Object containing placeholders specific to a country
+                placeholder_country_overrides: {
+                    usa: "Enter ZIP code",
+                    gbr: "Enter postcode"
+                },
+                // Object containing overrides for default country names
+                country_name_overrides: {
+                    usa: "America",
+                    gbr: "Great Britain",
+                },
+                // Text to be displayed on button to change country in search interface
+                country_button: 'Change Country',
+                // Text to be displayed when an error occurs
+                generic_error: 'An error occurred. Please enter your address manually',
+                // Text to be displayed when no results are found
+                no_results: 'No results found'
+
+            }
+		});
+
+        window.cc_c2a.addPhoneVerify({
+            phone: '#mobilePhone',
+            country: '#countryCode',
+            can_correct: false,
+            allowed_type: 'all',
+            ignore_nonnumeric_chars: false
+        });
+        window.cc_c2a.addPhoneVerify({
+            phone: '#phone',
+            country: '#countryCode-landline',
+            can_correct: false,
+            allowed_type: 'all',
+            ignore_nonnumeric_chars: false
+        });
+       
+        
+        function manualToggle() {    
+            const $trigger = document.querySelector('.bc-fetchify__manual-search-toggle');        
+            
+            $trigger.addEventListener("click", function(event) {
+                const $container = document.querySelector('.bc-fetchify__address-inner');    
+                const $fetchifySearch = document.querySelector('.bc-fetchify__search');    
+
+                event.preventDefault();
+                $container.classList.remove("hidden");
+                $fetchifySearch.classList.add("hidden");
+            });
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+			manualToggle();
+		})
+
+	</script>
+{% endblock %}

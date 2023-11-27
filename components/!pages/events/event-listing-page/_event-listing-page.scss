@@ -1,0 +1,107 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.ip-event-listing {
+	margin-top: 0;
+
+	@include media-queries.fs-mq($from: tablet) {
+		margin-top: 6rem;
+	}
+
+	&__filter-results {
+		margin-top: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin: 0;
+		}
+	}
+
+	.bc-form {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+			align-items: end;
+		}
+
+		.bc-form-row {
+			margin-left: 0;
+			margin-top: 0;
+
+			@include media-queries.fs-mq($from: tablet) {
+				margin-left: auto;
+			}
+		}
+
+		.bc-label__optional {
+			display: none;
+		}
+	}
+
+	.bc-pagination {
+		margin-top: 3rem;
+	}
+}
+
+// TODO: What's the eason of the below implemetnation?
+.bc-event-hero {
+	.bc-button {
+		border-color: #ff1824 !important;
+		background-color: #ff1824 !important;
+
+		&:hover {
+			border-color: colors.fs-color(brand-primary) !important;
+			background-color: colors.fs-color(brand-primary) !important;
+		}
+	}
+}
+
+// TODO: Why is the below here?
+.it-event-listing {
+	.bc-event-card--hero {
+		@include media-queries.fs-mq($from: tablet) {
+			grid-gap: 3rem;
+		}
+
+		.bc-image {
+			height: 100%;
+		}
+
+		.fa-arrow-right {
+			display: none;
+		}
+
+		.bc-image__image {
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.bc-event-card {
+			&__media {
+				height: 100%;
+			}
+
+			&__body {
+				width: 100%;
+				padding: 2rem;
+			}
+
+			&__link {
+				.bc-prose {
+					color: colors.fs-color(white);
+				}
+			}
+		}
+
+		.bc-description-list {
+			margin-top: 3rem;
+
+			&__value {
+				color: colors.fs-color(white);
+			}
+		}
+	}
+}

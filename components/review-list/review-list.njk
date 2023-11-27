@@ -1,0 +1,21 @@
+{% from "review-list/macro.njk" import bcReviewList %}
+
+{{ bcReviewList({
+	items: [
+		{
+			key: { text: "Chantel Hall" },
+			controls: [
+				{ href: "#", text: "Edit contact" },
+				{ href: "#", text: "Delete contact" }
+			]
+		},
+		{
+			key: { text: "Hildred Ahn" },
+			value: { text: "consequat.david69@consecteturullamco.net" },
+			controls: [
+				{ href: "#", text: "Edit contact" },
+				{ href: "#", text: "Delete contact" }
+			]
+		}
+	]
+}) }}

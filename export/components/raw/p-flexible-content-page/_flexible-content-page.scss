@@ -1,0 +1,73 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-flexible-content-page {
+	
+	.fs-base {
+		font-size: 1rem !important;
+	}
+	.bc-heading--title {
+		margin-top: 3rem;
+		margin-bottom: 1rem;
+	}
+	.bc-heading--jumbotron {
+		margin-bottom: 1rem;
+	}
+	.bc-image {
+		&__image {
+			margin-top: 2rem;
+			margin-bottom: 1.5rem;
+		}
+	}
+	.bc-card--above-button-content {
+		grid-auto-rows: 4fr 1fr;
+		.bc-card__body {
+			margin-bottom: 0;
+		}
+	}
+	// TODO: Use mobile first approach, so please change the media query here
+	@include media-queries.fs-mq($to: tablet) {
+		.bc-card--above-button-content {
+			.bc-card__inner {
+				display: block;
+				grid-auto-rows: 1fr 1fr;
+			}
+			.bc-card__body {
+				margin-bottom: 1rem;
+			}
+		}
+	}
+	&__faqs {
+		background-color: colors.fs-color(outline);
+		padding: 4rem 0;
+
+		.bc-container__inner {
+			max-width: 48rem;
+		}
+		.bc-heading--title {
+			margin-top: 1rem;
+			margin-bottom: 1.5rem;
+		}
+		.bc-details {
+			border: none;
+			box-shadow: 0 3px 10px #00000029;
+			margin-bottom: 1.5rem;
+			&__summary {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				padding: 1.5rem;
+			}
+			&__heading {
+				padding-left: 0;
+			}
+		}
+	}
+}
+
+.bc-card--above-button-content {
+	margin-bottom: 4rem;
+}

@@ -1,0 +1,28 @@
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'button/macro.njk' import bcButton %}
+
+<div data-module="bc-banner" class="bc-banner {%- if params.secondary_color %} bc-banner--secondary-color{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}">
+    <div class="bc-container">
+        <div class="bc-container__inner">
+            <div class="bc-banner__inner" style="{%- if params.background_image %} background-image: url('{{ params.background_image }}') {% endif %}">
+                <div class="bc-banner__container">
+                    <div class="bc-banner__body">
+                        {%- if params.heading %}
+                            <header class="bc-banner__header">
+                                {{ bcHeading(params.heading) }}
+                            </header>
+                        {%- endif %}
+                        {%- if caller %}
+                            <div class="bc-banner__main">
+                                {{ caller() }}
+                            </div>
+                        {%- endif %}
+                    </div>
+                    {%- if params.button %}
+                        {{ bcButton(params.button) }}
+                    {%- endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

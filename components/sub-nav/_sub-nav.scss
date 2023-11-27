@@ -1,0 +1,121 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "objects/lists";
+@use "helpers/typography";
+
+.bc-sub-nav {
+	background-color: colors.fs-color(brand-secondary);
+	padding: 2rem;
+
+	&__header {
+		.bc-heading {
+			padding: 1rem 0;
+		}
+	}
+
+	&__list {
+		@extend .fs-list;
+		margin: 0;
+	}
+
+	&__item {
+		margin-top: 0 !important;
+		.bc-icon {
+			display: none;
+		}
+		&[aria-active="true"] {
+			.bc-sub-nav__sub-list {
+				display: block;
+			}
+		}
+		// Please leave the below for now
+		// &[aria-current="true"][aria-active="true"] {
+		// 	.bc-sub-nav__link {
+		// 		border-bottom: none !important;
+		// 	}
+		// }
+	}
+
+	&__link {
+		@include typography.fs-font-stack(sans);
+		@include typography.fs-font-size(label);
+		color: colors.fs-color(white) !important;
+		font-weight: 300 !important;
+		display: flex;
+		width: fit-content;
+		font-size: 1.15rem !important;
+		inset: 4px;
+		border-bottom: transparent solid 4px;
+		padding-top: 1rem;
+		padding-bottom: 0.75rem;
+		&[aria-current="true"],
+		&:hover {
+			border-bottom: colors.fs-color(brand-primary) solid 4px;
+		}
+	}
+
+	&__sub-list {
+		@extend .fs-list;
+		display: none;
+		margin: -0.5rem 1rem 1rem;
+		&[aria-active="true"] {
+			display: block;
+		}
+	}
+
+	&__sub-item {
+		margin-top: 0.5rem !important;
+	}
+
+	&__sub-link {
+		@extend .bc-sub-nav__link;
+		padding: 0;
+		&[aria-current="true"] {
+			font-weight: bold !important;
+		}
+	}
+	&--content-page {
+		padding: 0;
+		background-color: colors.fs-color(white);
+		.bc-icon:not(.fa-minus) {
+			display: block;
+		}
+		.bc-sub-nav__link,
+		.bc-sub-nav__sub-link {
+			color: colors.fs-color(black) !important;
+		}
+		.bc-sub-nav__item {
+			border-bottom: settings.$fs-border-width-form-element solid
+				settings.$fs-canvas-background-color;
+			&[aria-active="true"] {
+				.bc-sub-nav__sub-list {
+					display: block !important;
+				}
+				.fa-plus {
+					display: none !important;
+					color: colors.fs-color(brand-primary);
+				}
+				.fa-minus {
+					display: block !important;
+					color: colors.fs-color(brand-primary);
+				}
+				.fa-arrow-right {
+					color: colors.fs-color(brand-primary);
+				}
+			}
+		}
+		.bc-sub-nav__control {
+			display: flex;
+			justify-content: space-between;
+			margin-left: auto;
+
+			.bc-icon {
+				cursor: pointer;
+				font-size: 1.25rem;
+				padding-top: 1rem;
+				padding-bottom: 0.75rem;
+				color: colors.fs-color(brand-primary);
+			}
+		}
+	}
+}

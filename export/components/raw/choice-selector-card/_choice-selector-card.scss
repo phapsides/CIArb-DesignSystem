@@ -1,0 +1,107 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "objects/lists";
+@use "helpers/colors";
+@use "input/input";
+@use "heading/heading";
+@use "helpers/typography";
+@use "helpers/media-queries";
+
+.bc-choice-selector-card {
+	&__list {
+		@extend .fs-list;
+		margin-bottom: 0;
+		li {
+			box-shadow: 0 3px 10px rgb(0 0 0 / 16%);
+			+ li {
+				margin-top: 2.5rem;
+			}
+		}
+	}
+	&__item {
+		border: settings.$fs-border-width-form-element solid
+			colors.fs-color(brand-secondary);
+		position: relative;
+	}
+	&__legend {
+		margin-bottom: 1rem;
+	}
+	&__label {
+		@include typography.fs-font-size(h3);
+		color: colors.fs-color(brand-secondary);
+		font-weight: 600;
+		margin-bottom: 0.5rem;
+	}
+	&__amount {
+		margin: 0 !important;
+		font-weight: 600;
+	}
+	&__input-element {
+		appearance: none;
+		position: absolute;
+		height: 100%;
+		opacity: 0;
+		width: 100%;
+		&:hover {
+			cursor: pointer;
+		}
+	}
+	&__input-element:checked + .bc-choice-selector-card__inner {
+		background: colors.fs-color(brand-secondary);
+		border: settings.$fs-border-width-form-element solid
+			colors.fs-color(brand-secondary);
+		> *,
+		label {
+			color: colors.fs-color(white);
+		}
+	}
+	&__inner {
+		padding: 1.8rem 1.5rem;
+		> * {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+		> * + * {
+			margin-top: 0.25rem;
+		}
+	}
+	&__child {
+		display: flex;
+		align-items: center;
+		input {
+			@extend .bc-input;
+			max-width: 14ch;
+			position: relative;
+		}
+		label {
+			@extend .bc-heading--subtitle;
+			margin-right: 0.5rem;
+		}
+	}
+}
+
+.bc-choice-selector-card {
+	&[data-layout="horizontal"] {
+		.bc-choice-selector-card__list {
+			display: flex;
+			li {
+				margin: 0;
+			}
+		}
+		.bc-choice-selector-card__inner {
+			min-height: auto;
+			padding: 0.5rem 1.75rem;
+			@include media-queries.fs-mq($from: tablet) {
+				padding: 0.5rem 3rem;
+			}
+		}
+		.bc-choice-selector-card__input-element {
+			margin: 0;
+		}
+		.bc-choice-selector-card__label {
+			@include typography.fs-font-size(body);
+		}
+		.bc-choice-selector-card__description {
+			display: none;
+		}
+	}
+}

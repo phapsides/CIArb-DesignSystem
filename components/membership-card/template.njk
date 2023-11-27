@@ -1,0 +1,53 @@
+{% from 'button/macro.njk' import bcButton %}
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'image/macro.njk' import bcImage %}
+
+<div data-module="bc-membership-card" class="bc-membership-card {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}>
+    <div class="bc-membership-card__inner">
+        {%- if params.heading %}
+			{%- if not params.product and not params.button %} 
+				<a href="{{params.href}}">
+			{%- endif %}
+				<header class="bc-card__header">
+					{{ bcHeading(params.heading) }}
+				</header>
+			{%- if not params.product %} 
+				</a>
+			{%- endif %}
+        {%- endif %}
+        {%- if params.image %}
+            <div class="bc-membership-card__body">
+                <div>
+		{%- endif %}
+			
+        <div class="bc-membership-card__description">
+            {{ caller() }}
+        </div>
+        
+        {%- if params.button %}
+            {{ bcButton(params.button) }}
+        {%- endif %}
+        {%- if params.buttons %}
+            {% for button in params.buttons %}
+                {{ bcButton(button) }}  
+            {% endfor %}
+        {%- endif %}
+        {%- if params.image %}
+            </div>
+            <div class="bc-card__media">
+				{{ bcImage(params.image) }}
+			</div>
+            </div>
+		{%- endif %}
+    </div>
+    {%- if params.price and params.period %} 
+    <div class="bc-membership-card__premium">
+        <span class="bc-membership-card__price">
+            £{{params.price}}
+        </span>
+        <span class="bc-membership-card__period">
+            /{{params.period}}
+        </span>
+    </div>
+    {%- endif %}
+</div>

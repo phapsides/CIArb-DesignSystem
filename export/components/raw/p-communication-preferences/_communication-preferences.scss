@@ -1,0 +1,21 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.ip-communication-preferences {
+	&__unsubscribe {
+		.bc-checkbox__body {
+			width: 87.5%;
+		}
+	}
+	&__form {
+		.bc-form-row {
+			margin-top: 0;
+		}
+	}
+	.bc-button {
+		width: 100%;
+		@include media-queries.fs-mq($from: tablet) {
+			width: auto;
+		}
+	}
+}

@@ -1,0 +1,77 @@
+{% from "tab/macro.njk" import bcTab, bcTabPanel %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "grid/macro.njk" import bcGrid %}
+{% from "card/macro.njk" import bcCard %}
+
+{% call bcTab({
+	heading: 'Contents',
+    tablist: [
+    	{ for: 'Panel1', text: 'Panel 1' },
+    	{ for: 'Panel2', text: 'Panel 2' },
+    	{ for: 'Panel3', text: 'Panel 3' }
+    ]
+}) %}
+	{% call bcTabPanel({
+		id: 'Panel1'
+	}) %}
+		{% call bcGrid() %}
+			{% call bcCard({
+				heading: {
+					text: 'Grid Item',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam voluptates laboriosam consequatur temporibus eum eligendi unde nisi voluptatibus praesentium quis soluta obcaecati assumenda laudantium, non perspiciatis. Voluptates, excepturi quisquam vero.</p>
+				{% endcall %}
+			{% endcall %}
+			{% call bcCard({
+				heading: {
+					text: 'Grid Item',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam voluptates laboriosam consequatur temporibus eum eligendi unde nisi voluptatibus praesentium quis soluta obcaecati assumenda laudantium, non perspiciatis. Voluptates, excepturi quisquam vero.</p>
+				{% endcall %}
+			{% endcall %}
+			{% call bcCard({
+				heading: {
+					text: 'Grid Item',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam voluptates laboriosam consequatur temporibus eum eligendi unde nisi voluptatibus praesentium quis soluta obcaecati assumenda laudantium, non perspiciatis. Voluptates, excepturi quisquam vero.</p>
+				{% endcall %}
+			{% endcall %}
+		{% endcall %}
+	{% endcall %}
+	{% call bcTabPanel({
+		id: 'Panel2'
+	}) %}
+		{% call bcProse() %}
+			<h2>Panel 2</h2>
+			<p>Nobis maiores, blanditiis dicta quas natus quae possimus animi porro cupiditate ea ratione cumque quis aut cum eius repudiandae fugit, ipsum repellat, corporis sit autem tempora! Quasi magni dolores esse.</p>
+			<p>Perferendis ducimus fugit repellendus delectus officia architecto vero non, animi sed! Quo quibusdam commodi distinctio dolores et cupiditate, architecto quidem. Reprehenderit incidunt ea distinctio alias ab suscipit at officiis labore!</p>
+			<p>Ut, nulla? Quis placeat unde reiciendis, debitis vel, error ipsa id odit distinctio impedit iste assumenda laudantium quos ratione optio molestias minus! Sapiente ab soluta reprehenderit necessitatibus laudantium magnam quisquam?</p>
+		{% endcall %}
+	{% endcall %}
+	{% call bcTabPanel({
+		id: 'Panel3'
+	}) %}
+		{% call bcProse() %}
+			<h2>Panel 3</h2>
+			<p>Architecto natus praesentium, reiciendis similique ea odit possimus deleniti eum nisi recusandae illo expedita tempora aliquid repellat, modi quas ad nostrum aperiam. Cupiditate itaque debitis blanditiis totam porro error distinctio.</p>
+			<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod rerum, harum quia sequi adipisci voluptate id! Ad accusantium, nostrum quidem neque perspiciatis, mollitia eius quisquam voluptatibus error excepturi quibusdam eum.</p>
+			<p>Assumenda quidem quam eum vero blanditiis labore suscipit laudantium odio deserunt nobis eius quis eaque impedit vel voluptatibus, inventore voluptas ipsam harum! Velit adipisci quasi possimus dolore fuga, nulla ratione.</p>
+		{% endcall %}
+	{% endcall %}
+{% endcall %}
+
+<ul>
+	<li><a data-test href="#Panel1">Link to panel 1</a></li>
+	<li><a data-test href="#Panel2">Link to panel 2</a></li>
+	<li><a data-test href="#Panel3">Link to panel 3</a></li>
+	<li><a data-test href="#StElsewhere">Unrelated link</a></li>
+</ul>

@@ -1,0 +1,42 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.ip-course-booking {
+	h1 {
+		margin-bottom: 1.5rem;
+	}
+
+	&__delegate {
+		background-color: settings.$fs-canvas-background-color;
+		padding: 1.5rem 2rem;
+		margin-bottom: 3rem;
+	}
+
+	&__consent {
+		margin-bottom: 5rem;
+		.bc-form-row {
+			margin-top: 0 !important;
+		}
+	}
+
+	.bc-checkbox__body {
+		width: 90%;
+	}
+
+	.bc-button-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		.bc-button {
+			margin-bottom: 2rem;
+			&:last-child {
+				margin-top: -1rem;
+			}
+			&[data-appearance="secondary"] {
+				.fa-plus-large {
+					margin-left: 0.5rem;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,27 @@
+{% extends '@t-centered' %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "button/macro.njk" import bcButton %}
+	
+
+	<div class="ip-register-complete">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'Registration complete'
+		}) }}
+        <section class="ip-register-complete__order-details">
+            {% call bcProse() %}
+                <p>
+                    We promise to only use your info in accordance with our privacy policy. CIArb will contact you to deliver materials related to membership.
+                </p>
+                {{ bcButton({
+					appearance: 'primary',
+					text: 'Back to homepage'
+				}) }}
+            {% endcall %}
+        </section>
+	</div>
+
+{% endblock %}

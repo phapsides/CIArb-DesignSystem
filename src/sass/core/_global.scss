@@ -1,0 +1,95 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "helpers/media-queries";
+@use "list/list";
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+
+	&::before,
+	&::after {
+		box-sizing: inherit;
+	}
+}
+
+
+[hidden] {
+	display: none !important;
+}
+
+.hidden {
+	display: none;
+}
+
+a {
+	&:not([data-appearance="primary"]),
+	&:not([data-appearance="secondary"]) {
+		@include typography.fs-font-stack(sans, $weight: 600);
+		color: colors.fs-color(link);
+		text-decoration: none;
+		// TODO: Could we possibly use an include for this?
+		// Steve: Can I leave this to you Panos? I'm not 100% sure of the font sizing procedure (i.e. where this should be set)
+		font-size: 16px;
+		&:hover {
+			color: colors.fs-color(link-hover);
+		}
+	}
+}
+
+strong {
+	font-weight: 600;
+}
+
+.hide-on-mobile {
+	@media only screen and (max-width: 1024px) {
+		display: none !important;
+	}
+}
+
+.hide-on-desktop {
+	@media only screen and (min-width: 1025px) {
+		display: none !important;
+	}
+}
+
+ol {
+	@extend .bc-list;
+	padding-left: 2rem;
+	list-style-type: decimal;
+	.ip-flexible-content-page &,
+	.ip-category &,
+	.ip-sub-category &
+	.ip-fellow-membership-application &,
+	.ip-student-membership-application & {
+		counter-reset: list-counter;
+		li {
+			counter-increment: list-counter;
+			display: flex;
+			margin-bottom: 2rem;
+		}
+		li::before {
+			content: counter(list-counter) ". ";
+			font-size: 2rem;
+			margin-right: 0.5rem;
+			line-height: 1.25;
+			min-width: 25px;
+			color: colors.fs-color(brand-secondary);
+		}
+	}
+}
+
+ul {
+	@extend .bc-list;
+	padding-left: 2rem;
+	list-style-type: disc;
+	.ip-flexible-content-page &,
+	.ip-category &,
+	.ip-sub-category &,
+	.ip-fellow-membership-application &,
+	.ip-student-membership-application & {
+		
+	}
+}

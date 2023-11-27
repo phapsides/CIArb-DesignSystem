@@ -1,0 +1,440 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+
+
+.ip-my-dashboard {
+	.bc-heading--jumbotron {
+		margin-bottom: 1rem;
+	}
+	.bc-card__action {
+		.bc-button {
+			height: auto;
+		}
+	}
+	.bc-card-media {
+		flex-shrink: 0;
+	}
+
+	.bc-card__body {
+		margin-top: 0;
+
+		.bc-prose {
+			font-size: 1.125rem;
+
+			.bc-heading--title {
+				font-weight: 300;
+				color: colors.fs-color(brand-secondary);
+				font-size: 2.125rem;
+				line-height: 1.2941176471;
+			}
+
+			dt {
+				font-weight: 600;
+			}
+
+			dd {
+				margin-top: 0;
+			}
+
+			&.bc-card--profile-prose {
+				@media only screen and (min-width: 1025px) {
+					display: flex;
+				}
+			}
+
+			.bc-card--profile-welcome {
+				display: flex;
+				flex-direction: column;
+				margin-top: 1rem;
+
+				@media only screen and (min-width: 1025px) {
+					margin-top: 0;
+					margin-left: 1rem;
+				}
+			}
+		}
+	}
+
+	.bc-card--with-image {
+		box-shadow: none;
+		background-color: settings.$fs-canvas-background-color;
+		padding: 2rem;
+
+		@media only screen and (min-width: 1025px) {
+			display: flex;
+		}
+
+		.bc-prose>*+* {
+			margin-top: 0.25rem;
+		}
+
+		.bc-card__media {
+			flex-shrink: 0;
+		}
+
+		.bc-card__body {
+			padding: 0;
+		}
+
+		.bc-card__inner {
+			margin-top: 1rem;
+
+			@media only screen and (min-width: 1025px) {
+				margin-left: 1rem;
+				margin-top: 0;
+			}
+
+			@media only screen and (min-width: 1025px) {
+				flex-direction: row;
+			}
+		}
+
+		.bc-card__action {
+			margin-left: 0;
+
+			@media only screen and (min-width: 1025px) {
+				margin-left: auto;
+			}
+		}
+	}
+
+	.ip-my-dashboard--courses {
+		.bc-event-card {
+			grid-template-columns: 1fr !important;
+		}
+	}
+
+	&__recommends {
+		background-color: settings.$fs-canvas-background-color;
+		padding-block: 3rem;
+		margin-top: 1.625rem;
+
+		@media only screen and (min-width: 1025px) {
+			padding-block: 6rem;
+		}
+
+		.bc-event-card--with-image {
+			display: flex;
+			padding: 0;
+			height: 100%;
+			flex-direction: column-reverse;
+
+			.bc-event-card__media {
+				padding: 0;
+			}
+
+			.bc-event-card__body {
+				@include typography.fs-font-size(h3-mobile);
+				flex-grow: 1;
+				padding: 1rem;
+
+				@media only screen and (min-width: 1025px) {
+					@include typography.fs-font-size(h3);
+					padding: 2rem;
+				}
+			}
+
+			.bc-event-card__toolbar {
+				margin-top: 2rem;
+				margin-bottom: 3rem;
+			}
+
+			.bc-image__image {
+				max-height: 256px;
+				object-fit: cover;
+			}
+		}
+
+		.bc-grid {
+			margin-top: 1.5rem;
+		}
+
+		.bc-link__more {
+			display: flex;
+			justify-content: end;
+			margin-top: 1.5rem;
+			align-items: center;
+
+			@media only screen and (min-width: 1025px) {
+				margin-top: 2rem;
+			}
+
+			.bc-icon {
+				padding-left: 0.5rem;
+			}
+		}
+	}
+
+	&__recommends-intro {
+		.bc-prose {
+			padding-top: 1rem;
+		}
+
+		.bc-link__more {
+			justify-content: start;
+		}
+	}
+
+	&__events {
+		margin-top: 1.5rem;
+
+		@media only screen and (min-width: 1025px) {
+			margin-top: 3rem;
+		}
+	}
+
+	&__courses {
+		margin-top: 3rem;
+
+		@media only screen and (min-width: 1025px) {
+			margin-top: 6rem;
+		}
+	}
+
+	&__news {
+		margin-block: 3rem;
+
+		@media only screen and (min-width: 1025px) {
+			margin-block: 6rem;
+		}
+
+		.bc-news__grid {
+			margin-top: 1.5rem;
+		}
+	}
+
+	&.ip-my-dashboard--personalised {
+
+		.profile {
+			.bc-card__body {
+				display: flex;
+				flex-wrap: wrap;
+				gap: 2rem;
+				@include media-queries.fs-mq($from: tablet) {
+					flex-wrap: nowrap;
+				}
+			}
+			.bc-card__inner {
+				grid-template-columns: 1fr;
+				grid-auto-rows: 1fr;
+				margin-top: 0;
+			}
+			.profile-info {
+				width: 100%;
+			}
+			.membership-btn-container {
+				width: 100%;
+				display: flex;
+				margin-top: auto;
+				flex-direction: column;
+				a[data-appearance="primary"] {
+					margin-bottom: 1.25rem;
+					padding-inline: 1rem;
+				}
+			}
+			p {
+				font-weight: bold;
+				font-size: 16px;
+				line-height: 25px;
+				padding: 0.3rem 0;
+
+				span {
+					font-weight: 300;
+				}
+			}
+		}
+
+		.acc-opt-container {
+			margin-block: 1.875rem;
+
+			.bc-grid {
+				grid-gap: 1.875rem;
+			}
+			.bc-event-card {
+				min-height: 133px;
+			}
+		}
+
+		.my-branch-wrapper {
+			.bc-card__header {
+				margin-bottom: 2rem;
+			}
+			.bc-card__body {
+				display: flex;
+				gap: 20%;
+			}
+			.branch-container {
+				display: flex;
+				align-items: center;
+
+				.branch-img {
+					display: flex;
+					align-items: center;
+					height: 56px;
+					width: 56px;
+					min-height: 56px;
+					min-width: 56px;
+					margin-right: 1rem;
+				}
+
+				.branch-location {
+					h4,
+					h5 {
+						font-size: 16px;
+						line-height: 24px;
+					}	
+					h5 {
+						color: #000000;
+					}
+
+					h4 {
+						color: #BE0000;
+					}
+				}
+			}
+		}
+
+		.events-courses-wrapper {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-gap: 1.875rem;
+			margin-top: 2.5rem;
+			@include media-queries.fs-mq($from: tablet) {
+				grid-template-columns: 1fr 1fr;
+			}
+			.bc-heading--title {
+				margin-bottom: 1.25rem;
+			}
+			.bc-event-card__body {
+				margin-bottom: 0;
+				display: flex;
+				flex-direction: column;
+			}
+			.bc-event-card {
+				@include media-queries.fs-mq($from: tablet) {
+					min-height: 435px;
+				}
+				.fa-arrow-right {
+					display: none;
+				}
+			}
+			.bc-link__more {
+				display: flex;
+				justify-content: end;
+				margin-top: 1.25rem;
+				align-items: center;
+	
+				.bc-icon {
+					padding-left: 0.5rem;
+				}
+			}
+			.bc-event-card__cta {
+				display: flex;
+				flex-direction: column;
+				margin-top: 3rem;
+				@include media-queries.fs-mq($from: tablet) {
+					margin-top: auto;
+				}
+			}
+		}
+	}
+}
+
+
+.empty-state {
+	.avatar-wrapper {
+		.bc-card__inner {
+			display: flex;
+		}
+
+		.avatar-container {
+			margin: 0 1rem;
+
+			.profile-info {
+				h2 {
+					margin-bottom: 0.5rem;
+				}
+
+				p {
+					font-size: 16px;
+					font-weight: 600;
+					margin: 0.5rem 0;
+				}
+
+				span {
+					font-weight: 300;
+				}
+			}
+		}
+
+		.bc-card__body:has(.avatar-container) {
+			display: flex;
+			flex-direction: row-reverse;
+			justify-content: space-around;
+		}
+
+		.bc-card__body:has(.avatar-btn) {
+			width: 100%;
+			display: flex;
+			justify-content: space-evenly;
+		}
+
+		.avatar-btn {
+			display: flex;
+			flex-direction: column;
+			justify-content: flex-end;
+
+			button {
+				width: 100%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+
+				span.bc-button__label {
+					width: 137px;
+					font-size: 12px;
+				}
+			}
+		}
+	}
+
+}
+
+// Tablet
+// @media screen and (max-width: 997px) {
+// 	.bc-card__body:has(.avatar-img-conatiner) {
+// 		display: flex;
+// 		flex-direction: column;
+// 	}
+
+
+// 	.bc-card__body:has(.avatar-img-conatiner) {
+// 		width: 100%;
+// 		margin-top: 0;
+// 		display: flex;
+// 		justify-content: space-between;
+// 		height: auto;
+// 	}
+// }
+
+
+
+
+// // Mobile XL
+// @media screen and (max-width: 769px) {
+
+// 	.acc-opt-container {
+// 		display: block;
+// 	}
+// }
+
+// @media screen and (max-width: 600px) {
+// 	.ip-my-dashboard.empty-state .avatar-wrapper .bc-card__body:has(.avatar-btn) {
+// 		width: 100%;
+// 		display: flex;
+// 		flex-direction: column-reverse;
+// 		justify-content: space-evenly;
+// 	}
+// }

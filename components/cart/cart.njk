@@ -1,0 +1,41 @@
+{% from "cart/macro.njk" import bcCart %}
+
+{{ bcCart({
+    items: [
+            { 
+                name: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+                details: 'Event',
+                price: '£30'
+            },
+            { 
+                name: 'Student: Introduction to ADR Online Course & Assessment',
+                price: '£5'
+            },
+            { 
+                name: 'Student CIArb Membership',
+                price: '£XX',
+                invoiced: true,
+                details: 'Membership'
+            }
+    ]
+}) }}
+
+
+{{ bcCart({
+    position: 'sidebar',
+    items: [
+            { 
+                name: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+                details: 'Event',
+                price: '£30'
+            },
+            { 
+                name: 'Student: Introduction to ADR Online Course & Assessment',
+                price: '£5'
+            },
+            { 
+                name: 'Student CIArb Membership',
+                price: '£XX'
+            }
+    ]
+}) }}

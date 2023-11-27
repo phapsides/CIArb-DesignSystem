@@ -1,0 +1,388 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership', href: '#' },
+			{ text: 'Fellow membership', href: '#' },
+			{ text: 'Fellow membership application', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from 'icon/macro.njk' import bcIcon %}
+    <div class="bc-step-indicator-container">
+        <div data-module="bc-step-indicator" class="bc-step-indicator">
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 1</strong>
+                    </p>
+                    <p>Before you Start</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 2</strong>
+                    </p>
+                    <p>Personal details</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 3</strong>
+                    </p>
+                    <p>Membership routes</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step" aria-current="step">
+                <div class="bc-step-indicator__step-number">4</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 4</strong>
+                    </p>
+                    <p>Qualifications</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">5</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 5</strong>
+                    </p>
+                    <p>Declaration</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">6</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 6</strong>
+                    </p>
+                    <p>payment option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="ip-fellow-membership-application ip-fellow-membership-application__step-4">
+        {% from "heading/macro.njk" import bcHeading %}
+        {% from "form/macro.njk" import bcForm %}
+        {% from "input/macro.njk" import bcInput %}
+        {% from "button/macro.njk" import bcButton %}
+        {% from "radios/macro.njk" import bcRadios %}
+        {% from "card/macro.njk" import bcCard %}
+
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Fellow member application'
+		}) }}
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Proof of experience'
+		}) }}
+
+        {% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+
+            {{ bcHeading({
+                hierarchy: 3,
+                text: 'CV'
+            }) }}
+
+            {{ bcInput({
+                name: 'cv',
+                required: true,
+                label: { 
+                    text: 'Upload CV' 
+                },
+                attributes: {
+                    type: 'file'
+                }
+            }) }}
+
+            {{ bcHeading({
+                hierarchy: 3,
+                text: 'References'
+            }) }}
+            {% call bcProse() %}
+                <p>Please upload 2 references</p>
+            {% endcall %}
+
+            {% call bcCard({
+                'size': '1/2'
+            }) %}
+                {{ bcRadios({
+                    name: 'refereeDetails-1',
+                    legend: {
+                        text: 'Select referee details'
+                    },
+                    required: true,
+                    options: [
+                        {
+                            text: 'Name and email of referee',
+                            value: 'nameEmail'
+                        },
+                        {
+                            text: 'Ciarb membership Id of reference',
+                            value: 'reference'
+                        }
+                    ]
+                }) }}
+                <div id="group1">
+                    {{ bcInput({
+                        name: 'refereeName',
+                        required: true,
+                        label: { 
+                            text: 'Referee name' 
+                        }
+                    }) }}
+                    {{ bcInput({
+                        name: 'refereeEmail',
+                        required: true,
+                        label: { 
+                            text: 'Referee email' 
+                        }
+                    }) }}
+                </div>
+                <div id="group2">
+                    {{ bcInput({
+                        name: 'refereeID',
+                        required: true,
+                        label: { 
+                            text: 'Ciarb membership Id of reference' 
+                        }
+                    }) }}
+                </div>
+                {{ bcInput({
+                    name: 'letterUpload',
+                    required: true,
+                    label: { 
+                        text: 'Letter upload' 
+                    },
+                    attributes: {
+                        type: 'file'
+                    }
+                }) }}
+            {% endcall %}
+
+            {% call bcCard({
+                'size': '1/2'
+            }) %}
+                {{ bcRadios({
+                    name: 'refereeDetails-2',
+                    legend: {
+                        text: 'Select referee details'
+                    },
+                    required: true,
+                    options: [
+                        {
+                            text: 'Name and email of referee',
+                            value: 'nameEmail'
+                        },
+                        {
+                            text: 'Ciarb membership Id of reference',
+                            value: 'reference'
+                        }
+                    ]
+                }) }}
+                <div id="group3">
+                    {{ bcInput({
+                        name: 'refereeName',
+                        required: true,
+                        label: { 
+                            text: 'Referee name' 
+                        }
+                    }) }}
+                    {{ bcInput({
+                        name: 'refereeEmail',
+                        required: true,
+                        label: { 
+                            text: 'Referee email' 
+                        }
+                    }) }}
+                </div>
+                <div id="group4">
+                    {{ bcInput({
+                        name: 'refereeID',
+                        required: true,
+                        label: { 
+                            text: 'Ciarb membership Id of reference' 
+                        }
+                    }) }}
+                </div>
+                {{ bcInput({
+                    name: 'letterUpload',
+                    required: true,
+                    label: { 
+                        text: 'Letter upload' 
+                    },
+                    attributes: {
+                        type: 'file'
+                    }
+                }) }}
+            {% endcall %}
+
+           <div class="ip-schedules">
+                {{ bcHeading({
+                    hierarchy: 3,
+                    text: 'Schedules of appointments'
+                }) }}
+                {% call bcProse() %}
+                    <p>Please upload schedules of appointments with 10 years history</p>
+                {% endcall %}
+                {{ bcInput({
+                    name: 'appointmentsUpload',
+                    required: true,
+                    label: { 
+                        text: 'Schedules of appointments upload' 
+                    },
+                    attributes: {
+                        type: 'file'
+                    }
+                }) }}
+            </div>
+
+            {{ bcHeading({
+                hierarchy: 3,
+                text: 'Published awards'
+            }) }}
+            {{ bcInput({
+                name: 'awardsUpload',
+                required: true,
+                label: { 
+                    text: 'Published awards upload' 
+                },
+                attributes: {
+                    type: 'file'
+                }
+            }) }}
+
+            {{ bcHeading({
+                hierarchy: 3,
+                text: 'Arbitration direction'
+            }) }}
+            {{ bcInput({
+                name: 'directionUpload',
+                required: true,
+                label: { 
+                    text: 'Arbitration direction upload' 
+                },
+                attributes: {
+                    type: 'file'
+                }
+            }) }}
+
+            <div class="bc-button-group">
+                {{ bcButton({
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Continue'
+                }) }}
+                {{ bcButton({
+                    appearance: 'secondary',
+                    type: 'button',
+                    text: 'Previous'
+                }) }}
+                {{ bcButton({
+                    appearance: 'link',
+                    type: 'button',
+                    text: 'Cancel'
+                }) }}
+            </div>
+
+        {% endcall %}
+
+    </div>
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		function toggleOptions() {	
+            const $radios1 = document.querySelectorAll('input[type=radio][name="refereeDetails-1"]');
+            const $radios2 = document.querySelectorAll('input[type=radio][name="refereeDetails-2"]');
+            const $group1 = document.getElementById("group1");
+            const $group2 = document.getElementById("group2");
+            const $group3 = document.getElementById("group3");
+            const $group4 = document.getElementById("group4");
+            const selectedRadio1 = document.querySelector('input[type=radio][name="refereeDetails-1"]:checked');
+            const selectedRadio2 = document.querySelector('input[type=radio][name="refereeDetails-2"]:checked');
+
+			$radios1.forEach(radio => radio.addEventListener('change', () => 
+                radio.value == 'reference' ?
+                    group2() :
+                    group1()
+                ));
+			$radios2.forEach(radio => radio.addEventListener('change', () => 
+                radio.value == 'reference' ?
+                    group4() :
+                    group3()
+                ));
+
+            const group1 = () => {
+                $group1.style.display = 'block';
+                $group2.style.display = 'none';
+			}
+
+            const group2 = () => {
+                $group1.style.display = 'none';
+                $group2.style.display = 'block';
+			}
+
+             const group3 = () => {
+                $group3.style.display = 'block';
+                $group4.style.display = 'none';
+			}
+            const group4 = () => {
+                $group3.style.display = 'none';
+                $group4.style.display = 'block';
+			}
+
+            if(selectedRadio1 != null && selectedRadio1.value == 'reference') {
+                group2();
+            }
+            if(selectedRadio1 != null && selectedRadio1.value == 'nameEmail') {
+                group1();
+            }
+            if(selectedRadio2 != null && selectedRadio2.value == 'reference') {
+                group4();
+            }
+            if(selectedRadio2 != null && selectedRadio2.value == 'nameEmail') {
+                group3();
+            }
+		}
+
+		window.addEventListener("DOMContentLoaded", () => {
+			toggleOptions();
+		})
+	</script>
+{% endblock %}

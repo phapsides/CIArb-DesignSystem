@@ -1,0 +1,39 @@
+caller: |
+  `bcTab` accepts call data for placing one or more `bcTabPanel`s inside of it.
+
+  `bcTabPanel` accepts call data for the content of the panel.
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: id
+    type: string
+    required: true
+    description: |
+      **`bcTabPanel` only.** The unique ID for this panel. This ID must match one of the `for` parameters in `tablist`.
+  - name: heading
+    type: string
+    required: true
+    description: |
+      **`bcTab` only.** A heading for the tabs. This is used to describe the grouping of the tabs to screen readers, and is displayed on mobile resolution as the title of the table of contents.
+  - name: tablist
+    type: array
+    required: true
+    description: |
+      **`bcTab` only.** Array of objects that builds the navigation of the Tab component.
+    params:
+      - name: for
+        type: string
+        required: true
+        description: The ID of the panel this tab is for. This must exactly match the `id` of a panel.
+      - name: html
+        type: string
+        required: true
+        description: HTML to display for this tab. Not required if `text` is set. If `html` is provided, the `text` parameter is ignored.
+      - name: text
+        type: string
+        required: true
+        description: Text to display for this tab. Not required if `html` is set. If `html` is provided, the `text` parameter is ignored.

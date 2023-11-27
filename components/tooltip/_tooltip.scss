@@ -1,0 +1,112 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/reset";
+@use "helpers/layout";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
+@use "sass:math";
+
+.bc-tooltip {
+	$self: &;
+	$popover-padding: spacing.fs-spacing(2);
+	$toggle-size: 1.5rem;
+	$target-size: 2.75rem;
+	$tip-size: 0.5rem;
+	$target-offset: math.div($target-size - $toggle-size, 2);
+	@include layout.fs-clearfix;
+	display: inline-block;
+	position: relative;
+	&__toggle {
+		@include reset.fs-reset-button;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		width: $toggle-size;
+		height: $toggle-size;
+		border-radius: $toggle-size * 0.5;
+		position: relative;
+		float: right;
+		&::after {
+			content: "";
+			width: $target-size;
+			height: $target-size;
+			position: absolute;
+			top: $target-offset * -1;
+			left: $target-offset * -1;
+		}
+		&[data-type="help"] {
+		}
+		&[data-type="star"] {
+		}
+		&[data-type="menu"] {
+		}
+		&[aria-expanded="true"] + #{$self}__body {
+			display: inline-block;
+		}
+	}
+	&__toggle-icon {
+	}
+	&__body {
+		@include typography.fs-font-size(small-print);
+		display: none;
+		width: max-content;
+		max-width: min(75vw, 21.5rem);
+		padding: $popover-padding;
+		border-radius: settings.$fs-border-radius;
+		position: absolute;
+		top: calc(100% + #{$target-offset});
+		right: $target-offset * -1;
+		z-index: 1;
+		color: colors.fs-color(white);
+		background-color: colors.fs-color(black);
+		&::before {
+			content: "";
+			width: $tip-size;
+			height: $tip-size;
+			position: absolute;
+			top: math.div($tip-size, 2) * -1;
+			right: math.div($toggle-size, 2) + $target-offset - math.div($tip-size, 2);
+			background-color: colors.fs-color(black);
+			transform: rotate(45deg);
+		}
+		> * + * {
+			@include spacing.fs-responsive-margin(1, $direction: top);
+		}
+	}
+	&__content {
+	}
+	// Context menu
+	&__menu {
+		@include reset.fs-reset-list;
+		margin: (math.div($popover-padding, 2) * -1) ($popover-padding * -1);
+		text-align: right;
+	}
+	&__menu-item {
+	}
+	&__menu-link {
+		@include reset.fs-reset-button;
+		display: block;
+		padding: math.div($popover-padding, 2) $popover-padding;
+		color: inherit;
+		&:hover {
+			text-decoration: underline;
+		}
+	}
+	// CTA action
+	&__cta {
+		text-align: right;
+	}
+	&__cta-link {
+		@include reset.fs-reset-button;
+		color: inherit;
+	}
+	// Close button
+	&__close {
+		@include reset.fs-reset-button;
+		@include spacing.fs-responsive-padding(1);
+		position: absolute;
+		top: 0;
+		right: 0;
+		color: colors.fs-color(white);
+	}
+}

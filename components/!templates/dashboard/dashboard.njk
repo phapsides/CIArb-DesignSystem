@@ -1,0 +1,30 @@
+{% extends '@chrome' %}
+{% block main %}
+    {% block beforeTemplate %}{% endblock %}
+    <div class="it-dashboard">
+        <div class="it-dashboard__inner">
+            <div class="bc-container">
+                <div class="bc-container__inner">
+                    {% block inner %}
+                        <article class="it-dashboard__document">
+                            {% block innerBreadcrumbs %}
+	
+                            {% endblock %}
+                            <aside class="it-dashboard__sidebar">
+                                {% block sidebar %}
+                                    {# [sidebar] #}
+                                {% endblock %}
+                            </aside>
+                            <main class="it-dashboard__body">
+                                {% block body %}
+                                    {# [body] #}
+                                {% endblock %}
+                            </main>
+                        </article>
+                    {% endblock %}
+                </div>
+            </div>
+            {% block afterTemplate %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}

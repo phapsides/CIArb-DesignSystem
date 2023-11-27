@@ -1,0 +1,78 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+@use "objects/container";
+
+.bc-big-card {
+	$icon-size: 1.25rem;
+
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 0;
+	@include media-queries.fs-mq($from: tablet) {
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 4rem;
+	}
+	&__inner {
+		padding: 1rem 0 0;
+	}
+	&__header {
+		margin-top: 2rem;
+	}
+	&__body {
+		margin-bottom: 2rem;
+		@media only screen and (min-width: 1025px) {
+			margin-bottom: 3.5rem;
+		}
+	}
+	&__action {
+		@media only screen and (min-width: 1025px) {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+	}
+	&__link {
+		margin-bottom: 2rem;
+		display: flex;
+		align-items: center;
+		@media only screen and (min-width: 1025px) {
+			margin-bottom: 0;
+		}
+	}
+	&__link-text {
+		@include typography.fs-font-size(body-mobile);
+		padding-right: 0.5rem;
+		@include media-queries.fs-mq($from: tablet) {
+			@include typography.fs-font-size(body);
+		}
+	}
+	&__link-icon {
+		font-size: $icon-size;
+	}
+	.bc-heading--small-subtitle {
+		margin-bottom: 0.5rem;
+	}
+	.bc-image__image {
+		height: 285px;
+		object-fit: cover;
+		@include media-queries.fs-mq($from: tablet) {
+			min-height: 489px;
+		}
+	}
+	&--content {
+		width: 100%;
+		@include media-queries.fs-mq($from: tablet) {
+			width: 90%;
+		}
+	}
+	&[data-image-align="right"] {
+		.bc-big-card--image {
+			order: 0;
+			@include media-queries.fs-mq($from: tablet) {
+				order: 1;
+			}
+		}
+	}
+}

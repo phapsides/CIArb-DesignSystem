@@ -1,0 +1,33 @@
+{% from "prose/macro.njk" import bcProse %}
+
+{% call bcProse() %}
+    <p>Paragraph text. Sit commodi corrupti ducimus vel inventore! Ratione cumque dignissimos consectetur praesentium molestias quasi nobis omnis eum ducimus numquam, ut vero, rem alias sed rerum sunt. Cupiditate, fugiat ex distinctio eum?</p>
+    <p class="small">Paragraph text. Sit commodi corrupti ducimus vel inventore! Ratione cumque dignissimos consectetur praesentium molestias quasi nobis omnis eum ducimus numquam, ut vero, rem alias sed rerum sunt. Cupiditate, fugiat ex distinctio eum?</p>
+    <p><strong>Bold copy</strong></p>
+    <p><em>Emphasised copy</em></p>
+    <p>Your next billing date is <strong>1 August 2021</strong></p>
+    <p>This is an <a href="#" target="_blank" rel="noopener">inline link</a></p>
+    <ul class="bc-list--dashed">
+		<li>Unordered list</li>
+		<li>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</li>
+		<li>Doloremque, modi mollitia eius repellat reprehenderit iusto suscipit dolores quaerat, quis in atque velit. Omnis ipsa architecto optio consequatur eligendi in expedita.</li>
+    </ul>
+    <dl>
+		<dt>Definition list</dt>
+		<dd>Minimum 8 characters long </dd>
+		<dd>Include at least 1 uppercase letter</dd>
+		<dd>Include at least 1 number</dd>
+    </dl>
+    <dl class="bc-list--dashed">
+		<dt>Definition list -- Dashed</dt>
+		<dd>Minimum 8 characters long </dd>
+		<dd>Include at least 1 uppercase letter</dd>
+		<dd>Include at least 1 number</dd>
+    </dl>
+    <address>
+		Westminster Office<br>
+		8th Floor, Kings Buildings<br>
+		16 Smith Square<br>
+		London SW1P 3HQ
+	</address>
+{% endcall %}

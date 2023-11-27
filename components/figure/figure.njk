@@ -1,0 +1,9 @@
+{% from "figure/macro.njk" import bcFigure %}
+
+{{ bcFigure({
+    image: {
+        src: ('/images/temp/bridge.png' | path),
+        alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+    },
+    figcaption: 'Fig.1 - Clifton Suspension Bridge, Bristol, UK'
+}) }}

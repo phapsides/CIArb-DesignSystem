@@ -1,0 +1,8 @@
+{% from "stepper/macro.njk" import bcStepper %}
+
+{{ bcStepper({
+    name: "ExampleStepper",
+    label: { text: "Quantity" },
+    min: 0,
+    max: 5
+}) }}

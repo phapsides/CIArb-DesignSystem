@@ -1,0 +1,197 @@
+{% extends '@t-left-sidebar' %}
+
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My courses', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "button/macro.njk" import bcButton %}
+	{% from "alert/macro.njk" import bcAlert %}
+	{% from "radios/macro.njk" import bcRadios %}
+	{% from "input/macro.njk" import bcInput %}
+	{% from "form/macro.njk" import bcForm %}
+	
+	<div class="ip-membership-billing-annual-declaration">
+		{{ bcButton({
+			classes: 'fs-!-margin-bottom-1',
+			href: '#',
+			text: 'Back to Membership & billing',
+			appearance: 'link'
+		}) }}
+
+		{{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 1,
+			text: 'Annual declaration 2022'
+		}) }}
+
+		{% call bcForm({
+			classes: '',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+
+			{{ bcRadios({
+				name: 'Lorem',
+				legend:  { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit*' 
+				},
+				options: [
+					{
+						text: 'Yes',
+						value: '1'
+					},
+					{
+						text: 'No',
+						value: '0'
+					}
+				]
+			}) }}
+
+			{{ bcInput({
+				name: 'moreDetails',
+				label: { 
+					text: 'If answer is ‘Yes’, please give more details' 
+				},
+				value: 'Lorem ipsum',
+				reveal: 'Lorem'
+			}) }}
+
+			{{ bcRadios({
+				name: 'Lorem2',
+				legend:  { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit*' 
+				},
+				options: [
+					{
+						text: 'Yes',
+						value: '1'
+					},
+					{
+						text: 'No',
+						value: '0'
+					}
+				]
+			}) }}
+
+			{{ bcInput({
+				name: 'moreDetails',
+				label: { 
+					text: 'If answer is ‘Yes’, please give more details' 
+				},
+				value: 'Lorem ipsum',
+				reveal: 'Lorem2'
+			}) }}
+
+			{{ bcRadios({
+				name: 'Lorem3',
+				legend:  { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit*' 
+				},
+				options: [
+					{
+						text: 'Yes',
+						value: '1'
+					},
+					{
+						text: 'No',
+						value: '0'
+					}
+				]
+			}) }}
+
+			{{ bcInput({
+				name: 'moreDetails',
+				label: { 
+					text: 'If answer is ‘Yes’, please give more details' 
+				},
+				value: 'Lorem ipsum',
+				reveal: 'Lorem3'
+			}) }}
+
+			{{ bcRadios({
+				name: 'Lorem4',
+				legend:  { 
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit*' 
+				},
+				options: [
+					{
+						text: 'Yes',
+						value: '1'
+					},
+					{
+						text: 'No',
+						value: '0'
+					}
+				]
+			}) }}
+
+			{{ bcInput({
+				name: 'moreDetails',
+				label: { 
+					text: 'If answer is ‘Yes’, please give more details' 
+				},
+				value: 'Lorem ipsum',
+				reveal: 'Lorem4'
+			}) }}
+
+			{{ bcButton({
+				classes: 'fs-!-margin-top-3',
+				appearance: 'primary',
+				text: 'Submit declaration'
+			}) }}
+
+		{% endcall %}
+			
+	</div>
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'Membership & billing', current: true },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}
+
+{% block scripts %}
+	<script>
+		const $coll = document.querySelectorAll("[data-reveal]");
+
+		for (let $i = 0; $i < $coll.length; $i++) {
+			let inputName = $coll[$i].getAttribute("data-reveal");
+			let triggerRadios = document.getElementsByName(inputName);
+			for (let $ii = 0; $ii < triggerRadios.length; $ii++) {
+				triggerRadios[$ii].addEventListener("change", function(){
+					toggleReveal(inputName, this.value);
+				});
+			}
+		}
+
+		function toggleReveal(inputName, value) {
+			let revealRows = document.querySelectorAll('[data-reveal="'+inputName+'"]');
+			for (let $iii = 0; $iii < revealRows.length; $iii++) {
+				value == 1 ? revealRows[$iii].classList.add("bc-form-row--revealed") : revealRows[$iii].classList.remove("bc-form-row--revealed");
+			}
+		}
+	</script>
+{% endblock %}

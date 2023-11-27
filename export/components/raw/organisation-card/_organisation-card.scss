@@ -1,0 +1,39 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "objects/forms";
+@use "helpers/media-queries";
+
+.bc-organisation-card {
+	background-color: colors.fs-color(white);
+	padding: 2.25rem;
+	display: grid;
+	grid-template-columns: 1fr;
+	grid-gap: 2rem;
+	@include media-queries.fs-mq($from: tablet) {
+		grid-gap: 1.25rem;
+		grid-template-columns: 3fr 1.7fr;
+	}
+	&__cta {
+		display: flex;
+		flex-direction: column;
+		justify-content: end;
+		> * {
+			&:first-of-type {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+	&__label {
+		@extend .bc-label;
+	}
+	.bc-label {
+		margin-top: 2.25rem;
+		margin-bottom: 0.25rem;
+	}
+	p {
+		margin: 0;
+	}
+	address {
+		font-style: normal;
+	}
+}

@@ -1,0 +1,62 @@
+{% from "icon/macro.njk" import bcIcon %}
+
+{% set lowestNumber = params.currentPage - 9 if (params.currentPage - 9) > 0 else 0 %}
+{% set highestNumber = params.currentPage + 8 if (params.currentPage + 8) < params.totalPages else params.totalPages %}
+
+<nav
+    data-module="bc-pagination"
+    aria-label="Pagination"
+    class="bc-pagination {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+>
+    <ul class="bc-pagination__list">
+        <li class="bc-pagination__list-item">
+            <a 
+                class="bc-pagination__previous {%- if params.currentPage == 1 %} bc-pagination__previous--hidden{% endif %}" 
+                href="#" 
+                aria-label="Go to previous page"
+            >   
+                {{ bcIcon({
+                    classes: 'bc-pagination__arrow',
+                    variant: 'chevron-left'
+                }) }}
+            </a>
+        </li>
+        {%- if lowestNumber != 0 %}
+            <li class="bc-pagination__list-item">
+                <span class="bc-pagination__jump" aria-hidden="true">&hellip;</span>
+            </li>
+        {%- endif %}
+        {%- for i in range(lowestNumber, highestNumber) %}
+            {% set pageNumber = i + 1 %}
+            <li class="bc-pagination__list-item">
+                <a
+                    class="bc-pagination__link"
+                    href="#"
+                    aria-label="Go to page {{ pageNumber }}"
+                    {%- if pageNumber === params.currentPage %} aria-current="page"{% endif %}
+                >
+                    {{- pageNumber -}}
+                </a>
+            </li>
+        {%- endfor %}
+        {%- if highestNumber != params.totalPages %}
+            <li class="bc-pagination__list-item">
+                <span class="bc-pagination__jump" aria-hidden="true">&hellip;</span>
+            </li>
+        {%- endif %}
+        <li class="bc-pagination__list-item">
+            <a 
+                class="bc-pagination__next {%- if params.currentPage == params.totalPages %} bc-pagination__next--hidden{% endif %}" 
+                href="#" 
+                aria-label="Go to next page"
+            >
+                {{ bcIcon({
+                    classes: 'bc-pagination__arrow',
+                    variant: 'chevron-right'
+                }) }}
+            </a>
+        </li>
+    </ul>
+</nav>
+

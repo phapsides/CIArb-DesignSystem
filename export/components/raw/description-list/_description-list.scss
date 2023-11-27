@@ -1,0 +1,88 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.bc-description-list {
+	$self: &;
+	$spacing: 2rem;
+	margin: 0;
+	address {
+		// width: 50%;
+		font-size: 16px;
+		line-height: 25px;
+		@include media-queries.fs-mq($from: tablet) {
+			width: 70%;
+		}
+		span {
+			display: block;
+		}
+	}
+	&__item {
+		margin-bottom: $spacing/2;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-bottom: $spacing;
+		}
+	}
+	&__key {
+		font-weight: 600;
+	}
+	&__value {
+		margin: 0;
+		padding: 0;
+	}
+	&__controls {
+		margin-top: 0.5rem;
+		margin-left: 0;
+	}
+	&--columns {
+		@include media-queries.fs-mq($from: tablet) {
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			#{$self}__item {
+				margin-right: $spacing;
+			}
+		}
+	}
+	&--wide {
+		@include media-queries.fs-mq($from: tablet) {
+			#{$self}__item {
+				display: flex;
+			}
+			#{$self}__key {
+				width: 20%;
+				flex-shrink: 0;
+				flex-grow: 0;
+			}
+			#{$self}__value {
+				width: 70%;
+				flex-shrink: 1;
+				flex-grow: 1;
+				padding-left: $spacing;
+			}
+			#{$self}__controls {
+				flex-shrink: 1;
+				flex-grow: 1;
+				margin-top: 0;
+				margin-left: $spacing;
+				text-align: right;
+			}
+		}
+	}
+	&--bordered {
+		#{$self}__item {
+			padding-bottom: $spacing;
+			// border-bottom: 1px solid $color-light-grey;
+		}
+	}
+	&--striped {
+		#{$self}__item {
+			padding: $spacing 1.875rem;
+			&:nth-child(odd) {
+				// background-color: $color-dove-grey;
+			}
+			& + #{$self}__item {
+				margin-top: 0;
+			}
+		}
+	}
+}

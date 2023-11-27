@@ -1,0 +1,127 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership', href: '#' },
+			{ text: 'Student membership', href: '#' },
+			{ text: 'Student membership application', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from 'icon/macro.njk' import bcIcon %}
+    <div class="bc-step-indicator-container">
+        <div data-module="bc-step-indicator" class="bc-step-indicator">
+            <div class="bc-step-indicator__step" aria-current="step">
+                <div class="bc-step-indicator__step-number">1</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 1</strong>
+                    </p>
+                    <p>Before you Start</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">2</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 2</strong>
+                    </p>
+                    <p>Personal details</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">3</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 3</strong>
+                    </p>
+                    <p>Qualifications</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line"></div>
+            <div class="bc-step-indicator__step">
+                <div class="bc-step-indicator__step-number">3</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 4</strong>
+                    </p>
+                    <p>Declaration</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="ip-student-membership-application ip-student-membership-application__annual-declaration">
+        {% from "heading/macro.njk" import bcHeading %}
+        {% from "prose/macro.njk" import bcProse %}
+        {% from "button/macro.njk" import bcButton %}
+        {% from "list/macro.njk" import bcList %}
+        {% from "notification-bar/macro.njk" import bcNotificationBar %}
+
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Student member application'
+		}) }}
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Before you start'
+		}) }}
+        {% call bcProse() %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        {% endcall %}
+
+        {{ bcHeading({
+            hierarchy: 3,
+            text: 'You will need the following supporting documents to complete your application form:'
+        }) }}
+
+        {% call bcList({
+            style: 'bulleted'
+        }) %}
+            <li>
+                Proof of qualifications, including a copy of the syllabus and the results transcript.
+            </li>
+            <li>
+                If applying under the experienced route a letter confirming employment and a reference letter detailing your ADR experience.
+            </li>
+        {% endcall %}
+
+        <div class="ip-student-membership-application__declaration">
+            {{ bcNotificationBar({
+                variant: 'warning',
+                placement: 'content',
+                message: {
+                    html: 'You need to complete your Annual Declaration before you apply for a membership'
+                },
+                link: {
+                    href: '#',
+                    text: 'Complete declaration'
+                }
+            }) }}
+        </div>
+    
+        <div class="bc-button-group">
+            {{ bcButton({
+                type: 'button',
+                text: 'Continue',
+                attributes: { 
+                    'disabled': true 
+                }
+            }) }}
+            {{ bcButton({
+                appearance: 'link',
+                type: 'button',
+                text: 'Cancel'
+            }) }}
+        </div>
+
+    </div>
+{% endblock %}

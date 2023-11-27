@@ -1,0 +1,72 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership & billing', href: '#' },
+			{ text: 'Cancel membership', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "button/macro.njk" import bcButton %}
+
+	<div class="ip-cancel-membership">
+		<div class="fs-!-margin-top-4">
+			<a href="#" title="">Back to membership</a>
+		</div>
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'Cancel membership'
+		}) }}
+
+		{% call bcProse() %}
+			<p>
+				If you choose to cancel your membership immediately, you will not be billed again, and you will lose any remaining time on your membership. 
+			</p>
+			<p>
+				If you choose to cancel at the end of the membership year, you will retain membership benefits and continue to be charged until a year after you initiated or renewed your membership.
+			</p>
+			<div class="bc-button-row fs-!-margin-block-3">
+				{{ bcButton({
+					classes: 'fs-!-margin-top-4',
+					appearance: 'secondary',
+					text: 'Cancel immediately'
+				}) }}
+			</div>
+			<div class="bc-button-row fs-!-margin-block-3">
+				{{ bcButton({
+					classes: 'fs-!-margin-top-4',
+					appearance: 'secondary',
+					text: 'Cancel at the end of membership year'
+				}) }}
+			</div>
+		{% endcall %}
+	</div>
+
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'Dashboard' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My donations' },
+			{ href: '#', text: 'My pledges money' },
+			{ href: '#', text: 'Grants' },
+			{ href: '#', text: 'Resources' },
+			{ href: '#', text: 'Membership & billing', current: true },
+			{ href: '#', text: 'Personal details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}

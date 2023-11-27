@@ -1,0 +1,343 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+
+.bc-carousel {
+	$buttonSize: 1.5rem;
+	$buttonReservedPadding: $buttonSize * 1.5;
+	padding-bottom: 3rem;
+	background-color: settings.$fs-canvas-background-color;
+	overflow: hidden;
+	&__inner {
+		margin-left: 10vw;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-right: 10vw;
+		}
+	}
+	&__header {
+		margin-bottom: 1.5rem;
+	}
+	&__slider {
+		position: relative;
+		opacity: 0;
+		&--initialized {
+			opacity: 1;
+		}
+	}
+	&__slider-wrapper {
+		display: flex;
+		width: 100%;
+		height: 100%;
+		position: relative;
+		z-index: 1;
+		transition-property: transform;
+		box-sizing: content-box;
+	}
+	&__slider-slide {
+		flex-shrink: 0;
+		width: 100%;
+		max-width: 290px;
+		position: relative;
+		pointer-events: none;
+		opacity: 0.2;
+		transition-property: transform, opacity;
+		transition-duration: 0.666s;
+		transition-timing-function: ease-in-out;
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 100%;
+		}
+		&--active {
+			pointer-events: auto;
+			opacity: 1;
+		}
+		&--next {
+			pointer-events: auto;
+			opacity: 1;
+		}
+		> * {
+			height: 100%;
+		}
+	}
+	&__slider-slide-card {
+		background: colors.fs-color(white);
+		img {
+			width: 100%;
+		}
+	}
+	&__slider-controls {
+		position: absolute;
+		width: 100%;
+		display: none;
+		justify-content: space-between;
+		top: 50%;
+		margin: -48px auto 0;
+		z-index: 10;
+		@include media-queries.fs-mq($from: tablet) {
+			display: flex;
+			left: 0;
+			right: 0;
+		}
+		@media only screen and (min-width: 1656px) {
+			max-width: 1440px;
+		}
+		html.no-js & {
+			display: none;
+		}
+	}
+	&__slider-control {
+		background: white;
+		width: 50px;
+		height: 50px;
+		box-shadow: 0 3px 6px #00000029;
+		opacity: 1;
+		border: none;
+		transition-property: opacity;
+		transition-duration: 0.333s;
+		transition-timing-function: ease-in-out;
+		cursor: pointer;
+		.bc-icon {
+			@include typography.fs-font-size(body-mobile);
+			color: colors.fs-color(brand-primary);
+			@media only screen and (min-width: 1025px) {
+				font-size: 1.75rem;
+			}
+		}
+		&--prev {
+			margin-left: 2vw;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-left: -4vw;
+			}
+			@media only screen and (min-width: 1025px) {
+				margin-left: -2vw;
+			}
+			@media only screen and (min-width: 1656px) {
+				margin-left: -2vw;
+			}
+		}
+		&--next {
+			margin-right: 2vw;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-right: -4vw;
+			}
+			@media only screen and (min-width: 1025px) {
+				margin-right: -2vw;
+			}
+			@media only screen and (min-width: 1656px) {
+				margin-right: -2vw;
+			}
+		}
+		&--disabled,
+		&--hidden {
+			opacity: 0.2;
+		}
+	}
+	&__pagination {
+		position: relative;
+		text-align: center;
+		transition: 300ms opacity;
+		transform: translate3d(0, 0, 0);
+		z-index: 10;
+		@media only screen and (min-width: 1025px) {
+			display: block;
+		}
+		.swiper-pagination-bullet {
+			width: 12px;
+			height: 12px;
+			margin-top: 2rem;
+			margin-inline: 0.35rem;
+			display: inline-block;
+			border-radius: 100%;
+			background: #656265;
+			box-shadow: 0 3px 6px #00000029;
+			@media only screen and (min-width: 1025px) {
+				margin-inline: 0.35rem;
+				width: 18px;
+				height: 18px;
+			}
+		}
+		&.swiper-pagination-clickable .swiper-pagination-bullet {
+			cursor: pointer;
+		}
+		.swiper-pagination-bullet-active {
+			background: colors.fs-color(brand-primary);
+		}
+	}
+	&__link {
+		display: flex;
+		justify-content: end;
+		margin-top: 2rem;
+		.bc-container__inner {
+			display: flex;
+			justify-content: end;
+		}
+	}
+	&__link-text {
+		padding-right: 0.5rem;
+	}
+	.bc-event-card--with-image {
+		display: flex;
+		padding: 0;
+		height: 100%;
+		flex-direction: column-reverse;
+		.bc-event-card__media {
+			padding: 0;
+		}
+		.bc-event-card__body {
+			@include typography.fs-font-size(h3-mobile);
+			flex-grow: 1;
+			padding: 1rem;
+			@media only screen and (min-width: 1025px) {
+				@include typography.fs-font-size(h3);
+				padding: 2rem;
+			}
+		}
+		.bc-event-card__toolbar {
+			margin-top: 2rem;
+			margin-bottom: 3rem;
+		}
+		.bc-image__image {
+			max-height: 256px;
+			object-fit: cover;
+		}
+	}
+
+	&--hero {
+		padding-bottom: 0;
+		.bc-carousel__inner {
+			overflow: hidden;
+			margin-inline: 0;
+		}
+		.bc-carousel__slider-slide {
+			max-width: 100%;
+			position: relative;
+			overflow: hidden;
+			background-size: 0 0 !important;
+			@media only screen and (min-width: 1025px) {
+				background-size: cover !important;
+				background-repeat: no-repeat;
+				background-position-x: center !important;
+				min-height: 34rem;
+			}
+			&-flex-container {
+				max-width: 1440px;
+				display: flex;
+				flex-flow: row wrap;
+				margin-inline: 14vw;
+				@media only screen and (min-width: 1025px) {
+					margin-inline: 10vw;
+				}
+				@media only screen and (min-width: 1656px) {
+					margin-inline: 16vw;
+				}
+			}
+			&-body {
+				@media only screen and (min-width: 1025px) {
+					width: 50%;
+				}
+			}
+			&-content {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				height: 100%;
+				z-index: 10;
+				padding-top: 4vh;
+				@media only screen and (min-width: 1025px) {
+					min-height: 28.125rem;
+					padding: 6vh 0;
+				}
+			}
+			&-cta {
+				margin-top: 4vh;
+				@include media-queries.fs-mq($from: tablet) {
+					margin-top: 6vh;
+				}
+				.bc-button {
+					height: auto;
+				}
+			}
+			&-media {
+				display: block;
+				position: relative;
+				width: 100%;
+				right: 0;
+				bottom: 0;
+				object-fit: cover;
+				margin-top: 3rem;
+				@media only screen and (min-width: 1025px) {
+					display: none;
+				}
+				.bc-image {
+					height: 100%;
+				}
+				.bc-image__image {
+					width: 100%;
+					min-height: 16rem;
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+			.bc-heading {
+				line-height: 1;
+				margin-bottom: 1rem;
+				@media only screen and (min-width: 1025px) {
+					margin-bottom: 1.5rem;
+				}
+			}
+		}
+	 	.bc-carousel__slider-control {
+			&--prev {
+				margin-left: 2vw;
+				@include media-queries.fs-mq($from: tablet) {
+					margin-left: 4vw;
+				}
+				@media only screen and (min-width: 1656px) {
+					margin-left: -2vw;
+				}
+			}
+			&--next {
+				margin-right: 2vw;
+				@include media-queries.fs-mq($from: tablet) {
+					margin-right: 4vw;
+				}
+				@media only screen and (min-width: 1656px) {
+					margin-right: -2vw;
+				}
+			}
+		}
+		.bc-carousel__pagination {
+			display: block;
+			position: absolute;
+			bottom: 1rem;
+			width: 100%;
+			@include media-queries.fs-mq($from: tablet) {
+				bottom: 4rem;
+			}
+		}
+		.bc-carousel__slider-controls {
+			display: flex;
+			top: 35%;
+			@media only screen and (min-width: 1025px) {
+				top: 50%;
+			}
+		}
+		.bc-carousel__slider-control {
+			width: 26px;
+			height: 26px;
+			@media only screen and (min-width: 1025px) {
+				width: 50px;
+				height: 50px;
+			}
+		}
+		
+	}
+
+	&__single-slide {
+		.bc-carousel__slider-slide-flex-container {
+			margin-left: 6vw;
+			margin-right: 6vw;
+		}
+	}
+}

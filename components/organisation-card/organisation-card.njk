@@ -1,0 +1,10 @@
+{% from "organisation-card/macro.njk" import bcOrganisationCard %}
+
+{{ bcOrganisationCard({
+    heading: {
+        hierarchy: 3,
+		text: 'Organisation name'
+	},
+    organisationType: 'XXXXXX', 
+    organisationAddress: '8th Floor, Kings Buildings, 16 Smith Square London SW1P 3HQ' 
+}) }}

@@ -1,0 +1,50 @@
+<div
+    data-module="bc-agenda"
+    class="bc-agenda {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {%- for band in params.bands %}
+        <section class="bc-agenda__band">
+            <header class="bc-agenda__band-header">
+                <time class="bc-agenda__time" datetime="{{ band.datetimeStart }}{% if band.datetimeEnd %}/{{ band.datetimeEnd }}{% endif %}">
+                    {{ band.datetimeStart }}{% if band.datetimeEnd %}&ndash;{{ band.datetimeEnd }}{% endif %}
+                </time>
+                {% if band.title %}
+                    <h4 class="bc-agenda__band-title">{{ band.title }}</h4>
+                {% endif %}
+                {% if band.description %}
+                    <div class="bc-agenda__description">
+                        {{ band.description }}
+                    </div>
+                {% endif %}
+            </header>
+            {%- for session in band.sessions %}
+                <section class="bc-agenda__session">
+                    <header class="bc-agenda__session-header">
+                        <time class="bc-agenda__time" datetime="{{ session.datetime }}">
+                            {{ session.datetime }}
+                        </time>
+                        <h5 class="bc-agenda__session-title">{{ session.title }}</h5>
+                        {% if session.description %}
+                            <div class="bc-agenda__description">{{ session.description }}</div>
+                        {% endif %}
+                    </header>
+                    {% if session.workshops %}
+                        <div class="bc-agenda__workshops">
+                            {%- for workshop in session.workshops %}
+                                <div class="bc-agenda__workshops-item">
+                                    <strong class="bc-agenda__workshops-title">{{ workshop.title }}</strong>
+                                    {% if workshop.description %}
+                                        <div class="bc-agenda__description">{{ workshop.description }}</div>
+                                    {% endif %}
+                                </div>
+                            {%- endfor %}
+                        </div>
+                    {%- endif %}
+                </section>
+            {%- endfor %}
+        </section>
+    {%- endfor %}
+</div>
+
+
+    

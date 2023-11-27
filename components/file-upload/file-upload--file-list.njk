@@ -1,0 +1,35 @@
+{% from "file-upload/macro.njk" import bcFileUpload %}
+
+{{ bcFileUpload({
+	hideFileInput: true,
+	files: [
+		{ 
+			name: "filename.jpg",
+			size: "2.5 MB"
+		},
+		{ 
+			name: "thisisonelongincrediblyunbrokensentencemovingfromtopictotopicsothatnoonehadachancetointerruptitwasreallyquitehypnotic.jpg",
+			size: "404 KB",
+			feedback: {
+				type: "success",
+				text: "File uploaded."
+			}
+		},
+		{
+			name: "wrongformat.txt",
+			size: "642 B",
+			feedback: {
+				type: "error",
+				text: "Upload failed. Files must be .jpg, .jpeg, .gif or .png."
+			}
+		},
+		{
+			name: "toobig.gif",
+			size: "52 MB",
+			feedback: {
+				type: "error",
+				text: "Upload failed. Files must be less than 3 MB."
+			}
+		}
+	]
+}) }}

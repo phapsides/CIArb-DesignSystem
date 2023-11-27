@@ -1,0 +1,23 @@
+{% from 'button/macro.njk' import bcButton %}
+{% from 'prose/macro.njk' import bcProse %}
+
+{% set variant = params.variant if params.variant else 'warning' %}
+{% set placement = 'bc-notification-bar--'+params.placement if params.placement else '' %}
+{% set message = params.message.html if params.message else '' %}
+
+
+<div data-module="bc-notification-bar" class="bc-notification-bar bc-notification-bar--{{ variant }} {{ placement }} {%- if params.classes %} {{ params.classes }}{% endif %}" {%- if params.notification-bar %} role="notification-bar" {% endif %} {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}>
+    <div class="bc-container">
+        <div class="bc-container__inner">
+            <p class="bc-notification-bar__heading">
+                {{ (params.message.html | safe) if params.message.html else params.message.text }}
+            </p>
+            {{ bcButton({
+                classes: params.link.classes,
+                appearance: 'primary',
+                text: params.link.text,
+                href: params.link.href
+            }) }}
+        </div>
+    </div>
+</div>

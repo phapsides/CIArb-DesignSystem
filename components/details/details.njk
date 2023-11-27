@@ -1,0 +1,56 @@
+{% from "details/macro.njk" import bcDetails %}
+{% from "prose/macro.njk" import bcProse %}
+
+{% call bcDetails({
+	classes: 'bc-details--no-border',
+	heading: { 
+		text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.',
+		hierarchy: 3
+	}
+}) %}
+	{% call bcProse() %}
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+		error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+	</p>
+	{% endcall %}
+{% endcall %}
+
+{% call bcDetails({
+	classes: 'bc-details--with-avatar',
+	avatar: {
+		classes: 'bc-avatar--medium',
+		src: ('https://images.unsplash.com/photo-1595085610896-fb31cfd5d4b7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=867&q=80' | path),
+		alt: 'Jane Smith'
+	},
+	heading: {
+		text: 'First and last name',
+		hierarchy: 3
+	},
+	job_description: 'Job description'
+}) %}
+	{% call bcProse() %}
+	<p>
+		Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit
+		error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+	</p>
+	{% endcall %}
+{% endcall %}
+
+{% call bcDetails({
+	read_more: true,
+	heading: { 
+		html: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat'
+	}
+}) %}
+	{% call bcProse() %}
+		<p>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere
+			suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum
+			dolor sit amet consectetur adipisicing elit.
+		</p>
+		<p>
+			Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam abrecusandae animi, quis in ipsa libero aliquid quos? Lorem ipsum dolor sit amet consectetur adipisicing elit. Repellendus nostrum excepturi ut facilis atque facere suscipit error inventore modi perspiciatis quibusdam ab recusandae animi, quis in ipsa libero aliquid quos?
+		</p>
+	{% endcall %}
+{% endcall %}

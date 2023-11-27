@@ -1,0 +1,80 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/forms";
+@use "helpers/spacing";
+@use "helpers/colors";
+
+.bc-input {
+	@include forms.bc-input-text;
+	@include spacing.fs-responsive-margin(1, $direction: block-start);
+	$input-padding: spacing.fs-spacing(
+		settings.$fs-form-element-horizontal-padding
+	);
+	&:focus {
+		outline: 3.5px solid colors.fs-color(outline);
+		outline-offset: 0;
+	}
+	&:disabled {
+		background-color: colors.fs-color(disabled);
+	}
+	&--textarea {
+		block-size: auto;
+		min-block-size: 6rem;
+		resize: block;
+	}
+	@each $length in (2, 3, 4, 8, 10, 20) {
+		&[data-length="#{$length}"] {
+			max-inline-size: ($length * 1ch) + 2ch;
+		}
+	}
+}
+
+input[type="file"]::file-selector-button {
+	border: 0;
+	padding: 0.5rem 1rem;
+	margin-left: -0.5rem;
+	margin-right: 1rem;
+	cursor: pointer;
+	color: colors.fs-color(white);
+	// TODO: Let's use the variables set for font related styles
+	font-size: 1rem;
+	font-weight: 600;
+	background-color: colors.fs-color(brand-primary);
+}
+
+.bc-input-mask {
+	@include spacing.fs-responsive-margin(1, $direction: block-start);
+	display: flex;
+	flex-direction: row;
+	&__prefix,
+	&__suffix {
+		@include forms.bc-input-mask;
+		display: inline-flex;
+		align-items: center;
+		flex-shrink: 0;
+		flex-grow: 0;
+	}
+	&__prefix {
+		border-inline-end: none;
+		border-start-end-radius: 0;
+		border-end-end-radius: 0;
+	}
+	&__suffix {
+		border-inline-start: none;
+		border-start-start-radius: 0;
+		border-end-start-radius: 0;
+	}
+	.bc-input {
+		position: relative;
+		margin: 0;
+		&:not(:first-child) {
+			border-inline-start: none;
+			border-start-start-radius: 0;
+			border-end-start-radius: 0;
+		}
+		&:not(:last-child) {
+			border-inline-end: none;
+			border-start-end-radius: 0;
+			border-end-end-radius: 0;
+		}
+	}
+}

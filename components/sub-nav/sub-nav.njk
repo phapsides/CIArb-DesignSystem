@@ -1,0 +1,19 @@
+{% from "sub-nav/macro.njk" import bcSubnav %}
+{{ bcSubnav({
+	items: [
+		{ href: '#', text: 'My profile' },
+		{ href: '#', text: 'My events' },
+		{ href: '#', text: 'My courses', active: true, items: [
+			{ href: '#', text: 'Secondary nav link 1' },
+			{ href: '#', text: 'Secondary nav link 2', current: true },
+			{ href: '#', text: 'Secondary nav link 3' },
+			{ href: '#', text: 'Secondary nav link 4' }
+		] },
+		{ href: '#', text: 'Membership & billing' },
+		{ href: '#', text: 'Profile details', items: [
+			{ href: '#', text: 'Secondary nav link 1' },
+			{ href: '#', text: 'Secondary nav link 2'}
+		] },
+		{ href: '#', text: 'Communication preferences' }
+	]
+}) }}

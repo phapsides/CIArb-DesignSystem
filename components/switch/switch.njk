@@ -1,0 +1,68 @@
+{% from "switch/macro.njk" import bcSwitch %}
+
+{{ bcSwitch({
+    id: 'switch',
+    name: 'switch',
+    value: 'on',
+    label: {
+        text: 'Toggle switch'
+    }
+}) }}
+
+{{ bcSwitch({
+    id: 'switch-checked',
+    name: 'switch',
+    value: 'on',
+    checked: true,
+    label: {
+        text: 'Pre-checked toggle switch'
+    }
+}) }}
+
+{{ bcSwitch({
+    id: 'switch-hint',
+    name: 'switch',
+    value: 'on',
+    label: {
+        text: 'Toggle switch with a hint'
+    },
+    hint: {
+        text: "A hint relating to this input."
+    }
+}) }}
+
+{{ bcSwitch({
+    id: 'switch-error',
+    name: 'switch',
+    value: 'on',
+    label: {
+        text: 'Toggle switch with an error'
+    },
+    error: {
+        text: "An error relating to this input."
+    }
+}) }}
+
+{{ bcSwitch({
+    id: 'switch-disabled',
+    name: 'switch',
+    value: 'on',
+    disabled: true,
+    label: {
+        text: 'Disabled toggle switch'
+    }
+}) }}
+
+{{ bcSwitch({
+    id: 'switch-disabled',
+    name: 'switch',
+    value: 'on',
+    checked: true,
+    disabled: true,
+    label: {
+        text: 'Disabled and pre-checked toggle switch'
+    }
+}) }}
+
+
+

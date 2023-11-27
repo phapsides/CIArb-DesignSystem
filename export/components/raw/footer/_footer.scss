@@ -1,0 +1,143 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "helpers/media-queries";
+
+.bc-footer {
+	background-color: settings.$fs-canvas-background-color;
+	padding: 2.25rem 0 2rem;
+	position: relative;
+
+	@media only screen and (min-width: 852px) {
+		padding: 4.25rem 0 2rem;
+	}
+
+	&__top-tier {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 0;
+		align-items: start;
+
+		@media only screen and (min-width: 852px) {
+			flex-direction: row;
+			margin-bottom: 6.25rem;
+		}
+
+		.bc-logo {
+			line-height: 1;
+			max-width: 150px;
+
+			@media only screen and (min-width: 852px) {
+				max-width: 249px;
+			}
+		}
+	}
+
+	&__navigation {
+		display: grid;
+		grid-gap: 2rem;
+		margin-top: 2.875rem;
+		margin-bottom: 2.875rem;
+		margin-left: 0;
+		width: 100%;
+		grid-template-columns: 1fr 1fr;
+
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+
+		@media only screen and (min-width: 852px) {
+			margin-top: 0;
+			margin-left: 6.25rem;
+		}
+
+		@media only screen and (min-width: 1025px) {
+			grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+			grid-gap: 1rem;
+		}
+
+		.bc-list {
+			flex: 1;
+			// &:last-of-type {
+			// 	flex: 1;
+			// }
+		}
+	}
+
+	&__social-media {
+		&.bc-list {
+			@include media-queries.fs-mq($from: tablet) {
+				margin-bottom: 2rem;
+			}
+		}
+	}
+
+	&__copyright {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 2rem;
+		font-size: 12px;
+		line-height: 18px;
+
+		@media only screen and (min-width: 852px) {
+			grid-template-columns: 6.5fr 1.5fr;
+		}
+
+		a {
+			text-decoration: none;
+			color: #000;
+			font-size: 12px;
+			line-height: 18px;
+			font-weight: 400;
+		}
+	}
+
+	&__copyright-copy {
+		margin: 0;
+	}
+
+	&__copyright-links {
+		margin-top: 0;
+		display: flex;
+
+		a {
+			&:last-of-type {
+				margin-left: auto;
+			}
+		}
+	}
+
+	&__nav-list {
+		@include typography.fs-font-size(breadcrumbs);
+
+		&.bc-list {
+			margin-bottom: 0;
+		}
+
+		a {
+			@include typography.fs-font-size(breadcrumbs);
+			color: colors.fs-color(brand-primary) !important;
+			text-decoration: none;
+			color: #000;
+			font-weight: 500;
+
+			&:hover {
+				text-decoration: underline;
+			}
+
+			&.bc-footer__nav-list-title {
+				font-weight: 600;
+			}
+		}
+
+		li + li {
+			margin-top: 0.75rem !important;
+		}
+
+		li {
+			&:first-of-type {
+				margin-bottom: 1rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,101 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "objects/container";
+
+
+.it-homepage {
+	.bc-banner {
+		&__body {
+			max-width: 55rem;
+		}
+		&__main {
+			font-size: 1.25rem;
+			line-height: 1.5;
+			@media only screen and (min-width: 1025px) {
+				font-size: 1.75rem;
+				line-height: 1.35;
+			}
+			& .bc-prose {
+				margin-bottom: 10rem;
+				@media only screen and (min-width: 1025px) {
+					margin-bottom: 2.5rem;
+				}
+			}
+		}
+	}
+	&__big-cards {
+		padding-block: 1.875rem;
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 3.5rem;
+		@include media-queries.fs-mq($from: tablet) {
+			grid-gap: 5rem;
+			padding-block: 5rem;
+		}
+		.bc-big-card {
+			margin-inline: -6vw;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-inline: 0;
+			}
+		}
+		.bc-big-card--content {
+			padding-inline: 6vw;
+			@include media-queries.fs-mq($from: tablet) {
+				padding-inline: 0;
+			}
+		}
+	}
+	&__networking {
+		background-color: settings.$fs-canvas-background-color;
+		padding-bottom: 5rem;
+		margin-top: 1.625rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: 0
+		}
+		&-heading {
+			@extend .bc-container;
+			padding-top: 3.125rem;
+			@include media-queries.fs-mq($from: tablet) {
+				padding-top: 5rem;
+			}
+			.bc-prose {
+				padding-top: 1rem;
+			}
+		}
+		&-carousel {
+			margin-top: 2.5rem;
+			@include media-queries.fs-mq($from: tablet) {
+				margin-top: 4.375rem;
+			}
+			.bc-carousel__inner {
+				margin-inline: 6vw;
+				max-width: 1440px;
+				@media only screen and (min-width: 1658px) {
+					margin: auto;
+				}
+			}
+		}
+	}
+	&__groups {
+		margin-top: 3rem;
+		&-grid {
+			margin-top: 1rem;
+		}
+	}
+	&__news {
+		margin-block: 5rem;
+	}
+	.bc-hero-banner__media {
+		width: 100%;
+		@media only screen and (min-width: 1025px) {
+			width: 50%;
+		}
+	}
+	.bc-hero-banner__body {
+		width: 90%;
+		@media only screen and (min-width: 1025px) {
+			width: 42.5%;
+		}
+	}
+}

@@ -1,0 +1,50 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.Pen-title,
+.Tree-title,
+.Tree-item,
+.Tree-collectionLabel,
+.Document-title,
+.Prose,
+.Prose h1,
+.Prose h2,
+.Prose h3,
+.Prose caption,
+.Status-label,
+.Browser-tab a,
+.Error--render .Error-title,
+.Error--render .Error-message,
+.FileBrowser-selectWrapper .select2-container,
+.FileBrowser-select-label,
+.select2-results__option,
+.Meta-key,
+.Meta-value {
+  font-family: inherit;
+  font-feature-settings: "liga", "dlig", "kern";
+}
+
+strong {
+  font-weight: 600 !important;
+}
+
+.Prose {
+  max-width: none;
+}
+
+.Header {
+  font-weight: 600;
+  background-color: #be0000;
+}
+
+.Fractal-Swatch {
+  display: inline-block;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0.1em 0.1em rgba(0, 0, 0, 0.1);
+}
+/*# sourceMappingURL=styleguide.css.map */

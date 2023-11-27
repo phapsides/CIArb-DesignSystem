@@ -1,0 +1,147 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-payment {
+	.bc-heading--jumbotron {
+		margin-bottom: 2rem;
+	}
+
+	&__card-number-field {
+		max-width: 100%;
+
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 418px;
+		}
+	}
+
+	&__expiration-date-field {
+		max-width: 100%;
+
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 306px;
+		}
+	}
+
+	&__security-code-field {
+		max-width: 100%;
+
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 194px;
+		}
+	}
+
+	.bc-step-indicator {
+		margin-bottom: 4rem !important;
+	}
+
+	&__shipping-details-table {
+		background-color: settings.$fs-canvas-background-color;
+		padding: 2rem;
+
+		p {
+			margin: 0;
+		}
+	}
+
+	&__shipping-details-table-row {
+		display: grid;
+		grid-template-columns: 1fr;
+		margin-block: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 1fr 5fr;
+		}
+
+		&:first-of-type {
+			margin-top: 0;
+		}
+
+		&:last-of-type {
+			margin-bottom: 0;
+		}
+	}
+
+	&__shipping-details-table-column {
+		display: flex;
+
+		&:first-child {
+			font-weight: 600;
+		}
+	}
+
+	&__shipping-details-table-link {
+		margin-left: auto;
+		margin-top: auto;
+	}
+
+	.bc-form {
+		margin-top: 4rem;
+	}
+
+	.bc-form-field-group {
+		display: flex;
+		flex-direction: column;
+
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+		}
+
+		.bc-form-row {
+			margin-right: 0;
+
+			@include media-queries.fs-mq($from: tablet) {
+				margin-right: 2rem;
+			}
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.bc-button-row {
+		display: flex;
+		align-items: center;
+		margin-top: 4rem;
+
+		.bc-button:not(:disabled)[data-appearance="primary"] {
+			margin-left: auto;
+		}
+	}
+
+	&__cart {
+		background-color: settings.$fs-canvas-background-color;
+		color: settings.$fs-text-color-heading;
+		padding: 2rem;
+		margin-top: 0;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: 6rem;
+		}
+	}
+
+	&__cart-items {
+		margin-bottom: 2rem;
+	}
+
+	&__cart-summary-inner {
+		display: flex;
+
+		p {
+			@extend .bc-heading--subtitle;
+			margin: 0;
+
+			&:last-of-type {
+				margin-left: auto;
+			}
+		}
+	}
+
+	&__cart-notification {
+		background-color: settings.$fs-canvas-background-color;
+		margin-top: 2rem;
+	}
+}

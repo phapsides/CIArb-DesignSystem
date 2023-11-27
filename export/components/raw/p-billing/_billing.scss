@@ -1,0 +1,117 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-billing {
+	.bc-heading--jumbotron {
+		margin-bottom: 0.75rem;
+	}
+
+	.bc-form-field-group {
+		display: flex;
+		flex-direction: column;
+
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+		}
+
+		.bc-form-row {
+			margin-right: 0;
+
+			@include media-queries.fs-mq($from: tablet) {
+				margin-right: 2rem;
+			}
+
+			&:last-of-type {
+				margin-right: 0;
+			}
+		}
+	}
+
+	.bc-step-indicator {
+		margin-bottom: 4rem !important;
+	}
+
+	.bc-heading--title {
+		margin-bottom: -1rem;
+	}
+
+	.bc-radios {
+		&__item {
+			margin-bottom: 2rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		.bc-hint {
+			// TODO: What is the reason the hint font size here is larger than anywhere else?
+			font-size: 1.125rem;
+			margin-top: 1rem;
+			margin-bottom: 1rem;
+		}
+	}
+
+	.bc-button-row {
+		display: flex;
+		align-items: center;
+		margin-top: 4rem;
+
+		.bc-button:not(:disabled)[data-appearance="primary"] {
+			margin-left: auto;
+		}
+	}
+
+	&__cart {
+		background-color: settings.$fs-canvas-background-color;
+		color: settings.$fs-text-color-heading;
+		padding: 2rem;
+		margin-top: 0;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin-top: 6rem;
+		}
+	}
+
+	&__cart-items {
+		margin-bottom: 2rem;
+	}
+
+	&__cart-summary-inner {
+		display: flex;
+
+		p {
+			@extend .bc-heading--subtitle;
+			margin: 0;
+
+			&:last-of-type {
+				margin-left: auto;
+			}
+		}
+
+		&__tax {
+			display: flex;
+			margin-bottom: 0.25rem;
+
+			p {
+				color: colors.fs-color(black) !important;
+
+				&:last-of-type {
+					margin-left: auto;
+				}
+			}
+		}
+	}
+
+	&__cart-notification {
+		background-color: settings.$fs-canvas-background-color;
+		margin-top: 2rem;
+	}
+}
+
+#ip-contact-information__new-address,
+#ip-contact-information__new-address-billing {
+	display: none;
+}

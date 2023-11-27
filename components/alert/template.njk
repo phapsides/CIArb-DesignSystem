@@ -1,0 +1,36 @@
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'prose/macro.njk' import bcProse %}
+
+{% set variant = params.variant if params.variant else 'info' %}
+{# TODO: review the below implementation #}
+{% set icon = params.icon if params.icon else 'alert-' + variant %}
+
+<div
+    data-module="bc-alert"
+    class="bc-alert {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- if params.alert %} role="alert"{% endif %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <span class="bc-alert__icon bc-alert--{{ variant }}">
+        {%- if params.variant == 'success' %}
+            {{ bcIcon({
+                variant: 'check'
+            }) }}
+        {%- else %}
+            {{ bcIcon({
+                variant: 'exclamation'
+            }) }}
+        {%- endif %}
+    </span>
+    {%- if params.heading %}
+        <strong class="bc-alert__heading">
+            {{ (params.heading.html | safe) if params.heading.html else params.heading.text }}
+        </strong>
+    {%- endif %}
+    {%- if caller %}
+        {% call bcProse({
+            classes: 'bc-alert__body'
+        }) %}
+            {{ caller() }}
+        {% endcall %}
+    {%- endif %}
+</div>

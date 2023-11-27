@@ -1,0 +1,30 @@
+@forward "@querkmachine/felafel/src/scss/helpers/layout";
+// @use "@querkmachine/felafel/src/scss/settings";
+// @use "@querkmachine/felafel/src/scss/helpers/layout";
+// @use "helpers/media-queries";
+//
+// @mixin af-grid-row {
+//   $gutter: settings.$fs-gutter-half;
+//   @include layout.fs-clearfix;
+//   margin-inline: $gutter * -0.5;
+//   @include media-queries.fs-mq($from: large) {
+//     $gutter: settings.$fs-gutter;
+//     margin-inline: $gutter * -0.5;
+//   }
+// }
+//
+// @mixin af-grid-column($width: full, $float: left, $at: medium) {
+//   $gutter: settings.$fs-gutter-half;
+//   @if $at != large and $at != extra-large {
+//     inline-size: 100%;
+//     padding: 0 ($gutter * 0.5);
+//   }
+//   @include media-queries.fs-mq($from: large) {
+//     $gutter: settings.$fs-gutter;
+//     padding: 0 ($gutter * 0.5);
+//   }
+//   @include media-queries.fs-mq($from: $at) {
+//     inline-size: layout.fs-grid-width($width);
+//     float: $float;
+//   }
+// }

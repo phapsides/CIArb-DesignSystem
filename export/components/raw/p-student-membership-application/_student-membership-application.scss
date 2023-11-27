@@ -1,0 +1,83 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+
+
+.ip-student-membership-application {
+	.bc-heading {
+		&--title {
+			margin-top: 2rem;
+			margin-bottom: 1.5rem;
+		}
+	}
+	.bc-form {
+		margin-top: 0;
+	}
+	&__step-1,
+	&__annual-declaration {
+		.bc-heading {
+			&--subtitle {
+				margin-top: 3rem;
+				margin-bottom: 1.5rem;
+			}
+		}
+	}
+	&__step-2 {
+		.bc-heading {
+			&--subtitle {
+				margin-top: 4rem;
+			}
+		}
+	}
+	&__step-3 {
+		.bc-grid {
+			padding-bottom: 0;
+			grid-gap: 0;
+		}
+	}
+	&__step-4 {
+		.bc-checkbox {
+			margin-bottom: 2rem;
+		}
+	}
+	.bc-button-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		.bc-button[data-appearance="primary"] {
+			margin-top: 2rem;
+		}
+		.bc-button {
+			margin-top: 1.5rem;
+		}
+	}
+	.bc-select-third-width {
+		@include media-queries.fs-mq($from: tablet) {
+			max-width: 30%;
+		}
+	}
+	.bc-checkbox__body {
+		width: 90%;
+	}
+	.bc-select {
+		&__arrow {
+			top: 0.875rem;
+		}
+		&__input {
+			margin-bottom: 2rem;
+		}
+	}
+	.bc-button-group {
+		margin-top: 2.5rem;
+	}
+	.bc-error {
+		margin-top: 0.5rem;
+	}
+	&__annual-declaration {
+		.ip-student-membership-application__declaration {
+			margin-top: 4rem;
+		}
+	}
+}

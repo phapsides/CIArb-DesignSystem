@@ -1,0 +1,275 @@
+{% extends '@t-event-listing' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'News & insights', href: '#' },
+			{ text: 'Ciarb news', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeInner %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "heading/macro.njk" import bcHeading %}
+
+	{{ bcHeading({
+		classes: 'fs-!-margin-bottom-2',
+		hierarchy: 1,
+		text: 'ciarb news'
+	}) }}
+
+	{% call bcEventCard({
+		classes: 'bc-news-hero',
+		hero: true,
+		href: '#',
+		categoryName: 'Category tag',
+		newsDate: '25th July 2022',
+		heading: {
+			text: 'ADR training provision strengthened in the Kingdom of Saudi Arabia',
+			hierarchy: 2
+		},
+		image: {
+			src: ('/images/temp/event-hero-temp-background.png' | path),
+			alt: ''
+		}
+	}) %}
+		{% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+			</p>
+		{% endcall %}
+	{% endcall %}
+
+{% endblock %}
+
+{% block body %}
+	{% from "news/macro.njk" import bcNews %}
+	{% from "pagination/macro.njk" import bcPagination %}
+	{% from "form/macro.njk" import bcForm %}
+	{% from "select/macro.njk" import bcSelect %}
+
+	<div class="ip-news-listing">
+
+		{% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+			<p class="ip-news-listing__filter-results">Showing results 1–10 of 840</p>
+		{% endcall %}
+								
+		
+		{{ bcNews({
+			items: [
+				{
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Branch focus: UAE'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Branch focus: UAE',
+						hierarchy: 3
+					},
+					date: '25th  July 2022',
+					text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'ciarb\'s diversity in ADR strategy'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'ciarb\'s diversity in ADR strategy',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'Arbitration week 2022 - review',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				},
+				{    
+					href: '#',
+					image: {
+						src: '/images/temp/membership-types.jpg',
+						alt: 'Arbitration week 2022 - review'
+					},
+					category: 'Category tag',
+					heading: {
+						text: 'ciarb mentoring programme',
+						hierarchy: 3
+					},
+					date: '25th  July 2022'
+				}
+			]
+		}) }}							
+		
+		{{ bcPagination({
+			currentPage: 1,
+			totalPages: 4
+		}) }}
+
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+	{% from "form/macro.njk" import bcForm %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "icon/macro.njk" import bcIcon %}
+	
+	<div data-module="bc-filters" id="filters" class="bc-filters">
+		{% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+			<h3 id="filters-title" class="bc-heading bc-heading--subtitle" >
+				Filter news
+				{{ bcIcon({
+					variant: 'chevron-down'
+				}) }}
+			</h3>
+        	<div class="bc-filters__body">
+				{{ bcCheckbox({
+					name: 'ExampleCheckboxGroup',
+					legend: {
+						text: 'Type'
+					},
+					options: [
+						{
+							text: 'General news',
+							value: '1'
+						},
+						{
+							text: 'Branch news',
+							value: '2'
+						},
+						{
+							text: 'YMG news',
+							value: '3'
+						},
+						{
+							text: 'Features',
+							value: '4'
+						},
+						{
+							text: 'Policy',
+							value: '5'
+						}
+					]
+				}) }}
+				{{ bcSelect({
+					name: "ExampleSelect",
+					label: { 
+						text: "Location" 
+					},
+					options: [
+						{ value: "", text: "Select" },
+						{ value: "", text: "Lorem ipsum" },
+						{ value: "",  text: "Lorem ipsum" }
+					]
+				}) }}
+				<div class="bc-filters__actions">
+					{{ bcButton({
+						classes:'bc-form-row',
+						appearance: 'primary',
+						type: 'submit',
+						text: 'Apply filters',
+						attributes: { 
+							'name': 'testName', 
+							'value': 'testValue' 
+						}
+					}) }}
+					{{ bcButton({
+						classes:'bc-form-row',
+						appearance: 'link',
+						text: 'Clear filters'
+					}) }}
+				</div>
+			</div>
+		{% endcall %}
+	</div>
+{% endblock %}

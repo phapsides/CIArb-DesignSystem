@@ -1,0 +1,282 @@
+{% extends '@t-event-listing' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Courses', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeInner %}
+    {% from "event-card/macro.njk" import bcEventCard %}
+    {% from "heading/macro.njk" import bcHeading %}
+
+    {{ bcHeading({
+		classes: 'fs-!-margin-bottom-2',
+		hierarchy: 1,
+		text: 'Courses'
+	}) }}
+
+    {% call bcEventCard({
+		classes: 'bc-course-hero',
+		hero: true,
+		href: '#',
+		heading: {
+			text: 'Student: Introduction to ADR Online Course & Assessment',
+			hierarchy: 2
+		},
+		image: {
+			src: ('/images/courses-listing-geometric-shapes.svg' | path),
+			alt: 'courses'
+		},
+		button: {
+			classes:'fs-!-margin-top-3',
+			appearance: 'primary',
+			text: 'Book event',
+			href: '#'
+		},
+		date: 'Thu, 30 June 2021',
+		time: '10:00',
+		location: 'London, UK'
+	}) %}
+        {% call bcProse() %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        {% endcall %}
+    {% endcall %}
+
+{% endblock %}
+
+{% block body %}
+    {% from "event-card/macro.njk" import bcEventCard %}
+    {% from "grid/macro.njk" import bcGrid %}
+    {% from "pagination/macro.njk" import bcPagination %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "select/macro.njk" import bcSelect %}
+
+    <div class="ip-course-listing">
+
+        {% call bcForm({
+			classes: 'fs-!-margin-bottom-4',
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+            <p class="ip-course-listing__filter-results">
+                Showing results 1–10 of 840
+            </p>
+            {{ bcSelect({
+				name: "ExampleSelect",
+				options: [
+					{ value: "", text: "Sort by" }
+				]
+			}) }}
+        {% endcall %}
+        {% call bcGrid({
+            size: '1/1'}) 
+        %}
+            {% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Online Introduction to ADR Assessment',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2021',
+				time: '1 day',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+                {% call bcProse() %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                {% endcall %}
+            {% endcall %}
+            {% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Online Introduction to ADR Assessment',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2021',
+				time: '1 day',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+                {% call bcProse() %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                {% endcall %}
+            {% endcall %}
+		    {% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Online Introduction to ADR Assessment',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2021',
+				time: '1 day',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+                {% call bcProse() %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                {% endcall %}
+            {% endcall %}
+		    {% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Online Introduction to ADR Assessment',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2021',
+				time: '1 day',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+                {% call bcProse() %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                {% endcall %}
+            {% endcall %}
+		    {% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Online Introduction to ADR Assessment',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2021',
+				time: '1 day',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+                {% call bcProse() %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                {% endcall %}
+            {% endcall %}
+		    {% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Online Introduction to ADR Assessment',
+					hierarchy: 3
+				},
+				date: 'Thu, 30 June 2021',
+				time: '1 day',
+				location: 'London, UK',
+				price: 'XXX'
+				
+			}) %}
+                {% call bcProse() %}
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    </p>
+                {% endcall %}
+            {% endcall %}
+     
+        {% endcall %}
+        {{ bcPagination({
+			currentPage: 1,
+			totalPages: 2
+		}) }}
+    </div>
+{% endblock %}
+
+{% block sidebar %}
+
+	{% from "form/macro.njk" import bcForm %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "select/macro.njk" import bcSelect %}
+    {% from "input/macro.njk" import bcInput %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "icon/macro.njk" import bcIcon %}
+
+	<div data-module="bc-filters" id="filters" class="bc-filters">
+    {% call bcForm({
+        action: '',
+        method: '',
+        disableUnloadPrompt: true
+    }) %}
+        <h3 id="filters-title" class="bc-heading bc-heading--subtitle" >
+            Filter courses
+            {{ bcIcon({
+                variant: 'chevron-down'
+            }) }}
+        </h3>
+        <div class="bc-filters__body">
+            {{ bcCheckbox({
+                name: 'ExampleCheckboxGroup',
+                legend: {
+                    text: 'Course type'
+                },
+                options: [
+                    {
+                        text: 'Course type',
+                        value: '1'
+                    },
+                    {
+                        text: 'Course type',
+                        value: '2'
+                    },
+                    {
+                        text: 'Course type',
+                        value: '3'
+                    }
+                ]
+            }) }}
+            {{ bcSelect({
+                name: "ExampleSelect",
+                label: { 
+                    text: "Course location" 
+                },
+                options: [
+                    { value: "", text: "All" },
+                    { value: "", text: "Lorem ipsum" },
+                    { value: "",  text: "Lorem ipsum" }
+                ]
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInputDate',
+                type: 'date',
+                label: { text: 'From' }
+            }) }}
+            {{ bcInput({
+                name: 'ExampleInputDate',
+                type: 'date',
+                label: { text: 'To' }
+            }) }}
+            <div class="bc-filters__actions">
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Apply filters',
+                    attributes: { 
+                        'name': 'testName', 
+                        'value': 'testValue' 
+                    }
+                }) }}
+                {{ bcButton({
+                    classes:'bc-form-row',
+                    appearance: 'link',
+                    text: 'Clear filters'
+                }) }}
+            </div>
+        </div>
+    {% endcall %}
+</div>
+
+{% endblock %}

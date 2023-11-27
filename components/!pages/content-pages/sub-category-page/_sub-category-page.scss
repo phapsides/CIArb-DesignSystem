@@ -1,0 +1,56 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+@use "helpers/media-queries";
+
+.ip-sub-category--bc-event-card-min-height {
+	min-height: 560px;
+	.bc-hero {
+		&__body {
+			margin-top: 6rem;
+		}
+	}
+}
+
+.ip-sub-category {
+	.bc-heading--title {
+		margin-bottom: 1rem;
+	}
+	&__membership-type {
+		margin-bottom: 2rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin-bottom: 4rem;
+		}
+		.bc-grid {
+			margin-top: 2rem;
+			margin-inline: -6vw;
+			@include media-queries.fs-mq($from: tablet) {
+				margin: 0;
+			}
+		}
+		.bc-card--with-image {
+			box-shadow: none;
+			padding: 0;
+			.bc-card__header {
+				padding: 0.5rem 0 0;
+				.bc-heading--subtitle {
+					margin-top: 1rem;
+					margin-bottom: 0.5rem;
+				}
+			}
+			.bc-card__body {
+				padding: 0;
+			}
+		}
+	}
+	.bc-card {
+		.bc-image__image {
+			height: 285px;
+			object-fit: cover;
+			@include media-queries.fs-mq($from: tablet) {
+				min-height: auto;
+			}
+		}
+	}
+}

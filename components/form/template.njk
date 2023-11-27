@@ -1,0 +1,12 @@
+{% set method = params.method if params.method else 'get' %}
+
+<form
+    data-module="bc-form"
+    class="bc-form {%- if params.classes %} {{ params.classes }}{% endif %}"
+    action="{{ params.action }}"
+    method="{{ method }}"
+    {%- if params.disableUnloadPrompt %} data-do-not-prompt-unload{% endif %}
+    {%- if params.disableValidation %} novalidate{% endif %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {{ caller() if caller }}
+</form>

@@ -1,0 +1,134 @@
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'button/macro.njk' import bcButton %}
+{% from 'image/macro.njk' import bcImage %}
+{% from 'icon/macro.njk' import bcIcon %}
+
+<article
+	data-module="bc-profile-card"
+	class="bc-profile-card
+	{%- if params.image %} bc-card--with-image{% endif %}
+	{%- if params.event %} bc-card--event{% endif %}
+	{%- if params.profile %} bc-card--profile{% endif %} 
+	{%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- if params.size %} data-size="{{ params.size }}"{% endif %}
+	{%- if params.theme %} data-theme="{{ params.theme }}"{% endif %}
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+	{%- if params.image %} data-layout="extended"{% endif %}
+>
+	<div class="bc-container"> 
+		<div class="bc-container__inner"> 
+				
+			{{ bcButton({
+				classes: 'fs-!-margin-bottom-2',
+				appearance: 'link',
+				href: '#',
+				text: 'Back to directory'
+			}) }}
+
+			<div class="bc-profile-card__inner">
+				
+				{%- if params.member.image.url %}
+					<div class="bc-profile-card__media">
+						{% call bcImage({
+							src: (params.member.image.url),
+							alt: params.member.image.alt
+						}) %}
+						{% endcall %}
+					</div>
+				{%- endif %}
+
+				<div class="bc-profile-card__primary-details">
+					{{ bcHeading({
+						text: params.member.name,
+						hierarchy: 1
+					}) }}
+
+					{%- if params.member.qualifications %}
+						<div class="bc-profile-card__qualifications">
+							{{ params.member.qualifications }}
+						</div>
+					{%- endif %}
+
+					{%- if params.member.job_title %}
+						<div class="bc-profile-card__job-title">
+							<strong>Job title:</strong> {{ params.member.job_title }}
+						</div>
+					{%- endif %}
+
+					{%- if params.member.country %}
+						<div class="bc-profile-card__country">
+							<strong>Country:</strong> {{ params.member.country }}
+						</div>
+					{%- endif %}
+
+					<hr />
+
+					{%- if params.member.primary_branch %}
+						<div class="bc-profile-card__primary_branch">
+							<strong>Primary branch:</strong> {{ params.member.primary_branch }}
+						</div>
+					{%- endif %}
+
+					{%- if params.member.secondary_branch %}
+						<div class="bc-profile-card__secondary_branch">
+							<strong>Secondary branch:</strong> {{ params.member.secondary_branch }}
+						</div>
+					{%- endif %}
+
+					{%- if params.member.expertise %}
+						<div class="bc-profile-card__expertise">
+							<strong>Area of expertise:</strong> {{ params.member.expertise }}
+						</div>
+					{%- endif %}
+				</div>
+
+				<div class="bc-profile-card__contact-details">
+					{{ bcHeading({
+						classes: 'fs-!-margin-bottom-2',
+						text: 'Contact details',
+						hierarchy: 2
+					}) }}
+					
+					{%- if params.member.email %}
+						<div class="bc-profile-card__email">
+							{{ bcIcon({
+								classes: 'fa-envelope'
+							}) }}
+							{{ params.member.email }}
+						</div>
+					{%- endif %}
+
+					{%- if params.member.social.linkedin %}
+						<div class="bc-profile-card__social">
+							{{ bcIcon({
+								classes: 'fab fa-linkedin-in'
+							}) }}
+							{{ params.member.name }}
+						</div>
+					{%- endif %}
+
+					{{ bcHeading({
+						classes: 'fs-!-margin-top-4 fs-!-margin-bottom-2',
+						text: 'Company details',
+						hierarchy: 2
+					}) }}
+
+					{%- if params.member.company.address %}
+						<div class="bc-profile-card__address">
+							{{ bcIcon({
+								classes: 'fa-building'
+							}) }}
+							<div>
+								{{ params.member.company.address | safe | nl2br }}
+								{%- if params.member.company.url %}
+									<a href="{{ params.member.company.url }}" target="_blank">{{ params.member.company.url }}</a>
+								{%- endif %}
+							</div>
+						</div>
+					{%- endif %}
+				</div>
+				
+			</div>
+		</div>
+	</div>
+</article>

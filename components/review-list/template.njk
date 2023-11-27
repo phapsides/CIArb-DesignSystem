@@ -1,0 +1,31 @@
+{% from "tooltip/macro.njk" import bcTooltip, bcTooltipContextMenu %}
+
+<dl
+	data-module="bc-review-list"
+	class="bc-review-list {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+	{%- for item in params.items %}
+		<div class="bc-review-list__item">
+			<dt class="bc-review-list__key">
+				{{- item.key.html | sbce if item.key.html else item.key.text -}}
+			</dt>
+			{%- if item.value %}
+				<dd class="bc-review-list__value">
+					{{- item.value.html | sbce if item.value.html else item.value.text -}}
+				</dd>
+			{%- endif %}
+			{%- if item.controls %}
+				<dd class="bc-review-list__controls">
+					{% call bcTooltip({
+						id: 'ReviewListMenu' + loop.index,
+						type: 'menu'
+					}) %}
+						{{ bcTooltipContextMenu({
+							items: item.controls
+						}) }}
+					{% endcall %}
+				</dd>
+			{%- endif %}
+		</div>
+	{%- endfor %}
+</dl>

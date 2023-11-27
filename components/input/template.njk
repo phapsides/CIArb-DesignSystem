@@ -1,0 +1,74 @@
+{% from 'icon/macro.njk' import bcIcon %}
+
+{%- set describedBy = params.describedBy if params.describedBy else '' -%}
+{%- set id = params.id if params.id else params.name %}
+
+{% set commonAttributes %}
+    class="bc-input {%- if params.type == 'file'%} bc-input--file{% endif %} {%- if params.type == 'textarea'%} bc-input--textarea{% endif %} {%- if params.type == 'date'%} bc-input--date{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}"
+    id="{{ id }}"
+    name="{{ params.name }}"
+    {%- if params.placeholder %} placeholder="{{ params.placeholder }}"{% endif %}
+    {%- if params.disabled %} disabled{% endif %}
+    {%- if params.required %} required{% endif %}
+    {%- if params.length %} data-length="{{ params.length }}"{% endif %} 
+    {%- if params.error %} aria-invalid="true"{% endif %}
+    {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+{% endset %}
+
+<div class="bc-form-row {%- if params.row_classes %} {{ params.row_classes }}{% endif %} {%- if params.error %} bc-form-row--error {% endif %}" 
+{%- if params.reveal %} data-reveal="{{ params.reveal }}" {% endif %} {%- if params.reveal_value %} data-reveal-value="{{ params.reveal_value }}" {% endif %}>
+    <label class="bc-label" for="{{ id }}">
+        {{ params.label.html | safe if params.label.html else params.label.text }}
+        {%- if not params.required %}
+            <span class="bc-label__optional">(optional)</span>
+        {%- endif %}
+    </label>
+    {%- if params.hint %}
+        {% set hintId = id + '-Hint' %}
+        {% set describedBy = describedBy + ' ' + hintId %}
+        <div class="bc-hint" id="{{ hintId }}">
+            {{ params.hint.html | safe if params.hint.html else params.hint.text }}
+        </div>
+    {%- endif %}
+    {%- if params.type == 'textarea' %}
+        <textarea
+            {{- commonAttributes | safe }}
+            {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}>
+            {{- params.value if params.value -}}
+        </textarea>
+    {%- else %}
+        {% set inputElement %}
+            <input
+                {{- commonAttributes | safe }}
+                type="{{ params.type if params.type else 'text' }}"
+                {%- if params.value %} value="{{ params.value }}"{% endif %}
+                {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}>
+        {% endset %}
+        {%- if params.inputPrefix or params.inputSuffix %}
+            <div class="bc-input-mask">
+                {%- if params.inputPrefix %}
+                    <span class="bc-input-mask__prefix" aria-hidden="true">{{ params.inputPrefix }}</span>
+                {%- endif %}
+                {{ inputElement | safe }}
+                {%- if params.inputSuffix %}
+                    <span class="bc-input-mask__suffix" aria-hidden="true">{{ params.inputSuffix }}</span>
+                {%- endif %}
+            </div>
+        {%- else %}
+            {{ inputElement | safe }}
+        {%- endif %}
+    {%- endif %}
+    {%- if params.error %}
+        {% set errorId = id + '-Error' %}
+        {% set describedBy = describedBy + ' ' + errorId %}
+        <div class="bc-error" id="{{ errorId }}">
+            <span class="bc-error__icon">
+                {{ bcIcon({
+                    variant: 'exclamation'
+                }) }}
+            </span>
+            {{ params.error.html | safe if params.error.html else params.error.text }}
+        </div>
+    {%- endif %}
+</div>

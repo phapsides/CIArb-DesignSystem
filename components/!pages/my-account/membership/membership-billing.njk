@@ -1,0 +1,137 @@
+{% extends '@t-left-sidebar' %}
+
+{% block notificationBar %}
+	{% from "notification-bar/macro.njk" import bcNotificationBar %}
+    
+	{{ bcNotificationBar({
+		variant: 'warning',
+		message: {
+			html: 'You need to complete your Annual Declaration to renew your membership'
+		},
+		link: {
+			href: '#',
+			text: 'Complete declaration'
+		}
+	}) }}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My courses', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "button/macro.njk" import bcButton %}
+	{% from "membership-card/macro.njk" import bcMembershipCard %}
+	{% from "modal/macro.njk" import bcModal %}
+
+	<div class="ip-membership-billing">
+		{{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 1,
+			text: 'Membership & billing'
+		}) }}
+
+		{{ bcHeading({
+			classes: 'fs-!-margin-bottom-1',
+			hierarchy: 2,
+			text: 'Your membership'
+		}) }}
+
+		{% call bcMembershipCard({
+			classes: 'fs-!-margin-bottom-2',
+			price: '24',
+			period: 'year',
+			buttons: [
+				{
+                    classes: 'fs-!-margin-right-4',
+					appearance: 'primary',
+                    text: 'Renew membership',
+                    attributes: {
+                        'data-modal-open': 'renew-membership-modal'
+                    }
+                },
+				{
+                    appearance: 'secondary',
+                    text: 'Cancel membership'
+                }
+			]
+		}) %}
+			{% call bcProse() %}
+				<dl class="bc-list--dashed">
+					<dt>Annual subscription</dt>
+					<dd>Lorem ipsum dolor sit amet, consectetur adipiscing</dd>
+					<dd>Lorem ipsum dolor sit amet, consectetur adipiscing</dd>
+					<dd>Lorem ipsum dolor sit amet, consectetur adipiscing</dd>
+				</dl>
+			{% endcall %}
+		{% endcall %}
+
+		{% call bcProse() %}
+			<p>To alter your membership package, please call us on +44(0)121 523 1730.</p>
+			<div class="fs-!-margin-top-8">
+				{{ bcHeading({
+					classes: 'fs-!-margin-bottom-2',
+					hierarchy: 2,
+					text: 'Billing details'
+				}) }}
+				<p class="fs-!-margin-top-0 fs-!-margin-bottom-1">Your next billing date is <strong>1 August 2021</strong></p>
+				<p class="fs-!-margin-top-0 fs-!-margin-bottom-1">Auto renewal: <strong>Yes</strong></p>
+			</div>
+		{% endcall %}
+
+			{% call bcProse() %}
+			<div class="fs-!-margin-top-8">
+				{{ bcHeading({
+					classes: 'fs-!-margin-bottom-2',
+					hierarchy: 2,
+					text: 'Annual declaration'
+				}) }}
+				<p class="fs-!-margin-top-0 fs-!-margin-bottom-1">You need to complete your Annual Declaration to renew your membership</p>
+				{{ bcButton({
+				classes: 'fs-!-margin-top-2',
+    			appearance: 'primary',
+    			text: 'Complete declaration'
+				}) }}
+				<p class="fs-!-margin-top-4">Last declaration date <strong>2021</strong></p>
+				
+			</div>
+		{% endcall %}
+	</div>
+	{% call bcModal({
+		id: 'renew-membership-modal',
+		icon: 'exclamation',
+		content: 'You need to complete your Annual Declaration to renew your membership'
+		}) %}
+		{{ bcButton({
+			classes: 'fs-!-margin-top-2 fs-!-margin-bottom-2',
+			appearance: 'primary',
+			text: 'Complete delaration',
+			href: '#'
+		}) }}
+	{% endcall %}
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'Membership & billing', current: true },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}

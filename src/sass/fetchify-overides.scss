@@ -1,0 +1,68 @@
+#cc_c2a.c2a_dark.c2a_mode1 .c2a_footer {
+	border-color: #77000c !important;
+}
+
+#cc_c2a {
+	border-radius: 0 !important;
+	&.c2a_light {
+		// background-color: #ffffff !important;
+		box-shadow: none !important;
+		border: 2px solid #77000c !important;
+		.c2a_logo {
+			display: none;
+		}
+	}
+	.mainbar {
+		margin: 0 !important;
+		padding: 0.5rem 1rem !important;
+		height: 50px !important;
+		display: flex !important;
+		align-items: center !important;
+		.country_btn .country_img {
+			margin-left: 0 !important;
+		}
+	}
+	.c2a_footer {
+		height: 54px !important;
+	}
+	.country_btn.country_btn_active {
+		&:hover {
+			background: transparent !important;
+		}
+		span {
+			color: black !important;
+		}
+	}
+	ul.c2a_results li {
+		color: #000 !important;
+		font-size: 16px !important;
+	}
+	ul.c2a_results li {
+		border: none !important;
+	}
+	ul.c2a_results li:not(.deadend):hover, 
+	ul.c2a_results li.active {
+		background: #ddd !important;
+	}
+	ul.c2a_results li {
+		height: 36px !important;
+	}
+	// TODO: add fontawsome chevron
+	.cc-filter {
+
+	}
+	ul.c2a_results li span.light {
+		font-style: normal !important;
+	}
+	ul.c2a_results li:not(.deadend):hover span.light, 
+	ul.c2a_results li.active span.light {
+		color: #000 !important;
+	}
+	.mainbar .cc-history {
+		margin-left: auto !important;
+	}
+	.mainbar .cc-history>div:hover {
+		background: transparent !important;
+	}
+}
+

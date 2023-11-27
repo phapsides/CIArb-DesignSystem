@@ -1,0 +1,151 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/spacing";
+@use "button/button";
+@use "helpers/colors";
+@use "objects/forms";
+@use "heading/heading";
+@use "input/input";
+
+.ip-forms-framework {
+	$arrow-width: 0.5rem;
+	$arrow-height: $arrow-width * 0.75;
+	$input-padding: spacing.fs-spacing(
+		settings.$fs-form-element-horizontal-padding
+	);
+
+	h1 {
+		@extend .bc-heading--jumbotron;
+	}
+
+	h2 {
+		@extend .bc-heading--title;
+	}
+
+	h3 {
+		@extend .bc-heading--subtitle;
+	}
+
+	// h4 {
+	// 	@extend .bc-heading--small-subtitle;
+	// }
+	// h5 {
+	// 	@extend .bc-heading--byline;
+	// }
+
+	.umbraco-forms-fieldset {
+		@extend .bc-fieldset;
+
+		legend {
+			@extend .bc-label;
+		}
+	}
+
+	.fileupload {
+		.umbraco-form__label {
+			@extend .bc-label;
+		}
+	}
+
+	.bc-button {
+		margin-right: 1.25rem;
+	}
+
+	.bc-select__input {
+		appearance: auto;
+	}
+
+	.bc-select {
+		display: block;
+	}
+
+	.crm-lookup-text {
+		margin: 0;
+		border: settings.$fs-border-width-form-element solid
+			colors.fs-color(brand-secondary);
+		border-radius: 0;
+		color: colors.fs-color(black);
+		background-color: colors.fs-color(furniture);
+		box-shadow: none;
+		font-family: inherit;
+		font-size: inherit;
+		font-style: inherit;
+		line-height: inherit;
+		padding-top: 0.5rem;
+		padding-bottom: 0.5rem;
+		padding-left: 1rem;
+		width: 100%;
+
+		&:focus {
+			outline: 3.5px solid colors.fs-color(outline);
+			outline-offset: 0;
+		}
+	}
+
+	input[type="file"] {
+		display: block;
+		width: 100%;
+		background-color: colors.fs-color(white);
+		padding: 2rem 4rem;
+		margin-top: 1rem;
+		color: transparent;
+
+		&::before {
+			@extend .bc-button;
+			content: "Select file";
+			display: block;
+			cursor: pointer;
+			user-select: none;
+			outline: none;
+			white-space: nowrap;
+			color: colors.fs-color(brand-primary);
+			border-color: colors.fs-color(brand-primary);
+		}
+	}
+
+	input[type="file"]::-webkit-file-upload-button {
+		display: none;
+	}
+
+	.select2-container--default .select2-search--dropdown .select2-search__field {
+		@extend .bc-input;
+	}
+
+	.select2 {
+		@extend .bc-select;
+		background-color: colors.fs-color(white);
+		width: 100% !important;
+	}
+
+	.select2-container--default
+		.select2-selection--single
+		.select2-selection__placeholder {
+		color: colors.fs-color(black);
+	}
+
+	.select2-container .select2-selection--single .select2-selection__rendered {
+		padding-left: 0;
+	}
+
+	.select2-container--default
+		.select2-selection--single
+		.select2-selection__arrow {
+		transform: translate(-50%, -50%);
+		top: 50%;
+	}
+
+	.select2-container--default .select2-selection--single {
+		border: none;
+	}
+
+	.select2-selection__rendered {
+		border: none;
+	}
+	.umbraco-forms-field-wrapper .bc-select {
+		@extend .bc-select;
+		background-color: colors.fs-color(white);
+		width: 100%;
+	}
+	.select2-container .select2-selection--single .select2-selection__rendered {
+		padding-right: 40px;
+	}
+}

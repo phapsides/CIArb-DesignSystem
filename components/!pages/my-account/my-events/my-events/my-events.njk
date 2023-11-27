@@ -1,0 +1,159 @@
+{% extends '@t-left-sidebar' %}
+
+{% block notificationBar %}
+	{% from "notification-bar/macro.njk" import bcNotificationBar %}
+    
+	{{ bcNotificationBar({
+		variant: 'warning',
+		message: {
+			html: 'You need to complete your Annual Declaration to renew your membership'
+		},
+		link: {
+			href: '#',
+			text: 'Complete declaration'
+		}
+	}) }}
+{% endblock %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My events', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "button/macro.njk" import bcButton %}
+	{% from "modal/macro.njk" import bcModal %}
+
+	<div class="ip-my-events">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'Events'
+		}) }}
+
+		{% call bcGrid({
+			size: '1/1'
+		}) %}
+			{{ bcHeading({
+				hierarchy: 2,
+				text: 'You have 2 upcoming events'
+			}) }}
+			{% call bcEventCard({
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+				},
+				date: 'Thu, 30 June 2022',
+				time: '10:00 GMT',
+				location: 'London, UK',
+				price: 'XXX',
+				button: {
+					classes: 'fs-!-margin-top-4 fs-!-margin-right-3',
+					appearance: 'primary',
+					href: '#',
+					text: 'View details'
+				},
+				buttonSecondary: {
+					appearance: 'secondary',
+					text: 'Cancel booking',
+					attributes: {
+						'data-modal-open': 'cancellation-modal'
+					}
+				}
+				
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+				{% endcall %}
+			{% endcall %}
+			{% call bcEventCard({
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				},
+				image: {
+					src: ('/images/temp/event-temp-background.png' | path),
+					alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+				},
+				date: 'Thu, 30 June 2022',
+				time: '10:00 GMT',
+				location: 'London, UK',
+				price: 'XXX',
+				button: {
+					classes: 'fs-!-margin-right-3',
+					appearance: 'primary',
+					href: '#',
+					text: 'View details'
+				},
+				buttonSecondary: {
+					appearance: 'secondary',
+					text: 'Cancel booking',
+					attributes: {
+						'data-modal-open': 'cancellation-modal'
+					}
+				}
+				
+			}) %}
+				{% call bcProse() %}
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+				{% endcall %}
+			{% endcall %}
+		{% endcall %}
+
+		<div class="ip-my-events__past-events">
+			{{ bcHeading({
+				hierarchy: 2,
+				text: 'Past events'
+			}) }}
+			{% call bcProse() %}
+				<p>Looks like you haven’t attended any!</p>
+				<p>Get started on finding an exciting event near you.</p>
+			{% endcall %}
+			{{ bcButton({
+                appearance: 'primary',
+                text: 'Find an event'
+            }) }}
+		</div>
+	</div>
+
+	{% call bcModal({
+		id: 'cancellation-modal',
+		icon: 'exclamation',
+		content: 'Are you sure you want to cancel this event booking?'
+	}) %}
+	{{ bcButton({
+		classes: 'fs-!-margin-top-2 fs-!-margin-bottom-2',
+		appearance: 'primary',
+		text: 'Cancel booking',
+		href: '#'
+	}) }}
+	{% endcall %}
+
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events', current: true },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}

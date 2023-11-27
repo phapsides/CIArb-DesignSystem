@@ -1,0 +1,23 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.ip-checkout-complete {
+	margin-top: 3rem;
+	@include media-queries.fs-mq($from: tablet) {
+		margin-top: 6rem;
+	}
+	.bc-heading--jumbotron {
+		margin-bottom: 2rem;
+	}
+	.bc-button {
+		margin-top: 1.5rem;
+	}
+	&__order-details {
+		p {
+			margin: 0;
+		}
+	}
+	section {
+		margin-bottom: 5rem;
+	}
+}

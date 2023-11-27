@@ -1,0 +1,343 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "helpers/typography";
+@use "sass:math";
+
+.bc-event-card {
+	$self: &;
+	$card-padding: 1.5rem;
+	position: relative;
+	padding: $card-padding;
+	background-color: colors.fs-color(white);
+	display: grid;
+	grid-template-columns: 1fr;
+	box-shadow: 0 3px 10px #00000029;
+	min-height: 220px;
+
+	@include media-queries.fs-mq($from: tablet) {
+		grid-template-columns: 2.5fr 1fr;
+	}
+
+	&__category {
+		font-size: 16px;
+		color: colors.fs-color(brand-secondary);
+		font-weight: 600;
+		line-height: 32px;
+		margin-bottom: 0.5rem;
+	}
+
+	&__news-date {
+		color: #656265;
+		font-size: 16px;
+		line-height: 32px;
+		font-weight: 300;
+		margin-top: auto;
+	}
+
+	&__body {
+		order: -1;
+		width: 100%;
+		@include media-queries.fs-mq($from: tablet) {
+			width: 95%;
+		}
+	}
+
+	&__header,
+	&__body {
+		margin-bottom: 0.75rem;
+	}
+
+	&__media {
+		overflow: hidden;
+		padding: $card-padding 0;
+		line-height: 0;
+
+		@include media-queries.fs-mq($from: tablet) {
+			padding: 0;
+		}
+	}
+	&__link {
+		text-decoration: none;
+
+		.bc-prose {
+			font-weight: 300;
+			color: colors.fs-color(black);
+		}
+	}
+
+	&__toolbar {
+		grid-area: toolbar;
+		margin-top: auto;
+		padding-top: 0;
+	}
+
+	&__cta {
+		.bc-button {
+			margin-top: 1rem;
+			width: 100%;
+		}
+		@include media-queries.fs-mq($from: tablet) {
+			grid-column: span 2;
+			.bc-button {
+				width: fit-content;
+			}
+		}
+	}
+	
+	.bc-heading {
+		color: colors.fs-color(brand-primary);
+	}
+
+	.bc-description-list {
+		margin: 0;
+
+		&__item {
+			display: flex;
+			align-items: center;
+			margin-bottom: 0.5rem;
+
+			&:last-child {
+				margin-bottom: 0;
+			}
+		}
+
+		&__value {
+			@include typography.fs-font-size(body-mobile);
+			color: colors.fs-color(black);
+			font-weight: 500;
+			margin-left: 0.5rem;
+		}
+
+		&__key {
+			color: colors.fs-color(brand-secondary);
+			width: 1.5rem;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	&--with-image {
+		.bc-image__image {
+			object-fit: cover;
+			@include media-queries.fs-mq($from: tablet) {
+				max-height: 166px;
+			}
+		}
+	}
+
+	&--hero {
+		padding: 0;
+		background-color: colors.fs-color(brand-secondary);
+		margin-bottom: 0;
+		width: 100%;
+		border: none;
+		box-shadow: none;
+		grid-template-columns: 1fr;
+
+		@media only screen and (min-width: 1025px) {
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 4rem;
+			max-width: 1440px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+
+		#{$self}__body {
+			padding: $card-padding;
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 0;
+			order: 1;
+
+			@include media-queries.fs-mq($from: tablet) {
+				order: -1;
+			}
+		}
+
+		#{$self}__media {
+			padding: 0;
+		}
+
+		.bc-description-list__key {
+			width: 1.25rem;
+			text-align: center;
+		}
+
+		.bc-heading,
+		.bc-description-list__key,
+		#{$self}__body,
+		#{$self}__toolbar {
+			color: colors.fs-color(white);
+		}
+
+		#{$self}__toolbar {
+			margin-top: 0;
+		}
+
+		#{$self}__cta {
+			display: flex;
+			justify-content: start;
+			margin-top: auto;
+
+			@include media-queries.fs-mq($from: tablet) {
+				margin-bottom: 1rem;
+			}
+		}
+	}
+
+	&--hero-reverse {
+		padding: 0;
+		background-color: settings.$fs-canvas-background-color;
+		margin-bottom: 0;
+		width: 100%;
+		border: none;
+		box-shadow: none;
+		grid-template-columns: 1fr;
+
+		@media only screen and (min-width: 1025px) {
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 4rem;
+			max-width: 1440px;
+			margin-left: auto;
+			margin-right: auto;
+		}
+		#{$self}__body {
+			padding: $card-padding;
+			display: flex;
+			flex-direction: column;
+			margin-bottom: 0;
+			order: 1;
+
+			@include media-queries.fs-mq($from: tablet) {
+				order: -1;
+			}
+		}
+
+		#{$self}__media {
+			padding: 0;
+		}
+		.fa-arrow-right {
+			display: none;
+		}
+	}
+
+	&--full-width {
+		background-color: settings.$fs-canvas-background-color;
+		position: relative;
+		padding: 2rem 0 0;
+		.bc-event-card {
+			padding: 2rem 0 6rem;
+		}
+		.bc-button {
+			height: auto;
+		}
+		.bc-event-card__back-btn {
+			width: fit-content;
+			margin-top: -2rem;
+			margin-bottom: 3rem;
+			font-size: 1rem;
+		}
+		.bc-event-card__media {
+			padding: 0;
+			align-items: center;
+		}
+		.bc-event-card__container {
+			padding-inline: 6vw;
+		}
+		.bc-event-card__main {
+			color: colors.fs-color(black);
+		}
+		.bc-event-card--hero {
+			background-color: settings.$fs-canvas-background-color;
+
+			.bc-heading {
+				color: colors.fs-color(brand-secondary);
+			}
+
+			.bc-description-list__key {
+				color: colors.fs-color(brand-secondary);
+			}
+		}
+
+		.bc-event-card__header,
+		.bc-event-card__body {
+			padding: 0;
+		}
+
+		.bc-event-card__toolbar {
+			padding: 0 0 2rem 0;
+		}
+
+		.bc-image {
+			position: relatve;
+
+			@media only screen and (min-width: 1025px) {
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 50%;
+				height: 100%;
+				margin-top: 0;
+
+				img {
+					height: 100%;
+					object-fit: cover;
+				}
+			}
+		}
+
+		.bc-button {
+			color: colors.fs-color(brand-primary);
+			background-color: transparent;
+			padding: 0.75rem 0;
+			border: none;
+		}
+
+		[data-appearance="primary"] {
+			background-color: white;
+			padding: 0.75rem 2.5rem;
+			text-decoration: none;
+			// TODO: What is the reason of the 0.15rem? It comes up to 2.4 and we widely use 2px and have set a variable for this
+			border: 0.15rem solid colors.fs-color(brand-secondary);
+		}
+
+		.bc-event-card__cta {
+			justify-content: start;
+			align-items: center;
+			margin-bottom: 0;
+
+			.bc-button {
+				margin-right: 1.6rem;
+			}
+		}
+		&.bc-event-card--secondary-color {
+			background-color: colors.fs-color(brand-secondary);
+			.bc-event-card {
+				background-color: transparent;
+				.bc-heading,
+				.bc-prose,
+				.bc-button {
+					color: colors.fs-color(white) !important;
+				}
+			}
+		}
+	}
+
+	&--single-column {
+		grid-template-columns: 1fr;
+	}
+
+	.fa-arrow-right {
+		position: absolute;
+		left: calc(100% - #{$card-padding * 2});
+		bottom: $card-padding;
+		right: auto;
+		font-size: 1.5rem;
+		@include media-queries.fs-mq($from: tablet) {
+			right: 2rem;
+			bottom: 2rem;
+			left: auto;
+		}
+	}
+}

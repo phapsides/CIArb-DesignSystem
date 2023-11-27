@@ -1,0 +1,33 @@
+caller: The primary messaging within the Alert.
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the component.
+  - name: alert
+    type: boolean
+    default: false
+    description: Whether the Alert requires immediate attention from the user. If `true`, adds `role="alert"` to the component.
+  - name: variant
+    type: string
+    default: info
+    description: Which variant of Alert to use. Accepted values are `info`, `success` and `danger`.
+  - name: icon
+    type: string
+    default: Dynamic based on `variant` parameter.
+    description: Icon ID that overrides the default icon shown on the Alert.
+    seeAlso: [icon]
+  - name: heading
+    type: object
+    description: The heading of the alert.
+    params:
+      - name: html
+        type: string
+        required: true
+        description: HTML to use in the heading. Not required if `text` is set. If `html` is provided, the `text` parameter is ignored.
+      - name: text
+        type: string
+        required: true
+        description: Text to use in the heading. Not required if `html` is set. If `html` is provided, the `text` parameter is ignored.

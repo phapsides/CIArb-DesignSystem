@@ -1,0 +1,112 @@
+{% extends '@t-left-sidebar' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My dashboard', href: '#' },
+			{ text: 'My resource library', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "file-list/macro.njk" import bcFileList %}
+	{% from "pagination/macro.njk" import bcPagination %}
+
+	<div class="ip-my-resource-library">
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'My resource library'
+		}) }}
+
+		{{ bcFileList({
+			items: [
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				},
+				{ 
+					heading: {
+						hierarchy: '3',
+						text: 'File name'
+					},
+					description: 'Description of the document lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+				}
+			]    
+		}) }}
+		{{ bcPagination({
+			currentPage: 1,
+			totalPages: 4
+		}) }}
+
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My dashboard' },
+			{ href: '#', text: 'Account details' },
+			{ href: '#', text: 'Professional details' },
+			{ href: '#', text: 'Membership & billing' },
+			{ href: '#', text: 'Purchase history' },
+			{ href: '#', text: 'My booked events' },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'My resource library', current: true },
+			{ href: '#', text: 'Communication preferences' },
+			{ href: '#', text: 'Visit the LMS' }
+
+		]
+	}) }}
+
+{% endblock %}

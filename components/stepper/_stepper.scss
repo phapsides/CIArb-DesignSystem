@@ -1,0 +1,48 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/forms";
+@use "helpers/reset";
+@use "helpers/spacing";
+
+.bc-stepper {
+	display: inline-flex;
+	align-items: center;
+	gap: spacing.fs-spacing(1);
+	&__input {
+		@include forms.bc-input-text;
+		flex-basis: 4ch;
+		order: 2;
+		text-align: center;
+		border: none;
+		background: transparent;
+	}
+	&__button {
+		@include reset.fs-reset-button;
+		display: inline-flex;
+		justify-content: center;
+		align-items: center;
+		inline-size: 1.5rem;
+		block-size: 1.5rem;
+		border-radius: 50%;
+		color: colors.fs-color(white);
+		background-color: colors.fs-color(brand-primary);
+		&:not(:disabled) {
+			&:hover,
+			&:focus,
+			&:active {
+				background-color: colors.fs-color(brand-primary-dark);
+			}
+		}
+		&:disabled {
+			color: colors.fs-color(text);
+			background-color: colors.fs-color(furniture);
+			cursor: default;
+		}
+		&--minus {
+			order: 1;
+		}
+		&--plus {
+			order: 3;
+		}
+	}
+}

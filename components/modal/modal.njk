@@ -1,0 +1,47 @@
+{% from "modal/macro.njk" import bcModal %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "button/macro.njk" import bcButton %}
+
+{{ bcButton({
+    appearance: 'primary',
+    text: 'Open modal 1',
+    type: 'button',
+    attributes: {
+        'data-modal-open': 'modal-1'
+    }
+}) }}
+
+{{ bcButton({
+    appearance: 'primary',
+    text: 'Open modal 2',
+    type: 'button',
+    attributes: {
+        'data-modal-open': 'modal-2'
+    }
+}) }}
+
+{% call bcModal({
+    id: 'modal-1',
+    icon: 'exclamation',
+    content: 'Title for modal 1'
+    }) %}
+    {{ bcButton({
+        classes: 'fs-!-margin-top-2 fs-!-margin-bottom-2',
+        appearance: 'primary',
+        text: 'Complete delaration',
+        href: '#'
+    }) }}
+{% endcall %}
+
+{% call bcModal({
+    id: 'modal-2',
+    icon: 'exclamation',
+    content: 'Title for modal 2'
+    }) %}
+    {{ bcButton({
+        classes: 'fs-!-margin-top-2 fs-!-margin-bottom-2',
+        appearance: 'primary',
+        text: 'Complete delaration',
+        href: '#'
+    }) }}
+{% endcall %}

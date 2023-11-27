@@ -1,0 +1,61 @@
+#cc_c2a.c2a_dark.c2a_mode1 .c2a_footer {
+  border-color: #77000c !important;
+}
+
+#cc_c2a {
+  border-radius: 0 !important;
+}
+#cc_c2a.c2a_light {
+  box-shadow: none !important;
+  border: 2px solid #77000c !important;
+}
+#cc_c2a.c2a_light .c2a_logo {
+  display: none;
+}
+#cc_c2a .mainbar {
+  margin: 0 !important;
+  padding: 0.5rem 1rem !important;
+  height: 50px !important;
+  display: flex !important;
+  align-items: center !important;
+}
+#cc_c2a .mainbar .country_btn .country_img {
+  margin-left: 0 !important;
+}
+#cc_c2a .c2a_footer {
+  height: 54px !important;
+}
+#cc_c2a .country_btn.country_btn_active:hover {
+  background: transparent !important;
+}
+#cc_c2a .country_btn.country_btn_active span {
+  color: black !important;
+}
+#cc_c2a ul.c2a_results li {
+  color: #000 !important;
+  font-size: 16px !important;
+}
+#cc_c2a ul.c2a_results li {
+  border: none !important;
+}
+#cc_c2a ul.c2a_results li:not(.deadend):hover,
+#cc_c2a ul.c2a_results li.active {
+  background: #ddd !important;
+}
+#cc_c2a ul.c2a_results li {
+  height: 36px !important;
+}
+#cc_c2a ul.c2a_results li span.light {
+  font-style: normal !important;
+}
+#cc_c2a ul.c2a_results li:not(.deadend):hover span.light,
+#cc_c2a ul.c2a_results li.active span.light {
+  color: #000 !important;
+}
+#cc_c2a .mainbar .cc-history {
+  margin-left: auto !important;
+}
+#cc_c2a .mainbar .cc-history > div:hover {
+  background: transparent !important;
+}
+/*# sourceMappingURL=fetchify-overides.css.map */

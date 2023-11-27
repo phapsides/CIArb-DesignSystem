@@ -1,0 +1,168 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Membership', href: '#' },
+			{ text: 'Fellow membership', href: '#' },
+			{ text: 'Fellow membership application', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from 'icon/macro.njk' import bcIcon %}
+    <div class="bc-step-indicator-container">
+        <div data-module="bc-step-indicator" class="bc-step-indicator">
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 1</strong>
+                    </p>
+                    <p>Before you Start</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 2</strong>
+                    </p>
+                    <p>Personal details</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 3</strong>
+                    </p>
+                    <p>Membership routes</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 4</strong>
+                    </p>
+                    <p>Qualifications</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step complete">
+                <div class="bc-step-indicator__step-number">
+                    {{ bcIcon({
+                        variant: 'check'
+                    }) }}
+                </div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 5</strong>
+                    </p>
+                    <p>Declaration</p>
+                </div>
+            </div>
+            <div class="bc-step-indicator__line complete"></div>
+            <div class="bc-step-indicator__step" aria-current="step">
+                <div class="bc-step-indicator__step-number">6</div>
+                <div class="bc-step-indicator__body">
+                    <p>
+                        <strong>Step 6</strong>
+                    </p>
+                    <p>payment option</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block body %}
+    <div class="ip-fellow-membership-application ip-fellow-membership-application__step-6">
+        {% from "heading/macro.njk" import bcHeading %}
+        {% from "button/macro.njk" import bcButton %}
+        {% from "choice-selector-card/macro.njk" import bcChoiceSelectorCard %}
+
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Fellow member application'
+		}) }}
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Payment option'
+		}) }}
+
+        <p>Select the payment option</p>
+
+        {{ bcChoiceSelectorCard({
+            name: 'membershipRoutes',
+            items: [
+                { 
+                    label: 'Annual Reoccurring', 
+                    hint: 'Membership to be set as auto renew',
+                    premium: 'xxx',
+                    duration: '/year',
+                    premium: {
+                        text: '£xxx',
+                        hierarchy: 3
+                    }
+                },
+                { 
+                    label: 'Monthly Reoccurring',  
+                    hint: 'Membership to be set as auto renew',
+                    premium: 'xxx',
+                    duration: '/monthly',
+                    premium: {
+                        text: '£xxx',
+                        hierarchy: 3
+                    }
+                },
+                { 
+                    label: 'Annual One Off',  
+                    hint: 'Membership to be set as auto renew',
+                    checked: true,
+                    premium: 'xxx'
+                }
+            ]
+        }) }}
+
+        <div class="bc-button-group">
+            {{ bcButton({
+                appearance: 'primary',
+                text: 'Add to basket'
+            }) }}
+
+            {{ bcButton({
+                appearance: 'secondary',
+                text: 'Previous'
+            }) }}
+
+            {{ bcButton({
+                appearance: 'link',
+                text: 'Cancel'
+            }) }}
+        </div>        
+    </div>
+{% endblock %}

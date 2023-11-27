@@ -1,0 +1,205 @@
+{% from "carousel/macro.njk" import bcCarousel %}
+{% from 'prose/macro.njk' import bcProse %}
+
+{{ bcCarousel({
+	heading: {
+		hierarchy: '3',
+		text: 'Upcoming events'
+	},
+	cta: {
+		text: 'Find an event',
+		url: '#'
+	},
+	items: [
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Fugiat numquam dolorum culpa title goes here',
+			image: {
+				src: '/images/temp/skyline.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<p><time datetime="2020-07-03">3 July 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Accusamus maxime odit voluptatibus vero doloribus, ab modi veritatis, quia',
+			image: {
+				src: '/images/temp/bridge.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-29">29 June 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Earum provident iure itaque doloribus minima repellat necessitatibus quia?',
+			image: {
+				src: '/images/temp/docks.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-20">20 June 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Error eius sunt minima maxime incidunt saepe commodi',
+			image: {
+				src: '/images/temp/skyline.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-13">13 June 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Autem perspiciatis suscipit ea distinctio odio, omnis vel quae, doloribus, nobis deleniti aut',
+			image: {
+				src: '/images/temp/bridge.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-03">3 June 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Voluptas facilis explicabo, aut sit voluptate velit?',
+			image: {
+				src: '/images/temp/docks.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-05-29">29 May 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Fugiat numquam dolorum culpa title goes here',
+			image: {
+				src: '/images/temp/skyline.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<p><time datetime="2020-07-03">3 July 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Accusamus maxime odit voluptatibus vero doloribus, ab modi veritatis, quia',
+			image: {
+				src: '/images/temp/bridge.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-29">29 June 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Read more',
+			text: 'Earum provident iure itaque doloribus minima repellat necessitatibus quia?',
+			image: {
+				src: '/images/temp/docks.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-20">20 June 2020</time>'
+			}
+		}
+	]
+}) }}
+
+{% call bcCarousel({
+	hero: true,
+	items: [
+		{ 
+			href: '#',
+			ctaText: 'Primary CTA',
+			heading: {
+				hierarchy: '1',
+				text: 'Brand value prop'
+			},
+			image: {
+				src: '/images/temp/homepage-hero.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<p><time datetime="2020-07-03">3 July 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Primary CTA',
+			heading: {
+				hierarchy: '1',
+				text: 'Brand value prop'
+			},
+			image: {
+				src: '/images/temp/homepage-hero.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-29">29 June 2020</time>'
+			}
+		},
+		{ 
+			href: '#',
+			ctaText: 'Primary CTA',
+			text: 'Brand value prop',
+			image: {
+				src: '/images/temp/homepage-hero.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<time datetime="2020-06-20">20 June 2020</time>'
+			}
+		}
+	]
+}) 	%}
+	{% call bcProse() %}
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		</p>
+	{% endcall %}
+{% endcall %}	
+
+
+{% call bcCarousel({
+	hero: true,
+	items: [
+		{ 
+			href: '#',
+			ctaText: 'Primary CTA',
+			heading: {
+				hierarchy: '1',
+				text: 'Brand value prop'
+			},
+			image: {
+				src: '/images/temp/homepage-hero.png',
+				alt: 'Put some alternative text here.'
+			},
+			body: {
+				html: '<p><time datetime="2020-07-03">3 July 2020</time>'
+			}
+		}
+	]
+})	%}
+	{% call bcProse() %}
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+		</p>
+	{% endcall %}
+{% endcall %}	

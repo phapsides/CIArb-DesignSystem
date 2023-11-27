@@ -1,0 +1,51 @@
+@use "helpers/colors";
+
+.bc-signpost-positioned-image {
+	$self: &;
+	display: flex;
+	padding: 1.25rem;
+	flex-direction: column;
+	position: relative;
+	color: colors.fs-color(white);
+	background: rgb(222, 113, 101);
+	background: linear-gradient(
+		0deg,
+		rgba(222, 113, 101, 1) 0%,
+		rgba(228, 184, 178, 1) 100%
+	);
+	@media only screen and (min-width: 1025px) {
+		padding: 2rem;
+	}
+	&__image {
+		max-width: 6.5rem;
+		margin-bottom: 2rem;
+		@media only screen and (min-width: 1025px) {
+			max-width: 8rem;
+		}
+	}
+	&__heading {
+		@media only screen and (min-width: 1025px) {
+			font-size: 1.375rem;
+		}
+	}
+	&__body {
+		margin-top: 0.5rem;
+	}
+	&__footer {
+		margin-top: auto;
+		padding-top: 1rem;
+	}
+	&__link {
+		display: flex;
+		align-items: center;
+		color: colors.fs-color(white) !important;
+	}
+	&__link-text {
+		padding-right: 0.5rem;
+		color: colors.fs-color(white);
+	}
+	&__link-icon {
+		fill: colors.fs-color(white);
+		font-size: 1.5rem;
+	}
+}

@@ -1,0 +1,17 @@
+<div class="bc-tooltip__cta">
+	{%- if params.href %}
+		<a 
+			class="bc-cta-link-underline bc-tooltip__cta-link {%- if params.classes %} {{ classes }}{% endif %}" 
+			href="{{ params.href }}"
+			{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+			{{- params.html | safe if params.html else params.text -}}
+		</a>
+	{%- else %}
+		<button 
+			class="bc-cta-link-underline bc-tooltip__cta-link {%- if params.classes %} {{ classes }}{% endif %}" 
+			type="{{ params.type }}"
+			{%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+			{{- params.html | safe if params.html else params.text -}}
+		</button>
+	{%- endif %}
+</div>

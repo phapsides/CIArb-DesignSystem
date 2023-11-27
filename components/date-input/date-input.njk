@@ -1,0 +1,26 @@
+{% from "date-input/macro.njk" import bcDateInput %}
+
+{{ bcDateInput({
+    idPrefix: 'DOB',
+    day: {
+        name: 'Day',
+        autocomplete: 'bday-day'
+    },
+    month: {
+        name: 'Month',
+        autocomplete: 'bday-month'
+    },
+    year: {
+        name: 'Year',
+        autocomplete: 'bday-year'
+    },
+    legend: {
+        text: 'Date of birth'
+    },
+    hint: { 
+        text: 'e.g. 31/01/1978' 
+    },
+    error: { 
+        text: 'The specified date is not eligible' 
+    }
+}) }}

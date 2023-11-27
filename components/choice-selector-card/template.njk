@@ -1,0 +1,68 @@
+{% from 'heading/macro.njk' import bcHeading %}
+
+{% set describedBy = params.describedBy if params.describedBy else '' %}
+{% set idPrefix = params.idPrefix if params.idPrefix else params.name %}
+
+<div class="bc-form-row">
+    <fieldset 
+        class="bc-fieldset"
+        {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}>
+        {% if params.legend %}
+            <legend class="bc-fieldset__legend bc-choice-selector-card__legend">
+                <span class="bc-label">
+                    {{- params.legend.html | safe if params.legend.html else params.legend.text -}}
+                </span>
+            </legend>
+        {% endif %}
+        <div 
+            data-module="bc-choice-selector-card" 
+            class="bc-choice-selector-card {%- if params.classes %} {{ params.classes }}{% endif %}" 
+            {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}
+            {%- if params.layout %} data-layout="{{ params.layout }}"{% endif %}
+        >
+        
+            <ul class="bc-choice-selector-card__list">
+                {%- for item in params.items %}
+                    {%- set id = item.id if item.id else idPrefix + '-' + loop.index %}
+                    {%- set value = item.value if item.value else valuePrefix + '-' + loop.index %}
+
+                    <li class="bc-choice-selector-card__item {% if item.premium %}bc-choice-selector-card__priced-item{% endif %}">
+                        <input 
+                            class="bc-choice-selector-card__input-element" 
+                            type="radio" 
+                            name="{{ params.name }}" 
+                            id="{{ id }}" 
+                            value="{{ value }}"
+                            data-id="{{ id }}"
+                            {%- if item.checked %} checked{% endif %}
+                        />
+                        <div class="bc-choice-selector-card__inner">
+                            <div class="bc-choice-selector-card__copy">
+                                <label class="bc-choice-selector-card__label" for="{{ id }}">
+                                    {% if item.label %}{{item.label}} {% else %}Other{% endif %}
+                                </label>
+                                {% if item.subscriptionAmount %}
+                                    <p class="bc-choice-selector-card__amount">{{item.subscriptionAmount}}</p>
+                                {% endif %}
+                                <p class="bc-choice-selector-card__description">{{item.hint}}</p>
+                                {%- if not item.label %}
+                                    <div class="bc-choice-selector-card__child">
+                                        <label for="{{ id }}-amount">£</label>
+                                        <input type="number" id="{{ id }}-amount" data-id="{{ id }}-amount">
+                                    </div>
+                                {%- endif %}
+                            </div>
+                            {% if item.premium %}
+                                <div class="bc-choice-selector-card__value">
+                                    {{ bcHeading(item.premium) }}
+                                    <p>{{ item.duration }}</p>
+                                </div>
+                            {%- endif %}
+                        </div>
+                    </li>
+                {%- endfor %}
+            </ul>
+        </div>
+    </fieldset>
+</div>
+    

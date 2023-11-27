@@ -1,0 +1,13 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.ip-cancellation-confirmation {
+	&__alert {
+		margin-top: 2rem;
+		margin-bottom: 3rem;
+	}
+	&__main-back-btn {
+		margin-top: 4rem;
+	}
+}

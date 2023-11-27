@@ -1,0 +1,482 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+<form
+    data-module="bc-form"
+    class="bc-form"
+    action="https://google.com/search"
+    method="get" data-do-not-prompt-unload>
+    
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="GenericInput">
+        Generic input
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="GenericInput-Hint">
+            Accepts any input.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="GenericInput"
+    name="GenericInput"
+
+                type="text" value="Bananarama" aria-describedby=" GenericInput-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="Pattern">
+        patternMismatch
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="Pattern-Hint">
+            Accepts one or more letters A, B or C and numbers 1 to 9.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="Pattern"
+    name="Pattern" pattern="^[A|B|C|1-9]+$"
+
+                type="text" value="ABC0123" aria-describedby=" Pattern-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="MaxAttribute">
+        rangeOverflow
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="MaxAttribute-Hint">
+            Accepts any number up to (and including) 10.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="MaxAttribute"
+    name="MaxAttribute" max="10"
+
+                type="number" value="11" aria-describedby=" MaxAttribute-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="MinAttribute">
+        rangeUnderflow
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="MinAttribute-Hint">
+            Accepts any number over (and including) 10.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="MinAttribute"
+    name="MinAttribute" min="10"
+
+                type="number" value="9" aria-describedby=" MinAttribute-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="StepMismatch">
+        stepMismatch
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="StepMismatch-Hint">
+            Accepts any number that is a multiple of 5.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="StepMismatch"
+    name="StepMismatch" min="0" max="50" step="5"
+
+                type="number" value="7" aria-describedby=" StepMismatch-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="TooLong">
+        tooLong
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="TooLong-Hint">
+            Accepts up to (and including) 12 characters.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="TooLong"
+    name="TooLong" maxlength="12"
+
+                type="text" value="pneumonoultramicroscopicsilicovolcanoconiosis" aria-describedby=" TooLong-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="TooShort">
+        tooShort
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="TooShort-Hint">
+            Accepts over (and including) 5 characters.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="TooShort"
+    name="TooShort" minlength="5"
+
+                type="text" value="jazz" aria-describedby=" TooShort-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="TypeMismatch">
+        typeMismatch
+            <span class="bc-label__optional">(optional)</span>
+    </label>
+        
+        
+        <div class="bc-hint" id="TypeMismatch-Hint">
+            Accepts email addresses
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="TypeMismatch"
+    name="TypeMismatch"
+
+                type="email" value="0123 456 7890" aria-describedby=" TypeMismatch-Hint">
+        
+</div>
+
+    
+
+
+
+<div class="bc-form-row">
+    <label class="bc-label" for="Required">
+        valueMissing
+    </label>
+        
+        
+        <div class="bc-hint" id="Required-Hint">
+            Accepts any non-empty input.
+        </div>
+        
+            
+            <input
+    class="bc-input"
+    id="Required"
+    name="Required" required
+
+                type="text" aria-describedby=" Required-Hint">
+        
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+<div class="bc-form-row">
+    
+        <fieldset 
+            class="bc-fieldset">
+            
+            
+    
+    
+    <div 
+        data-module="bc-checkbox" 
+        class="bc-checkbox">
+        
+            
+            
+    
+    
+    <div
+        class="bc-checkbox__item">
+        <input 
+            class="bc-checkbox__input"
+            type="checkbox"
+            id="RequiredCheckboxes-1"
+            name="RequiredCheckboxes"
+            value="1" required aria-describedby=" RequiredCheckboxes-1-Hint">
+        <div class="bc-checkbox__body">
+            <label 
+                class="bc-checkbox__label"
+                for="RequiredCheckboxes-1">Required checkbox</label>
+                <div class="bc-hint" id="RequiredCheckboxes-1-Hint">
+                    This option must be checked.
+                </div>
+        </div>
+    </div>
+
+        
+            
+            
+    
+    
+    <div
+        class="bc-checkbox__item">
+        <input 
+            class="bc-checkbox__input"
+            type="checkbox"
+            id="RequiredCheckboxes-2"
+            name="RequiredCheckboxes"
+            value="2" aria-describedby=" RequiredCheckboxes-2-Hint">
+        <div class="bc-checkbox__body">
+            <label 
+                class="bc-checkbox__label"
+                for="RequiredCheckboxes-2">Optional checkbox</label>
+                <div class="bc-hint" id="RequiredCheckboxes-2-Hint">
+                    This one doesn&#39;t.
+                </div>
+        </div>
+    </div>
+
+        
+    </div>
+
+        </fieldset>
+    
+</div>
+
+    
+
+
+
+    
+    
+
+
+
+
+
+
+
+
+<div class="bc-form-row">
+    <fieldset 
+        class="bc-fieldset" aria-describedby=" RequiredRadios-Hint">
+        
+        
+    
+        <div class="bc-hint" id="RequiredRadios-Hint">
+            One radio button must be selected.
+        </div>
+    
+    
+    <div 
+        data-module="bc-radios" 
+        class="bc-radios">
+        
+            
+            
+    
+    
+    <div
+        class="bc-radios__item">
+        <input 
+            class="bc-radios__input"
+            type="radio"
+            id="RequiredRadios-1"
+            name="RequiredRadios"
+            value="1" required aria-describedby="  RequiredRadios-Hint">
+        <div class="bc-radios__body">
+            <label 
+                class="bc-radios__label"
+                for="RequiredRadios-1">Option 1</label>
+        </div>
+    </div>
+
+        
+            
+            
+    
+    
+    <div
+        class="bc-radios__item">
+        <input 
+            class="bc-radios__input"
+            type="radio"
+            id="RequiredRadios-2"
+            name="RequiredRadios"
+            value="2" required aria-describedby="  RequiredRadios-Hint">
+        <div class="bc-radios__body">
+            <label 
+                class="bc-radios__label"
+                for="RequiredRadios-2">Option 2</label>
+        </div>
+    </div>
+
+        
+            
+            
+    
+    
+    <div
+        class="bc-radios__item">
+        <input 
+            class="bc-radios__input"
+            type="radio"
+            id="RequiredRadios-3"
+            name="RequiredRadios"
+            value="3" required aria-describedby="  RequiredRadios-Hint">
+        <div class="bc-radios__body">
+            <label 
+                class="bc-radios__label"
+                for="RequiredRadios-3">Option 3</label>
+        </div>
+    </div>
+
+        
+            
+            
+    
+    
+    <div
+        class="bc-radios__item">
+        <input 
+            class="bc-radios__input"
+            type="radio"
+            id="RequiredRadios-4"
+            name="RequiredRadios"
+            value="4" required aria-describedby="  RequiredRadios-Hint">
+        <div class="bc-radios__body">
+            <label 
+                class="bc-radios__label"
+                for="RequiredRadios-4">Option 4</label>
+        </div>
+    </div>
+
+        
+    </div>
+
+    </fieldset>
+</div>
+
+    
+
+<div class="bc-form-row">
+    <label class="bc-label" for="RequiredSelect">
+        Required select
+    </label>
+    <div class="bc-select">
+        <select
+            data-module="bc-select"
+            class="bc-select__input"
+            id="RequiredSelect"
+            name="RequiredSelect" required>
+                <option value="">This option has no value</option>
+                <option value="1">This option does</option>
+        </select>
+        <span class="bc-select__arrow">
+            
+
+<i 
+    class="bc-icon fa-regular fa-chevron-down"
+>
+</i>
+        </span>
+    </div>
+</div>
+
+   
+
+
+
+
+
+
+
+
+	<button
+	data-module="bc-button"
+	class="bc-button" data-appearance="primary" name="testName" value="testValue"
+
+		type="submit"
+	>
+		<span class="bc-button__label">Submit</span>
+</button>
+
+
+
+</form>
+

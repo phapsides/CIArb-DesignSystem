@@ -1,0 +1,15 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.it-centered {
+	margin-top: 1.5rem;
+	margin-bottom: 3rem;
+	@include media-queries.fs-mq($from: tablet) {
+		margin-top: 3rem;
+		margin-bottom: 6rem;
+	}
+	&__document {
+		max-width: 40rem;
+		margin: auto;
+	}
+}

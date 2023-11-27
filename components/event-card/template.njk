@@ -1,0 +1,167 @@
+{% from 'image/macro.njk' import bcImage %}
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'button/macro.njk' import bcButton %}
+{% from 'avatar/macro.njk' import bcAvatar %}
+
+{# TODO: Remove parent_classes #}
+{# TODO: {%- if params.full_width %} should not wrap the whole component #}
+{%- if params.full_width %}
+    <div class="bc-event-card--full-width {%- if params.secondary_color %} bc-event-card--secondary-color{% endif %} {%- if params.parent_classes %} {{ params.parent_classes }}{% endif %}">
+        <div class="bc-event-card__container bc-event-detail-content">
+{%- endif %}
+    {%- if params.href %}
+        <a class="bc-event-card__link" href="{{ params.href }}">
+    {%- endif %}
+            <article data-module="bc-event-card" class="bc-event-card{%- if params.hero %} bc-event-card--hero{% endif %}{%- if params.heroReverse %} bc-event-card--hero-reverse{% endif %} {%- if params.image and not params.hero %} bc-event-card--with-image{% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}" {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}" {% endfor %}>
+                {%- if params.image and not params.full_width %}
+                    <div class="bc-event-card__media">
+                        {{ bcImage(params.image) }}
+                    </div>
+                {%- endif %}
+                {%- if params.avatar %}
+                    {{ bcAvatar({ alt: params.name } | merge(params.avatar)) }}
+                {% endif %}
+                <div class="bc-event-card__body">
+                    {%- if params.back_button %}
+                        <div class="bc-event-card__back-btn">
+                            {{ bcButton(params.back_button) }}
+                        </div>
+                    {%- endif %}
+                    {%- if params.categoryName %}
+                        <div class="bc-event-card__category">
+                            {{ params.categoryName }}
+                        </div>
+                    {%- endif %}
+                    {%- if params.heading %}
+                        <header class="bc-event-card__header">
+                            {{ bcHeading(params.heading) }}
+                        </header>
+                    {%- endif %}
+                    {%- if caller %}
+                        <div class="bc-event-card__main">
+                            {{ caller() }}
+                        </div>
+                    {%- endif %}
+                    {%- if params.date or params.time or params.location or params.price or params.type %}
+                        <div class="bc-event-card__toolbar">
+                            <dl class="bc-description-list">
+                                {%- if params.date %}
+                                    <div class="bc-description-list__item">
+                                        <dt class="bc-description-list__key">
+                                            <span class="sr-only">Date</span>
+                                            {{ bcIcon({
+                                                variant: 'calendar'
+                                            }) }}
+                                        </dt>
+                                        <dd class="bc-description-list__value">
+                                            <time>
+                                                {{ params.date }}
+                                            </time>
+                                        </dd>
+                                    </div>
+                                {%- endif %}
+                                {%- if params.time %}
+                                    <div class="bc-description-list__item">
+                                        <dt class="bc-description-list__key">
+                                            <span class="sr-only">Time</span>
+                                            {{ bcIcon({
+                                                variant: 'clock-seven'
+                                            }) }}
+                                        </dt>
+                                        <dd class="bc-description-list__value">
+                                            {# TODO: Amend the below #}
+                                            <time>
+                                                {{ params.time }} GMT
+                                            </time>
+                                        </dd>
+                                    </div>
+                                {%- endif %}
+                                {%- if params.location %}
+                                    <div class="bc-description-list__item">
+                                        <dt class="bc-description-list__key">
+                                            <span class="sr-only">Location</span>
+                                            {{ bcIcon({
+                                                variant: 'location-pin'
+                                            }) }}
+                                        </dt>
+                                        <dd class="bc-description-list__value">
+                                            {# TODO: Amend the below #}
+                                            <time>
+                                                {{ params.location }}
+                                            </time>
+                                        </dd>
+                                    </div>
+                                {%- endif %}
+                                {%- if params.price %}
+                                    <div class="bc-description-list__item">
+                                        <dt class="bc-description-list__key">
+                                            <span class="sr-only">Price</span>
+                                            {{ bcIcon({
+                                                variant: 'sterling-sign'
+                                            }) }}
+                                        </dt>
+                                        <dd class="bc-description-list__value">
+                                            {# TODO: Amend the below #}
+                                            <time>
+                                                {{ params.price }}
+                                            </time>
+                                        </dd>
+                                    </div>
+                                {%- endif %}
+                                {%- if params.type %}
+                                    <div class="bc-description-list__item">
+                                        <dt class="bc-description-list__key">
+                                            <span class="sr-only">Type</span>
+                                            {{ bcIcon({
+                                                variant: 'graduation-cap'
+                                            }) }}
+                                        </dt>
+                                        <dd class="bc-description-list__value">
+                                            {# TODO: Amend the below #}
+                                            <time>
+                                                {{ params.type }}
+                                            </time>
+                                        </dd>
+                                    </div>
+                                {%- endif %}
+                            </dl>
+                        </div>
+                    {%- endif %}
+                    {%- if params.newsDate %}
+                            <div class="bc-event-card__news-date">
+                            {{ params.newsDate }}
+                        </div>
+                    {%- endif %}
+                    {%- if params.button %}
+                        <footer class="bc-event-card__cta">
+                            {{ bcButton(params.button) }}
+                            {%- if params.buttonSecondary %}
+                                {{ bcButton(params.buttonSecondary) }}
+                            {%- endif %}
+                            {%- if params.calendar %}
+                                {{ bcButton({
+                                    href: '#',
+                                    text: 'Add to calendar'
+                                }) }}
+                            {%- endif %}
+                        </footer>
+                    {%- endif %}
+                </div>
+                {%- if not params.button and not params.full_width %}
+                    {{ bcIcon({
+                        variant: 'arrow-right'
+                    }) }}
+                {%- endif %}
+            </article>
+    {%- if params.href %}
+        </a>
+    {%- endif %}
+        {%- if params.full_width %}
+            </div>
+            {%- if params.image %}
+                {{ bcImage(params.image) }}
+            {%- endif %}
+
+    </div>
+{%- endif %}

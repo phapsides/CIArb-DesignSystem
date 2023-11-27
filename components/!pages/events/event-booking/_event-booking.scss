@@ -1,0 +1,52 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/media-queries";
+
+.ip-event-booking {
+	&__delegate {
+		background-color: settings.$fs-canvas-background-color;
+	}
+
+	&__section {
+		.bc-form-row {
+			&:first-of-type {
+				margin-top: 1rem;
+			}
+		}
+	}
+
+	&__consent {
+		.bc-form-row {
+			margin-top: 0 !important;
+		}
+	}
+
+	.bc-checkbox__body {
+		width: 90%;
+	}
+
+	.bc-button-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	&__email-validation {
+		display: grid;
+		grid-template-columns: 1fr;
+		grid-gap: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 2fr 1fr;
+		}
+
+		.bc-form-row {
+			margin-bottom: 0;
+		}
+
+		.bc-button {
+			margin-top: auto;
+			padding: 0.375rem 2rem;
+		}
+	}
+}

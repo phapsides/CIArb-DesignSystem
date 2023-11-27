@@ -1,0 +1,96 @@
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'image/macro.njk' import bcImage %}
+{% from 'event-card/macro.njk' import bcEventCard %}
+{% from 'button/macro.njk' import bcButton %}
+
+
+<section
+    data-module="bc-carousel"
+    class="bc-carousel {%- if params.hero %} bc-carousel--hero {% endif %} {%- if params.classes %} {{ params.classes }}{% endif %}"
+	{%- if params.theme %} data-theme="{{ params.theme }}"{% endif %}
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="bc-carousel__inner">
+		{% if params.heading %}
+			<header class="bc-carousel__header">
+				{{ bcHeading(params.heading) }}
+			</header>
+		{% endif %}
+		<div class="bc-carousel__slider">
+			<div class="bc-carousel__slider-wrapper">
+				{%- for item in params.items %}
+					<div class="bc-carousel__slider-slide {% if params.items.length == 1 %} bc-carousel__single-slide{%- endif %}" {% if params.hero %} style="background:url('{{ item.image.src }}')" {% endif %}>
+						{% if params.hero %}
+							<div class="bc-carousel__slider-slide-slide">
+								<div class="bc-carousel__slider-slide-flex-container">
+									<div class="bc-carousel__slider-slide-body">
+										<div class="bc-carousel__slider-slide-content">
+											{{ bcHeading(item.heading) }}
+											{%- if caller %}
+												{{ caller() }}
+											{%- endif %}
+											<div class="bc-carousel__slider-slide-cta">
+												{{ bcButton({
+													appearance: 'primary',
+													text: 'Primary CTA',
+													href: '#'
+												}) }}
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="bc-carousel__slider-slide-media">
+									{{ bcImage(item.image) }}
+								</div>
+							</div>
+						{% else %}
+							{% call bcEventCard({
+								href: '#',
+								heading: {
+									text: item.text,
+									hierarchy: 4
+								},
+								image: {
+									src: (item.image.src),
+									alt: ''
+								},
+								date: 'Thu, 30 June 2021',
+								location: 'London, UK'
+							}) %}
+							{% endcall %}
+						{% endif %}
+					</div>
+				{%- endfor %}
+			</div>
+			{# TODO: When only one item alignment needs to be fixed #}
+			{% if params.items.length > 1 %}
+				<div class="bc-carousel__slider-controls">
+					<button type="button" class="bc-carousel__slider-control bc-carousel__slider-control--prev">
+						{{ bcIcon({ variant: 'chevron-left' }) }}
+						<span class="fs-!-sr">Previous slide</span>
+					</button>
+					<button type="button" class="bc-carousel__slider-control bc-carousel__slider-control--next">
+						{{ bcIcon({ variant: 'chevron-right' }) }}
+						<span class="fs-!-sr">Next slide</span>
+					</button>
+				</div>
+				<div class="bc-carousel__pagination"></div>
+			{% endif %}
+		</div>
+	</div>
+
+	{% if params.cta %}
+		<div class="bc-carousel__link bc-container">
+			<div class="bc-container__inner">
+				<a class="bc-carousel_link-text" href="{{ params.cta.href }}">
+					<span class="bc-carousel__link-text">
+						{{- params.cta.text -}}
+					</span>
+					{{ bcIcon({
+						variant: 'arrow-right'
+					}) }}
+				</a>
+			</div>
+		</div>
+	{% endif %}
+</section>

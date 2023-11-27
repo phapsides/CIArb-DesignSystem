@@ -1,0 +1,14 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+
+.it-full-width {
+	margin-bottom: 3rem;
+	display: flex;
+	justify-content: center;
+	@include media-queries.fs-mq($from: tablet) {
+		margin-bottom: 6rem;
+	}
+	.bc-grid {
+		padding-bottom: 1.5rem;
+	}
+}

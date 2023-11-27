@@ -1,0 +1,65 @@
+{% from "big-card/macro.njk" import bcBigCard %}
+{% from "prose/macro.njk" import bcProse %}
+
+{% call bcBigCard({
+    image_alignment: 'right',
+    section_heading: {
+        text: 'Membership',
+        hierarchy: 4
+    },
+    heading: {
+        text: 'Become a member',
+        hierarchy: 2
+    },
+    image: {
+        src: '/images/temp/membership-types.jpg',
+        alt: ''
+    },
+    cta: {
+        href: '#',
+        text: 'Benefits of membership'
+    },
+    button: {
+        appearance: 'primary',
+        href: '#',
+        text: 'Join us'
+    }
+    }) %}
+    {% call bcProse() %}
+        <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+        </p>
+    {% endcall %}
+{% endcall %}
+
+{% call bcBigCard({
+    section_heading: {
+        text: 'Training',
+        hierarchy: 4
+    },
+    heading: {
+        text: 'Learn and grow with us',
+        hierarchy: 2
+    },
+    image: {
+        src: '/images/temp/event-temp-background.png',
+        alt: ''
+    },
+    cta: {
+        href: '#',
+        text: 'Our training options'
+    },
+    button: {
+        appearance: 'primary',
+        href: '#',
+        text: 'Find a course'
+    }
+    }) %}
+    {% call bcProse() %}
+        <p>
+           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat
+        </p>
+    {% endcall %}
+{% endcall %}
+
+

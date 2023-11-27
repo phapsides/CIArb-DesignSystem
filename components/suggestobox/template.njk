@@ -1,0 +1,71 @@
+{% from 'form/macro.njk' import bcForm %}
+{% from 'icon/macro.njk' import bcIcon %}
+
+{% set describedBy = params.describedBy if params.describedBy else '' %}
+{% set id = params.id if params.id else params.name %}
+{% set valueName = params.valueName if params.valueName else params.name + 'Value' %}
+
+{% call bcForm() %}
+    <div
+        data-module="bc-suggestobox"
+        class="bc-suggestobox {%- if params.classes %} {{ params.classes }}{% endif %}"
+        role="combobox"
+        aria-expanded="false"
+        aria-owns="{{ id }}-Listbox"
+        aria-haspopup="listbox">
+
+        <label class="bc-label" for="{{ id }}">
+            {{ params.label.html | safe if params.label.html else params.label.text }}
+            {%- if not params.required %}
+                <span class="bc-label__optional">(optional)</span>
+            {%- endif %}
+        </label>
+        {%- if params.hint %}
+            {% set hintId = id + '-Hint' %}
+            {% set describedBy = describedBy + ' ' + hintId %}
+            <div class="bc-hint" id="{{ hintId }}">
+                {{ params.hint.html | safe if params.hint.html else params.hint.text }}
+            </div>
+        {%- endif %}
+        <div class="bc-suggestobox__input-container">
+            <input
+                class="bc-suggestobox__input bc-input"
+                type="text"
+                id="{{ id }}"
+                name="{{ params.name }}"
+                aria-autocomplete="both"
+                aria-controls="{{ id }}-Listbox"
+                {%- if params.placeholder %} placeholder="{{ params.placeholder }}"{% endif %}
+                {%- if params.disabled %} disabled{% endif %}
+                {%- if params.required %} required{% endif %}
+                {%- if params.error %} aria-invalid="true"{% endif %}
+                {%- if params.autocomplete %} autocomplete="{{ params.autocomplete }}"{% endif %}
+                {%- if describedBy %} aria-describedby="{{ describedBy }}"{% endif %}
+                {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+            {{ bcIcon({
+                classes: 'bc-suggestobox__clear',
+                variant: 'times'
+            }) }}
+        </div>
+        <input type="hidden" name="{{ valueName }}" value="{{ params.value }}">
+        <template>{{ params.options | dump }}</template>
+        <ul
+            class="bc-suggestobox__listbox"
+            id="{{ id }}-Listbox"
+            role="listbox"
+            hidden>
+        </ul>
+        {%- if params.error %}
+            {% set errorId = id + '-Error' %}
+            {% set describedBy = describedBy + ' ' + errorId %}
+            <div class="bc-error" id="{{ errorId }}">
+                <span class="bc-error__icon">
+                    {{ bcIcon({
+                        variant: 'exclamation'
+                    }) }}
+                </span>
+                {{ params.error.html | safe if params.error.html else params.error.text }}
+            </div>
+        {%- endif %}
+    </div>
+{% endcall %}

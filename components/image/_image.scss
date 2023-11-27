@@ -1,0 +1,16 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+
+.bc-image {
+	position: relative;
+	line-height: 0;
+	&__image {
+		width: 100%;
+		height: auto;
+	}
+	// TODO: Let's use the variables set for font size
+	&__caption {
+		font-size: 1rem;
+	}
+}

@@ -1,0 +1,82 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/forms";
+@use "helpers/colors";
+@use "helpers/media-queries";
+@use "sass:math";
+
+.bc-radios {
+	$self: &;
+	$input-size: 1.25rem;
+	$input-line-height: 2rem;
+	$target-size: 44px;
+	&__item {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		align-items: flex-start;
+	}
+	&__input {
+		@include forms.bc-radio(
+			$visual-size: $input-size,
+			$target-size: $target-size
+		);
+		&:checked {
+			&:not(:disabled) {
+				&:before {
+					background-color: settings.$fs-body-background-color;
+				}
+			}
+			&::after {
+				background-color: colors.fs-color(brand-secondary);
+				height: 0.5rem;
+				width: 0.5rem;
+			}
+		}
+		&:focus {
+			&::before {
+				outline: 3.5px solid colors.fs-color(outline);
+				outline-offset: 0;
+			}
+		}
+	}
+	&__label {
+		display: inline-block;
+		padding-block-start: calc((#{$target-size} - #{$input-line-height}) / 2);
+		color: colors.fs-color(black);
+		line-height: 30px;
+	}
+	// TODO: I cannot find where the below is used
+	&--block {
+		border: 2px solid colors.fs-color(brand-secondary);
+		margin-bottom: 2.5rem;
+		display: block;
+		cursor: pointer;
+		box-shadow: 0 3px 10px #00000029;
+		&.bc-radios__item--active,
+		&:hover {
+			background-color: colors.fs-color(brand-secondary);
+			// TODO: Could we target bc-heading instead?
+			.bc-radios__label,
+			h3 {
+				color: colors.fs-color(white);
+			}
+		}
+		.bc-radios__input {
+			opacity: 0;
+		}
+		.bc-radios__body {
+			margin-top: -3rem;
+			.bc-radios__label {
+				padding: 1.8rem 1.5rem;
+			}
+		}
+		// TODO: Could we target bc-heading instead?
+		h3 {
+			color: colors.fs-color(brand-secondary);
+		}
+		label {
+			cursor: pointer !important;
+			width: 100%;
+		}
+	}
+}

@@ -1,0 +1,16 @@
+{% set hierarchy = ['jumbotron', 'title', 'subtitle', 'small-subtitle', 'byline'] %}
+{% set hierarchyPos = params.hierarchy if params.hierarchy else 1 %}
+{% set element = params.element if params.element else 'h' + hierarchyPos %}
+
+<{{ element }}
+  class="bc-heading
+  {%- if hierarchyPos <= (hierarchy | length) %} bc-heading--{{ hierarchy[hierarchyPos - 1] }}{% endif %}
+  {%- if params.classes %} {{ params.classes }}{% endif %}"
+  {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}
+>
+  {%- if caller %}
+    {{ caller() }}
+  {%- else %}
+    {{ (params.html | safe) if params.html else params.text }}
+  {%- endif %}
+</{{ element }}>

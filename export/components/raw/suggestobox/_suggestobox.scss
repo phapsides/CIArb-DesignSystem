@@ -1,0 +1,58 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+
+.bc-suggestobox {
+	&__input-container {
+		position: relative;
+	}
+	&__input {
+		margin-bottom: 0 !important;
+		.bc-suggestobox[aria-expanded="true"] & {
+			border-bottom-left-radius: 0;
+			border-bottom-right-radius: 0;
+		}
+		&:disabled {
+			background-color: colors.fs-color(disabled);
+		}
+	}
+	&__listbox {
+		border: 1px solid colors.fs-color(brand-secondary);
+		border-radius: 4px;
+		color: colors.fs-color(brand-secondary);
+		background-color: white;
+		box-shadow: none;
+		line-height: 1.5;
+		width: 100%;
+		padding: 0.5rem 0.75rem;
+		width: 100%;
+		max-height: 22rem;
+		margin: 0;
+		padding: 0;
+		border-top: 0;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		list-style-type: none;
+		overflow-y: auto;
+	}
+	&__listbox-item {
+		padding: 0.5rem 0.75rem;
+		position: relative;
+		cursor: pointer;
+		&:hover {
+			color: colors.fs-color(white);
+			background-color: colors.fs-color(brand-secondary);
+		}
+	}
+	&__clear {
+		position: absolute;
+		top: 1.25rem;
+		right: 1rem;
+		color: colors.fs-color(brand-secondary);
+		font-size: 2rem;
+		cursor: pointer;
+		display: none !important;
+		&--active {
+			display: block !important;
+		}
+	}
+}

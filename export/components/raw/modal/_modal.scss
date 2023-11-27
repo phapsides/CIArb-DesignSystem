@@ -1,0 +1,57 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/typography";
+
+.bc-modal {
+	$self: &;
+	padding: 1.25rem 1.5rem;
+	display: none;
+	position: fixed;
+	align-items: center;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	background-color: rgb(0, 0, 0, 0.6);
+	z-index: 2;
+
+	&--open {
+		display: flex;
+	}
+
+	&__dialog {
+		background-color: white;
+		max-width: 30rem;
+		margin: 0 auto;
+		padding: 3rem 3rem 2rem;
+	}
+
+	&__content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		color: settings.$fs-text-color-heading;
+		text-align: center;
+		// TODO: Maybe target bc-heading instead just in case it ever change from h4 to h3 for example
+		h4 {
+			margin-bottom: 3rem;
+		}
+		.bc-alert__icon {
+			position: relative;
+			margin: auto;
+			margin-bottom: 1rem;
+			top: 0;
+			left: 0;
+		}
+		.bc-button {
+			margin: 0 auto;
+			height: auto;
+			padding: 0.75rem 1.5rem;
+		}
+		.bc-button[data-modal-close] {
+			// TODO: Please use the variables set for font sizes
+			font-size: 1rem;
+			margin-top: 0.5rem;
+		}
+	}
+}

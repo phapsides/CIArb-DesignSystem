@@ -1,0 +1,41 @@
+{% from 'image/macro.njk' import bcImage %}
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'prose/macro.njk' import bcProse %}
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'button/macro.njk' import bcButton %}
+{% set image_alignment = params.image_alignment if params.image_alignment else 'left' %}
+
+<div class="bc-big-card" data-image-align="{{ image_alignment }}">
+    <div class="bc-big-card--image">
+       {{ bcImage(params.image) }}
+    </div>
+    <div class="bc-big-card--content">
+        <header class="bc-big-card__header">
+            {%- if params.heading %}
+                {{ bcHeading(params.section_heading) }}
+                {{ bcHeading(params.heading) }}
+            {%- endif %}
+        </header>
+        <div class="bc-big-card__inner">
+            {%- if caller %}
+                <div class="bc-big-card__body">
+                    {{ caller() }}
+                </div>
+            {%- endif %}
+            <footer class="bc-big-card__action">
+                {%- if params.cta %}
+                    <a class="bc-big-card__link" href="{{ params.cta.href }}">
+                        <span class="bc-big-card__link-text">{{- params.cta.text -}}</span>
+                        {{ bcIcon({
+                            variant: 'arrow-right',
+                            classes: 'bc-big-card__link-icon'
+                        }) }}
+                    </a>
+                {%- endif %}
+                {%- if params.button %}
+                    {{ bcButton(params.button) }}
+                {%- endif %}
+            </footer>
+        </div>
+    </div>
+</div>

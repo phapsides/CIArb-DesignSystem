@@ -1,0 +1,133 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'News & insights', href: '#' },
+			{ text: 'Ciarb news', href: '#' },
+			{ text: 'Ciarb’s diversity in ADR strategy', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "figure/macro.njk" import bcFigure %}
+	{% from "blockquote/macro.njk" import bcBlockquote %}
+
+	<div class="ip-article">
+		<div class="ip-article__date">25th July 2022</div>
+
+		{{ bcHeading({
+			hierarchy: 1,
+			text: 'ADR APPG session on Law Commission consultation on Arbitration Act 1996'
+		}) }}
+
+		{% call bcProse() %}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean euismod bibendum laoreet. Proin gravida dolor sit amet lacus accumsan et viverra justo commodo.
+			</p>
+			{{ bcFigure({
+				image: {
+					src: ('/images/temp/bridge.png' | path),
+					alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+				},
+				figcaption: 'Fig.1 - Clifton Suspension Bridge, Bristol, UK'
+			}) }}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			{{ bcHeading({
+				hierarchy: 2,
+				text: 'Lorem ipsum dolor sit amet'
+			}) }}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			{{ bcFigure({
+				image: {
+					src: ('/images/temp/bridge.png' | path),
+					alt: 'Anim magna laborum sint anim nisi reprehenderit laboris amet.'
+				},
+				figcaption: 'Fig.1 - Clifton Suspension Bridge, Bristol, UK'
+			}) }}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			{{ bcBlockquote({
+				quotation: 'Pull out quote proin gravida dolor sit amet lacus accumsan et viverra justo commodo. Proin sodales pulvinar sic tempor.',
+				citeName: 'Name Surname',
+				citeCompany: 'Organisation name'
+			}) }}
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+			<p>
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			</p>
+		{% endcall %}
+	</div>
+{% endblock %}
+
+{% block afterTemplate %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "news/macro.njk" import bcNews %}
+	<div class="ip-article__after-template">
+		<div class="bc-container">
+			<div class="bc-container__inner">
+				{{ bcNews({
+					heading: {
+							text: 'Latest news',
+							hierarchy: 2
+					},
+					items: [
+						{
+							latest: true,
+							href: '#',
+							image: {
+								src: '/images/temp/membership-types.jpg',
+								alt: 'Branch focus: UAE'
+							},
+							category: 'Category tag',
+							heading: {
+								text: 'Irure consequat ad sit proident nulla incididunt enim consequat. Irure consequat ad sit proident nulla incididunt enim consequat.',
+								hierarchy: 3
+							},
+							date: '25th July 2022'
+						},
+						{
+							latest: true,
+							href: '#',
+							image: {
+								src: '/images/temp/membership-types.jpg',
+								alt: 'ciarb\'s diversity in ADR strategy'
+							},
+							category: 'Category tag',
+							heading: {
+								text: 'ciarb\'s diversity in ADR strategy',
+								hierarchy: 3
+							},
+							date: '25th July 2022'
+						},
+						{    
+							latest: true,
+							href: '#',
+							image: {
+								src: '/images/temp/membership-types.jpg',
+								alt: 'Arbitration week 2022 - review'
+							},
+							category: 'Category tag',
+							heading: {
+								text: 'Arbitration week 2022 - review',
+								hierarchy: 3
+							},
+							date: '25th July 2022'
+						}
+					]
+				}) }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

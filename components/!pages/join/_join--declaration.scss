@@ -1,0 +1,21 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+@use "helpers/typography";
+@use "heading/heading";
+
+.ip-join-declaration {
+	.bc-checkbox__body {
+		width: 90%;
+	}
+
+	.bc-button-group {
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+	}
+
+	.bc-form-row {
+		margin-top: 0.5rem;
+	}
+}

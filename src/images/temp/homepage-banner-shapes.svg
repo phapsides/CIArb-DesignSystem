@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Layer_2" data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 748 273">
+  <defs>
+    <style>
+      .cls-1, .cls-2 {
+        fill: none;
+      }
+
+      .cls-3 {
+        clip-path: url(#clippath);
+      }
+
+      .cls-2 {
+        stroke: #bd0000;
+        stroke-width: 2px;
+      }
+
+      .cls-4 {
+        clip-path: url(#clippath-1);
+      }
+
+      .cls-5 {
+        clip-path: url(#clippath-2);
+      }
+    </style>
+    <clipPath id="clippath">
+      <rect class="cls-1" width="748" height="273"/>
+    </clipPath>
+    <clipPath id="clippath-1">
+      <rect class="cls-1" x="0" y="-150.64" width="663.24" height="621.6"/>
+    </clipPath>
+    <clipPath id="clippath-2">
+      <rect class="cls-1" x="0" y="-150.64" width="663.24" height="621.6"/>
+    </clipPath>
+  </defs>
+  <g id="Layer_1-2" data-name="Layer 1">
+    <g class="cls-3">
+      <g id="Mask_Group_23" data-name="Mask Group 23">
+        <g id="Group_480" data-name="Group 480">
+          <g class="cls-4">
+            <g id="Group_480-2" data-name="Group 480-2">
+              <path id="Path_700" data-name="Path 700" class="cls-2" d="M316.46-149.72h345.84V196.05H316.46V-149.72Z"/>
+            </g>
+          </g>
+          <g id="Group_481" data-name="Group 481">
+            <path id="Path_702" data-name="Path 702" class="cls-2" d="M362.54-56.38l225.4,389.17H137.14L362.54-56.38Z"/>
+          </g>
+          <g class="cls-5">
+            <g id="Group_483" data-name="Group 483">
+              <g id="Group_482" data-name="Group 482">
+                <path id="Path_703" data-name="Path 703" class="cls-2" d="M195.99,79.94c107.73,0,195.05,87.35,195.05,195.05s-87.33,195.05-195.05,195.05S.94,382.68,.94,274.98,88.26,79.94,195.99,79.94Z"/>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

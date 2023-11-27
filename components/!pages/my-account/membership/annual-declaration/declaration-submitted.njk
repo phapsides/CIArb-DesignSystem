@@ -1,0 +1,75 @@
+{% extends '@t-left-sidebar' %}
+
+
+{% block breadcrumbs %}
+	{{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'My courses', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+
+{% block body %}
+	{% from "heading/macro.njk" import bcHeading %}
+	{% from "prose/macro.njk" import bcProse %}
+	{% from "button/macro.njk" import bcButton %}
+	{% from "alert/macro.njk" import bcAlert %}
+
+	<div class="ip-membership-billing-annual-declaration-submitted">
+		{{ bcButton({
+			classes: 'fs-!-margin-bottom-1',
+			href: '#',
+			text: 'Back to Membership & billing',
+			appearance: 'link'
+		}) }}
+
+		{{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 1,
+			text: 'Annual declaration 2022'
+		}) }}
+
+		{% call bcAlert({
+			classes: 'fs-!-margin-top-4 fs-!-margin-bottom-6',
+            variant: 'success'
+        }) %}
+       		<p>Your Annual declaration 2022 has been submitted</p>
+        {% endcall %}
+
+		{{ bcHeading({
+			classes: 'fs-!-margin-bottom-2',
+			hierarchy: 2,
+			text: 'You can now renew your membership'
+		}) }}
+				
+		{% call bcProse() %}
+			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+		{% endcall %}
+
+		{{ bcButton({
+			classes: 'fs-!-margin-top-3',
+			appearance: 'primary',
+			text: 'Renew your membership'
+		}) }}
+			
+	</div>
+{% endblock %}
+
+
+{% block sidebar %}
+	{% from "sub-nav/macro.njk" import bcSubnav %}
+
+	{{ bcSubnav({
+		items: [
+			{ href: '#', text: 'My profile' },
+			{ href: '#', text: 'My events' },
+			{ href: '#', text: 'My courses' },
+			{ href: '#', text: 'Membership & billing', current: true },
+			{ href: '#', text: 'Profile details' },
+			{ href: '#', text: 'Communication preferences' }
+		]
+	}) }}
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'prose/macro.njk' import bcProse %}
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'image/macro.njk' import bcImage %}
+
+<article
+    data-module="bc-signpost-positioned-image"
+    class="bc-signpost-positioned-image {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    {%- if params.image %}
+        <div class="bc-signpost-positioned-image__image">
+            {{ bcImage(params.image) }}
+        </div>
+    {%- endif %}
+    <header class="bc-signpost-positioned-image__header">
+        {% call bcHeading({
+            classes: 'bc-signpost-positioned-image__heading',
+            hierarchy: 4,
+            element: 'strong'
+        } | merge(params.heading)) %}
+            {{- (params.html | safe) if params.html else params.text -}}
+        {% endcall %}
+    </header>
+    {%- if caller %}
+        {% call bcProse({
+            classes: 'bc-signpost-positioned-image__body'
+        }) %}
+            {{ caller() }}
+        {% endcall %}
+    {%- elif params.body %}
+        {% call bcProse({
+            classes: 'bc-signpost-positioned-image__body'
+        }) %}
+            {{ (params.body.html | safe) if params.body.html else params.body.text }}
+        {% endcall %}
+    {%- endif %}
+    {%- if params.href %}
+        <footer class="bc-signpost-positioned-image__footer">
+            <a class="bc-signpost-positioned-image__link" href="{{ params.href }}">
+                <span class="bc-signpost-positioned-image__link-text">{{- params.ctaText -}}</span>
+                {{ bcIcon({
+                    variant: 'arrow-right',
+                    classes: 'bc-signpost-positioned-image__link-icon'
+                }) }}
+            </a>
+        </footer>
+    {%- endif %}
+</article>

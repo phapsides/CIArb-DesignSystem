@@ -1,0 +1,115 @@
+{% extends '@t-right-sidebar' %}
+
+{% block body %}
+	{% from "cart/macro.njk" import bcCart %}
+    {% from "heading/macro.njk" import bcHeading %}
+
+	<div class="ip-basket">
+
+        {{ bcHeading({
+            hierarchy: 1,
+            text: 'My basket'
+        }) }}
+	
+        {{ bcCart({
+            extended: true,
+            items: [
+                {   
+                    image: {
+                        src: ('https://picsum.photos/129/96' | path),
+                        alt: ''
+                    },
+                    stepper: {
+                        name: "ExampleStepper",
+                        min: 1,
+                        max: 5,
+                        required: true
+                    },
+                    name: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+                    details: 'Event',
+                    price: '£30'
+                },
+                {   
+                    image: {
+                        src: ('https://picsum.photos/129/96' | path),
+                        alt: ''
+                    },
+                    stepper: {
+                        name: "ExampleStepper",
+                        min: 1,
+                        max: 5,
+                        required: true
+                    },
+                    name: 'Student: Introduction to ADR Online Course & Assessment',
+                    price: '£5'
+                },
+                { 
+                    name: 'Student CIArb Membership',
+                    price: '£XX'
+                }
+            ]
+        }) }}
+		
+	</div>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "input/macro.njk" import bcInput %}
+    {% from "icon/macro.njk" import bcIcon %}
+    {% from "alert/macro.njk" import bcAlert %}
+
+	<div class="ip-basket__summary">
+
+        {{ bcHeading({
+			hierarchy: 2,
+			text: 'Summary'
+		}) }}
+
+        <div class="ip-basket__promo-box">
+            {{ bcInput({
+                name: 'ExampleInput',
+                label: { text: 'Promo code' },
+                required: true
+            }) }}
+            {{ bcButton({
+                appearance: 'secondary',
+                text: 'Redeem'
+            }) }}
+        </div>
+        {% call bcAlert({
+            variant: 'success'
+        }) %}
+            <p>VOUCHERNAME applied</p>
+        {% endcall %}
+
+        <div class="ip-basket__subtotal">
+            {{ bcHeading({
+                hierarchy: 3,
+                text: 'Sub-total'
+            }) }}
+            <p class="bc-label">£35</p>
+        </div>
+
+        <div class="ip-basket__actions">
+            {{ bcButton({
+                classes: 'fs-!-margin-bottom-3',
+                appearance: 'primary',
+                text: 'Checkout'
+            }) }}
+
+            <a href="#" title="">Continue to checkout</a>
+	    </div>
+	</div>
+
+    <div class="ip-basket__cart-notification">
+        {% call bcAlert({
+            variant: 'circle-exclamation'
+        }) %}
+            <p>Your basket contains a mix of one-off purchases and recurring payments. Payment details for these will be entered separately.</p>
+        {% endcall %}
+    </div>
+
+{% endblock %}

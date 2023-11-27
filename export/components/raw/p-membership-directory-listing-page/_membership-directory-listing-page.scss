@@ -1,0 +1,148 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.bc-event-card--membership-directory {
+	padding: 2rem 0 4rem !important;
+	.bc-prose {
+		margin-bottom: 0;
+	}
+}
+
+.ip-membership-directory {
+	&__how-to-join {
+		// display: flex;
+		// align-items: center;
+		margin: 2rem 0 0;
+		.fa-chevron-down {
+			margin-left: 0.75rem;
+		}
+		.bc-details {
+			box-shadow: none;
+			border: none;
+			background-color: transparent;
+			font-size: settings.$fs-font-sizes-root;
+			&__summary {
+				padding: 0;
+				font-weight: 600;
+				color: colors.fs-color(brand-primary);
+				.bc-icon {
+					font-size: 1rem;
+				}
+			}
+			&__heading {
+				padding-left: 0;
+				width: auto;
+			}
+			&__heading-inner {
+				max-width: 100%;
+				display: block;
+				.bc-heading {
+					color: colors.fs-color(brand-primary) !important;
+				}
+			}
+			&__body {
+				padding: 0;
+				margin-top: 1rem;
+			}
+		}
+	}
+
+	&__form {
+		display: flex;
+		justify-content: space-between;
+	}
+
+	&__search-form {
+		.bc-button {
+			margin-top: 1rem;
+			align-items: center;
+			height: auto;
+			width: 100%;
+		}
+		@media only screen and (min-width: 1025px) {
+			.bc-form-row:first-child {
+				flex-grow: 1;
+				margin-right: 1.5rem;
+			}
+			.bc-button {
+				width: fit-content;
+			}
+		}
+	}
+
+	&__results {
+		margin-top: -0.5rem;
+		.bc-event-card {
+			display: flex;
+			flex-direction: row-reverse;
+			margin-top: 2.5rem;
+		}
+		.bc-event-card__media {
+			overflow: visible;
+			padding: 0;
+		}
+
+		.bc-member-card {
+			&__content {
+				display: flex;
+				align-items: center;
+				color: colors.fs-color(black);
+			}
+			&__details {
+				margin-left: 1.5rem;
+				display: flex;
+				flex-direction: column;
+			}
+		}
+	}
+
+	&__filter-results {
+		margin-top: 1rem;
+		@include media-queries.fs-mq($from: tablet) {
+			margin: 0;
+		}
+	}
+
+	.bc-form {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+			align-items: end;
+		}
+
+		.bc-form-row {
+			margin-top: 0;
+
+			@include media-queries.fs-mq($from: tablet) {
+				margin-left: auto;
+			}
+		}
+
+		.bc-label__optional {
+			display: none;
+		}
+	}
+
+	.bc-pagination {
+		margin-top: 3rem;
+	}
+}
+
+.search-form-desktop {
+	display: none;
+	@media only screen and (min-width: 1025px) {
+		display: block;
+	}
+}
+.search-form-mobile {
+	.bc-heading--title {
+		margin-bottom: -1.5rem;
+	}
+	@media only screen and (min-width: 1025px) {
+		display: none;
+	}
+}

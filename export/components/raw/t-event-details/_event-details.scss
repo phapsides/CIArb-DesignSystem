@@ -1,0 +1,19 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "objects/lists";
+@use "helpers/spacing";
+@use "helpers/media-queries";
+
+.it-event-details {
+	margin-block: 3rem;
+
+	&__document {
+		display: flex;
+		max-width: 47rem;
+		margin: auto;
+	}
+	&__body {
+		// TODO: What is the reason that the below width is needed?
+		width: 100%;
+	}
+}

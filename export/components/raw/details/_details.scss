@@ -1,0 +1,140 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "sass:math";
+
+.bc-details {
+	$self: &;
+	$arrowSize: 1.25rem;
+	overflow: hidden;
+	margin-bottom: 1rem;
+	border: settings.$fs-border-width-form-element solid
+		colors.fs-color(brand-primary);
+	background-color: colors.fs-color(white);
+	transition: all;
+	&:last-of-type {
+		padding-bottom: 0;
+	}
+	summary {
+		list-style: none;
+	}
+	&[open] {
+		#{$self}__icon {
+			transform: rotate(-180deg);
+		}
+	}
+	&__summary {
+		color: colors.fs-color(brand-primary);
+		cursor: pointer;
+		position: relative;
+		padding: 0.5rem 0;
+	}
+	&__icon {
+		transition: all 0.5s;
+		&.bc-icon {
+			width: $arrowSize;
+			height: $arrowSize;
+		}
+	}
+	&__icon.bc-icon {
+		color: colors.fs-color(brand-primary);
+		font-size: 1.85rem;
+		height: auto;
+	}
+	&__heading {
+		display: inline-block;
+		margin: 0;
+		padding-left: 1.5rem;
+		width: calc(100% - (#{$arrowSize} + 2rem));
+	}
+	&__heading-inner {
+		max-width: 90%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+	}
+	&__body {
+		padding: 1rem 1.5rem;
+		> * {
+			margin-top: 0;
+		}
+	}
+	&--read-more {
+		box-shadow: none;
+		border: none;
+
+		.bc-details__summary {
+			flex-direction: column;
+			align-items: start;
+			padding: 0;
+			color: colors.fs-color(black);
+		}
+
+		.bc-details__heading {
+			padding-left: 0;
+		}
+
+		.bc-details__heading-inner {
+			max-width: 100%;
+			.bc-button {
+				text-align: left;
+			}
+		}
+
+		.bc-details__body {
+			padding: 0;
+		}
+
+		.bc-details__icon {
+			transition: all 0.25s;
+		}
+
+		&[open] {
+			.bc-button {
+				display: none;
+			}
+		}
+
+		.bc-icon {
+			display: none;
+		}
+
+		.link-text {
+			color: colors.fs-color(brand-primary);
+		}
+	}
+	&--no-border {
+		background-color: colors.fs-color(white);
+		box-shadow: 0 3px 10px #00000029;
+		border: none;
+		margin-bottom: 2rem;
+		.bc-details__heading {
+			padding-left: 0;
+		}
+		.bc-details__summary {
+			color: colors.fs-color(black);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.5rem;
+		}
+	}
+	&--with-avatar {
+		background-color: colors.fs-color(white);
+		box-shadow: 0 3px 10px #00000029;
+		border: none;
+		margin-bottom: 2rem;
+		.bc-details__heading {
+			display: flex;
+			.bc-avatar {
+				margin-right: 2rem;
+			}
+		}
+		.bc-details__summary {
+			color: colors.fs-color(black);
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			padding: 1.5rem;
+		}
+	}
+}

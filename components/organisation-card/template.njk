@@ -1,0 +1,34 @@
+{% from 'prose/macro.njk' import bcProse %}
+{% from 'heading/macro.njk' import bcHeading %}
+{% from 'button/macro.njk' import bcButton %}
+
+<div
+    data-module="bc-organisation-card"
+    class="bc-organisation-card bc-organisation-card--{{ params.variant }} {%- if params.classes %} {{ params.classes }}{% endif %}"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="bc-organisation-card__body">
+        <div class="bc-organisation-card__body">
+            {%- if params.heading %}
+                {{ bcHeading(params.heading) }}
+            {%- endif %}
+            <div class="bc-organisation-card__type">
+                <p class="bc-organisation-card__label" id="organisation-type">Organisation type</p>
+                <p aria-describedby="organisation-type">{{params.organisationType}}</p>
+            </div>
+            <div class="bc-organisation-card__address">
+                <p class="bc-organisation-card__label" id="organisation-address">Organisation address</p>
+                <address aria-describedby="organisation-address">{{params.organisationAddress}}</address>
+            </div>
+        </div>
+    </div>
+    <div class="bc-organisation-card__cta">
+        {{ bcButton({
+            appearance: 'primary',
+            text: 'Edit organisation details'
+        }) }}
+        {{ bcButton({
+            appearance: 'secondary',
+            text: 'Add a new person'
+        }) }}
+    </div>
+</div>

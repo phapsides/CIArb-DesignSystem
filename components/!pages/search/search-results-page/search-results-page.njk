@@ -1,0 +1,144 @@
+{% extends '@t-event-details' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+			{ text: 'Home', href: '/' },
+			{ text: 'Search results', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block beforeTemplate %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "input/macro.njk" import bcInput %}
+    
+    <div class="ip-search-results__hero-banner">
+        <div class="bc-container">
+			<div class="ip-search-results__inner">
+				{% call bcForm({
+					classes: 'fs-!-margin-top-2 fs-!-margin-bottom-4',
+					action: '',
+					method: '',
+					disableUnloadPrompt: true
+				}) %}
+					{{ bcHeading({
+							hierarchy: 1,
+							text: 'Search results'
+						}) }}
+					<div class="ip-search-results__search-form">
+						{{ bcInput({
+							name: 'ExampleInput',
+							label: { 
+								text: 'Search for' 
+							},
+							type: 'text',
+							value: 'Search term',
+							required: true
+						}) }}
+						{{ bcButton({
+							appearance: 'primary',
+							text: 'Search'
+						}) }}
+					</div>
+				{% endcall %}
+			</div>
+		</div>
+    </div>
+{% endblock %}
+
+{% block body %}
+	{% from "event-card/macro.njk" import bcEventCard %}
+	{% from "grid/macro.njk" import bcGrid %}
+	{% from "pagination/macro.njk" import bcPagination %}
+
+	<div class="ip-search-results">
+		
+		{% call bcProse() %}
+			<p>123 results</p>
+		{% endcall %}
+
+		{% call bcGrid({
+			size: '1/1'
+		}) %}
+			
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				{% endcall %}
+			{% endcall %}
+
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				{% endcall %}
+			{% endcall %}
+
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				{% endcall %}
+			{% endcall %}
+
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				{% endcall %}
+			{% endcall %}
+
+			{% call bcEventCard({
+				href: '#',
+				heading: {
+					text: 'Discussion of the CIArb Guidelines on Expert Witness Conferences',
+					hierarchy: 3
+				}
+			}) %}
+				{% call bcProse() %}
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+					</p>
+				{% endcall %}
+			{% endcall %}
+			
+		{% endcall %}
+
+		{{ bcPagination({
+			currentPage: 1,
+			totalPages: 2
+		}) }}
+	</div>
+{% endblock %}

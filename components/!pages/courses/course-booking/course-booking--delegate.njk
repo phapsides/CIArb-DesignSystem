@@ -1,0 +1,119 @@
+{% extends '@t-centered' %}
+
+{% block breadcrumbs %}
+    {{ bcBreadcrumbs({
+		items: [
+            { text: 'Home', href: '/' },
+			{ text: 'Courses', href: '#' },
+            { text: 'Student: Introduction to ADR Online Course & Assessment', href: '#' },
+			{ text: 'Booking a course', href: '#', current: true }
+		]
+	}) }}
+{% endblock %}
+
+{% block body %}
+    {% from "heading/macro.njk" import bcHeading %}
+    {% from "form/macro.njk" import bcForm %}
+    {% from "button/macro.njk" import bcButton %}
+    {% from "checkbox/macro.njk" import bcCheckbox %}
+    {% from "input/macro.njk" import bcInput %}
+
+    <div class="ip-course-booking-delegate">
+        
+        {{ bcHeading({
+			hierarchy: 1,
+			text: 'Booking a course'
+		}) }}
+
+        {% call bcForm({
+			action: '',
+			method: '',
+			disableUnloadPrompt: true
+		}) %}
+
+            {{ bcHeading({
+                hierarchy: 2,
+                text: 'Validate delegate email'
+            }) }}
+
+            <div class="ip-course-booking-delegate__email-validation">
+                {{ bcInput({
+                    name: 'ExampleInput',
+                    label: { 
+                        text: 'Email address' 
+                    },
+                    type: 'email',
+                    value: 'email@email.com',
+                    required: true
+                }) }}
+                {{ bcButton({
+                    appearance: 'primary',
+                    text: 'Validate'
+                }) }}
+            </div>
+
+            <div class="ip-course-booking-delegate__section">
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Delegate personal details'
+                }) }}
+                {{ bcInput({
+                    name: 'ExampleInput',
+                    label: { 
+                        text: 'First name' 
+                    },
+                    value: 'Michelle',
+                    required: true
+                }) }}
+                {{ bcInput({
+                    name: 'ExampleInput',
+                    label: { 
+                        text: 'Last name' 
+                    },
+                    value: 'Baker',
+                    required: true
+                }) }}
+            </div>
+            
+            <div class="ip-course-booking-delegate__section ip-course-booking-delegate__consent">
+
+                {{ bcHeading({
+                    hierarchy: 2,
+                    text: 'Sharing your contact details'
+                }) }}
+
+                {{ bcCheckbox({
+                    name: 'ExampleCheckboxSingle',
+                    options: [
+                        {
+                            text: 'I consent for my contact details (name, job title, institution and email address) to be shared with third party organisations who are supporting this event, in line with our Privacy Policy',
+                            value: '1',
+                            required: true
+                        }
+                    ]
+                }) }}
+
+            </div>
+
+            <div class="bc-button-group">
+                {{ bcButton({
+                    appearance: 'secondary',
+                    type: 'button',
+                    html: 'Add an extra person <i class="fa-solid fa-plus-large"></i>'
+                }) }}
+                {{ bcButton({
+                    appearance: 'primary',
+                    type: 'submit',
+                    text: 'Add to basket'
+                }) }}
+                {{ bcButton({
+                    appearance: 'link',
+                    type: 'button',
+                    text: 'Cancel'
+                }) }}
+            </div>
+            
+        {% endcall %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/colors";
+@use "helpers/spacing";
+@use "helpers/typography";
+
+@use "sass:color";
+
+.bc-feedback-message {
+	$self: &;
+	$icon-size: 1.5rem;
+	@include spacing.fs-responsive-margin(3, $direction: bottom);
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	&__icon {
+		@include spacing.fs-responsive-margin(1, $direction: right);
+		flex-shrink: 0;
+		font-size: $icon-size;
+		color: colors.fs-color(info);
+	}
+	&__label {
+		@include typography.fs-font-size(body-mobile);
+		line-height: $icon-size;
+	}
+	&[data-type="success"] {
+		#{$self}__icon {
+			color: colors.fs-color(success);
+		}
+	}
+	&[data-type="warning"] {
+		#{$self}__icon {
+			color: colors.fs-color(warning);
+		}
+	}
+	&[data-type="danger"],
+	&[data-type="error"] {
+		#{$self}__icon {
+			color: colors.fs-color(error);
+		}
+	}
+	&[data-type="error"] {
+		color: colors.fs-color(error);
+	}
+	&[data-size="large"] {
+		$icon-size: 2.5rem;
+		@include spacing.fs-responsive-padding(1);
+		border-radius: settings.$fs-border-radius;
+		background-color: colors.fs-color(info-bg);
+		#{$self}__icon {
+			font-size: $icon-size;
+		}
+		&[data-type="success"] {
+			background-color: colors.fs-color(success-bg);
+		}
+		&[data-type="warning"] {
+			background-color: colors.fs-color(warning-bg);
+		}
+		&[data-type="danger"],
+		&[data-type="error"] {
+			background-color: colors.fs-color(error-bg);
+		}
+	}
+}

@@ -1,0 +1,113 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "helpers/media-queries";
+@use "helpers/colors";
+
+.ip-course-listing {
+	margin-top: 0;
+
+	@include media-queries.fs-mq($from: tablet) {
+		margin-top: 6rem;
+	}
+
+	&__filter-results {
+		margin-top: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			margin: 0;
+		}
+	}
+
+	.bc-form {
+		display: flex;
+		flex-direction: column;
+		margin-bottom: 1rem;
+
+		@include media-queries.fs-mq($from: tablet) {
+			flex-direction: row;
+			align-items: end;
+		}
+
+		.bc-form-row {
+			margin-left: 0;
+			margin-top: 0;
+
+			@include media-queries.fs-mq($from: tablet) {
+				margin-left: auto;
+			}
+		}
+
+		.bc-label__optional {
+			display: none;
+		}
+	}
+
+	.bc-pagination {
+		margin-top: 3rem;
+	}
+
+	.bc-event-card {
+		@include media-queries.fs-mq($from: tablet) {
+			grid-template-columns: 1fr;
+		}
+	}
+}
+
+.bc-course-hero {
+	background-color: settings.$fs-canvas-background-color !important;
+
+	.bc-heading {
+		color: colors.fs-color(brand-secondary);
+	}
+
+	.bc-prose {
+		color: colors.fs-color(black) !important;
+	}
+
+	.bc-description-list {
+		&__value {
+			color: colors.fs-color(black) !important;
+		}
+
+		&__key {
+			color: colors.fs-color(brand-secondary);
+		}
+	}
+}
+
+.it-event-listing {
+	// TODO: Move the below in component styles
+	.bc-event-card--hero {
+		.bc-image {
+			height: 100%;
+		}
+
+		.fa-arrow-right {
+			display: none;
+		}
+
+		.bc-image__image {
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.bc-event-card {
+			&__media {
+				height: 100%;
+			}
+
+			&__link {
+				.bc-prose {
+					color: colors.fs-color(white);
+				}
+			}
+		}
+
+		.bc-description-list {
+			margin-top: 3rem;
+
+			&__value {
+				color: colors.fs-color(white);
+			}
+		}
+	}
+}

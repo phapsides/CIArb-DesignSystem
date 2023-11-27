@@ -1,0 +1,41 @@
+{% from 'icon/macro.njk' import bcIcon %}
+{% from 'button/macro.njk' import bcButton %}
+{% from 'heading/macro.njk' import bcHeading %}
+
+{% set variant = params.variant if params.variant else 'info' %}
+{% set icon = params.icon if params.icon else 'alert-' + variant %}
+
+<div
+    data-module="bc-modal"
+    id="bc-modal-{{ params.id }}"
+    class="bc-modal {%- if params.classes %} {{ params.classes }}{% endif %}"
+    role="modal"
+    {%- for attribute, value in params.attributes %} {{ attribute }}="{{ value }}"{% endfor %}>
+    <div class="bc-modal__dialog">
+        <div class="bc-modal__body">
+            <div class="bc-modal__content">
+                {% if params.icon %}
+                <div class="bc-alert__icon bc-alert--{{ variant }}">
+                    {{ bcIcon({ variant: icon, classes: 'bc-modal__icon' }) }}
+                </div>
+                {% endif %}
+                {% if params.content %}
+                    {{ bcHeading({
+                        hierarchy: 4,
+                        text: params.content
+                    }) }}
+                {% endif %}
+                {%- if caller %}
+                    {{ caller() }}
+                {%- endif %}
+                {{ bcButton({
+                    appearance: 'link',
+                    text: 'Close',
+                    attributes: {
+                        'data-modal-close': params.id
+                    }
+                }) }}
+            </div>
+        </div>
+    </div>
+</div>

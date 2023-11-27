@@ -1,0 +1,38 @@
+params:
+  - name: attributes
+    type: object
+    description: Properties and values to add to the component as HTML attributes, expressed as key/value pairs.
+  - name: classes
+    type: string
+    description: Classes to add to the image.
+  - name: alt
+    type: string
+    required: true
+    description: Alternative text describing the content of the image, used by screen readers, search engines, and situations where the image fails to load correctly.
+  - name: src
+    type: string
+    required: true
+    description: A URL pointing to the image. Acts as a fallback to `srcset` if `srcset` is specified.
+  - name: lazyload
+    type: boolean
+    default: true
+    description: If `true`, only attempt to load this image after the rest of the page has completed loading.
+  - name: srcset
+    type: string
+    description: A `srcset` formatted string of images.
+  - name: width
+    type: number
+    description: The width of the image in pixels.
+  - name: height
+    type: number
+    description: The height of the image in pixels.
+  - name: container
+    type: object
+    description: Attributes relating to the containing element.
+    params:
+      - name: attributes
+        type: object
+        description: Properties and values to add to the container as HTML attributes, expressed as key/value pairs.
+      - name: classes
+        type: string
+        description: Classes to add to the container.

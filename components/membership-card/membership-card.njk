@@ -1,0 +1,31 @@
+{% from "membership-card/macro.njk" import bcMembershipCard %}
+{% from "prose/macro.njk" import bcProse %}
+
+
+{% call bcMembershipCard({
+	price: '24',
+	period: 'year',
+    buttons: [
+        {
+            classes: 'fs-!-margin-right-4',
+            appearance: 'primary',
+            text: 'Renew membership',
+            attributes: {
+                'data-modal-open': 'renew-membership-modal'
+            }
+        },
+        {
+            appearance: 'secondary',
+            text: 'Cancel membership'
+        }
+    ]
+    }) %}
+	{% call bcProse() %}
+		<dl>
+            <dt>Annual subscription</dt>
+            <dd>Access to exclusive discounts</dd>
+            <dd>Digital version of our quarterly magazine, The Vegan</dd>
+            <dd>Access to our vegan dietitian, Heather</dd>
+        </dl>
+	{% endcall %}
+{% endcall %}

@@ -1,0 +1,49 @@
+{% from "event-card/macro.njk" import bcEventCard %}
+{% from "prose/macro.njk" import bcProse %}
+{% from "grid/macro.njk" import bcGrid %}
+
+
+{% call bcGrid({
+    size: '1/1'
+}) %}
+    {% call bcEventCard({
+        href: '#',
+        heading: {
+            text: 'Getting started and using LinkedIn for young people aged 16-25',
+            hierarchy: 3
+        },
+        date: 'Thu, 30 June 2022',
+        time: '10:00 GMT',
+        location: 'London, UK',
+        price: 'XXX'
+    }) %}
+        {% call bcProse() %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
+        {% endcall %}
+    {% endcall %}
+{% endcall %}
+{% call bcGrid({
+    size: '1/1'
+}) %}
+     {% call bcEventCard({
+        href: '#',
+        heading: {
+            text: 'Roebuck Lecture 2022 delivered by the Rt. Hon. Sir Geoffrey Vos',
+            hierarchy: 3
+        },
+        image: {
+            src: ('/images/temp/event-temp-background.png' | path),
+            alt: ''
+        },
+        date: 'Thu, 30 June 2021',
+        time: '10:00',
+        location: 'London, UK',
+        price: 'XXX'
+    }) %}
+        {% call bcProse() %}
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
+        {% endcall %}
+    {% endcall %}
+{% endcall %}

@@ -1,0 +1,69 @@
+@use "@querkmachine/felafel/src/scss/settings";
+@use "@querkmachine/felafel/src/scss/helpers/measurements";
+@use "helpers/colors";
+@use "helpers/reset";
+@use "helpers/typography";
+
+.bc-button {
+	@include reset.fs-reset-button;
+	@include typography.fs-font-stack(sans, $weight: 600);
+	@include typography.fs-font-size(button);
+	display: inline-block;
+	padding: 0.75rem 2.5rem;
+	text-align: center;
+	border: settings.$fs-border-width-form-element solid;
+	text-decoration: none;
+	background-color: colors.fs-color(white);
+	position: relative;
+	user-select: none;
+	cursor: pointer;
+	height: 52px;
+	transition: all 0.1s;
+	&:not(:disabled) {
+		&[data-appearance="primary"] {
+			color: colors.fs-color(white);
+			border-color: colors.fs-color(brand-primary);
+			background-color: colors.fs-color(brand-primary);
+			&:hover,
+			&:focus {
+				border-color: colors.fs-color(brand-secondary);
+				background-color: colors.fs-color(brand-secondary);
+			}
+		}
+		&[data-appearance="secondary"] {
+			color: colors.fs-color(brand-primary);
+			border-color: colors.fs-color(brand-primary);
+			background-color: transparent;
+			&:hover,
+			&:focus {
+				color: colors.fs-color(brand-secondary);
+				border-color: colors.fs-color(brand-secondary);
+			}
+		}
+		&[data-appearance="link"] {
+			@include reset.fs-reset-button;
+			@include typography.fs-font-stack(sans, $weight: 600);
+			color: colors.fs-color(link);
+			font-size: 1rem;
+			&:hover {
+				color: colors.fs-color(link-hover);
+			}
+		}
+		&[data-appearance="disabled"] {
+			color: settings.$fs-body-background-color;
+			border-color: settings.$fs-body-background-color;
+			&:hover,
+			&:focus {
+			}
+		}
+	}
+	&:disabled {
+		cursor: default;
+		color: colors.fs-color(white);
+		border-color: colors.fs-color(btn-disabled);
+		background-color: colors.fs-color(btn-disabled);
+	}
+	&[data-layout="block"] {
+		inline-size: 100%;
+	}
+}
